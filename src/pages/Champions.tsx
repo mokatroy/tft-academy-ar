@@ -29,7 +29,7 @@ export function Champions() {
   useEffect(() => {
     if (!selected) return undefined;
     const previous = document.title;
-    document.title = `${selected.name} — الأبطال | أكاديمية TFT`;
+    document.title = `${selected.name} — الأبطال | MokaTroy`;
     const handler = (event: KeyboardEvent) => {
       if (event.key === 'Escape') closeChampion();
     };
@@ -42,7 +42,7 @@ export function Champions() {
   }, [selected]);
 
   useEffect(() => {
-    if (!selected) document.title = 'الأبطال | أكاديمية TFT';
+    if (!selected) document.title = 'الأبطال | MokaTroy';
   }, [selected]);
 
   const openChampion = (champion: Champion) => {

@@ -39,7 +39,7 @@ export function CompDetail() {
   useEffect(() => {
     if (!comp) return undefined;
     const previous = document.title;
-    document.title = `${comp.name} — كومبو ${comp.tier} | أكاديمية TFT`;
+    document.title = `${comp.name} — كومبو ${comp.tier} | MokaTroy`;
     return () => {
       document.title = previous;
     };

@@ -12,7 +12,7 @@ export function Items() {
   const [kind, setKind] = useState<KindFilter>('all');
 
   useEffect(() => {
-    document.title = 'العناصر | أكاديمية TFT';
+    document.title = 'العناصر | MokaTroy';
     const q = searchParams.get('q');
     if (q) setQuery(q);
   }, [searchParams]);

@@ -1,4 +1,4 @@
-# أكاديمية TFT — نسخة عربية
+# MokaTroy — نسخة عربية
 
 موقع عربي كامل (RTL) على نمط TFT Academy: قائمة مستويات للكومبوهات، صفحات تفصيلية لكل كومبو مع لوح اللعب والعناصر والتعزيزات وخطة الترقيم، بالإضافة إلى صفحات الأبطال والعناصر والخواص.
 
@@ -50,9 +50,9 @@ npm run fetch-data
 ```bash
 git init
 git add .
-git commit -m "أكاديمية TFT — نسخة عربية"
+git commit -m "MokaTroy — نسخة عربية"
 git branch -M main
-git remote add origin https://github.com/YOUR_USER/tft-academy-ar.git
+git remote add origin https://github.com/YOUR_USER/mokatroytft.git
 git push -u origin main
 ```
 
@@ -90,7 +90,7 @@ vite.config.ts
 | `CLOUDFLARE_ACCOUNT_ID` | من صفحة الرئيسية في الداشبورد (العمود اليمين) |
 | `CLOUDFLARE_API_TOKEN` | My Profile → API Tokens → Create Token → قالب "Cloudflare Pages: Edit" |
 
-وفي Cloudflare اعمل مشروع Pages باسم `tft-academy-ar` الأول (أو غيّر `--project-name` في ملف الأكشن).
+وفي Cloudflare اعمل مشروع Pages باسم `mokatroytft` الأول (أو غيّر `--project-name` في ملف الأكشن).
 
 ملاحظة: مسار `_redirects` داخل `public/` بيخلي روابط زي `/tierlist/comps` تتحمّل صح عند الرفرش أو الدخول المباشر (SPA fallback) على Cloudflare Pages.
 

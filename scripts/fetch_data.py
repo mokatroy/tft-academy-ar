@@ -100,7 +100,7 @@ def fetch(url: str, retries: int = 3) -> bytes:
     last: Exception | None = None
     for attempt in range(retries):
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "tft-academy-ar/1.0"})
+            req = urllib.request.Request(url, headers={"User-Agent": "mokatroytft/1.0"})
             with urllib.request.urlopen(req, timeout=60) as res:
                 return res.read()
         except Exception as exc:  # noqa: BLE001

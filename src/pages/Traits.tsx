@@ -12,7 +12,7 @@ export function Traits() {
   const [query, setQuery] = useState('');
 
   useEffect(() => {
-    document.title = 'الخواص | أكاديمية TFT';
+    document.title = 'الخواص | MokaTroy';
   }, []);
 
   const selected = searchParams.get('trait');

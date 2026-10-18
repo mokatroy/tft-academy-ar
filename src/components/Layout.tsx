@@ -39,13 +39,13 @@ export function Layout() {
     <>
       <header className="site-header">
         <div className="container header-inner">
-          <Link to="/" className="brand" aria-label="أكاديمية TFT">
+          <Link to="/" className="brand" aria-label="MokaTroy">
             <span className="brand-mark">
               <Swords size={20} strokeWidth={2.4} />
             </span>
             <span>
-              <span className="brand-title">أكاديمية TFT</span>
-              <span className="brand-sub">TFT Academy · عربي</span>
+              <span className="brand-title">MokaTroy</span>
+              <span className="brand-sub">دليل TFT العربي</span>
             </span>
           </Link>
 
@@ -116,7 +116,7 @@ export function Layout() {
                 <span className="brand-mark" style={{ width: 30, height: 30, borderRadius: 9 }}>
                   <Swords size={16} />
                 </span>
-                أكاديمية TFT
+                MokaTroy
               </div>
               <p className="footer-note">
                 نسخة عربية غير رسمية لمساعدة لاعبي Teamfight Tactics على متابعة الميتا: كومبوهات، تشكيلات،
@@ -134,9 +134,9 @@ export function Layout() {
             </div>
           </div>
           <div className="footer-bottom">
-            <span>© 2026 أكاديمية TFT — نسخة عربية</span>
+            <span>© 2026 MokaTroy</span>
             <span dir="ltr">
-              TFT Academy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
+              MokaTroy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
             </span>
           </div>
         </div>
