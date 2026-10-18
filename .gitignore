@@ -1,0 +1,10 @@
+node_modules
+dist
+scripts/.cache
+.screenshots
+.smoke.cjs
+dev.log
+preview.log
+.dev.pid
+*.zip
+.screenshots
