@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Menu, Search, Swords, X } from 'lucide-react';
+import { Menu, Search, X } from 'lucide-react';
 import { meta } from '../lib/data';
 import { SearchDialog } from './SearchDialog';
 
@@ -40,8 +40,8 @@ export function Layout() {
       <header className="site-header">
         <div className="container header-inner">
           <Link to="/" className="brand" aria-label="MokaTroy">
-            <span className="brand-mark">
-              <Swords size={20} strokeWidth={2.4} />
+            <span className="brand-mark" aria-hidden="true">
+              M
             </span>
             <span>
               <span className="brand-title">MokaTroy</span>
@@ -113,16 +113,13 @@ export function Layout() {
           <div className="footer-inner">
             <div>
               <div className="footer-brand">
-                <span className="brand-mark" style={{ width: 30, height: 30, borderRadius: 9 }}>
-                  <Swords size={16} />
+                <span className="brand-mark" style={{ width: 30, height: 30, borderRadius: 9 }} aria-hidden="true">
+                  M
                 </span>
                 MokaTroy
               </div>
               <p className="footer-note">
-                نسخة عربية غير رسمية لمساعدة لاعبي Teamfight Tactics على متابعة الميتا: كومبوهات، تشكيلات،
-                عناصر وخواص. تعتمد الأسماء والصور على بيانات CommunityDragon للمجموعة 18.
-                <br />
-                الأدلة والترتيبات في هذا العرض تحريرية ولا تعتمد على إحصاءات رسمية.
+                دليل عربي غير رسمي لـ Teamfight Tactics: كومبوهات، تشكيلات، عناصر وخواص.
               </p>
             </div>
             <div className="footer-links">
