@@ -16,12 +16,12 @@ export const comps: Comp[] = [
     summary:
       'كومبو إعادة لفّ منخفض التكلفة يعتمد على زايا وأورن بثلاث نجوم، ثم ينتقل إلى إزريال وليكس في نهاية اللعبة. جدار إلدروود يمنح الفريق صحة ودرعًا كافيين لبقاء زايا على قيد الحياة حتى تتراكم سرعة هجومها.',
     units: [
-      { champion: 'DA_18_Xayah', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 3, row: 0, col: 3 },
-      { champion: 'DA_18_Ornn', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 3, row: 3, col: 3 },
+      { champion: 'DA_18_Xayah', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 3, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Ornn', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 3, row: 3, col: 3, carry: true },
       { champion: 'DA_18_Alistar', items: ['TFT_Item_BrambleVest', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Hecarim', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 4 },
       { champion: 'DA_18_LeBlanc', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Ezreal', items: ['TFT_Item_Deathblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_InfinityEdge'], star: 2, row: 1, col: 5 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_Deathblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_InfinityEdge'], star: 2, row: 1, col: 5, carry: true },
       { champion: 'DA_18_GnarSmall', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 2 },
       { champion: 'DA_18_Lux_Elderwood', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 5 },
     ],
@@ -57,10 +57,10 @@ export const comps: Comp[] = [
     summary:
       'كومبو متوازن يعتمد على أزير كمصدر ضرر سحري أساسي مع دعم من مستدعيي الشوكة السوداء. مالفايت ويوريك يشكلان جبهة صلبة، بينما تصنع زايرا ورابتور الضرر الموزع وخصم العلاج.',
     units: [
-      { champion: 'DA_18_Azir', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
+      { champion: 'DA_18_Azir', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2, carry: true },
       { champion: 'DA_18_RekSai', items: ['TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Warwick', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 3 },
+      { champion: 'DA_18_Warwick', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 3, carry: true },
       { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
       { champion: 'DA_18_Zyra', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_BlueBuff'], star: 2, row: 1, col: 2 },
       { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 4 },
@@ -98,9 +98,9 @@ export const comps: Comp[] = [
     summary:
       'كومبو ازدهار رأسي يصل إلى العتبة الكبرى مع آش كقناصة أساسية. آري وكارما تضخان ضررًا سحريًا وتدعمان الفريق، ويوريك وسيت يصنعان جبهة طويلة بما يكفي لآش.',
     units: [
-      { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Yunara', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge', 'TFT_Item_Bloodthirster'], star: 2, row: 0, col: 1 },
+      { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2, carry: true },
+      { champion: 'DA_18_Yunara', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge', 'TFT_Item_Bloodthirster'], star: 2, row: 0, col: 1, carry: true },
       { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 4 },
       { champion: 'DA_18_Ahri', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 1, col: 3 },
       { champion: 'DA_Karma18', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 2, col: 5 },
@@ -139,9 +139,9 @@ export const comps: Comp[] = [
     summary:
       'كومبو إعادة لفّ حول أكالي بثلاث نجوم، مع كينين كحامل ضرر سحري ثانٍ. جحيم يزيد الضرر بمرور الوقت، وشين وراموس وأمومو يمنحون الجبهة متانة كافية لوصول أكالي إلى حامل الضرر.',
     units: [
-      { champion: 'DA_18_Akali_AD', items: ['TFT_Item_HextechGunblade', 'TFT_Item_InfinityEdge', 'TFT_Item_UnstableConcoction'], star: 3, row: 2, col: 3 },
-      { champion: 'DA_18_Varus', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
+      { champion: 'DA_18_Akali_AD', items: ['TFT_Item_HextechGunblade', 'TFT_Item_InfinityEdge', 'TFT_Item_UnstableConcoction'], star: 3, row: 2, col: 3, carry: true },
+      { champion: 'DA_18_Varus', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 5, carry: true },
+      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3, carry: true },
       { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_DragonsClaw', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Kennen', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 2 },
       { champion: 'DA_18_Lux_Inferno', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_BlueBuff'], star: 2, row: 0, col: 3 },
@@ -180,9 +180,9 @@ export const comps: Comp[] = [
     summary:
       'أفيليوس حامل الضرر الأساسي بسرعة هجوم مرتفعة، وألون تضاعف قوة الفريق القمرية. ديانا وتاريك يمنحان طليعية قوية، بينما راموس وشين وليونا يبنون جبهة مدافعين صعبة الاختراق.',
     units: [
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_TitansResolve', 'TFT_Item_HextechGunblade', 'TFT_Item_UnstableConcoction'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Diana', items: ['TFT_Item_TitansResolve', 'TFT_Item_HextechGunblade', 'TFT_Item_UnstableConcoction'], star: 2, row: 2, col: 3, carry: true },
+      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1, carry: true },
       { champion: 'DA_18_Lux_Moonbeam', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_BlueBuff'], star: 2, row: 0, col: 5 },
       { champion: 'DA_Taric18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
@@ -221,9 +221,9 @@ export const comps: Comp[] = [
     summary:
       'كاسيوبيا تبني سمومًا تنتشر بين صفوف العدو، ومورغانا تضيف ضررًا سحريًا وخصم علاج. اجتماع السحرة يعزز قوة القدرة لكل الفريق، وإليز وساميل يصنعان مقدمة قتالية قادرة على إيقاف القتلة.',
     units: [
-      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_BlueBuff', 'TFT_Item_Leviathan', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 5 },
+      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_BlueBuff', 'TFT_Item_Leviathan', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3, carry: true },
+      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 5, carry: true },
       { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_JeweledGauntlet'], star: 2, row: 1, col: 3 },
       { champion: 'DA_18_Camille', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 3 },
       { champion: 'DA_18_Lux_Coven', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1 },
@@ -262,9 +262,9 @@ export const comps: Comp[] = [
     summary:
       'تريستانا تطلق النار بسرعة مع تعزيز العفريت، وزايا تدعمها بضرر مستمر. راكان وليليا يوفّران جبهة ودرعًا، وأليستار وأورن يمنحان إلدروود عمقًا دفاعيًا في بداية اللعبة.',
     units: [
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Xayah', items: ['TFT_Item_Deathblade', 'TFT_Item_LastWhisper', 'TFT_Item_Bloodthirster'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Xayah', items: ['TFT_Item_Deathblade', 'TFT_Item_LastWhisper', 'TFT_Item_Bloodthirster'], star: 2, row: 0, col: 5, carry: true },
+      { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2, carry: true },
       { champion: 'DA_18_Lillia', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 4 },
       { champion: 'DA_18_Lux_Fae', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 1, col: 3 },
       { champion: 'DA_18_Alistar', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 3 },
@@ -303,9 +303,9 @@ export const comps: Comp[] = [
     summary:
       'كايل تبدأ ضعيفة وتزداد قوة مع كل مستوى شمسي. ليونا وسيجواني وليكس يوفّرون عتبة الشمسي، بينما يحمي راموس وشين وتاريك كايل حتى تصل إلى مرحلة القوة القصوى.',
     units: [
-      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Leviathan', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Sejuani', items: ['TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 5 },
+      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Leviathan', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3, carry: true },
+      { champion: 'DA_18_Sejuani', items: ['TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 5, carry: true },
       { champion: 'DA_18_Lux_Sunbeam', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 2, col: 5 },
       { champion: 'DA_18_Shen', items: ['TFT_Item_FrozenHeart', 'TFT_Item_Redemption'], star: 2, row: 3, col: 1 },
@@ -344,9 +344,9 @@ export const comps: Comp[] = [
     summary:
       'كومبو صيادين متعدد حاملي الضرر: سيفير وآش وكايتلين وتريستانا. نيدالي وكوغ ماو يضيفان ضررًا سحريًا من خلف الجبهة، وفاي تحمي الخط الأمامي مع تعزيز البدائي.',
     units: [
-      { champion: 'DA_18_Sivir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_HextechGunblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 3 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_HextechGunblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 2, col: 3, carry: true },
+      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 3, carry: true },
       { champion: 'DA_18_Lux_Primal', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Caitlyn', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge'], star: 2, row: 1, col: 5 },
       { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_LastWhisper'], star: 2, row: 1, col: 1 },
@@ -385,9 +385,9 @@ export const comps: Comp[] = [
     summary:
       'فيغار يحمل الضرر السحري الأساسي مع تعزيز المشاغبين، وتيمو يضيف خصم علاج وضررًا موزعًا. كوبوكو وراموس وغنار يشكلون جبهة مرنة، وتريستانا توفّر ضررًا ماديًا مستمرًا.',
     units: [
-      { champion: 'DA_18_Veigar', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Kobuko', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Teemo', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_BlueBuff'], star: 2, row: 1, col: 3 },
+      { champion: 'DA_18_Veigar', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 3, carry: true },
+      { champion: 'DA_18_Kobuko', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3, carry: true },
+      { champion: 'DA_18_Teemo', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_BlueBuff'], star: 2, row: 1, col: 3, carry: true },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
       { champion: 'DA_18_GnarSmall', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 3 },
       { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 5 },
@@ -426,9 +426,9 @@ export const comps: Comp[] = [
     summary:
       'كومبو مرح يعتمد على عتبة وحش الريفت العالية. الوحدات رخيصة وتصل إلى نجوم عالية بسهولة، لكن سقف القوة أقل من الكومبوهات التنافسية. مناسب للتجربة مع الأصدقاء أو عند فتح وحوش مبكرًا.',
     units: [
-      { champion: 'DA_Krug18', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_Brambleback18', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 3 },
+      { champion: 'DA_Krug18', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 3, row: 3, col: 3, carry: true },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 5, carry: true },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 3, carry: true },
       { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 3 },
       { champion: 'DA_Gromp18_AP', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 2, col: 5 },
       { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 1 },

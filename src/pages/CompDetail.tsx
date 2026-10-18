@@ -236,8 +236,8 @@ export function CompDetail() {
                       <span style={{ color: '#f5c451', fontSize: 10 }}>{'★'.repeat(unit.star)}</span>
                     </div>
                     <div className="unit-card-items">
-                      {unit.items.length === 0 ? (
-                        <span className="empty">بدون عناصر</span>
+                      {(!unit.carry || unit.items.length === 0) ? (
+                        <span className="empty">{unit.carry ? "بدون عناصر" : "—"}</span>
                       ) : (
                         unit.items.map((itemId) => {
                           const item = itemMap.get(itemId);

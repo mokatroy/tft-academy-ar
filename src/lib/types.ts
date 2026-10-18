@@ -71,6 +71,8 @@ export interface CompUnit {
   row: number;
   /** 0..6 */
   col: number;
+  /** true = show recommended items (main carry/tank) */
+  carry?: boolean;
 }
 
 export interface CompAugment {

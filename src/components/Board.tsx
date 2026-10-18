@@ -43,9 +43,9 @@ export function Board({ comp }: { comp: Comp }) {
                 {champion.icon ? <img src={champion.icon} alt={champion.name} loading="lazy" /> : null}
                 <span className="hex-stars">{'★'.repeat(unit.star)}</span>
               </div>
-              {unit.items.length > 0 && (
+              {(unit.carry ? unit.items.length : 0) > 0 && (
                 <div className="hex-items">
-                  {unit.items.map((itemId) => {
+                  {(unit.carry ? unit.items : []).map((itemId) => {
                     const item = itemMap.get(itemId);
                     return item?.icon ? (
                       <img key={itemId} src={item.icon} alt={item.name} title={item.name} loading="lazy" />
@@ -59,7 +59,7 @@ export function Board({ comp }: { comp: Comp }) {
       </div>
       <div className="board-note">
         <span />
-        الصف الأمامي في الأعلى · مرّر على الوحدات لرؤية العناصر
+        الصف الأمامي في الأعلى · العناصر تظهر على الوحدات الأساسية فقط
         <span />
       </div>
     </div>
