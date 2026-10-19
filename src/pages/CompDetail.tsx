@@ -22,35 +22,36 @@ import {
   tierStyles,
 } from '../lib/data';
 import { getTraitMeta } from '../lib/traitMeta';
-import { tierLabels } from '../data/comps';
+import { useI18n } from '../lib/i18n';
 import { Board } from '../components/Board';
 import { Portrait } from '../components/Portrait';
 
 const augmentTierClass: Record<string, string> = {
-  فضي: 't-silver',
-  ذهبي: 't-gold',
-  منشوري: 't-prism',
+  silver: 't-silver',
+  gold: 't-gold',
+  prism: 't-prism',
 };
 
 export function CompDetail() {
   const { slug } = useParams();
   const comp = getComp(slug);
+  const { t, localizePath } = useI18n();
 
   useEffect(() => {
     if (!comp) return undefined;
     const previous = document.title;
-    document.title = `${comp.name} — كومبو ${comp.tier} | MokaTroy`;
+    document.title = `${t(comp.name)} — ${comp.tier} | MokaTroy`;
     return () => {
       document.title = previous;
     };
-  }, [comp]);
+  }, [comp, t]);
 
   if (!comp) {
     return (
       <div className="empty-state">
-        <p>لم نجد هذا الكومب.</p>
-        <Link className="btn btn-ghost" to="/" style={{ marginTop: 12 }}>
-          العودة إلى قائمة المستويات
+        <p>{t({ ar: 'لم نجد هذا الكومب.', en: 'We could not find that comp.', ja: 'その構成が見つかりませんでした。' })}</p>
+        <Link className="btn btn-ghost" to={localizePath('/')} style={{ marginTop: 12 }}>
+          {t({ ar: 'العودة إلى قائمة المستويات', en: 'Back to the tier list', ja: 'ティアリストに戻る' })}
         </Link>
       </div>
     );
@@ -62,23 +63,25 @@ export function CompDetail() {
   const inactiveTraits = traits.filter((trait) => !trait.active);
 
   const renderTrait = (trait: (typeof traits)[number]) => {
-    const traitMeta = getTraitMeta(trait.name);
+    const traitMeta = getTraitMeta(trait.id);
     return (
       <div
         className={`trait-row ${trait.active ? 'active' : ''}`}
-        key={trait.name}
+        key={trait.id}
         style={{ '--trait-color': traitMeta.color } as CSSProperties}
       >
         <span className="trait-icon">
           <traitMeta.Icon size={16} />
         </span>
         <div>
-          <div className="trait-name">{trait.name}</div>
+          <div className="trait-name">{t(trait.name)}</div>
           <div className="trait-steps">
             {trait.breakpoints.length > 0
               ? trait.breakpoints.map((step) => `${step}`).join(' / ')
-              : 'خاصية فريدة'}
-            {trait.active && trait.nextBreakpoint ? ` · التالي ${trait.nextBreakpoint}` : ''}
+              : t({ ar: 'خاصية فريدة', en: 'Unique trait', ja: 'ユニーク特性' })}
+            {trait.active && trait.nextBreakpoint
+              ? ` · ${t({ ar: 'التالي', en: 'next', ja: '次' })} ${trait.nextBreakpoint}`
+              : ''}
           </div>
         </div>
         <span className="trait-count">{trait.count}</span>
@@ -89,9 +92,9 @@ export function CompDetail() {
   return (
     <div className="fade-in">
       <div className="breadcrumb">
-        <Link to="/">الكومبوهات</Link>
+        <Link to={localizePath('/')}>{t({ ar: 'الكومبوهات', en: 'Comps', ja: '構成' })}</Link>
         <ChevronLeft size={12} />
-        <span>{comp.name}</span>
+        <span>{t(comp.name)}</span>
       </div>
 
       <header
@@ -100,32 +103,34 @@ export function CompDetail() {
       >
         <div className="tier-badge-large">{comp.tier}</div>
         <div style={{ minWidth: 0 }}>
-          <h1 className="comp-title">{comp.name}</h1>
-          <p className="comp-hero-sub">{comp.subtitle}</p>
+          <h1 className="comp-title">{t(comp.name)}</h1>
+          <p className="comp-hero-sub">{t(comp.subtitle)}</p>
           <div className="tag-row">
             <span className="tag gold">
               <Swords size={12} />
-              مستوى {comp.tier} · {tierLabels[comp.tier]}
+              {t({ ar: 'مستوى', en: 'Tier', ja: 'ティア' })} {comp.tier} · {t(style.label)}
             </span>
             <span className="tag">
               <Compass size={12} />
-              {comp.playstyle}
+              {t(comp.playstyle)}
             </span>
             <span className="tag">
               <Gauge size={12} />
-              {comp.level}
+              {t(comp.level)}
             </span>
             <span className="tag">
               <Shield size={12} />
-              صعوبة {comp.difficulty}/3
+              {t({ ar: 'صعوبة', en: 'Difficulty', ja: '難易度' })} {comp.difficulty}/3
             </span>
-            <span className="tag">{activeTraits.length} خواص مفعّلة</span>
+            <span className="tag">
+              {activeTraits.length} {t({ ar: 'خواص مفعّلة', en: 'active traits', ja: '発動中の特性' })}
+            </span>
           </div>
         </div>
       </header>
 
       <p className="muted" style={{ fontSize: 13.5, lineHeight: 1.9, maxWidth: 900, marginBottom: 18 }}>
-        {comp.summary}
+        {t(comp.summary)}
       </p>
 
       <div className="comp-layout">
@@ -137,13 +142,17 @@ export function CompDetail() {
           <section className="panel">
             <h2 className="panel-title">
               <Shield size={15} />
-              الخواص المفعّلة
-              <span className="hint">{traits.length} خاصية</span>
+              {t({ ar: 'الخواص المفعّلة', en: 'Active traits', ja: '発動中の特性' })}
+              <span className="hint">
+                {traits.length} {t({ ar: 'خاصية', en: 'traits', ja: '特性' })}
+              </span>
             </h2>
             <div className="trait-list">{activeTraits.map(renderTrait)}</div>
             {inactiveTraits.length > 0 && (
               <details className="trait-more">
-                <summary>خواص غير مفعّلة ({inactiveTraits.length})</summary>
+                <summary>
+                  {t({ ar: 'خواص غير مفعّلة', en: 'Inactive traits', ja: '未発動の特性' })} ({inactiveTraits.length})
+                </summary>
                 <div className="trait-list">{inactiveTraits.map(renderTrait)}</div>
               </details>
             )}
@@ -152,7 +161,7 @@ export function CompDetail() {
           <section className="panel">
             <h2 className="panel-title">
               <Sparkles size={15} />
-              التعزيزات المفضلة
+              {t({ ar: 'التعزيزات المفضلة', en: 'Preferred augments', ja: 'おすすめ强化符文' })}
             </h2>
             <div className="augment-list">
               {comp.augments.map((entry) => {
@@ -165,10 +174,18 @@ export function CompDetail() {
                     </div>
                     <div>
                       <div className="augment-name">
-                        {augment.name}
-                        <span className={`augment-tier ${augmentTierClass[entry.tier]}`}>{entry.tier}</span>
+                        {t(augment.name)}
+                        <span className={`augment-tier ${augmentTierClass[entry.tier]}`}>
+                          {t(
+                            entry.tier === 'silver'
+                              ? { ar: 'فضي', en: 'Silver', ja: 'シルバー' }
+                              : entry.tier === 'gold'
+                                ? { ar: 'ذهبي', en: 'Gold', ja: 'ゴールド' }
+                                : { ar: 'منشوري', en: 'Prismatic', ja: 'プリズム' },
+                          )}
+                        </span>
                       </div>
-                      <p className="augment-why">{entry.why}</p>
+                      <p className="augment-why">{t(entry.why)}</p>
                     </div>
                   </div>
                 );
@@ -182,13 +199,13 @@ export function CompDetail() {
         <section className="panel">
           <h2 className="panel-title">
             <BookOpen size={15} />
-            خطة اللعب والترقيم
+            {t({ ar: 'خطة اللعب والترقيم', en: 'Game plan & leveling', ja: '攻略とレベリング' })}
           </h2>
           <div className="leveling">
             {comp.leveling.map((step) => (
-              <div className="level-step" key={step.stage}>
-                <span className="step-stage">{step.stage}</span>
-                <p className="step-text">{step.text}</p>
+              <div className="level-step" key={step.stage.en}>
+                <span className="step-stage">{t(step.stage)}</span>
+                <p className="step-text">{t(step.text)}</p>
               </div>
             ))}
           </div>
@@ -197,13 +214,13 @@ export function CompDetail() {
         <section className="panel">
           <h2 className="panel-title">
             <Lightbulb size={15} />
-            نصائح للصعود
+            {t({ ar: 'نصائح للصعود', en: 'Climb tips', ja: '上位へのコツ' })}
           </h2>
           <div className="tips-list">
             {comp.tips.map((tip) => (
-              <div className="tip-row" key={tip}>
+              <div className="tip-row" key={tip.en}>
                 <Sparkles size={13} />
-                <span>{tip}</span>
+                <span>{t(tip)}</span>
               </div>
             ))}
           </div>
@@ -214,8 +231,10 @@ export function CompDetail() {
         <section className="panel">
           <h2 className="panel-title">
             <Swords size={15} />
-            الوحدات والعناصر
-            <span className="hint">{comp.units.length} وحدة</span>
+            {t({ ar: 'الوحدات والعناصر', en: 'Units & items', ja: 'ユニットとアイテム' })}
+            <span className="hint">
+              {comp.units.length} {t({ ar: 'وحدة', en: 'units', ja: '体' })}
+            </span>
           </h2>
           <div className="unit-grid">
             {comp.units.map((unit) => {
@@ -226,7 +245,7 @@ export function CompDetail() {
                   <Portrait championId={unit.champion} />
                   <div style={{ minWidth: 0 }}>
                     <div className="unit-card-name">
-                      {champion.name}
+                      {t(champion.name)}
                       <span
                         className="unit-cost"
                         style={{ '--cost-color': costColor(champion.cost) } as CSSProperties}
@@ -236,13 +255,13 @@ export function CompDetail() {
                       <span style={{ color: '#f5c451', fontSize: 10 }}>{'★'.repeat(unit.star)}</span>
                     </div>
                     <div className="unit-card-items">
-                      {(!unit.carry || unit.items.length === 0) ? (
-                        <span className="empty">{unit.carry ? "بدون عناصر" : "—"}</span>
+                      {unit.items.length === 0 ? (
+                        <span className="empty">{t({ ar: 'بدون عناصر', en: 'No items', ja: '装備なし' })}</span>
                       ) : (
                         unit.items.map((itemId) => {
                           const item = itemMap.get(itemId);
                           return item?.icon ? (
-                            <img key={itemId} src={item.icon} alt={item.name} title={item.name} loading="lazy" />
+                            <img key={itemId} src={item.icon} alt={t(item.name)} title={t(item.name)} loading="lazy" />
                           ) : null;
                         })
                       )}
@@ -257,7 +276,7 @@ export function CompDetail() {
         <section className="panel">
           <h2 className="panel-title">
             <RefreshCw size={15} />
-            بدائل ومرونة
+            {t({ ar: 'بدائل ومرونة', en: 'Alternatives & flexibility', ja: '代替と柔軟性' })}
           </h2>
           <div className="alt-list">
             {comp.alternatives.map((alternative) => {
@@ -271,14 +290,20 @@ export function CompDetail() {
                     {original && <Portrait championId={original.id} />}
                   </div>
                   <p className="alt-text">
-                    <strong>{replacement?.name}</strong> بدل {original?.name} — {alternative.note}
+                    <strong>{replacement ? t(replacement.name) : ''}</strong>{' '}
+                    {t({ ar: 'بدل', en: 'replaces', ja: 'は' })} {original ? t(original.name) : ''} —{' '}
+                    {t(alternative.note)}
                   </p>
                 </div>
               );
             })}
           </div>
           <p className="muted" style={{ fontSize: 11, marginTop: 12, lineHeight: 1.8 }}>
-            المرونة أهم من القائمة الثابتة: بدّل الوحدات حسب النجوم والعناصر المتوفرة في لوبيك.
+            {t({
+              ar: 'المرونة أهم من القائمة الثابتة: بدّل الوحدات حسب النجوم والعناصر المتوفرة في لوبيك.',
+              en: 'Flexibility beats a fixed list: swap units based on stars and available items in your lobby.',
+              ja: '固定リストより柔軟性が重要：ロビーの星とアイテムに合わせてユニットを交換しよう。',
+            })}
           </p>
         </section>
       </div>

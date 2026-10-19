@@ -1,11 +1,22 @@
+export type Locale = 'ar' | 'en' | 'ja';
+export const LOCALES: Locale[] = ['ar', 'en', 'ja'];
+export const DEFAULT_LOCALE: Locale = 'ar';
+
+/** Every human-readable string is provided in all three locales. */
+export interface Localized {
+  ar: string;
+  en: string;
+  ja: string;
+}
+
 export type Cost = 1 | 2 | 3 | 4 | 5;
 export type Tier = 'S' | 'A' | 'B' | 'C';
 export type Star = 1 | 2 | 3;
-export type AugmentTier = 'فضي' | 'ذهبي' | 'منشوري';
+export type AugmentTierKey = 'silver' | 'gold' | 'prism';
 
 export interface ChampionAbility {
-  name: string;
-  desc: string;
+  name: Localized;
+  desc: Localized;
   variables: { name: string; value: number[] }[];
 }
 
@@ -22,8 +33,9 @@ export interface ChampionStats {
 
 export interface Champion {
   id: string;
-  name: string;
+  name: Localized;
   cost: Cost;
+  /** Stable trait apiNames (e.g. DA_18_Elderwood) — never localized names. */
   traits: string[];
   icon: string | null;
   ability: ChampionAbility;
@@ -40,15 +52,15 @@ export interface TraitEffect {
 
 export interface Trait {
   id: string;
-  name: string;
-  desc: string;
+  name: Localized;
+  desc: Localized;
   effects: TraitEffect[];
 }
 
 export interface Item {
   id: string;
-  name: string;
-  desc: string;
+  name: Localized;
+  desc: Localized;
   icon: string | null;
   components: string[];
   effects: Record<string, number | null | undefined>;
@@ -57,8 +69,8 @@ export interface Item {
 
 export interface Augment {
   id: string;
-  name: string;
-  desc: string;
+  name: Localized;
+  desc: Localized;
   effects: Record<string, number | null | undefined>;
   icon: string | null;
 }
@@ -71,39 +83,37 @@ export interface CompUnit {
   row: number;
   /** 0..6 */
   col: number;
-  /** true = show recommended items (main carry/tank) */
-  carry?: boolean;
 }
 
 export interface CompAugment {
   id: string;
-  tier: AugmentTier;
-  why: string;
+  tier: AugmentTierKey;
+  why: Localized;
 }
 
 export interface LevelingStep {
-  stage: string;
-  text: string;
+  stage: Localized;
+  text: Localized;
 }
 
 export interface CompAlternative {
   champion: string;
   replaces: string;
-  note: string;
+  note: Localized;
 }
 
 export interface Comp {
   slug: string;
-  name: string;
-  subtitle: string;
+  name: Localized;
+  subtitle: Localized;
   tier: Tier;
   difficulty: 1 | 2 | 3;
-  playstyle: string;
-  level: string;
-  summary: string;
+  playstyle: Localized;
+  level: Localized;
+  summary: Localized;
   units: CompUnit[];
   augments: CompAugment[];
   leveling: LevelingStep[];
-  tips: string[];
+  tips: Localized[];
   alternatives: CompAlternative[];
 }

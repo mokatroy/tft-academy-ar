@@ -1,20 +1,40 @@
 import { useEffect, useState } from 'react';
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom';
-import { Menu, Search, X } from 'lucide-react';
+import { Menu, Search, Swords, X } from 'lucide-react';
 import { meta } from '../lib/data';
+import { useI18n } from '../lib/i18n';
 import { SearchDialog } from './SearchDialog';
-
-const navItems = [
-  { to: '/', label: 'الكومبوهات' },
-  { to: '/champions', label: 'الأبطال' },
-  { to: '/items', label: 'العناصر' },
-  { to: '/traits', label: 'الخواص' },
-];
+import { LanguageSwitcher } from './LanguageSwitcher';
 
 export function Layout() {
   const [searchOpen, setSearchOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [archiveUrl, setArchiveUrl] = useState<string | null>(null);
   const location = useLocation();
+  const { t, localizePath } = useI18n();
+
+  const navItems = [
+    { to: '/', label: t({ ar: 'الكومبوهات', en: 'Comps', ja: '構成' }) },
+    { to: '/champions', label: t({ ar: 'الأبطال', en: 'Champions', ja: 'チャンピオン' }) },
+    { to: '/items', label: t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' }) },
+    { to: '/traits', label: t({ ar: 'الخواص', en: 'Traits', ja: '特性' }) },
+  ];
+
+  // Dev-only convenience: show a download link for the source archive when the
+  // server actually serves it as a file (it is not part of production builds).
+  useEffect(() => {
+    let alive = true;
+    const path = '/tft-academy-ar-source.zip';
+    fetch(path, { method: 'HEAD' })
+      .then((response) => {
+        const type = response.headers.get('content-type') ?? '';
+        if (alive && response.ok && type.includes('application/zip')) setArchiveUrl(path);
+      })
+      .catch(() => undefined);
+    return () => {
+      alive = false;
+    };
+  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -39,21 +59,21 @@ export function Layout() {
     <>
       <header className="site-header">
         <div className="container header-inner">
-          <Link to="/" className="brand" aria-label="MokaTroy">
-            <span className="brand-mark" aria-hidden="true">
-              M
+          <Link to={localizePath('/')} className="brand" aria-label="MokaTroy">
+            <span className="brand-mark">
+              <Swords size={20} strokeWidth={2.4} />
             </span>
             <span>
               <span className="brand-title">MokaTroy</span>
-              <span className="brand-sub">دليل TFT العربي</span>
+              <span className="brand-sub">TFT · {t({ ar: 'عربي', en: 'EN', ja: '日本語' })}</span>
             </span>
           </Link>
 
-          <nav className="main-nav" aria-label="التنقل الرئيسي">
+          <nav className="main-nav" aria-label="Main navigation">
             {navItems.map((item) => (
               <NavLink
                 key={item.to}
-                to={item.to}
+                to={localizePath(item.to)}
                 end={item.to === '/'}
                 className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
               >
@@ -63,26 +83,27 @@ export function Layout() {
           </nav>
 
           <div className="header-tools">
+            <LanguageSwitcher />
             <span className="patch-badge">
               <i className="dot" />
-              باتش {meta.patch}
+              {t({ ar: 'باتش', en: 'Patch', ja: 'パッチ' })} {meta.patch}
             </span>
             <button className="search-trigger" onClick={() => setSearchOpen(true)}>
               <Search size={15} />
-              ابحث في الموقع…
+              {t({ ar: 'ابحث في الموقع…', en: 'Search the site…', ja: 'サイト内検索…' })}
               <kbd>⌘K</kbd>
             </button>
             <button
               className="icon-btn only-mobile"
               onClick={() => setSearchOpen(true)}
-              aria-label="بحث"
+              aria-label={t({ ar: 'بحث', en: 'Search', ja: '検索' })}
             >
               <Search size={17} />
             </button>
             <button
               className="icon-btn mobile-toggle"
               onClick={() => setMenuOpen((open) => !open)}
-              aria-label="القائمة"
+              aria-label={t({ ar: 'القائمة', en: 'Menu', ja: 'メニュー' })}
               aria-expanded={menuOpen}
             >
               {menuOpen ? <X size={18} /> : <Menu size={18} />}
@@ -90,11 +111,11 @@ export function Layout() {
           </div>
         </div>
 
-        <nav className={`container mobile-nav ${menuOpen ? 'open' : ''}`} aria-label="التنقل للجوال">
+        <nav className={`container mobile-nav ${menuOpen ? 'open' : ''}`} aria-label="Mobile navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.to}
-              to={item.to}
+              to={localizePath(item.to)}
               end={item.to === '/'}
               className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
             >
@@ -113,21 +134,36 @@ export function Layout() {
           <div className="footer-inner">
             <div>
               <div className="footer-brand">
-                <span className="brand-mark" style={{ width: 30, height: 30, borderRadius: 9 }} aria-hidden="true">
-                  M
+                <span className="brand-mark" style={{ width: 30, height: 30, borderRadius: 9 }}>
+                  <Swords size={16} />
                 </span>
                 MokaTroy
               </div>
               <p className="footer-note">
-                دليل عربي غير رسمي لـ Teamfight Tactics: كومبوهات، تشكيلات، عناصر وخواص.
+                {t({
+                  ar: 'موقع غير رسمي لمساعدة لاعبي Teamfight Tactics على متابعة الميتا: كومبوهات، تشكيلات، عناصر وخواص. تعتمد الأسماء والصور على بيانات CommunityDragon للمجموعة 18.',
+                  en: 'An unofficial site helping Teamfight Tactics players follow the meta: comps, boards, items and traits. Names and images use CommunityDragon data for Set 18.',
+                  ja: 'Teamfight Tacticsのメタ追跡を支援する非公式サイト：構成、盤面、アイテム、特性。名前と画像はセット18のCommunityDragonデータを使用。',
+                })}
+                <br />
+                {t({
+                  ar: 'الأدلة والترتيبات في هذا العرض تحريرية ولا تعتمد على إحصاءات رسمية.',
+                  en: 'Guides and tiers here are editorial and not based on official stats.',
+                  ja: 'ここでのガイドとティアは編集的であり、公式統計に基づくものではありません。',
+                })}
               </p>
             </div>
             <div className="footer-links">
               {navItems.map((item) => (
-                <Link key={item.to} to={item.to}>
+                <Link key={item.to} to={localizePath(item.to)}>
                   {item.label}
                 </Link>
               ))}
+              {archiveUrl && (
+                <a href={archiveUrl} download="tft-academy-ar-source.zip">
+                  ⬇ {t({ ar: 'تحميل ملفات الموقع (ZIP)', en: 'Download site files (ZIP)', ja: 'サイトファイルをダウンロード (ZIP)' })}
+                </a>
+              )}
             </div>
           </div>
           <div className="footer-bottom">

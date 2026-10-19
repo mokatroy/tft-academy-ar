@@ -4,7 +4,16 @@ import itemsJson from '../data/items.json';
 import augmentsJson from '../data/augments.json';
 import metaJson from '../data/meta.json';
 import { comps } from '../data/comps';
-import type { Augment, Champion, Comp, CompUnit, Item, Tier, Trait } from './types';
+import type {
+  Augment,
+  Champion,
+  Comp,
+  CompUnit,
+  Item,
+  Localized,
+  Tier,
+  Trait,
+} from './types';
 import { breakpoints } from './format';
 
 export const champions = championsJson as Champion[];
@@ -12,10 +21,17 @@ export const traits = traitsJson as Trait[];
 export const items = itemsJson as unknown as Item[];
 export { comps };
 export const augments = augmentsJson as Augment[];
-export const meta = metaJson;
+export const meta = metaJson as {
+  set: number;
+  setName: Localized;
+  patch: string;
+  updated: Localized;
+  source: string;
+};
 
 export const championMap = new Map(champions.map((champion) => [champion.id, champion]));
-export const traitMap = new Map(traits.map((trait) => [trait.name, trait]));
+/** Traits are keyed by stable id (DA_18_Elderwood). */
+export const traitMap = new Map(traits.map((trait) => [trait.id, trait]));
 export const itemMap = new Map(items.map((item) => [item.id, item]));
 export const augmentMap = new Map(augments.map((augment) => [augment.id, augment]));
 export const compMap = new Map(comps.map((comp) => [comp.slug, comp]));
@@ -24,11 +40,27 @@ export function getComp(slug: string | undefined): Comp | undefined {
   return slug ? compMap.get(slug) : undefined;
 }
 
-export const tierStyles: Record<Tier, { color: string; glow: string; label: string }> = {
-  S: { color: '#f5c451', glow: 'rgba(245,196,81,.35)', label: 'أسطوري' },
-  A: { color: '#c084fc', glow: 'rgba(192,132,252,.3)', label: 'قوي' },
-  B: { color: '#38bdf8', glow: 'rgba(56,189,248,.28)', label: 'متوازن' },
-  C: { color: '#94a3b8', glow: 'rgba(148,163,184,.22)', label: 'ظرفي' },
+export const tierStyles: Record<Tier, { color: string; glow: string; label: Localized }> = {
+  S: {
+    color: '#f5c451',
+    glow: 'rgba(245,196,81,.35)',
+    label: { ar: 'أسطوري', en: 'Legendary', ja: 'レジェンダリー' },
+  },
+  A: {
+    color: '#c084fc',
+    glow: 'rgba(192,132,252,.3)',
+    label: { ar: 'قوي', en: 'Strong', ja: '強力' },
+  },
+  B: {
+    color: '#38bdf8',
+    glow: 'rgba(56,189,248,.28)',
+    label: { ar: 'متوازن', en: 'Balanced', ja: 'バランス' },
+  },
+  C: {
+    color: '#94a3b8',
+    glow: 'rgba(148,163,184,.22)',
+    label: { ar: 'ظرفي', en: 'Situational', ja: '状況次第' },
+  },
 };
 
 export const costColors: Record<number, string> = {
@@ -39,12 +71,15 @@ export const costColors: Record<number, string> = {
   5: '#f0b232',
 };
 
-export function costLabel(cost: number): string {
-  return `${cost} ${cost === 1 ? 'ذهبة' : 'ذهب'}`;
+export function costLabel(cost: number, locale: 'ar' | 'en' | 'ja' = 'en'): string {
+  if (locale === 'ar') return `${cost} ${cost === 1 ? 'ذهبة' : 'ذهب'}`;
+  if (locale === 'ja') return `${cost} コスト`;
+  return `${cost} ${cost === 1 ? 'gold' : 'gold'}`;
 }
 
 export interface CompTrait {
-  name: string;
+  id: string;
+  name: Localized;
   count: number;
   breakpoints: number[];
   active: boolean;
@@ -57,17 +92,18 @@ export function compTraits(comp: Comp): CompTrait[] {
   for (const unit of comp.units) {
     const champion = championMap.get(unit.champion);
     if (!champion) continue;
-    for (const traitName of new Set(champion.traits)) {
-      counts.set(traitName, (counts.get(traitName) ?? 0) + 1);
+    for (const traitId of new Set(champion.traits)) {
+      counts.set(traitId, (counts.get(traitId) ?? 0) + 1);
     }
   }
   return [...counts.entries()]
-    .map(([name, count]) => {
-      const trait = traitMap.get(name);
+    .map(([id, count]) => {
+      const trait = traitMap.get(id);
       const steps = trait ? breakpoints(trait) : [];
       const next = steps.find((step) => step > count) ?? null;
       return {
-        name,
+        id,
+        name: trait?.name ?? { ar: id, en: id, ja: id },
         count,
         breakpoints: steps,
         active: steps.length > 0 && count >= steps[0],
@@ -105,8 +141,8 @@ export function compPower(comp: Comp): number {
   return weights[comp.tier];
 }
 
-export function formatTraitDescription(trait: Trait): string {
-  return trait.desc
+export function formatTraitDescription(trait: Trait, locale: 'ar' | 'en' | 'ja' = 'en'): string {
+  return (trait.desc[locale] || trait.desc.en || '')
     .replace(/\\n/g, ' ')
     .replace(/<br\s*\/?>/gi, ' ')
     .replace(/<\/?row>/gi, ' ')

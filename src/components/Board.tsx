@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react';
 import type { Comp } from '../lib/types';
 import { championMap, itemMap } from '../lib/data';
+import { useI18n } from '../lib/i18n';
 
 const ROWS = 4;
 const COLS = 7;
@@ -14,9 +15,10 @@ function position(row: number, col: number): CSSProperties {
 }
 
 export function Board({ comp }: { comp: Comp }) {
+  const { t } = useI18n();
   return (
     <div className="board-wrap">
-      <div className="board" aria-label="لوح اللعب">
+      <div className="board" aria-label={t({ ar: 'لوح اللعب', en: 'Board', ja: '盤面' })}>
         {Array.from({ length: ROWS * COLS }).map((_, index) => {
           const row = Math.floor(index / COLS);
           const col = index % COLS;
@@ -37,18 +39,18 @@ export function Board({ comp }: { comp: Comp }) {
               key={`${unit.champion}-${unit.row}-${unit.col}`}
               className="hex-unit"
               style={position(unit.row, unit.col)}
-              title={`${champion.name} — ${unit.star} نجوم`}
+              title={`${t(champion.name)} — ${unit.star} ★`}
             >
               <div className="hex-portrait" style={{ '--cost-color': costVar(champion.cost) } as CSSProperties}>
-                {champion.icon ? <img src={champion.icon} alt={champion.name} loading="lazy" /> : null}
+                {champion.icon ? <img src={champion.icon} alt={t(champion.name)} loading="lazy" /> : null}
                 <span className="hex-stars">{'★'.repeat(unit.star)}</span>
               </div>
-              {(unit.carry ? unit.items.length : 0) > 0 && (
+              {unit.items.length > 0 && (
                 <div className="hex-items">
-                  {(unit.carry ? unit.items : []).map((itemId) => {
+                  {unit.items.map((itemId) => {
                     const item = itemMap.get(itemId);
                     return item?.icon ? (
-                      <img key={itemId} src={item.icon} alt={item.name} title={item.name} loading="lazy" />
+                      <img key={itemId} src={item.icon} alt={t(item.name)} title={t(item.name)} loading="lazy" />
                     ) : null;
                   })}
                 </div>
@@ -59,7 +61,11 @@ export function Board({ comp }: { comp: Comp }) {
       </div>
       <div className="board-note">
         <span />
-        الصف الأمامي في الأعلى · العناصر تظهر على الوحدات الأساسية فقط
+        {t({
+          ar: 'الصف الأمامي في الأعلى · مرّر على الوحدات لرؤية العناصر',
+          en: 'Front row at the top · hover units to see items',
+          ja: '最前列は上 · ユニットにホバーでアイテム表示',
+        })}
         <span />
       </div>
     </div>

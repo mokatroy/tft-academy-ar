@@ -1,18 +1,31 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router-dom';
+import type { ReactNode } from 'react';
+import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
 import { CompDetail } from './pages/CompDetail';
 import { Champions } from './pages/Champions';
 import { Items } from './pages/Items';
 import { Traits } from './pages/Traits';
+import { I18nProvider, parseLocaleFromPath } from './lib/i18n';
+import { useI18n } from './lib/i18n';
+
+/** Derive the locale from the current URL and provide it to the tree. */
+function LocalizedProvider({ children }: { children: ReactNode }) {
+  const location = useLocation();
+  const { locale } = parseLocaleFromPath(location.pathname);
+  return <I18nProvider locale={locale}>{children}</I18nProvider>;
+}
 
 function NotFound() {
+  const { t, localizePath } = useI18n();
   return (
     <div className="empty-state" style={{ paddingBlock: 90 }}>
       <h1 style={{ fontSize: 40, fontWeight: 900, color: 'var(--gold-bright)' }}>404</h1>
-      <p style={{ marginTop: 6 }}>الصفحة التي تبحث عنها غير موجودة.</p>
-      <Link className="btn btn-ghost" to="/" style={{ marginTop: 14 }}>
-        العودة إلى الرئيسية
+      <p style={{ marginTop: 6 }}>
+        {t({ ar: 'الصفحة التي تبحث عنها غير موجودة.', en: 'The page you are looking for does not exist.', ja: 'お探しのページは存在しません。' })}
+      </p>
+      <Link className="btn btn-ghost" to={localizePath('/')} style={{ marginTop: 14 }}>
+        {t({ ar: 'العودة إلى الرئيسية', en: 'Back to home', ja: 'ホームに戻る' })}
       </Link>
     </div>
   );
@@ -21,16 +34,42 @@ function NotFound() {
 export default function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="comp/:slug" element={<CompDetail />} />
-          <Route path="champions" element={<Champions />} />
-          <Route path="items" element={<Items />} />
-          <Route path="traits" element={<Traits />} />
+      <LocalizedProvider>
+        <Routes>
+          {/* Default (Arabic, no prefix) */}
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="comp/:slug" element={<CompDetail />} />
+            <Route path="champions" element={<Champions />} />
+            <Route path="items" element={<Items />} />
+            <Route path="traits" element={<Traits />} />
+          </Route>
+
+          {/* English */}
+          <Route path="en">
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="comp/:slug" element={<CompDetail />} />
+              <Route path="champions" element={<Champions />} />
+              <Route path="items" element={<Items />} />
+              <Route path="traits" element={<Traits />} />
+            </Route>
+          </Route>
+
+          {/* Japanese */}
+          <Route path="ja">
+            <Route element={<Layout />}>
+              <Route index element={<Home />} />
+              <Route path="comp/:slug" element={<CompDetail />} />
+              <Route path="champions" element={<Champions />} />
+              <Route path="items" element={<Items />} />
+              <Route path="traits" element={<Traits />} />
+            </Route>
+          </Route>
+
           <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+        </Routes>
+      </LocalizedProvider>
     </BrowserRouter>
   );
 }

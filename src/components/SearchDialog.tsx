@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Sparkles, Swords } from 'lucide-react';
 import { champions, comps, items, traits } from '../lib/data';
+import { useI18n } from '../lib/i18n';
 import { Portrait } from './Portrait';
 
 interface SearchDialogProps {
@@ -13,6 +14,7 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
   const [query, setQuery] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+  const { t, localizePath } = useI18n();
 
   useEffect(() => {
     if (open) {
@@ -43,15 +45,18 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
         traits: [] as typeof traits,
       };
     }
+    const match = (parts: string[]) => parts.some((p) => p.toLowerCase().includes(normalized));
     return {
       comps: comps
-        .filter((comp) => `${comp.name} ${comp.subtitle} ${comp.playstyle}`.toLowerCase().includes(normalized))
+        .filter((comp) => match([t(comp.name), t(comp.subtitle), t(comp.playstyle)]))
         .slice(0, 4),
-      champions: champions.filter((champion) => champion.name.toLowerCase().includes(normalized)).slice(0, 6),
-      items: items.filter((item) => item.name.toLowerCase().includes(normalized)).slice(0, 5),
-      traits: traits.filter((trait) => trait.name.toLowerCase().includes(normalized)).slice(0, 5),
+      champions: champions
+        .filter((champion) => match([t(champion.name), ...champion.traits.map((id) => t(traits.find((x) => x.id === id)?.name ?? { ar: '', en: '', ja: '' }))]))
+        .slice(0, 6),
+      items: items.filter((item) => match([t(item.name)])).slice(0, 5),
+      traits: traits.filter((trait) => match([t(trait.name)])).slice(0, 5),
     };
-  }, [normalized]);
+  }, [normalized, t]);
 
   const hasResults =
     results.comps.length + results.champions.length + results.items.length + results.traits.length > 0;
@@ -69,7 +74,7 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
         className="search-dialog"
         role="dialog"
         aria-modal="true"
-        aria-label="بحث في الموقع"
+        aria-label={t({ ar: 'بحث في الموقع', en: 'Search the site', ja: 'サイト内検索' })}
         onMouseDown={(event) => event.stopPropagation()}
       >
         <div className="search-dialog-input">
@@ -78,25 +83,37 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
             ref={inputRef}
             value={query}
             onChange={(event) => setQuery(event.target.value)}
-            placeholder="ابحث عن كومب، بطل، عنصر أو خاصية…"
+            placeholder={t({
+              ar: 'ابحث عن كومب، بطل، عنصر أو خاصية…',
+              en: 'Search a comp, champion, item or trait…',
+              ja: '構成、チャンピオン、アイテム、特性を検索…',
+            })}
           />
           <kbd>Esc</kbd>
         </div>
 
         <div className="search-results">
-          {!hasResults && <div className="empty-state">لا توجد نتائج مطابقة لـ «{query}»</div>}
+          {!hasResults && (
+            <div className="empty-state">
+              {t({ ar: 'لا توجد نتائج مطابقة لـ', en: 'No results for', ja: '該当なし：' })} «{query}»
+            </div>
+          )}
 
           {results.comps.length > 0 && (
             <>
-              <div className="result-group-title">الكومبوهات</div>
+              <div className="result-group-title">{t({ ar: 'الكومبوهات', en: 'Comps', ja: '構成' })}</div>
               {results.comps.map((comp) => (
-                <button className="result-item" key={comp.slug} onClick={() => go(`/comp/${comp.slug}`)}>
+                <button
+                  className="result-item"
+                  key={comp.slug}
+                  onClick={() => go(localizePath(`/comp/${comp.slug}`))}
+                >
                   <span className="result-icon">
                     <Swords size={15} />
                   </span>
                   <span>
-                    <span className="result-title">{comp.name}</span>
-                    <span className="result-sub"> — {comp.subtitle}</span>
+                    <span className="result-title">{t(comp.name)}</span>
+                    <span className="result-sub"> — {t(comp.subtitle)}</span>
                   </span>
                 </button>
               ))}
@@ -105,17 +122,23 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
 
           {results.champions.length > 0 && (
             <>
-              <div className="result-group-title">الأبطال</div>
+              <div className="result-group-title">{t({ ar: 'الأبطال', en: 'Champions', ja: 'チャンピオン' })}</div>
               {results.champions.map((champion) => (
                 <button
                   className="result-item"
                   key={champion.id}
-                  onClick={() => go(`/champions?champ=${encodeURIComponent(champion.id)}`)}
+                  onClick={() => go(localizePath(`/champions?champ=${encodeURIComponent(champion.id)}`))}
                 >
                   <Portrait championId={champion.id} />
                   <span>
-                    <span className="result-title">{champion.name}</span>
-                    <span className="result-sub"> — {champion.traits.join(' · ')}</span>
+                    <span className="result-title">{t(champion.name)}</span>
+                    <span className="result-sub">
+                      {' '}
+                      —{' '}
+                      {champion.traits
+                        .map((id) => t(traits.find((x) => x.id === id)?.name ?? { ar: '', en: '', ja: '' }))
+                        .join(' · ')}
+                    </span>
                   </span>
                 </button>
               ))}
@@ -124,9 +147,13 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
 
           {results.items.length > 0 && (
             <>
-              <div className="result-group-title">العناصر</div>
+              <div className="result-group-title">{t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' })}</div>
               {results.items.map((item) => (
-                <button className="result-item" key={item.id} onClick={() => go(`/items?q=${encodeURIComponent(item.name)}`)}>
+                <button
+                  className="result-item"
+                  key={item.id}
+                  onClick={() => go(localizePath(`/items?q=${encodeURIComponent(t(item.name))}`))}
+                >
                   {item.icon ? (
                     <img className="result-icon" src={item.icon} alt="" style={{ objectFit: 'cover' }} />
                   ) : (
@@ -135,8 +162,14 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                     </span>
                   )}
                   <span>
-                    <span className="result-title">{item.name}</span>
-                    <span className="result-sub"> — {item.kind === 'component' ? 'مكوّن' : 'عنصر مكتمل'}</span>
+                    <span className="result-title">{t(item.name)}</span>
+                    <span className="result-sub">
+                      {' '}
+                      —{' '}
+                      {item.kind === 'component'
+                        ? t({ ar: 'مكوّن', en: 'Component', ja: 'コンポーネント' })
+                        : t({ ar: 'عنصر مكتمل', en: 'Completed item', ja: '完成アイテム' })}
+                    </span>
                   </span>
                 </button>
               ))}
@@ -145,15 +178,22 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
 
           {results.traits.length > 0 && (
             <>
-              <div className="result-group-title">الخواص</div>
+              <div className="result-group-title">{t({ ar: 'الخواص', en: 'Traits', ja: '特性' })}</div>
               {results.traits.map((trait) => (
-                <button className="result-item" key={trait.id} onClick={() => go(`/traits?trait=${encodeURIComponent(trait.name)}`)}>
+                <button
+                  className="result-item"
+                  key={trait.id}
+                  onClick={() => go(localizePath(`/traits?trait=${encodeURIComponent(trait.name.en)}`))}
+                >
                   <span className="result-icon">
                     <Sparkles size={15} />
                   </span>
                   <span>
-                    <span className="result-title">{trait.name}</span>
-                    <span className="result-sub"> — خاصية</span>
+                    <span className="result-title">{t(trait.name)}</span>
+                    <span className="result-sub">
+                      {' '}
+                      — {t({ ar: 'خاصية', en: 'Trait', ja: '特性' })}
+                    </span>
                   </span>
                 </button>
               ))}
@@ -162,7 +202,11 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
 
           {!normalized && (
             <div className="empty-state" style={{ padding: '12px 10px', fontSize: 11 }}>
-              جرّب البحث باسم بطل مثل «زايا» أو عنصر مثل «السيف الأبدي».
+              {t({
+                ar: 'جرّب البحث باسم بطل مثل «زايا» أو عنصر مثل «السيف الأبدي».',
+                en: 'Try searching a champion like “Xayah” or an item like “Infinity Edge”.',
+                ja: '「ザヤ」や「インフィニティエッジ」などで検索してみてください。',
+              })}
             </div>
           )}
         </div>
