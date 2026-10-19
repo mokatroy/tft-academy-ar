@@ -3,6 +3,7 @@ import traitsJson from '../data/traits.json';
 import itemsJson from '../data/items.json';
 import augmentsJson from '../data/augments.json';
 import metaJson from '../data/meta.json';
+import patchNotesJson from '../data/patchnotes.json';
 import { comps } from '../data/comps';
 import type {
   Augment,
@@ -11,6 +12,7 @@ import type {
   CompUnit,
   Item,
   Localized,
+  PatchNotesData,
   Tier,
   Trait,
 } from './types';
@@ -28,6 +30,7 @@ export const meta = metaJson as {
   updated: Localized;
   source: string;
 };
+export const patchNotes = patchNotesJson as PatchNotesData;
 
 export const championMap = new Map(champions.map((champion) => [champion.id, champion]));
 /** Traits are keyed by stable id (DA_18_Elderwood). */

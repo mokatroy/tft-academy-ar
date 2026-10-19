@@ -19,6 +19,7 @@ export function Layout() {
     { to: '/champions', label: t({ ar: 'الأبطال', en: 'Champions', ja: 'チャンピオン' }) },
     { to: '/items', label: t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' }) },
     { to: '/traits', label: t({ ar: 'الخواص', en: 'Traits', ja: '特性' }) },
+    { to: '/patch', label: t({ ar: 'الباتش', en: 'Patch', ja: 'パッチ' }) },
   ];
 
   // Dev-only convenience: show a download link for the source archive when the
@@ -85,10 +86,10 @@ export function Layout() {
 
           <div className="header-tools">
             <LanguageSwitcher />
-            <span className="patch-badge">
+            <Link to={localizePath('/patch')} className="patch-badge">
               <i className="dot" />
               {t({ ar: 'باتش', en: 'Patch', ja: 'パッチ' })} {meta.patch}
-            </span>
+            </Link>
             <button className="search-trigger" onClick={() => setSearchOpen(true)}>
               <Search size={15} />
               {t({ ar: 'ابحث في الموقع…', en: 'Search the site…', ja: 'サイト内検索…' })}

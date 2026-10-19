@@ -8,6 +8,7 @@ import { Champions } from './pages/Champions';
 import { Items } from './pages/Items';
 import { Traits } from './pages/Traits';
 import { Builder } from './pages/Builder';
+import { Patch } from './pages/Patch';
 import { I18nProvider, parseLocaleFromPath } from './lib/i18n';
 import { useI18n } from './lib/i18n';
 
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="items" element={<Items />} />
             <Route path="traits" element={<Traits />} />
             <Route path="builder" element={<Builder />} />
+            <Route path="patch" element={<Patch />} />
           </Route>
 
           {/* English */}
@@ -62,6 +64,7 @@ export default function App() {
               <Route path="items" element={<Items />} />
               <Route path="traits" element={<Traits />} />
               <Route path="builder" element={<Builder />} />
+              <Route path="patch" element={<Patch />} />
             </Route>
           </Route>
 
@@ -74,6 +77,7 @@ export default function App() {
               <Route path="items" element={<Items />} />
               <Route path="traits" element={<Traits />} />
               <Route path="builder" element={<Builder />} />
+              <Route path="patch" element={<Patch />} />
             </Route>
           </Route>
 
