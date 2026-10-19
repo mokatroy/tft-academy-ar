@@ -6,7 +6,7 @@ import { useI18n } from '../lib/i18n';
 const ROWS = 4;
 const COLS = 7;
 
-function position(row: number, col: number): CSSProperties {
+export function position(row: number, col: number): CSSProperties {
   const offset = row % 2 === 1 ? 0.5 : 0;
   return {
     left: `${((col + offset) / 7.4) * 100}%`,
@@ -39,7 +39,8 @@ export function Board({ comp }: { comp: Comp }) {
               key={`${unit.champion}-${unit.row}-${unit.col}`}
               className="hex-unit"
               style={position(unit.row, unit.col)}
-              title={`${t(champion.name)} — ${unit.star} ★`}
+              data-tip-kind="champion"
+              data-tip-id={unit.champion}
             >
               <div className="hex-portrait" style={{ '--cost-color': costVar(champion.cost) } as CSSProperties}>
                 {champion.icon ? <img src={champion.icon} alt={t(champion.name)} loading="lazy" /> : null}
@@ -50,7 +51,14 @@ export function Board({ comp }: { comp: Comp }) {
                   {unit.items.map((itemId) => {
                     const item = itemMap.get(itemId);
                     return item?.icon ? (
-                      <img key={itemId} src={item.icon} alt={t(item.name)} title={t(item.name)} loading="lazy" />
+                      <img
+                        key={itemId}
+                        src={item.icon}
+                        alt={t(item.name)}
+                        data-tip-kind="item"
+                        data-tip-id={itemId}
+                        loading="lazy"
+                      />
                     ) : null;
                   })}
                 </div>

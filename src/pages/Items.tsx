@@ -78,7 +78,7 @@ export function Items() {
       <div className="item-grid">
         {filtered.map((item) => (
           <article className="item-card" key={item.id}>
-            <div className="item-head">
+            <div className="item-head" data-tip-kind="item" data-tip-id={item.id}>
               {item.icon ? (
                 <img className="item-icon" src={item.icon} alt="" loading="lazy" />
               ) : (
@@ -100,13 +100,18 @@ export function Items() {
               <div className="item-components">
                 {item.components.map((componentId, index) => {
                   const component = itemMap.get(componentId);
-                  return (
-                    <span key={`${componentId}-${index}`} style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
-                      {index > 0 && <span className="plus">+</span>}
-                      {component?.icon ? (
-                        <img src={component.icon} alt={t(component.name)} title={t(component.name)} loading="lazy" />
-                      ) : null}
-                    </span>
+                  return (                        <span key={`${componentId}-${index}`} style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                          {index > 0 && <span className="plus">+</span>}
+                          {component?.icon ? (
+                            <img
+                              src={component.icon}
+                              alt={t(component.name)}
+                              data-tip-kind="item"
+                              data-tip-id={componentId}
+                              loading="lazy"
+                            />
+                          ) : null}
+                        </span>
                   );
                 })}
               </div>

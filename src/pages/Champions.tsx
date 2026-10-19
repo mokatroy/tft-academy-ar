@@ -255,7 +255,15 @@ export function Champions() {
                     return item ? (
                       <span className="trait-pill" key={itemId} style={{ padding: '4px 8px' }}>
                         {item.icon ? (
-                          <img src={item.icon} alt="" width={18} height={18} style={{ borderRadius: 4 }} />
+                          <img
+                            src={item.icon}
+                            alt=""
+                            width={18}
+                            height={18}
+                            style={{ borderRadius: 4 }}
+                            data-tip-kind="item"
+                            data-tip-id={itemId}
+                          />
                         ) : null}
                         {t(item.name)}
                       </span>

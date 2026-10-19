@@ -87,7 +87,7 @@ export interface CompTrait {
   trait?: Trait;
 }
 
-export function compTraits(comp: Comp): CompTrait[] {
+export function compTraits(comp: Pick<Comp, 'units'>): CompTrait[] {
   const counts = new Map<string, number>();
   for (const unit of comp.units) {
     const champion = championMap.get(unit.champion);

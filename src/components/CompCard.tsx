@@ -42,7 +42,7 @@ export function CompCard({ comp }: { comp: Comp }) {
 
         <div className="comp-traits">
           {activeTraits.map((trait) => (
-            <span className="trait-pill" key={trait.id}>
+            <span className="trait-pill" key={trait.id} data-tip-kind="trait" data-tip-id={trait.id}>
               <strong>{trait.count}</strong>
               {t(trait.name)}
             </span>

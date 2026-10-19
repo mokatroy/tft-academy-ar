@@ -83,7 +83,7 @@ export function Traits() {
                   : undefined
               }
             >
-              <div className="trait-card-head">
+              <div className="trait-card-head" data-tip-kind="trait" data-tip-id={trait.id}>
                 <span
                   className="trait-icon"
                   style={

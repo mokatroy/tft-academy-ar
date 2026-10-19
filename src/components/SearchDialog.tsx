@@ -155,7 +155,14 @@ export function SearchDialog({ open, onClose }: SearchDialogProps) {
                   onClick={() => go(localizePath(`/items?q=${encodeURIComponent(t(item.name))}`))}
                 >
                   {item.icon ? (
-                    <img className="result-icon" src={item.icon} alt="" style={{ objectFit: 'cover' }} />
+                    <img
+                      className="result-icon"
+                      src={item.icon}
+                      alt=""
+                      style={{ objectFit: 'cover' }}
+                      data-tip-kind="item"
+                      data-tip-id={item.id}
+                    />
                   ) : (
                     <span className="result-icon">
                       <Sparkles size={15} />

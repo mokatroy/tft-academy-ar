@@ -15,6 +15,7 @@ export function Layout() {
 
   const navItems = [
     { to: '/', label: t({ ar: 'الكومبوهات', en: 'Comps', ja: '構成' }) },
+    { to: '/builder', label: t({ ar: 'المنشئ', en: 'Builder', ja: 'ビルダー' }) },
     { to: '/champions', label: t({ ar: 'الأبطال', en: 'Champions', ja: 'チャンピオン' }) },
     { to: '/items', label: t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' }) },
     { to: '/traits', label: t({ ar: 'الخواص', en: 'Traits', ja: '特性' }) },
@@ -24,7 +25,7 @@ export function Layout() {
   // server actually serves it as a file (it is not part of production builds).
   useEffect(() => {
     let alive = true;
-    const path = '/tft-academy-ar-source.zip';
+    const path = '/mokatroystft-source.zip';
     fetch(path, { method: 'HEAD' })
       .then((response) => {
         const type = response.headers.get('content-type') ?? '';
@@ -160,7 +161,7 @@ export function Layout() {
                 </Link>
               ))}
               {archiveUrl && (
-                <a href={archiveUrl} download="tft-academy-ar-source.zip">
+                <a className="footer-dl" href={archiveUrl} download="mokatroystft-source.zip">
                   ⬇ {t({ ar: 'تحميل ملفات الموقع (ZIP)', en: 'Download site files (ZIP)', ja: 'サイトファイルをダウンロード (ZIP)' })}
                 </a>
               )}

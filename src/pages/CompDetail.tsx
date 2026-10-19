@@ -12,6 +12,7 @@ import {
   Shield,
   Sparkles,
   Swords,
+  Wrench,
 } from 'lucide-react';
 import {
   augmentMap,
@@ -69,6 +70,8 @@ export function CompDetail() {
         className={`trait-row ${trait.active ? 'active' : ''}`}
         key={trait.id}
         style={{ '--trait-color': traitMeta.color } as CSSProperties}
+        data-tip-kind="trait"
+        data-tip-id={trait.id}
       >
         <span className="trait-icon">
           <traitMeta.Icon size={16} />
@@ -126,6 +129,18 @@ export function CompDetail() {
               {activeTraits.length} {t({ ar: 'خواص مفعّلة', en: 'active traits', ja: '発動中の特性' })}
             </span>
           </div>
+          <Link
+            className="btn btn-ghost"
+            to={localizePath(`/builder?load=${comp.slug}`)}
+            style={{ marginTop: 12, width: 'fit-content' }}
+          >
+            <Wrench size={14} />
+            {t({
+              ar: 'جرّب هذا الكومبو في المنشئ',
+              en: 'Try this comp in the builder',
+              ja: 'この構成をビルダーで試す',
+            })}
+          </Link>
         </div>
       </header>
 
@@ -168,7 +183,7 @@ export function CompDetail() {
                 const augment = augmentMap.get(entry.id);
                 if (!augment) return null;
                 return (
-                  <div className="augment-row" key={entry.id}>
+                  <div className="augment-row" key={entry.id} data-tip-kind="augment" data-tip-id={entry.id}>
                     <div className="augment-icon">
                       {augment.icon ? <img src={augment.icon} alt="" loading="lazy" /> : <Sparkles size={15} />}
                     </div>
@@ -261,7 +276,14 @@ export function CompDetail() {
                         unit.items.map((itemId) => {
                           const item = itemMap.get(itemId);
                           return item?.icon ? (
-                            <img key={itemId} src={item.icon} alt={t(item.name)} title={t(item.name)} loading="lazy" />
+                            <img
+                              key={itemId}
+                              src={item.icon}
+                              alt={t(item.name)}
+                              data-tip-kind="item"
+                              data-tip-id={itemId}
+                              loading="lazy"
+                            />
                           ) : null;
                         })
                       )}

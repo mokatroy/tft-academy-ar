@@ -1,6 +1,6 @@
 import type { CSSProperties } from 'react';
 import { getTraitMeta } from '../lib/traitMeta';
-import { championMap, costLabel } from '../lib/data';
+import { championMap } from '../lib/data';
 import { useI18n } from '../lib/i18n';
 
 interface PortraitProps {
@@ -10,14 +10,15 @@ interface PortraitProps {
 
 export function Portrait({ championId, className = '' }: PortraitProps) {
   const champion = championMap.get(championId);
-  const { t, locale } = useI18n();
+  const { t } = useI18n();
   if (!champion) {
     return <div className={`unit-portrait ${className}`} aria-hidden="true" />;
   }
   return (
     <div
       className={`unit-portrait cost-${champion.cost} ${className}`}
-      title={`${t(champion.name)} · ${costLabel(champion.cost, locale)}`}
+      data-tip-kind="champion"
+      data-tip-id={champion.id}
     >
       {champion.icon ? (
         <img src={champion.icon} alt={t(champion.name)} loading="lazy" />
@@ -41,7 +42,9 @@ export function TraitIcon({ id, name, size = 30 }: TraitIconProps) {
     <span
       className="trait-icon"
       style={{ '--trait-color': color, width: size, height: size } as CSSProperties}
-      title={name}
+      data-tip-kind="trait"
+      data-tip-id={id}
+      aria-label={name}
     >
       <Icon size={Math.round(size * 0.55)} strokeWidth={2} />
     </span>

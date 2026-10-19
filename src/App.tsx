@@ -1,11 +1,13 @@
 import type { ReactNode } from 'react';
 import { BrowserRouter, Link, Route, Routes, useLocation } from 'react-router-dom';
 import { Layout } from './components/Layout';
+import { HoverTipProvider } from './components/HoverTip';
 import { Home } from './pages/Home';
 import { CompDetail } from './pages/CompDetail';
 import { Champions } from './pages/Champions';
 import { Items } from './pages/Items';
 import { Traits } from './pages/Traits';
+import { Builder } from './pages/Builder';
 import { I18nProvider, parseLocaleFromPath } from './lib/i18n';
 import { useI18n } from './lib/i18n';
 
@@ -13,7 +15,12 @@ import { useI18n } from './lib/i18n';
 function LocalizedProvider({ children }: { children: ReactNode }) {
   const location = useLocation();
   const { locale } = parseLocaleFromPath(location.pathname);
-  return <I18nProvider locale={locale}>{children}</I18nProvider>;
+  return (
+    <I18nProvider locale={locale}>
+      {children}
+      <HoverTipProvider />
+    </I18nProvider>
+  );
 }
 
 function NotFound() {
@@ -43,6 +50,7 @@ export default function App() {
             <Route path="champions" element={<Champions />} />
             <Route path="items" element={<Items />} />
             <Route path="traits" element={<Traits />} />
+            <Route path="builder" element={<Builder />} />
           </Route>
 
           {/* English */}
@@ -53,6 +61,7 @@ export default function App() {
               <Route path="champions" element={<Champions />} />
               <Route path="items" element={<Items />} />
               <Route path="traits" element={<Traits />} />
+              <Route path="builder" element={<Builder />} />
             </Route>
           </Route>
 
@@ -64,6 +73,7 @@ export default function App() {
               <Route path="champions" element={<Champions />} />
               <Route path="items" element={<Items />} />
               <Route path="traits" element={<Traits />} />
+              <Route path="builder" element={<Builder />} />
             </Route>
           </Route>
 
