@@ -2,7 +2,7 @@
   "name": "mokatroytft-overlay",
   "productName": "MokaTroy Overlay",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "Always-on-top Teamfight Tactics comp overlay powered by the MokaTroy dataset.",
   "author": "MokaTroy",
   "license": "MIT",

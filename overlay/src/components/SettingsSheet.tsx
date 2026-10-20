@@ -1,7 +1,8 @@
-import { Power, RotateCcw, X } from 'lucide-react';
+import { useState } from 'react';
+import { Download, Power, RefreshCw, RotateCcw, X } from 'lucide-react';
 import type { Locale, Localized } from '../../../src/lib/types';
-import { HOTKEY_HINTS } from '../lib/bridge';
-import type { OverlaySettings } from '../lib/bridge';
+import { HOTKEY_HINTS, overlayApi } from '../lib/bridge';
+import type { OverlaySettings, UpdateInfo } from '../lib/bridge';
 
 interface SettingsSheetProps {
   settings: OverlaySettings;
@@ -42,6 +43,42 @@ export function SettingsSheet({
 }: SettingsSheetProps) {
   const locale = settings.locale;
   const t = (value: Localized | undefined | null) => value?.[locale] || value?.en || '';
+  const [updateBusy, setUpdateBusy] = useState(false);
+  const [updateInfo, setUpdateInfo] = useState<UpdateInfo | null>(null);
+
+  async function onCheckUpdate() {
+    if (!overlayApi?.checkUpdate) {
+      setUpdateInfo({
+        status: 'error',
+        current: version,
+        latest: null,
+        url: null,
+        notes: null,
+        error: 'unavailable',
+      });
+      return;
+    }
+    setUpdateBusy(true);
+    try {
+      const info = await overlayApi.checkUpdate();
+      setUpdateInfo(info);
+    } catch {
+      setUpdateInfo({
+        status: 'error',
+        current: version,
+        latest: null,
+        url: null,
+        notes: null,
+        error: 'failed',
+      });
+    } finally {
+      setUpdateBusy(false);
+    }
+  }
+
+  function onDownloadUpdate() {
+    if (updateInfo?.url) overlayApi?.openUrl(updateInfo.url);
+  }
 
   return (
     <div className="ov-sheet ov-sheet-settings">
@@ -169,6 +206,45 @@ export function SettingsSheet({
             })}
           </p>
         ) : null}
+
+
+        <div className="ov-setting">
+          <span className="ov-setting-label">{t({ ar: 'التحديثات', en: 'Updates', ja: '更新' })}</span>
+          <p className="ov-update-status">
+            {updateBusy
+              ? t({ ar: 'جارٍ البحث عن تحديث…', en: 'Checking for updates…', ja: '更新を確認中…' })
+              : updateInfo?.status === 'available'
+                ? t({
+                    ar: `يتوفر إصدار جديد: v${updateInfo.latest}`,
+                    en: `New version available: v${updateInfo.latest}`,
+                    ja: `新しいバージョン: v${updateInfo.latest}`,
+                  })
+                : updateInfo?.status === 'up-to-date'
+                  ? t({ ar: 'أنت على آخر إصدار', en: 'You are up to date', ja: '最新です' })
+                  : updateInfo?.status === 'error'
+                    ? t({ ar: 'تعذر التحقق من التحديث', en: 'Could not check for updates', ja: '更新確認に失敗' })
+                    : t({ ar: `الإصدار الحالي v${version}`, en: `Current version v${version}`, ja: `現在 v${version}` })}
+          </p>
+          <div className="ov-setting-row">
+            <button type="button" className="ov-ghost-btn" disabled={updateBusy} onClick={onCheckUpdate}>
+              <RefreshCw size={13} className={updateBusy ? 'spin' : ''} />
+              {t({ ar: 'تحقق من التحديث', en: 'Check for update', ja: '更新を確認' })}
+            </button>
+            {updateInfo?.status === 'available' && updateInfo.url ? (
+              <button type="button" className="ov-ghost-btn primary" onClick={onDownloadUpdate}>
+                <Download size={13} />
+                {t({ ar: 'تحميل التحديث', en: 'Download update', ja: '更新をダウンロード' })}
+              </button>
+            ) : null}
+          </div>
+          <p className="ov-note">
+            {t({
+              ar: 'التحديث بيحمّل ملف جديد من GitHub. بعد التحميل فك الضغط وشغّل النسخة الجديدة.',
+              en: 'Updates download from GitHub. After download, extract and run the new build.',
+              ja: '更新はGitHubからダウンロード。解凍して新しい版を起動してください。',
+            })}
+          </p>
+        </div>
 
         <div className="ov-setting-row">
           <button type="button" className="ov-ghost-btn" onClick={onResetPosition}>

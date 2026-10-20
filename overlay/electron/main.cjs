@@ -416,7 +416,84 @@ function createTray() {
   }
 }
 
+
+/* ------------------------------------------------------------------- updates */
+
+const UPDATE_REPO = 'mokatroy/tft-academy-ar';
+const UPDATE_TAG_PREFIX = 'overlay-v';
+
+function parseVersion(tagOrVersion) {
+  const match = String(tagOrVersion || '').match(/(\d+)\.(\d+)\.(\d+)/);
+  if (!match) return null;
+  return [Number(match[1]), Number(match[2]), Number(match[3])];
+}
+
+function isNewer(latest, current) {
+  const a = parseVersion(latest);
+  const b = parseVersion(current);
+  if (!a || !b) return false;
+  for (let i = 0; i < 3; i += 1) {
+    if (a[i] > b[i]) return true;
+    if (a[i] < b[i]) return false;
+  }
+  return false;
+}
+
+async function fetchJson(url) {
+  const response = await net.fetch(url, {
+    headers: {
+      Accept: 'application/vnd.github+json',
+      'User-Agent': 'MokaTroy-Overlay',
+    },
+  });
+  if (!response.ok) {
+    throw new Error(`GitHub ${response.status}`);
+  }
+  return response.json();
+}
+
+async function checkForUpdate() {
+  const current = app.getVersion();
+  try {
+    const releases = await fetchJson(`https://api.github.com/repos/${UPDATE_REPO}/releases?per_page=15`);
+    const release = (Array.isArray(releases) ? releases : []).find(
+      (item) => typeof item.tag_name === 'string' && item.tag_name.startsWith(UPDATE_TAG_PREFIX) && !item.draft,
+    );
+    if (!release) {
+      return { status: 'up-to-date', current, latest: current, url: null, notes: null };
+    }
+    const latest = String(release.tag_name).replace(/^overlay-v/, '');
+    const asset =
+      (release.assets || []).find((a) => /win.*\.zip$/i.test(a.name) || /\.exe$/i.test(a.name)) ||
+      (release.assets || [])[0];
+    const url = asset?.browser_download_url || release.html_url || null;
+    if (isNewer(latest, current)) {
+      return {
+        status: 'available',
+        current,
+        latest,
+        url,
+        notes: release.body || null,
+        name: release.name || `MokaTroy Overlay ${latest}`,
+      };
+    }
+    return { status: 'up-to-date', current, latest, url: null, notes: null };
+  } catch (error) {
+    return {
+      status: 'error',
+      current,
+      latest: null,
+      url: null,
+      notes: null,
+      error: error instanceof Error ? error.message : String(error),
+    };
+  }
+}
+
+
 /* ----------------------------------------------------------------------- IPC */
+
+ipcMain.handle('overlay:check-update', () => checkForUpdate());
 
 ipcMain.handle('overlay:bootstrap', () => ({
   settings: publicSettings(),

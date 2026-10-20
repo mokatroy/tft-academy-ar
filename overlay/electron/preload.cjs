@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('tftOverlay', {
   resetPosition: () => ipcRenderer.send('overlay:reset-position'),
   quit: () => ipcRenderer.send('overlay:quit'),
   openUrl: (url) => ipcRenderer.send('overlay:open-url', url),
+  checkUpdate: () => ipcRenderer.invoke('overlay:check-update'),
   onCommand: (handler) => {
     const listener = (_event, command) => handler(command);
     ipcRenderer.on('overlay:command', listener);
