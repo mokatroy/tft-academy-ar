@@ -47,7 +47,7 @@ const DEFAULTS = {
   opacity: 0.95,
   scale: 1,
   locale: 'ar',
-  clickThrough: true,
+  clickThrough: false,
   autoShow: true,
   visible: false,
 };
@@ -280,7 +280,8 @@ function setClickThrough(value, { save = true } = {}) {
 function toggleClickThrough() {
   const next = !settings.clickThrough;
   setClickThrough(next);
-  if (!next && win && !win.isDestroyed() && !win.isVisible()) {
+  // When turning interaction back ON, always show + focus so the user is not stuck.
+  if (!next) {
     showOverlay({ interactive: true, focus: true });
   }
 }
