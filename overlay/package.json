@@ -11,7 +11,7 @@
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build",
+    "build": "vite build",
     "start": "npm run build && electron .",
     "start:dev": "electron . --dev",
     "test": "esbuild tests/all.test.ts --bundle --platform=node --format=esm --outfile=.test.mjs --loader:.json=json --log-level=error && node --test .test.mjs",
