@@ -1,0 +1,1305 @@
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/tajawal-arabic-400.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+E000-F8FF, U+FB50-FDFF, U+FE70-FEFC;
+}
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/tajawal-latin-400.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122;
+}
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/tajawal-arabic-800.woff2') format('woff2');
+  unicode-range: U+0600-06FF, U+0750-077F, U+E000-F8FF, U+FB50-FDFF, U+FE70-FEFC;
+}
+@font-face {
+  font-family: 'Tajawal';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('/fonts/tajawal-latin-800.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+2000-206F, U+20AC, U+2122;
+}
+
+:root {
+  --gold: #f5c451;
+  --text: #e8eef8;
+  --muted: #8b98ab;
+  --dim: #6f7c90;
+  --line: rgba(255, 255, 255, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: transparent;
+  color: var(--text);
+  font-family: 'Tajawal', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow: hidden;
+  user-select: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  color: inherit;
+}
+
+button:active {
+  transform: translateY(0.5px);
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 99px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cost-1 {
+  --cost: #6b7789;
+}
+.cost-2 {
+  --cost: #3fbf7f;
+}
+.cost-3 {
+  --cost: #3b9ae1;
+}
+.cost-4 {
+  --cost: #b45cf0;
+}
+.cost-5 {
+  --cost: #f0b232;
+}
+
+/* ------------------------------------------------------------------ shell */
+
+.ov-root {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 20px;
+}
+
+.ov-root.is-desktop {
+  padding: 0;
+}
+
+.is-browser .ov-panel {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  max-width: calc(100% - 40px);
+  max-height: calc(100% - 40px);
+}
+
+.ov-panel {
+  position: relative;
+  z-index: 2;
+  width: 416px;
+  height: 640px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 16px;
+  border: 1px solid rgba(245, 196, 81, 0.18);
+  background: linear-gradient(180deg, rgba(10, 14, 21, 0.965), rgba(5, 8, 13, 0.985));
+  box-shadow:
+    0 26px 60px rgba(0, 0, 0, 0.6),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px) saturate(1.15);
+}
+
+.is-desktop .ov-panel {
+  width: 100%;
+  height: 100%;
+  border-radius: 14px;
+}
+
+/* ----------------------------------------------------------------- header */
+
+.ov-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 9px 11px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(245, 196, 81, 0.08), rgba(245, 196, 81, 0));
+}
+
+.ov-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.ov-logo {
+  width: 27px;
+  height: 27px;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  color: #0a0d13;
+  background: linear-gradient(135deg, var(--gold), #cfa03a);
+  box-shadow: 0 4px 12px rgba(245, 196, 81, 0.28);
+  flex: 0 0 auto;
+}
+
+.ov-brand-text {
+  min-width: 0;
+}
+
+.ov-brand-text strong {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.ov-brand-text span {
+  display: block;
+  font-size: 9px;
+  color: var(--muted);
+  margin-top: 1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ov-top-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+}
+
+.ov-top-actions button {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.045);
+  color: #b9c5d6;
+}
+
+.ov-top-actions button:hover {
+  color: #fff;
+  border-color: rgba(245, 196, 81, 0.35);
+}
+
+.ov-live {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #3c4657;
+  margin-inline-end: 2px;
+}
+
+.ov-live.on {
+  background: #34d399;
+  box-shadow: 0 0 9px rgba(52, 211, 153, 0.9);
+}
+
+.ov-pass {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 11px;
+  font-size: 9.5px;
+  color: var(--gold);
+  background: rgba(245, 196, 81, 0.1);
+  border-bottom: 1px solid rgba(245, 196, 81, 0.16);
+}
+
+/* ------------------------------------------------------------------ owned */
+
+.ov-owned {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 9px;
+  border-bottom: 1px solid var(--line);
+}
+
+.ov-owned-add {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  flex: 0 0 auto;
+  padding: 5px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 8px;
+  color: var(--gold);
+  border: 1px solid rgba(245, 196, 81, 0.32);
+  background: rgba(245, 196, 81, 0.1);
+}
+
+.ov-owned-add:hover {
+  background: rgba(245, 196, 81, 0.18);
+}
+
+.ov-owned-list {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.ov-owned-empty {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 9.5px;
+  color: #93a1b5;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.13);
+  background: rgba(255, 255, 255, 0.03);
+  white-space: nowrap;
+}
+
+.ov-chip {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  padding: 0;
+  border-radius: 50%;
+  overflow: visible;
+  background: #0d1420;
+  border: 2px solid var(--cost, #2c3a52);
+}
+
+.ov-chip img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.ov-chip-x {
+  position: absolute;
+  top: -4px;
+  inset-inline-end: -4px;
+  width: 12px;
+  height: 12px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-style: normal;
+  border-radius: 50%;
+  color: #cdd7e5;
+  background: #1b2433;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+/* ------------------------------------------------------------------- body */
+
+.ov-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+.ov-rail {
+  width: 140px;
+  flex: 0 0 140px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 6px;
+  overflow-y: auto;
+  border-inline-end: 1px solid var(--line);
+}
+
+.ov-rail-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #b9c5d6;
+  font-size: 10.5px;
+  line-height: 1.25;
+  text-align: start;
+}
+
+.ov-rail-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ov-tier {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 5px;
+  color: var(--tier);
+  background: color-mix(in srgb, var(--tier) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tier) 36%, transparent);
+}
+
+.ov-rail-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ov-rail-meta {
+  font-size: 9px;
+  color: var(--dim);
+  font-variant-numeric: tabular-nums;
+}
+
+.ov-rail-item.on {
+  color: #fff;
+  border-color: rgba(245, 196, 81, 0.3);
+  background: linear-gradient(90deg, rgba(245, 196, 81, 0.14), rgba(245, 196, 81, 0.02));
+}
+
+.ov-rail-item.on .ov-rail-meta {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+/* ----------------------------------------------------------------- detail */
+
+.ov-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+  padding: 8px 10px 6px;
+  overflow: hidden;
+}
+
+.ov-detail-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ov-detail-title {
+  min-width: 0;
+}
+
+.ov-detail-title h2 {
+  margin: 0;
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.ov-detail-title p {
+  margin: 2px 0 0;
+  font-size: 9.5px;
+  line-height: 1.4;
+  color: var(--muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.ov-fit {
+  flex: 0 0 auto;
+  padding: 2px 6px;
+  font-size: 13px;
+  font-weight: 800;
+  border-radius: 8px;
+  color: var(--tier);
+  font-variant-numeric: tabular-nums;
+  background: color-mix(in srgb, var(--tier) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--tier) 32%, transparent);
+}
+
+.ov-fit em {
+  font-style: normal;
+  font-size: 8px;
+  opacity: 0.75;
+  margin-inline-start: 1px;
+}
+
+/* ------------------------------------------------------------------ board */
+
+.ov-board {
+  position: relative;
+  flex: 0 0 auto;
+  width: 100%;
+  aspect-ratio: 7.6 / 5.1;
+  margin: 2px 0 4px;
+}
+
+.ov-hex {
+  position: absolute;
+  width: 11.4%;
+  aspect-ratio: 1 / 0.92;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.055);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.ov-unit {
+  position: absolute;
+  width: 11.4%;
+  aspect-ratio: 1 / 0.92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ov-unit-img {
+  width: 94%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #0d1420;
+  border: 1.5px solid var(--cost, #2c3a52);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.55);
+}
+
+.ov-unit-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ov-unit-img span {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  font-size: 11px;
+  color: #93a1b5;
+}
+
+.ov-unit-star {
+  position: absolute;
+  top: -5px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  font-style: normal;
+  font-size: 5.5px;
+  letter-spacing: -0.6px;
+  color: var(--gold);
+  text-shadow: 0 1px 2px #000;
+}
+
+.ov-unit-items {
+  position: absolute;
+  bottom: -5px;
+  inset-inline-start: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1px;
+}
+
+.ov-unit-items img {
+  width: 9px;
+  height: 9px;
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.65);
+}
+
+/* ----------------------------------------------------------------- traits */
+
+.ov-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+}
+
+.ov-trait {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  padding: 2px 5px;
+  font-size: 9px;
+  white-space: nowrap;
+  border-radius: 6px;
+  color: var(--trait-color);
+  background: color-mix(in srgb, var(--trait-color) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--trait-color) 26%, transparent);
+}
+
+.ov-trait strong {
+  font-weight: 800;
+  font-size: 9.5px;
+}
+
+.ov-trait em {
+  font-style: normal;
+  font-size: 8px;
+  opacity: 0.6;
+  margin-inline-start: 1px;
+}
+
+/* ---------------------------------------------------------------- swaps */
+
+.ov-alts {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.ov-alt {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 4px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ov-alt img {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+}
+
+.ov-alt img.out {
+  opacity: 0.5;
+  filter: grayscale(0.4);
+}
+
+.ov-alt em {
+  font-style: normal;
+  font-size: 8px;
+  color: var(--dim);
+}
+
+/* ---------------------------------------------------------------- tips */
+
+.ov-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ov-tip {
+  display: flex;
+  gap: 5px;
+  align-items: flex-start;
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.45;
+  color: #a9b6c8;
+}
+
+.ov-tip svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--gold);
+  opacity: 0.75;
+}
+
+/* --------------------------------------------------------------- augments */
+
+.ov-augs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 3px;
+}
+
+.ov-augs .ov-plan-title {
+  margin-inline-end: 2px;
+}
+
+.ov-aug {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  max-width: 46%;
+  padding: 2px 5px;
+  border-radius: 6px;
+  font-size: 8.5px;
+  color: #cbd6e4;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ov-aug img {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  flex: 0 0 auto;
+}
+
+.ov-aug b {
+  font-weight: 400;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ov-aug.tier-silver {
+  border-color: rgba(203, 213, 225, 0.28);
+}
+.ov-aug.tier-gold {
+  border-color: rgba(245, 196, 81, 0.34);
+  color: #f2d79b;
+}
+.ov-aug.tier-prism {
+  border-color: rgba(167, 139, 250, 0.38);
+  color: #d8c7ff;
+}
+
+/* ------------------------------------------------------------- game plan */
+
+.ov-plan {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.ov-plan-title {
+  font-size: 8.5px;
+  letter-spacing: 0.2px;
+  color: var(--dim);
+  text-transform: uppercase;
+}
+
+.ov-plan-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.ov-plan-stage {
+  flex: 0 0 auto;
+  min-width: 26px;
+  padding: 1px 4px;
+  font-size: 8.5px;
+  font-weight: 800;
+  text-align: center;
+  border-radius: 5px;
+  color: var(--gold);
+  background: rgba(245, 196, 81, 0.12);
+  border: 1px solid rgba(245, 196, 81, 0.22);
+}
+
+.ov-plan-step p {
+  margin: 0;
+  font-size: 9px;
+  line-height: 1.45;
+  color: #a9b6c8;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------ next picks */
+
+.ov-picks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: auto;
+  padding-top: 5px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.ov-picks-label {
+  font-size: 9px;
+  color: var(--dim);
+  margin-inline-end: 2px;
+}
+
+.ov-pick {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1.5px solid var(--cost, #2c3a52);
+  background: #0d1420;
+}
+
+.ov-pick img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ov-detail-foot {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9px;
+  color: #93a1b5;
+}
+
+.ov-detail-foot i {
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: #586479;
+}
+
+.ov-detail-diff {
+  color: var(--dim);
+}
+
+.ov-empty {
+  margin: 0;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* --------------------------------------------------------------- hotkeys */
+
+.ov-hotkeys {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 6px 8px 7px;
+  font-size: 8.5px;
+  color: var(--dim);
+  border-top: 1px solid var(--line);
+}
+
+kbd {
+  font-family: inherit;
+  font-size: 8.5px;
+  padding: 1px 4px;
+  margin-inline-end: 3px;
+  border-radius: 4px;
+  color: #b9c5d6;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom-width: 2px;
+}
+
+/* ------------------------------------------------------------------ sheets */
+
+.ov-sheet {
+  position: absolute;
+  inset: 0;
+  padding-top: 14px;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px 10px 10px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgba(9, 12, 18, 0.985), rgba(4, 7, 11, 0.995));
+  border: 1px solid rgba(245, 196, 81, 0.14);
+}
+
+.is-desktop .ov-sheet {
+  border-radius: 14px;
+}
+
+.ov-sheet-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ov-sheet-head h3 {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.ov-sheet-head p {
+  margin: 2px 0 0;
+  font-size: 9.5px;
+  color: var(--muted);
+}
+
+.ov-sheet-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.ov-sheet-actions button {
+  width: 24px;
+  height: 24px;
+  display: grid;
+  place-items: center;
+  border-radius: 7px;
+  color: #b9c5d6;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.ov-sheet-actions button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.ov-search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  color: var(--dim);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ov-search input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 11px;
+  user-select: text;
+}
+
+.ov-shop-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-inline-end: 2px;
+}
+
+.ov-shop-group {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.ov-shop-cost {
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+  margin-top: 4px;
+  display: grid;
+  place-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 5px;
+  color: #0a0d13;
+  background: var(--cost);
+}
+
+.ov-shop-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 7px 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.ov-shop-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #a9b6c8;
+  font-size: 8px;
+}
+
+.ov-shop-unit img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--cost);
+  filter: grayscale(0.4) brightness(0.88);
+  transition: filter 0.12s ease, box-shadow 0.12s ease;
+}
+
+.ov-shop-unit span {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ov-shop-unit.on img {
+  filter: none;
+  box-shadow: 0 0 0 2px rgba(245, 196, 81, 0.55), 0 0 12px rgba(245, 196, 81, 0.3);
+}
+
+.ov-shop-unit.on {
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- settings */
+
+.ov-settings {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding-bottom: 4px;
+}
+
+.ov-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ov-setting-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--muted);
+}
+
+.ov-setting-label b {
+  color: var(--text);
+  font-weight: 800;
+}
+
+.ov-segmented {
+  display: flex;
+  gap: 3px;
+  padding: 3px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.ov-segmented button {
+  flex: 1;
+  padding: 4px 0;
+  border: 0;
+  border-radius: 6px;
+  font-size: 10px;
+  color: #a9b6c8;
+  background: transparent;
+}
+
+.ov-segmented button.on {
+  color: #0a0d13;
+  font-weight: 800;
+  background: linear-gradient(180deg, var(--gold), #d8a93c);
+}
+
+.ov-range {
+  width: 100%;
+  accent-color: var(--gold);
+  height: 16px;
+}
+
+.ov-toggle-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 7px 9px;
+  text-align: start;
+  font-size: 10.5px;
+  color: #dbe4f0;
+  border-radius: 9px;
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.ov-toggle-row em {
+  display: block;
+  margin-top: 2px;
+  font-style: normal;
+  font-size: 8.5px;
+  color: var(--dim);
+}
+
+.ov-switch {
+  position: relative;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 16px;
+  border-radius: 99px;
+  background: #2a3444;
+  transition: background 0.15s ease;
+}
+
+.ov-switch::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  inset-inline-start: 2px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #8b98ab;
+  transition: inset-inline-start 0.15s ease, background 0.15s ease;
+}
+
+.ov-switch.on {
+  background: rgba(245, 196, 81, 0.85);
+}
+
+.ov-switch.on::after {
+  inset-inline-start: 14px;
+  background: #0a0d13;
+}
+
+.ov-keys {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ov-keys li {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 9.5px;
+  color: #a9b6c8;
+}
+
+.ov-note {
+  margin: 0;
+  padding: 7px 8px;
+  font-size: 9px;
+  line-height: 1.5;
+  color: #9fb0c7;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ov-sheet-foot {
+  margin: auto 0 0;
+  padding-top: 6px;
+  font-size: 8.5px;
+  color: #55637a;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.ov-warn {
+  margin: 2px 0 0;
+  font-size: 9px;
+  color: #fca5a5;
+}
+
+.ov-setting-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.ov-ghost-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 9px;
+  font-size: 10px;
+  border-radius: 8px;
+  color: #cfd9e8;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.ov-ghost-btn.danger {
+  color: #fca5a5;
+  border-color: rgba(252, 165, 165, 0.25);
+}
+
+/* ------------------------------------------------------------ browser mock */
+
+.mock-game {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 46% 22%, rgba(58, 92, 138, 0.45), transparent 58%),
+    radial-gradient(circle at 50% 60%, rgba(20, 34, 54, 0.9), transparent 70%),
+    linear-gradient(180deg, #0b131f 0%, #070c14 55%, #04070c 100%);
+}
+
+.mock-game::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 45%, transparent 30%, rgba(2, 5, 9, 0.72) 100%);
+}
+
+.mock-hud {
+  position: absolute;
+  top: 16px;
+  inset-inline: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #93a5bd;
+  z-index: 1;
+}
+
+.mock-hud-left,
+.mock-hud-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mock-round {
+  font-weight: 800;
+  color: #e6edf7;
+}
+
+.mock-gold {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.mock-hp {
+  color: #6ee7b7;
+  font-weight: 800;
+}
+
+.mock-level {
+  font-size: 9px;
+  letter-spacing: 1px;
+  color: #9fb0c7;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+  padding: 2px 5px;
+}
+
+.mock-board {
+  position: absolute;
+  left: 44%;
+  top: 47%;
+  transform: translate(-50%, -50%);
+  width: min(56vw, 700px);
+  aspect-ratio: 1.65;
+}
+
+.mock-unit {
+  position: absolute;
+  width: 12%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(245, 196, 81, 0.28);
+  background: #0c1420;
+  opacity: 0.92;
+}
+
+.mock-unit img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mock-shop {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 1;
+}
+
+.mock-shop-card {
+  width: 58px;
+  height: 66px;
+  overflow: hidden;
+  border-radius: 6px;
+  border: 1px solid var(--cost, rgba(255, 255, 255, 0.08));
+  background: rgba(10, 16, 25, 0.9);
+}
+
+.mock-shop-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+}
+
+.mock-traits {
+  position: absolute;
+  inset-inline-start: 18px;
+  top: 38%;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  z-index: 1;
+}
+
+.mock-trait {
+  width: 27px;
+  height: 27px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+}
+
+.mock-brand {
+  position: absolute;
+  bottom: 8px;
+  inset-inline-end: 14px;
+  font-size: 10px;
+  color: #4d5b71;
+  z-index: 1;
+}
