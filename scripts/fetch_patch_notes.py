@@ -354,13 +354,27 @@ def _append_entry(group: dict, entry: dict) -> None:
 def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
     """Merge the aligned per-locale event streams into one patch object."""
     base_sig = signature(per_locale["en"])
+    base_kinds = tuple(ev[0] for ev in per_locale["en"])
     for lang in LOCALES:
-        if lang != "en" and signature(per_locale[lang]) != base_sig:
+        if lang == "en":
+            continue
+        other_sig = signature(per_locale[lang])
+        other_kinds = tuple(ev[0] for ev in per_locale[lang])
+        if other_sig == base_sig:
+            continue
+        # Same sequence of event kinds (h2/ul/...) — keep locale text even if
+        # individual list items nest differently (common in JP articles).
+        if other_kinds == base_kinds:
             print(
-                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+                f"  ! {slug}: {lang} list shape differs slightly — keeping locale with positional alignment",
                 file=sys.stderr,
             )
-            per_locale[lang] = per_locale["en"]
+            continue
+        print(
+            f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+            file=sys.stderr,
+        )
+        per_locale[lang] = per_locale["en"]
 
     n = len(per_locale["en"])
     intro: dict | None = None
@@ -390,7 +404,7 @@ def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
                 continue
             sec = {
                 "id": hid,
-                "title": {lang: evs[lang][2] for lang in LOCALES},
+                "title": {lang: (evs[lang][2] if len(evs[lang]) > 2 else evs["en"][2]) for lang in LOCALES},
                 "commentary": None,
                 "groups": [],
             }
@@ -434,7 +448,7 @@ def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
             sections.append(sec)
 
         if kind == "h4":
-            title = loc_text(i, lambda ev: ev[2])
+            title = loc_text(i, lambda ev: ev[2] if len(ev) > 2 else (ev[1] if len(ev) > 1 else ""))
             grp = {
                 "title": title,
                 "kind": kind_of_group(evs["en"][2]),
