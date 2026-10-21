@@ -621,7 +621,9 @@ def report(patches: list[dict]) -> None:
 
 def build_patch(slug: str) -> dict | None:
     pages: dict[str, dict] = {}
-    for lang in LOCALES:
+    # English first so other locales can fall back if their article is not up yet.
+    ordered = ["en"] + [lang for lang in LOCALES if lang != "en"]
+    for lang in ordered:
         page = article_page(RIOT_LOCALE[lang], slug)
         if page is None:
             if lang == "en":
@@ -635,6 +637,7 @@ def build_patch(slug: str) -> dict | None:
             if lang == "en":
                 print(f"  ! {slug}: no rich-text body — skipping patch", file=sys.stderr)
                 return None
+            print(f"  ! {slug}: {lang} body missing — falling back to English", file=sys.stderr)
             pages[lang] = pages["en"]
             continue
         pages[lang] = {"page": page, "events": events_of(body)}
