@@ -355,26 +355,67 @@ def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
     """Merge the aligned per-locale event streams into one patch object."""
     base_sig = signature(per_locale["en"])
     base_kinds = tuple(ev[0] for ev in per_locale["en"])
-    for lang in LOCALES:
+
+    def h2_index_map(events: list[tuple]) -> dict[str, int]:
+        return {ev[1]: i for i, ev in enumerate(events) if ev[0] == "h2" and len(ev) > 1}
+
+    def align_locale(lang: str) -> None:
+        """Keep locale text when shapes differ only by missing prefix sections (e.g. mid-patch)."""
         if lang == "en":
-            continue
-        other_sig = signature(per_locale[lang])
-        other_kinds = tuple(ev[0] for ev in per_locale[lang])
+            return
+        other = per_locale[lang]
+        other_sig = signature(other)
         if other_sig == base_sig:
-            continue
-        # Same sequence of event kinds (h2/ul/...) — keep locale text even if
-        # individual list items nest differently (common in JP articles).
+            return
+        other_kinds = tuple(ev[0] for ev in other)
         if other_kinds == base_kinds:
             print(
                 f"  ! {slug}: {lang} list shape differs slightly — keeping locale with positional alignment",
                 file=sys.stderr,
             )
-            continue
-        print(
-            f"  ! {slug}: {lang} structure differs from en — falling back to English text",
-            file=sys.stderr,
-        )
-        per_locale[lang] = per_locale["en"]
+            return
+
+        en_h2 = h2_index_map(per_locale["en"])
+        ot_h2 = h2_index_map(other)
+        shared = [hid for hid, _i in sorted(((h, en_h2[h]) for h in en_h2 if h in ot_h2), key=lambda x: x[1])]
+        if not shared:
+            print(
+                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+                file=sys.stderr,
+            )
+            per_locale[lang] = per_locale["en"]
+            return
+
+        # Align from the first shared section header; pad the missing EN-only prefix with English.
+        hid = shared[0]
+        en_i = en_h2[hid]
+        ot_i = ot_h2[hid]
+        en_tail = per_locale["en"][en_i:]
+        ot_tail = other[ot_i:]
+        if tuple(ev[0] for ev in en_tail) != tuple(ev[0] for ev in ot_tail):
+            print(
+                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+                file=sys.stderr,
+            )
+            per_locale[lang] = per_locale["en"]
+            return
+
+        prefix = per_locale["en"][:en_i]  # missing in this locale (usually mid-patch)
+        per_locale[lang] = list(prefix) + list(ot_tail)
+        if prefix:
+            print(
+                f"  ! {slug}: {lang} missing {en_i} leading events (likely untranslated mid-patch) — "
+                f"using English for the prefix, locale text for the rest",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"  ! {slug}: {lang} realigned from shared section {hid}",
+                file=sys.stderr,
+            )
+
+    for lang in LOCALES:
+        align_locale(lang)
 
     n = len(per_locale["en"])
     intro: dict | None = None
