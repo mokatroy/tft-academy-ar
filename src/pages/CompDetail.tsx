@@ -151,6 +151,35 @@ export function CompDetail() {
       <div className="comp-layout">
         <div>
           <Board comp={comp} />
+          {comp.earlyUnits?.length ? (
+            <section className="panel" style={{ marginTop: 16 }}>
+              <h2 className="panel-title">
+                <Swords size={15} />
+                {t({ ar: 'وحدات البداية', en: 'Early units', ja: '序盤ユニット' })}
+                <span className="hint">
+                  {t({ ar: 'اللي تمسكهم من الستيچ 2–3', en: 'Hold these in stage 2–3', ja: 'ステージ2〜3で確保' })}
+                </span>
+              </h2>
+              <div className="early-row">
+                {comp.earlyUnits.map((id) => {
+                  const champion = championMap.get(id);
+                  if (!champion) return null;
+                  return (
+                    <div className="early-chip" key={id} data-tip-kind="champion" data-tip-id={id}>
+                      <Portrait championId={id} />
+                      <span className="early-chip-name">{t(champion.name)}</span>
+                      <span
+                        className="unit-cost"
+                        style={{ '--cost-color': costColor(champion.cost) } as CSSProperties}
+                      >
+                        {champion.cost}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          ) : null}
         </div>
 
         <aside style={{ display: 'grid', gap: 16 }}>

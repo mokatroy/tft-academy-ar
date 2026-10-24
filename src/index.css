@@ -3243,3 +3243,33 @@ button.filter-chip {
     grid-template-columns: 1fr;
   }
 }
+
+
+.early-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.early-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px 6px 6px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  min-width: 0;
+}
+
+.early-chip-name {
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.early-chip .portrait,
+.early-chip .champ-portrait {
+  width: 36px;
+  height: 36px;
+}

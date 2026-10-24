@@ -112,6 +112,8 @@ export interface Comp {
   level: Localized;
   summary: Localized;
   units: CompUnit[];
+  /** Low-cost / opener champions to hold and play in stage 2–3. */
+  earlyUnits: string[];
   augments: CompAugment[];
   leveling: LevelingStep[];
   tips: Localized[];

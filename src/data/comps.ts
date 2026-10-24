@@ -33,6 +33,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_GnarSmall', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 2 },
       { champion: 'DA_18_Lux_Elderwood', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Xayah',
+      'DA_18_Ornn',
+      'DA_18_Alistar',
+      'DA_18_LeBlanc',
+    ],
     augments: [
       { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'يمنحك وحدة إلدروود إضافية مبكرًا ويقفل عتبة 7 بسرعة.', en: 'Grants an extra Elderwood early and helps you hit the 7 breakpoint fast.', ja: '序盤でエルダーウッドを1体追加し、7のブレイクポイントを素早く解放する。' } },
       { id: 'DA_SpreadingRootsPlus', tier: 'gold', why: { ar: 'يزيد صحة نباتات إلدروود، وهو أفضل دعم لجدار زايا.', en: 'Boosts Elderwood health — the best support for Xayah’s wall.', ja: 'エルダーウッドの体力を増加。ザヤの壁を支える最良の補助。' } },
@@ -76,6 +82,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Zyra', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_BlueBuff'], star: 2, row: 1, col: 2 },
       { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 4 },
       { champion: 'DA_Lux18_Blackthorn', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_BlueBuff'], star: 2, row: 0, col: 5 },
+    ],
+    earlyUnits: [
+      'DA_18_Yorick',
+      'DA_18_RekSai',
+      'DA_18_Warwick',
+      'DA_18_Shen',
     ],
     augments: [
       { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'يمنح شوكة سوداء إضافية ومكونات إضافية، ويقفل عتبة 5 بسهولة.', en: 'Grants an extra Blackthorn plus components, easily unlocking the 5 breakpoint.', ja: 'ブラックソーンを追加しコンポーネントも付与。5のブレイクポイントを簡単に解放。' } },
@@ -121,6 +133,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_MasterYi_AD', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_UnstableConcoction'], star: 2, row: 2, col: 1 },
       { champion: 'DA_Lux18_Blossom', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+      'DA_Karma18',
+    ],
     augments: [
       { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'يمنح ازدهار إضافيًا ويسرّع الوصول إلى العتبة الكبرى.', en: 'Grants extra Blossom and speeds up the big breakpoint.', ja: 'ブロッサムを追加し大きなブレイクポイントへ急ぐ。' } },
       { id: 'DA_JeweledLotus_I', tier: 'silver', why: { ar: 'قدرة أزير وآري وكارما تصبح قادرة على الضربة الحرجة مع العناصر المرصعة.', en: 'Lets Azir, Ahri and Karma crit with jeweled items.', ja: 'アジール、アリ、カルマが宝石装備でクリティカルを出せるようになる。' } },
@@ -164,6 +181,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Lux_Inferno', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_BlueBuff'], star: 2, row: 0, col: 3 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 5 },
       { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 5 },
+    ],
+    earlyUnits: [
+      'DA_18_Akali_AD',
+      'DA_18_Varus',
+      'DA_18_Shen',
+      'DA_18_Sejuani',
     ],
     augments: [
       { id: 'DA_18_InfernoTraitAugment', tier: 'gold', why: { ar: 'يمنح وحدة جحيم إضافية وعتبة حرق أعلى، مثالي مع أكالي وكينين.', en: 'Grants an extra Inferno with a higher burn breakpoint — perfect with Akali and Kennen.', ja: 'インフェルノを追加し燃焼ブレイクポイントを向上。アカリとケネンに最適。' } },
@@ -209,6 +232,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 1 },
       { champion: 'DA_18_Leona', items: ['TFT_Item_FrozenHeart', 'TFT_Item_Redemption'], star: 2, row: 2, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Leona',
+      'DA_18_Sejuani',
+      'DA_18_Shen',
+      'DA_18_Kayle',
+    ],
     augments: [
       { id: 'DA_18_LunarTraitAugment', tier: 'gold', why: { ar: 'قمرية إضافية ترفع سرعة الهجوم وقوة القدرة لكل الفريق.', en: 'Extra Lunar raises team attack speed and ability power.', ja: 'ルナーを追加しチームの攻撃速度とAPを上昇。' } },
       { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'عنصر سيف إضافي يسرّع تجهيز أفيليوس.', en: 'An extra sword item speeds up Aphelios’s build.', ja: '追加の剣アイテムでアフェリオスの装備を早める。' } },
@@ -252,6 +281,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Lux_Coven', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1 },
       { champion: 'DA_18_Shen', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 5 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_DragonsClaw', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 1 },
+    ],
+    earlyUnits: [
+      'DA_18_Elise',
+      'DA_18_Caitlyn',
+      'DA_18_Camille',
+      'DA_18_Shen',
     ],
     augments: [
       { id: 'DA_18_CovenTraitAugment', tier: 'gold', why: { ar: 'وحدة ساحرة إضافية وقوة قدرة أعلى لكل الفريق.', en: 'Extra coven member and higher team ability power.', ja: 'コヴェンを追加しチームのAPを上昇。' } },
@@ -297,6 +332,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 2, col: 5 },
       { champion: 'DA_18_Hecarim', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster'], star: 2, row: 2, col: 1 },
     ],
+    earlyUnits: [
+      'DA_18_Xayah',
+      'DA_18_Rakan',
+      'DA_18_Alistar',
+      'DA_18_Ornn',
+    ],
     augments: [
       { id: 'DA_18_FaeTraitAugment', tier: 'gold', why: { ar: 'عفريت إضافي يرفع سرعة الهجوم لكل الفريق.', en: 'Extra Fae raises team attack speed.', ja: 'フェイを追加しチームの攻撃速度を上昇。' } },
       { id: 'DA_FocusedFire', tier: 'silver', why: { ar: 'ضرر إضافي على الأهداف المصابة، يناسب انتشار الرشقات.', en: 'Bonus damage on already-hit targets — fits rapidfire spread.', ja: '既に命中した対象に追加ダメージ。ラピッドファイアの拡散に適合。' } },
@@ -340,6 +381,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Shen', items: ['TFT_Item_FrozenHeart', 'TFT_Item_Redemption'], star: 2, row: 3, col: 1 },
       { champion: 'DA_18_Soraka', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff'], star: 2, row: 1, col: 3 },
       { champion: 'DA_Taric18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 2, col: 3 },
+    ],
+    earlyUnits: [
+      'DA_18_Kayle',
+      'DA_18_Leona',
+      'DA_18_Sejuani',
+      'DA_18_Shen',
     ],
     augments: [
       { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'شمسي إضافي يرفع قوة كايل وفريقك بشكل مباشر.', en: 'Extra Solar directly boosts Kayle and your team.', ja: 'ソーラーを追加しケイルとチームを直接強化。' } },
@@ -385,6 +432,10 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge'], star: 2, row: 0, col: 1 },
       { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 2, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Caitlyn',
+      'DA_18_Yunara',
+    ],
     augments: [
       { id: 'DA_18_PrimalAugment_Sivir', tier: 'gold', why: { ar: 'تعزيز بدائي مخصص لسيفير ويرفع ضررها بشكل ملحوظ.', en: 'A Sivir-specific Primal buff that noticeably raises her damage.', ja: 'シヴィア専用のプリマルバフで彼女のダメージを大きく向上。' } },
       { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'بعد كل قتل تزداد سرعة الهجوم، وهو مثالي مع أربعة صيادين.', en: 'Attack speed per kill — ideal with four hunters.', ja: 'キルごとに攻撃速度上昇。4ハンターで最適。' } },
@@ -428,6 +479,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Lillia', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 5 },
       { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 5 },
+    ],
+    earlyUnits: [
+      'DA_18_Veigar',
+      'DA_18_Kobuko',
+      'DA_18_Teemo',
     ],
     augments: [
       { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'تعزيز مشاغب مخصص يزيد قوة المجموعة بشكل كبير.', en: 'A Sprykin-specific buff that greatly boosts the team.', ja: 'スプリンキン専用バフでチームを大きく強化。' } },
@@ -473,6 +529,13 @@ export const comps: Comp[] = [
       { champion: 'DA_Cinderling18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge'], star: 2, row: 0, col: 5 },
       { champion: 'DA_Scuttlecrab18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 1 },
     ],
+    earlyUnits: [
+      'DA_18_Sentry',
+      'DA_Cinderling18',
+      'DA_Gromp18_AP',
+      'DA_Murkwolf18',
+      'DA_Scuttlecrab18',
+    ],
     augments: [
       { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'وحش ريفت إضافي يرفع العتبة بسرعة ويزيد قوة الوحوش.', en: 'Extra Riftbeast raises the breakpoint fast and buffs your beasts.', ja: 'リフトビーストを追加しブレイクポイントを素早く向上、獣を強化。' } },
       { id: 'DA_GroupHugI', tier: 'silver', why: { ar: 'دروع إضافية عند التجمع، والوحوش تقاتل متقاربة.', en: 'Extra shields when clustered — your beasts fight close together.', ja: '密集時に追加シールド。獣は接近して戦う。' } },
@@ -516,6 +579,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
       { champion: 'DA_18_Soraka', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 1 },
       { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
+    ],
+    earlyUnits: [
+      'DA_18_Leona',
+      'DA_18_Shen',
+      'DA_18_Ornn',
     ],
     augments: [
       { id: 'DA_HoldTheLine', tier: 'gold', why: { ar: 'جبهة إضافية تُطيل عمر الجبهة الحديدية.', en: 'An extra frontline extends your iron wall’s longevity.', ja: '追加の前線で鉄壁の耐久を延ばす。' } },
@@ -561,6 +629,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Soraka', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1 },
       { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Elise',
+      'DA_18_Sejuani',
+    ],
     augments: [
       { id: 'DA_HoldTheLine', tier: 'gold', why: { ar: 'جبهة إضافية تسمح للمقدمة بالضغط لوقت أطول.', en: 'An extra frontline lets your warfront press longer.', ja: '追加の前線で戦線の圧力を長く維持。' } },
       { id: 'DA_ElectrochargeI', tier: 'silver', why: { ar: 'ضرر عند تفعيل الدروع، والمقدمة مليئة بالدروع.', en: 'Damage on shield procs — your front is full of shields.', ja: 'シールド発動時にダメージ。前線にシールドが豊富。' } },
@@ -604,6 +677,13 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 2, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Veigar',
+      'DA_18_LeBlanc',
+      'DA_18_Elise',
+      'DA_18_Shen',
     ],
     augments: [
       { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر سحري بعد كل إلقاء، مثالي مع حلقة القدرات المستمرة.', en: 'Magic damage after every cast — perfect with a constant casting circle.', ja: '詠唱ごとに魔法ダメージ。連続詠唱の輪に最適。' } },
@@ -649,6 +729,13 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Lux_Inferno', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 3 },
       { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Akali_AD',
+      'DA_18_Warwick',
+      'DA_18_Camille',
+      'DA_Murkwolf18',
+      'DA_18_Shen',
+    ],
     augments: [
       { id: 'DA_Retribution', tier: 'gold', why: { ar: 'ضرر إضافي بعد كل قتل، يتفاعل مع إعادة الضبط.', en: 'Bonus damage per kill, synergizing with resets.', ja: 'キルごとの追加ダメージでリセットと連携。' } },
       { id: 'DA_Kingslayer', tier: 'silver', why: { ar: 'ضرر ضد الصحة العالية يفتح جبهات اللوبي.', en: 'Damage vs high-health targets cracks lobby frontlines.', ja: '高体力対象へのダメージでロビーの前線を破壊。' } },
@@ -693,6 +780,11 @@ export const comps: Comp[] = [
       { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Lux_Primal', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 2, col: 4 },
     ],
+    earlyUnits: [
+      'DA_18_Caitlyn',
+      'DA_Cinderling18',
+      'DA_18_Yunara',
+    ],
     augments: [
       { id: 'DA_18_PrimalAugment_Sivir', tier: 'gold', why: { ar: 'تعزيز سيفير يرفع ضرر الصياد بشكل ملحوظ.', en: 'A Sivir buff that noticeably raises hunter damage.', ja: 'シヴィアのバフでハンターのダメージを大きく向上。' } },
       { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'سرعة هجوم بعد القتل تُطيل سلسلة القنص.', en: 'Attack speed per kill extends your picking chain.', ja: 'キルごとの攻撃速度で狙撃の連鎖を延ばす。' } },
@@ -736,6 +828,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Soraka', items: ['TFT_Item_BlueBuff', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 5 },
+    ],
+    earlyUnits: [
+      'DA_18_Teemo',
+      'DA_18_Sentry',
+      'DA_18_Shen',
     ],
     augments: [
       { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر بعد كل استدعاء يتفاعل بقوة مع المستدعيين.', en: 'Damage after every cast synergizes hard with invokers.', ja: '詠唱ごとのダメージがインヴォーカーと強く連携。' } },
@@ -784,6 +881,13 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Ornn', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 3, row: 3, col: 3 },
       { champion: 'DA_18_Alistar', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_RekSai', items: ['TFT_Item_BrambleVest', 'TFT_Item_Redemption'], star: 3, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Veigar',
+      'DA_18_LeBlanc',
+      'DA_18_Ornn',
+      'DA_18_Alistar',
+      'DA_18_RekSai',
     ],
     augments: [
       { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'طبيعة الملاجئ تمنحك إلدروود إضافيًا وتحمي نباتاتك مبكرًا — بداية مثالية للجدار.', en: 'Nature’s Shelter grants an extra Elderwood and protects your plants early — the perfect start for the wall.', ja: 'ネイチャーズ・シェルターでエルダーウッドを追加し序盤から植物を守る。壁づくりの理想の开局。' } },
@@ -834,6 +938,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Sentinel18', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 4 },
     ],
+    earlyUnits: [
+      'DA_18_Veigar',
+      'DA_18_Sentry',
+      'DA_18_Shen',
+      'DA_Karma18',
+    ],
     augments: [
       { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'نداء الازدهار يمنحك يونارا وكارما ويوريك مجانًا — أساس قوي لكارما.', en: 'Blossom’s Call hands you Yunara, Karma and Yorick for free — a strong base for Karma.', ja: 'ブロッサムの呼びびでユナラ・カルマ・ヨリックを無償獲得。カルマの強力な土台。' } },
       { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'كل قدرة تلقيها كارما وآري تضرب بضرر سحري إضافي — التوافق الطبيعي للنسّاج.', en: 'Every cast from Karma and Ahri lands bonus magic damage — the natural Spellweaver payoff.', ja: 'カルマとアーリのキャストごとに追加魔法ダメージ。スルウェイバーとの自然な相性。' } },
@@ -882,6 +992,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Hecarim', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_Sentinel18', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Leona',
+      'DA_18_Sejuani',
+      'DA_18_Shen',
+      'DA_18_Teemo',
     ],
     augments: [
       { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'حقيبة الأبطاء تكفي لتجهيز ديانا وألون معًا دون انتظار مكوّنات.', en: 'Heroic Grab Bag gives you enough components to itemize both Diana and Alune at once.', ja: 'ヒロック・グラッグバッグでダイアナとアルーンの両方を一気に装備。' } },
@@ -932,6 +1048,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Ornn', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_BrambleVest', 'TFT_Item_IonicSpark'], star: 2, row: 3, col: 4 },
     ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_RekSai',
+      'DA_18_Warwick',
+      'DA_18_Shen',
+    ],
     augments: [
       { id: 'DA_Corrosion', tier: 'silver', why: { ar: 'التأكل يفك دروعًا ومقاومة سحرية في كل ضربة — كازيكس يخترق أي جبهة.', en: 'Corrosion shreds armor and MR on hit — Kha’Zix tears through any frontline.', ja: 'コロージョンがアーマーとMRを削り、カ＝ジックスがどの前線も貫く。' } },
       { id: 'DA_PandorasItemsII', tier: 'prism', why: { ar: 'باندورا تحوّل مكوناتك باستمرار إلى عناصر كازيكس المثالية بلا مخاطرة.', en: 'Pandora’s Items continuously converts your components into Kha’Zix’s ideal items, risk-free.', ja: 'パンドラのアイテムがコンポーネントを無リスクでカ＝ジックスの理想装備へ変換。' } },
@@ -980,6 +1102,11 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Yorick', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Krug18', items: ['TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Yorick',
+      'DA_18_Akali_AD',
+      'DA_Gromp18_AP',
     ],
     augments: [
       { id: 'DA_18_PrimalAugment_Nidalee', tier: 'gold', why: { ar: 'داخل الوحش يمنح بركة بدائية إضافية لنيدالي وڤي — نصف الفريق يصبح أقوى فورًا.', en: 'Beast Within grants an extra Primal blessing to Nidalee and Vi — half your board instantly gets stronger.', ja: 'ビースト・ウィズインがニダリーとファイに追加のプライマル祝福。盤面の半分が即強化。' } },
@@ -1030,6 +1157,12 @@ export const comps: Comp[] = [
       { champion: 'DA_Sentinel18', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Brambleback18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve'], star: 2, row: 3, col: 4 },
     ],
+    earlyUnits: [
+      'DA_18_Sentry',
+      'DA_Cinderling18',
+      'DA_18_Alistar',
+      'DA_Gromp18_AP',
+    ],
     augments: [
       { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'أوميجا ريفتبيست يسمح برِفتبيست ألفا ثاني ويرفع قوة الوحوش — أساسي مع التنين.', en: 'Omega Riftbeast allows a second Alpha Riftbeast and boosts the beasts — core with the Dragon.', ja: 'オメガ・リフトビーストがアルファを2体目許し獣を強化。ドラゴンとの中核。' } },
       { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'الحدادة الحيّة تدفع مكوّنات مستمرة لتجهيز التنين مبكرًا وهو باهظ الثمن.', en: 'Living Forge keeps pushing components so you can itemize the expensive Dragon early.', ja: 'リビング・フォージがコンポーネントを継続供給し、高コストなドラゴンを早期に装備。' } },
@@ -1078,6 +1211,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Kennen', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_StatikkShiv'], star: 2, row: 2, col: 3 },
       { champion: 'DA_18_Alistar', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_TitansResolve'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Yunara',
+      'DA_18_LeBlanc',
+      'DA_18_Alistar',
+      'DA_18_Yorick',
     ],
     augments: [
       { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'نداء الازدهار يمنحك يونارا ويوريك وكارما مجانًا — الثلاثي الذي يبني الكومبو.', en: 'Blossom’s Call grants Yunara, Yorick and Karma free — the trio that builds this comp.', ja: 'ブロッサムの呼びびでユナラ・ヨリック・カルマを無償獲得。この構成の土台。' } },
@@ -1128,6 +1267,13 @@ export const comps: Comp[] = [
       { champion: 'DA_18_RekSai', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 3, row: 3, col: 3 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_DragonsClaw', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 5 },
     ],
+    earlyUnits: [
+      'DA_18_Veigar',
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_18_Teemo',
+      'DA_18_Sejuani',
+    ],
     augments: [
       { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'استخراج العناصر يموّل إعادة اللف بمكوّنات عند التضحية في ساحة الشوكة السوداء.', en: 'Item Extraction funds your reroll with components whenever you sacrifice on the Blackthorn hex.', ja: 'ブラックソーンのヘックスでの犠牲がコンポーネントを生みリロールを資金支援。' } },
       { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'صديق فروي صغير يضيف صديقًا كبيرًا ثانيًا: كوبوكو وراموس يصبحان جدارًا مزدوجًا.', en: 'Small Furry Friend adds a second Big Furry Friend — Kobuko and Rammus become a double wall.', ja: 'スモール・ファーリー・フレンドが2体目のビッグ・ファーリー・フレンドを追加。コブコとラムスで二重壁に。' } },
@@ -1176,6 +1322,11 @@ export const comps: Comp[] = [
       { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Malphite', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_IonicSpark'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+      'DA_18_RekSai',
     ],
     augments: [
       { id: 'DA_Ascension', tier: 'gold', why: { ar: 'الصعود يكافئ بقاءك بعد بداية القتال — الاستدعاءات تعيش طويلًا فيصبح التعزيز ضخمًا.', en: 'Ascension rewards you for surviving the opener — summons live long enough to make it huge.', ja: 'アセンションが序盤の生存を報酬に変える。召喚が長生きするほど効果が巨大に。' } },
@@ -1226,6 +1377,12 @@ export const comps: Comp[] = [
       { champion: 'DA_Sentinel18', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 3 },
       { champion: 'DA_Brambleback18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 4 },
     ],
+    earlyUnits: [
+      'DA_18_Camille',
+      'DA_18_Akali_AD',
+      'DA_18_Ornn',
+      'DA_18_RekSai',
+    ],
     augments: [
       { id: 'DA_HealingOrbsI', tier: 'silver', why: { ar: 'كرات العلاج تُرجع صحة لرينغار مع كل قتل — يتوقف عن السقوط وسط العدو.', en: 'Healing Orbs give Rengar health back on every kill — he stops dying mid-pack.', ja: 'ヒーリング・オーブでキルごとに体力回復。敵陣の中心でも落ちにくくなる。' } },
       { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'حدّاد السيف يعطيك عنصر سيفًا لتجهيز رينغار وأفيليوس معًا.', en: 'Swordsmith gives you a sword component to itemize Rengar and Aphelios together.', ja: 'ソースミスの剣コンポーネントでレンガーとアフェリオスを同時に装備。' } },
@@ -1274,6 +1431,12 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Leona', items: ['TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Sejuani', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_DragonsClaw'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_Rakan', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Kayle',
+      'DA_18_Leona',
+      'DA_18_Sejuani',
+      'DA_18_Rakan',
     ],
     augments: [
       { id: 'DA_18_LunarTraitAugment', tier: 'gold', why: { ar: 'شمس وقمر: كل قمري يحصل على فائدة مقابل كل شمسي فريد — ثلاثي الشمس يرفع الفريق كله.', en: 'Sun and Moon: each Lunar gains power per unique Solar — the trio of suns buffs your whole team.', ja: 'サン＆ムーン：ソーラー1体ごとにルナーが強化。太陽3体でチーム全体を強化。' } },
@@ -1324,6 +1487,12 @@ export const comps: Comp[] = [
       { champion: 'DA_Amumu18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Maokai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
       { champion: 'DA_18_GnarSmall', items: ['TFT_Item_TitansResolve', 'TFT_Item_SteraksGage'], star: 2, row: 3, col: 4 },
+    ],
+    earlyUnits: [
+      'DA_18_Xayah',
+      'DA_18_Ornn',
+      'DA_18_Alistar',
+      'DA_18_LeBlanc',
     ],
     augments: [
       { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'طبيعة الملاجئ تحمي نباتات إلدروود وتزيد بقاء الجدار الذي يحمي درايفن.', en: 'Nature’s Shelter protects the Elderwood plants and strengthens the wall guarding Draven.', ja: 'ネイチャーズ・シェルターがエルダーウッドの植物を守り、ドレイヴンを守る壁を強化。' } },
