@@ -62,7 +62,7 @@ export function Layout() {
     <>
       <header className="site-header">
         <div className="container header-inner">
-          <Link to={localizePath('/')} className="brand" aria-label="TFT Academy">
+          <Link to={localizePath('/')} className="brand" aria-label="MokaTroy">
             <span className="brand-mark">
               <Swords size={20} strokeWidth={2.4} />
             </span>
@@ -172,7 +172,7 @@ export function Layout() {
           <div className="footer-bottom">
             <span>© 2026 MokaTroy</span>
             <span dir="ltr">
-              TFT Academy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
+              MokaTroy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
             </span>
           </div>
         </div>
