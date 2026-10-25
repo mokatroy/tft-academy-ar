@@ -323,7 +323,7 @@ export const comps: Comp[] = [
       ja: 'トリスターナがフェイのバフで高速射击し、ザヤが持続ダメージで支える。ラカンとリリアが前線とシールドを提供し、アリスターとオーンが序盤のエルダーウッドの厚みを加える。',
     },
     units: [
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 3 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_MadredsBloodrazor', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 3 },
       { champion: 'DA_18_Xayah', items: ['TFT_Item_Deathblade', 'TFT_Item_LastWhisper', 'TFT_Item_Bloodthirster'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
       { champion: 'DA_18_Lillia', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 4 },
@@ -429,7 +429,7 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Lux_Primal', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Caitlyn', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge'], star: 2, row: 1, col: 5 },
       { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_LastWhisper'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge'], star: 2, row: 0, col: 1 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_MadredsBloodrazor', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 1 },
       { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 2, col: 5 },
     ],
     earlyUnits: [
@@ -476,7 +476,7 @@ export const comps: Comp[] = [
       { champion: 'DA_18_Teemo', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_BlueBuff'], star: 2, row: 1, col: 3 },
       { champion: 'DA_18_Rammus', items: ['TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
       { champion: 'DA_18_GnarSmall', items: ['TFT_Item_TitansResolve', 'TFT_Item_Bloodthirster', 'TFT_Item_SteraksGage'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_RedBuff'], star: 2, row: 0, col: 5 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_MadredsBloodrazor', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Lillia', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 5 },
       { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 5 },
     ],
@@ -773,7 +773,7 @@ export const comps: Comp[] = [
     units: [
       { champion: 'DA_18_Ashe', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
       { champion: 'DA_18_Caitlyn', items: ['TFT_Item_Deathblade', 'TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge'], star: 2, row: 0, col: 5 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_MadredsBloodrazor', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 5 },
       { champion: 'DA_18_Sivir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade', 'TFT_Item_LastWhisper'], star: 2, row: 1, col: 3 },
       { champion: 'DA_Cinderling18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_InfinityEdge'], star: 2, row: 1, col: 1 },
       { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 5 },
