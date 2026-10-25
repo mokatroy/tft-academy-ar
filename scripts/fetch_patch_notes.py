@@ -351,16 +351,65 @@ def _append_entry(group: dict, entry: dict) -> None:
     group["entries"].append(entry)
 
 
+def align_locale(en_events: list[tuple], other: list[tuple], lang: str, slug: str) -> list[tuple]:
+    """Pad shorter locale streams so section headers line up with English.
+
+    Riot sometimes ships mid-patch blocks in EN/JA only. Falling back the entire
+    article to English loses the Arabic body. Instead pad EN-only prefixes and
+    align from the first shared h2 id when the full signature differs.
+    """
+    if signature(other) == signature(en_events):
+        return other
+
+    def h2_list(events):
+        return [(i, e[1]) for i, e in enumerate(events) if e[0] == "h2"]
+
+    en_h2 = h2_list(en_events)
+    ot_h2 = {hid: i for i, hid in ((i, h) for i, h in h2_list(other))}
+    shared = [(ei, ot_h2[hid]) for ei, hid in en_h2 if hid in ot_h2]
+    if not shared:
+        print(
+            f"  ! {slug}: {lang} has no shared h2 with en — falling back to English text",
+            file=sys.stderr,
+        )
+        return list(en_events)
+
+    en_start, ot_start = shared[0]
+    # Prefer prefix-pad when English has an exclusive leading block (mid-patch).
+    padded = list(en_events[:en_start]) + list(other[ot_start:])
+    if len(padded) < len(en_events):
+        padded = padded + list(en_events[len(padded):])
+    elif len(padded) > len(en_events):
+        padded = padded[: len(en_events)]
+    en_kinds = [e[0] for e in en_events]
+    pad_kinds = [e[0] for e in padded]
+    mismatch = sum(1 for a, b in zip(en_kinds, pad_kinds) if a != b)
+    # Only accept alignment when kinds line up (or only a few mismatches).
+    if mismatch <= 2 and len(padded) == len(en_events):
+        print(
+            f"  ~ {slug}: {lang} aligned on shared h2 "
+            f"(en_start={en_start}, ot_start={ot_start}, mismatches={mismatch})",
+            file=sys.stderr,
+        )
+        return padded
+    # Soft: same kinds overall despite signature tuple differences on ul shapes
+    if en_kinds == [e[0] for e in other] and len(other) == len(en_events):
+        print(f"  ~ {slug}: {lang} kept (kind sequence matches)", file=sys.stderr)
+        return other
+    print(
+        f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+        file=sys.stderr,
+    )
+    return list(en_events)
+
+
 def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
     """Merge the aligned per-locale event streams into one patch object."""
-    base_sig = signature(per_locale["en"])
+    en_events = per_locale["en"]
     for lang in LOCALES:
-        if lang != "en" and signature(per_locale[lang]) != base_sig:
-            print(
-                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
-                file=sys.stderr,
-            )
-            per_locale[lang] = per_locale["en"]
+        if lang == "en":
+            continue
+        per_locale[lang] = align_locale(en_events, per_locale[lang], lang, slug)
 
     n = len(per_locale["en"])
     intro: dict | None = None

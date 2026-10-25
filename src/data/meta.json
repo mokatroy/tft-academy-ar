@@ -1,1 +1,15 @@
-{"set": 18, "setName": {"ar": "المجموعة 18", "en": "Set 18", "ja": "セット18"}, "patch": "18.4b", "updated": {"ar": "آخر تحديث قبل 11 ساعة", "en": "Updated 11 hours ago", "ja": "11時間前に更新"}, "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"}
+{
+  "set": 18,
+  "setName": {
+    "ar": "المجموعة 18",
+    "en": "Set 18",
+    "ja": "セット18"
+  },
+  "patch": "18.5",
+  "updated": {
+    "ar": "باتش 18.5",
+    "en": "Patch 18.5",
+    "ja": "パッチ18.5"
+  },
+  "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"
+}
