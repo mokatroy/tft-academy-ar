@@ -1,537 +1,30 @@
-import type { Comp } from '../lib/types';
+import type { Comp, Tier } from '../lib/types';
+
+export const tierOrder: Tier[] = ['S', 'A', 'B', 'C'];
 
 /**
- * Curated comp guides for Set 18, in Arabic / English / Japanese.
- * Champion, item and augment ids map to the CommunityDragon dataset in src/data.
- * The tier list is editorial.
+ * Comp guides for Set 18, imported from TFT Academy (patch 18.5b).
+ * Champion / item / augment ids map to CommunityDragon data under src/data.
  */
 export const comps: Comp[] = [
   {
-    slug: 'elderwood-xayah',
-    name: { ar: 'إلدروود زايا', en: 'Elderwood Xayah', ja: 'エルダーウッド ザヤ' },
-    subtitle: {
-      ar: 'زايا تحرق الصفوف خلف جدار إلدروود',
-      en: 'Xayah burns the backline behind an Elderwood wall',
-      ja: 'ザヤがエルダーウッドの壁の後ろで敵陣を焼き払う',
-    },
-    tier: 'A',
-    difficulty: 2,
-    playstyle: { ar: 'ضرر مستمر', en: 'Sustained damage', ja: '持続ダメージ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ منخفض التكلفة يعتمد على زايا وأورن بثلاث نجوم، ثم ينتقل إلى إزريال وليكس في نهاية اللعبة. جدار إلدروود يمنح الفريق صحة ودرعًا كافيين لبقاء زايا على قيد الحياة حتى تتراكم سرعة هجومها.',
-      en: 'A low-cost reroll comp built around three-star Xayah and Ornn, then transitioning into Ezreal and Lux late game. The Elderwood wall gives your team enough health and resists to keep Xayah alive while her attack speed stacks up.',
-      ja: '3星のザヤとオーンを軸にした低コストのリロール構成。終盤にはエズリアルとラックスへ移行する。エルダーウッドの壁がチームに十分な体力と耐性を与え、ザヤの攻撃速度が積み上がる間を支える。',
-    },
-    units: [
-      { champion: 'DA_18_Xayah', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade'], star: 3, row: 0, col: 3 },
-      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 2, col: 4 },
-      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 2 },
-      { champion: 'DA_18_Lux_Elderwood', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Xayah',
-      'DA_18_Ornn',
-      'DA_18_Alistar',
-      'DA_18_LeBlanc',
-    ],
-    augments: [
-      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'يمنحك وحدة إلدروود إضافية مبكرًا ويقفل عتبة 7 بسرعة.', en: 'Grants an extra Elderwood early and helps you hit the 7 breakpoint fast.', ja: '序盤でエルダーウッドを1体追加し、7のブレイクポイントを素早く解放する。' } },
-      { id: 'DA_SpreadingRootsPlus', tier: 'gold', why: { ar: 'يزيد صحة نباتات إلدروود، وهو أفضل دعم لجدار زايا.', en: 'Boosts Elderwood health — the best support for Xayah’s wall.', ja: 'エルダーウッドの体力を増加。ザヤの壁を支える最良の補助。' } },
-      { id: 'DA_PandorasItemsII', tier: 'prism', why: { ar: 'يساعد في تحويل مكوناتك إلى عناصر زايا المثالية بدون مخاطرة.', en: 'Converts your components into Xayah’s ideal items with no risk.', ja: 'コンポーネントを無リスクでザヤの理想アイテムに変換する。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا تشترِ الخبرة. ابحث عن زايا وأورن وأليستار ولا تصرف الذهب فوق 50.', en: 'Don’t buy XP. Look for Xayah, Ornn and Alistar and keep your gold above 50.', ja: 'XPを買わない。ザヤ、オーン、アリスターを探し、ゴールドを50以上保つ。' } },
-      { stage: { ar: '3-1', en: '3-1', ja: '3-1' }, text: { ar: 'استبدل ببطء حتى تصل زايا وأورن إلى ثلاث نجوم، مع الحفاظ على اقتصادك.', en: 'Slow-roll until Xayah and Ornn hit three stars while keeping your economy.', ja: 'ザヤとオーンが3星になるまでスローロール。経済は維持する。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'اصعد إلى مستوى 7 وأضف ليبلانك وإزريال لتفعيل نسّاج السحر.', en: 'Push to level 7 and add LeBlanc and Ezreal to activate Spellweaver.', ja: 'レベル7へ上がり、レイブランクとエズリアルを足してスルウェイバーを発動。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8: أضف غنار وليكس، وانقل العناصر من الوحدات المؤقتة.', en: 'Level 8: add Gnar and Lux, and move items off your temporary units.', ja: 'レベル8：ガナーとラックスを追加し、一時ユニットからアイテムを移す。' } },
-    ],
-    tips: [
-      { ar: 'لا تدخل مستوى 8 قبل تثبيت زايا بثلاث نجوم؛ الاقتصاد أهم من الوحدات الإضافية.', en: 'Don’t hit level 8 before three-starring Xayah — economy matters more than extra units.', ja: 'ザヤの3星达成より先にレベル8へ行かない。追加ユニットより経済が重要。' },
-      { ar: 'ضع أورن في الزاوية الأمامية وحده ليستقبل أول موجة ضرر مع تفعيل الدرع.', en: 'Put Ornn alone in the front corner to eat the first damage spike and proc his shield.', ja: 'オーンを前の隅に一人配置し、最初のダメージを受けてシールドを発動させる。' },
-      { ar: 'عنصر الهمسة الأخيرة ضروري ضد الجبهات الكبيرة، لا تستبدله أبدًا في نهاية اللعبة.', en: 'Last Whisper is essential into big frontlines — never swap it out late game.', ja: 'ラストウィスパーは重たい前線に必須。終盤でも外交しない。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Sett', replaces: 'DA_18_GnarSmall', note: { ar: 'أقوى في الخط الأمامي إذا لم تجد غنار أو كانت نجومه منخفضة.', en: 'Stronger frontline if you didn’t find Gnar or his stars are low.', ja: 'ガナーが引けなかった場合のより頑丈な前線。' } },
-      { champion: 'DA_18_Lux_Elderwood', replaces: 'DA_18_Ezreal', note: { ar: 'إذا لم تحصل على إزريال، انقل عناصر الضرر إلى لكس.', en: 'If you miss Ezreal, move the damage items onto Lux.', ja: 'エズリアルが来ない場合はダメージ装備をラックスへ移す。' } },
-    ],
-  },
-  {
-    slug: 'blackthorn-azir',
-    name: { ar: 'الشوكة السوداء أزير', en: 'Blackthorn Azir', ja: 'ブラックソーン アジール' },
-    subtitle: { ar: 'أزير يستدعي جيشه من الخلف', en: 'Azir summons his army from the back', ja: 'アジールが後方から軍を召喚する' },
-    tier: 'B',
-    difficulty: 3,
-    playstyle: { ar: 'استدعاءات', en: 'Summoners', ja: 'サモナー' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو متوازن يعتمد على أزير كمصدر ضرر سحري أساسي مع دعم من مستدعيي الشوكة السوداء. مالفايت ويوريك يشكلان جبهة صلبة، بينما تصنع زايرا ورابتور الضرر الموزع وخصم العلاج.',
-      en: 'A balanced comp leaning on Azir as your main magic damage with Blackthorn summoner support. Malphite and Yorick build a solid frontline while Zyra and the Raptor bring spread damage and anti-heal.',
-      ja: 'メインの魔法ダメージとしてのアジールを軸に、ブラックソーンのサモナーで支えるバランス型。マルファイトとヨリックが堅牢な前線を築き、ジラとラプターが範囲ダメージと回復阻害を担う。',
-    },
-    units: [
-      { champion: 'DA_18_Azir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_RekSai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Warwick', items: ['TFT_Item_SteraksGage', 'TFT_Item_TitansResolve', 'TFT_Item_SpearOfShojin'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_18_Zyra', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 2 },
-      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_TitansResolve'], star: 2, row: 1, col: 4 },
-      { champion: 'DA_Lux18_Blackthorn', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_BlueBuff'], star: 2, row: 0, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Yorick',
-      'DA_18_Yunara',
-      'DA_18_Azir',
-    ],
-    augments: [
-      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'يمنح شوكة سوداء إضافية ومكونات إضافية، ويقفل عتبة 5 بسهولة.', en: 'Grants an extra Blackthorn plus components, easily unlocking the 5 breakpoint.', ja: 'ブラックソーンを追加しコンポーネントも付与。5のブレイクポイントを簡単に解放。' } },
-      { id: 'DA_TonsOfStatsI', tier: 'silver', why: { ar: 'إحصاءات جماعية مجانية على كل الوحدات، قيمة عالية في كومبو استدعاءات.', en: 'Free teamwide stats — great value in a summoner comp.', ja: 'チーム全体に無料のステータス。サモナー構成では高効率。' } },
-      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'يمنحك مكونات كافية لتجهيز أزير ومالفايت معًا.', en: 'Gives you enough components to itemize both Azir and Malphite.', ja: 'アジールとマルファイトの両方に装備させるだけのコンポーネントを付与。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابنِ اقتصادًا قويًا واعتمد على ريكساي ويوريك في البداية.', en: 'Build a strong economy and lean on Rek’Sai and Yorick early.', ja: '強い経済を築き、序盤はレクサイとヨリックで戦う。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'اصعد إلى مستوى 6 وابحث عن أول نسخة من أزير أو مالفايت.', en: 'Hit level 6 and look for your first Azir or Malphite.', ja: 'レベル6へ上がり、最初のアジールかマルファイトを探す。' } },
-      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'مستوى 7 مع زايرا ورابتور لتفعيل المستدعي، وحافظ على 30 ذهبًا.', en: 'Level 7 with Zyra and Raptor to activate Summoner, keep 30 gold.', ja: 'レベル7でジラとラプターを足してサモナーを発動。ゴールドは30維持。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8: أضف لكس ووارويك، ثم ابحث عن ترقية الوحدات الأساسية.', en: 'Level 8: add Lux and Warwick, then look to upgrade your core units.', ja: 'レベル8：ラックスとワーウィックを追加し、コアユニットを強化。' } },
-    ],
-    tips: [
-      { ar: 'ضع أزير في الزاوية الخلفية بعيدًا عن القتلة، جناحه يحتاج وقتًا لبناء الجيش.', en: 'Keep Azir in the back corner away from assassins — his army needs time to build.', ja: 'アジールを後方の隅に Assassinから遠ざける。軍の構築に時間がかかる。' },
-      { ar: 'مالفايت يمنح درعًا لكل الفريق عند تفعيل المونوليث، لا تضعفه بعناصر ضرر.', en: 'Malphite grants the whole team a shield on Monolith — don’t give him damage items.', ja: 'マルファイトはモノリスで全体にシールドを与える。ダメージ装備は不要。' },
-      { ar: 'خصم العلاج على زايرا أو رابتور مهم جدًا ضد كومبوهات العلاج في الميتا.', en: 'Anti-heal on Zyra or Raptor is huge against healing comps in the meta.', ja: 'ジラかラプターに回復阻害を持たせると回復構成に有効。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Morgana', replaces: 'DA_CrimsonRaptor18', note: { ar: 'بديل ممتاز إذا لم تجد الرابتور: ضرر سحري وخصم علاج من مسافة.', en: 'Great if you miss the Raptor: magic damage and anti-heal from range.', ja: 'ラプターが来ない代替。間接から魔法ダメージと回復阻害。' } },
-      { champion: 'DA_18_Shen', replaces: 'DA_18_RekSai', note: { ar: 'جبهة إضافية إذا كانت ريكساي ضعيفة في نجومها.', en: 'Extra frontline if your Rek’Sai is low-starred.', ja: 'レクサイの星が低い場合の追加前線。' } },
-    ],
-  },
-  {
-    slug: 'blossom-ashe',
-    name: { ar: 'ازدهار آش', en: 'Blossom Ashe', ja: 'ブロッサム アッシュ' },
-    subtitle: { ar: 'آش تجمّد الخط الأمامي وتذيب الباقي', en: 'Ashe freezes the frontline and melts the rest', ja: 'アッシュが前線を凍らせ残りを溶かす' },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'قناص', en: 'Sniper', ja: 'スナイパー' },
-    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
-    summary: {
-      ar: 'كومبو ازدهار رأسي يصل إلى العتبة الكبرى مع آش كقناصة أساسية. آري وكارما تضخان ضررًا سحريًا وتدعمان الفريق، ويوريك وسيت يصنعان جبهة طويلة بما يكفي لآش.',
-      en: 'A vertical Blossom comp that reaches the big breakpoint with Ashe as your core sniper. Ahri and Karma pump magic damage and support the team, while Yorick and Sett build a long enough frontline for Ashe.',
-      ja: '主要スナイパーのアッシュで大きなブレイクポイントに届く縦型ブロッサム構成。アリとカルマが魔法ダメージを供給し、ヨリックとセトがアッシュのために十分な前線を築く。',
-    },
-    units: [
-      { champion: 'DA_18_Ashe', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Yunara', items: ['TFT_Item_Deathblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_Karma18', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_MasterYi_AD', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_Lux18_Blossom', items: ['TFT_Item_ArchangelsStaff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'يمنح ازدهار إضافيًا ويسرّع الوصول إلى العتبة الكبرى.', en: 'Grants extra Blossom and speeds up the big breakpoint.', ja: 'ブロッサムを追加し大きなブレイクポイントへ急ぐ。' } },
-      { id: 'DA_JeweledLotus_I', tier: 'silver', why: { ar: 'قدرة أزير وآري وكارما تصبح قادرة على الضربة الحرجة مع العناصر المرصعة.', en: 'Lets Azir, Ahri and Karma crit with jeweled items.', ja: 'アジール、アリ、カルマが宝石装備でクリティカルを出せるようになる。' } },
-      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'خبرة إضافية تساعدك على الوصول إلى مستوى 9 قبل بقية اللوبي.', en: 'Extra XP helps you reach level 9 before the lobby.', ja: '追加XPでロビーより先にレベル9へ。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابدأ بيوريك ويونارا وارفع مستوى 4 في الدور الثاني.', en: 'Open with Yorick and Yunara and push level 4 on round two.', ja: 'ヨリックとユナラで開始し、2巡目でレベル4へ。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'اصعد إلى مستوى 7 وابحث عن آش وآري أثناء اللف.', en: 'Hit level 7 and look for Ashe and Ahri while rolling.', ja: 'レベル7へ上がりながらアッシュとアリを探す。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع لكس وسيت، وثبّت آش بعناصرها الثلاثة.', en: 'Level 8 with Lux and Sett, and lock in Ashe’s three items.', ja: 'レベル8でラックスとセトを追加、アッシュの3装備を確定。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'إذا كانت صحتك جيدة، اصعد إلى 9 وأضف وحدة أسطورية إضافية.', en: 'If your health is healthy, push 9 and add an extra legendary.', ja: '体力に余裕があればレベル9へ上がり追加レジェンドを配置。' } },
-    ],
-    tips: [
-      { ar: 'آش تحتاج وقتًا، لذلك ضع الجبهة في صف كامل أمامها وامنع القتلة من الوصول إليها.', en: 'Ashe needs time — put a full frontline in front and keep assassins off her.', ja: 'アッシュは時間が必要。全面に前線を置き Assassinを近づけない。' },
-      { ar: 'عنصر خصم العلاج على كارما أو لكس يقلل فعالية جبهات العلاج بشكل كبير.', en: 'Anti-heal on Karma or Lux badly hurts healing frontlines.', ja: 'カルマかラックスに回復阻害を持たせると回復前線を強く削る。' },
-      { ar: 'لا تبع يوريك في وقت مبكر؛ هو أرخص جبهة في الكومبو وقيمته ترتفع مع ازدهار.', en: 'Don’t sell Yorick early — he’s your cheapest frontline and scales with Blossom.', ja: 'ヨリックを早めに売らない。最安の前線でブロスサムと共に成長。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Aphelios', replaces: 'DA_18_MasterYi_AD', note: { ar: 'قناص بديل إذا لم تجد ماستر يي، مع نقل عناصر الضرر.', en: 'Alternative sniper if you miss Master Yi, move the damage items over.', ja: 'マスター・イーが来ない代替スナイパー。ダメージ装備を移す。' } },
-      { champion: 'DA_18_Lillia', replaces: 'DA_18_Sett', note: { ar: 'مدافع أوفر للبقاء عندما تحتاج جبهة أطول.', en: 'A tankier frontliner when you need a longer frontline.', ja: 'より長い前線が必要な時のoughなタンク。' } },
-    ],
-  },
-  {
-    slug: 'inferno-akali',
-    name: { ar: 'جحيم أكالي', en: 'Inferno Akali', ja: 'インフェルノ アカリ' },
-    subtitle: { ar: 'أكالي تخترق الصفوف من الخلف', en: 'Akali infiltrates the backline', ja: 'アカリが敵陣へ切り込む' },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'قتل سريع', en: 'Assassin', ja: 'アサシン' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ حول أكالي بثلاث نجوم، مع كينين كحامل ضرر سحري ثانٍ. جحيم يزيد الضرر بمرور الوقت، وشين وراموس وأمومو يمنحون الجبهة متانة كافية لوصول أكالي إلى حامل الضرر.',
-      en: 'A reroll comp around three-star Akali, with Kennen as a secondary magic carry. Inferno ramps damage over time, and Shen, Rammus and Amumu give a frontline durable enough for Akali to reach the carries.',
-      ja: '3星アカリ中心のリロール構成。副次的な魔法ダメージ要員としてケネン。インフェルノが時間経過でダメージを増し、シェン、ラムス、アムムがアカリをキャリーまで運ぶ堅牢な前線を提供。',
-    },
-    units: [
-      { champion: 'DA_18_Akali_AD', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_GuardianAngel'], star: 3, row: 2, col: 3 },
-      { champion: 'DA_18_Varus', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_InfinityEdge'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 1, col: 2 },
-      { champion: 'DA_18_Lux_Inferno', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Akali_AD',
-      'DA_18_Camille',
-      'DA_18_Leona',
-      'DA_18_Ornn',
-    ],
-    augments: [
-      { id: 'DA_18_InfernoTraitAugment', tier: 'gold', why: { ar: 'يمنح وحدة جحيم إضافية وعتبة حرق أعلى، مثالي مع أكالي وكينين.', en: 'Grants an extra Inferno with a higher burn breakpoint — perfect with Akali and Kennen.', ja: 'インフェルノを追加し燃焼ブレイクポイントを向上。アカリとケネンに最適。' } },
-      { id: 'DA_Corrosion', tier: 'silver', why: { ar: 'خصم دروع ومقاومة سحرية يجعل انفجارات أكالي أقوى.', en: 'Shreds armor and MR, making Akali’s bursts hit harder.', ja: 'アーマーとMRを削り、アカリのバーストを強化。' } },
-      { id: 'DA_HealingOrbsI', tier: 'silver', why: { ar: 'استمرارية إضافية لأكالي في المعارك الطويلة.', en: 'Extra sustain for Akali in longer fights.', ja: '長期戦でのアカリの継続力を向上。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا ترفع المستوى. اجمع أكالي وفاروس وابحث عن ثلاث نجوم.', en: 'Don’t level. Collect Akali and Varus and hunt three stars.', ja: 'レベルを上げない。アカリとヴァルスを集め3星を狙う。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أنت في مستوى 6 طبيعيًا؛ أضف شين لتفعيل المدافع.', en: 'You’ll naturally be level 6; add Shen to activate Defender.', ja: '自然とレベル6になる。シェンを足してディフェンダーを発動。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'اصعد إلى 7 وأضف كينين وأمومو، ثم ابحث عن أكالي الثالثة.', en: 'Push to 7, add Kennen and Amumu, then look for the third Akali.', ja: 'レベル7へ、ケネンとアムムを追加し3体目のアカリを探す。' } },
-      { stage: { ar: '5-2', en: '5-2', ja: '5-2' }, text: { ar: 'مستوى 8 مع لكس وتاريك لزيادة الضرر السحري والبقاء.', en: 'Level 8 with Lux and Taric for more magic damage and sustain.', ja: 'レベル8でラックスとタリックを追加し魔法ダメージと継続力を強化。' } },
-    ],
-    tips: [
-      { ar: 'أكالي تحتاج الوصول إلى حامل الضرر؛ ركّز عناصر الجبهة على شين وأمومو.', en: 'Akali needs to reach the carries — stack your frontline items on Shen and Amumu.', ja: 'アカリはキャリーに届く必要がある。前線装備はシェンとアムムに集中。' },
-      { ar: 'كينين يستفيد كثيرًا من عناصر القدرة، لا تهمله إذا لم تصل أكالي لثلاث نجوم.', en: 'Kennen loves ability items — don’t neglect him if Akali misses three stars.', ja: 'ケネンはアビリティ装備に強い。アカリが3星なら彼を疎かにしない。' },
-      { ar: 'قف في الزاوية المقابلة لحامل ضرر العدو لتفادي انفجار البداية.', en: 'Mirror the enemy carry’s corner to dodge their opening burst.', ja: '敵キャリーの隅と逆側に立ち、開幕バーストを避ける。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Soraka', replaces: 'DA_Taric18', note: { ar: 'علاج جماعي إذا كنت تواجه ضررًا موزعًا ولا تحتاج دروعًا إضافية.', en: 'Teamwide heal if you’re facing spread damage and don’t need extra shields.', ja: '範囲ダメージを受けている時のチーム回復。' } },
-      { champion: 'DA_18_Sejuani', replaces: 'DA_18_Rammus', note: { ar: 'جبهة بديلة بنفس دور الطاغوت وتبطئ هجوم العدو.', en: 'Alternate Juggernaut who also slows enemy attack speed.', ja: '敵の攻撃速度も下げる代替ジャガーノート。' } },
-    ],
-  },
-  {
-    slug: 'lunar-aphelios',
-    name: { ar: 'قمري أفيليوس', en: 'Lunar Aphelios', ja: 'ルナー アフェリオス' },
-    subtitle: { ar: 'قمر يضيء طريق الصعود', en: 'A moon lighting the climb', ja: '登り道を照らす月' },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'قناص', en: 'Sniper', ja: 'スナイパー' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'أفيليوس حامل الضرر الأساسي بسرعة هجوم مرتفعة، وألون تضاعف قوة الفريق القمرية. ديانا وتاريك يمنحان طليعية قوية، بينما راموس وشين وليونا يبنون جبهة مدافعين صعبة الاختراق.',
-      en: 'Aphelios is your high-attack-speed carry and Alune doubles your Lunar team power. Diana and Taric bring strong vanguard while Rammus, Shen and Leona build a hard-to-crack Defender frontline.',
-      ja: '高い攻撃速度のアフェリオスがキャリー。アルーンがルナーのチーム力を倍増。ディアナとタリックが強力な守りを提供し、ラムス、シェン、レオナが崩しにくいディフェンダー前線を築く。',
-    },
-    units: [
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Lux_Moonbeam', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 1 },
-      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 2, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Ornn',
-      'DA_18_Xayah',
-      'DA_18_Varus',
-      'DA_18_Shen',
-    ],
-    augments: [
-      { id: 'DA_18_LunarTraitAugment', tier: 'gold', why: { ar: 'قمرية إضافية ترفع سرعة الهجوم وقوة القدرة لكل الفريق.', en: 'Extra Lunar raises team attack speed and ability power.', ja: 'ルナーを追加しチームの攻撃速度とAPを上昇。' } },
-      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'عنصر سيف إضافي يسرّع تجهيز أفيليوس.', en: 'An extra sword item speeds up Aphelios’s build.', ja: '追加の剣アイテムでアフェリオスの装備を早める。' } },
-      { id: 'DA_GlassCannon_Gold', tier: 'gold', why: { ar: 'ضرر أعلى بكثير لأفيليوس مقابل صحة أقل، يناسب جبهة قوية.', en: 'Far more damage on Aphelios for less health — great with a solid frontline.', ja: '体力を減らしてアフェリオスのダメージを大幅増加。堅牢な前線と好相性。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بليونا وشين، ولا تصرف الذهب على الاستبدال.', en: 'Open with Leona and Shen, don’t waste gold on rolling.', ja: 'レオナとシェンで開始。ロールにゴールドを使わない。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7: أضف ديانا وألون وثبّت سرعة هجوم أفيليوس.', en: 'Level 7: add Diana and Alune and lock Aphelios’s attack speed.', ja: 'レベル7：ディアナとアルーンを追加しアフェリオスの攻撃速度を確保。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع لكس وتاريك وراموس، ووزّع العناصر الدفاعية.', en: 'Level 8 with Lux, Taric and Rammus, spread defensive items.', ja: 'レベル8でラックス、タリック、ラムスを追加し防御装備を分散。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'إذا سمح الاقتصاد، ابحث عن لكس ثانية أو وحدة أسطورية بديلة.', en: 'If your economy allows, look for a second Lux or an alternate legendary.', ja: '経済が許せば2体目のラックスか代替レジェンドを探す。' } },
-    ],
-    tips: [
-      { ar: 'أفيليوس يحتاج وقتًا طويلًا؛ ضع ألون بجانبه لتستفيد من التعزيز القمري.', en: 'Aphelios needs time — put Alune beside him to benefit from Lunar buffs.', ja: 'アフェリオスは時間が必要。隣にアルーンを置きルナーのバフを得る。' },
-      { ar: 'لا تضع ديانا في الخط الأمامي الأول؛ دعها تدخل بعد بدء القتال لتنجو من الانفجار.', en: 'Don’t put Diana in the first front row — let her enter after the fight starts.', ja: 'ディアナを最初の前線に置かない。戦闘開始後に潜入させる。' },
-      { ar: 'درع راموس ضد الضرر المادي ممتاز ضد كومبوهات الصيادين في الباتش.', en: 'Rammus’s armor vs physical is excellent into hunter comps this patch.', ja: 'このパッチではラムスの物理耐性はハンター構成に非常に有効。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Sejuani', replaces: 'DA_18_Leona', note: { ar: 'طاغوت إضافي بدل مدافع إذا احتجت جبهة أكثر صحة.', en: 'Extra Juggernaut instead of Defender if you need a tankier front.', ja: 'より体力の多い前線が必要ならディフェンダーの代わりにジャガーノート。' } },
-      { champion: 'DA_18_Morgana', replaces: 'DA_18_Lux_Moonbeam', note: { ar: 'خصم علاج وضرر سحري عند عدم توفر لكس القمرية.', en: 'Anti-heal and magic damage if you miss Lunar Lux.', ja: 'ルナーのラックスが来ない時の回復阻害と魔法ダメージ。' } },
-    ],
-  },
-  {
-    slug: 'coven-cassiopeia',
-    name: { ar: 'اجتماع السحرة كاسيوبيا', en: 'Coven Cassiopeia', ja: 'コヴェン カッシオペア' },
-    subtitle: { ar: 'سمّ ينتشر في كل أرجاء اللوح', en: 'Poison spreading across the board', ja: '盤面全体に広がる毒' },
-    tier: 'A',
-    difficulty: 3,
-    playstyle: { ar: 'ضرر سحري', en: 'Magic damage', ja: '魔法ダメージ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كاسيوبيا تبني سمومًا تنتشر بين صفوف العدو، ومورغانا تضيف ضررًا سحريًا وخصم علاج. اجتماع السحرة يعزز قوة القدرة لكل الفريق، وإليز وساميل يصنعان مقدمة قتالية قادرة على إيقاف القتلة.',
-      en: 'Cassiopeia layers poison across the enemy lines while Morgana adds magic damage and anti-heal. Coven boosts team ability power, and Elise with Samira build a frontline that can stop assassins.',
-      ja: 'カッシオペアが敵陣に毒を広げ、モルガナが魔法ダメージと回復阻害を加える。コヴェンがチームのAPを強化し、エリゼとサミラがアサシンを止める前線を築く。',
-    },
-    units: [
-      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_HextechGunblade', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Camille', items: ['TFT_Item_SteraksGage', 'TFT_Item_Quicksilver', 'TFT_Item_InfinityEdge'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Lux_Coven', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 1 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Leona',
-      'DA_18_Ornn',
-      'DA_18_LeBlanc',
-    ],
-    augments: [
-      { id: 'DA_18_CovenTraitAugment', tier: 'gold', why: { ar: 'وحدة ساحرة إضافية وقوة قدرة أعلى لكل الفريق.', en: 'Extra coven member and higher team ability power.', ja: 'コヴェンを追加しチームのAPを上昇。' } },
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر سحري إضافي بعد كل إلقاء قدرة، يتفاعل بقوة مع كاسيوبيا ومورغانا.', en: 'Bonus magic damage after each cast — synergizes hard with Cassiopeia and Morgana.', ja: 'キャスト後に追加魔法ダメージ。カッシオペアとモルガナと強く連携。' } },
-      { id: 'DA_ComponentBuffet', tier: 'silver', why: { ar: 'مكونات إضافية لتجهيز حاملي الضرر السحري الثلاثة.', en: 'Extra components to itemize your three magic carries.', ja: '3人の魔法キャリーに装備させる追加コンポーネント。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'استخدم كاميل وكايتلين مبكرًا، واحتفظ بمكونات القدرة.', en: 'Use Camille and Caitlyn early and hold ability components.', ja: '序盤はカミールとケイトリンを使い、アビリティ系の部品を温存。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7: ابحث عن كاسيوبيا ومورغانا ودورة كاملة من الوحدات.', en: 'Level 7: look for Cassiopeia and Morgana and a full board of units.', ja: 'レベル7：カッシオペアとモルガナを探し盤面を埋める。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع إليز وليكس وشين وراموس.', en: 'Level 8 with Elise, Lux, Shen and Rammus.', ja: 'レベル8でエリゼ、ラックス、シェン、ラムスを追加。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'حسّن نجوم كاسيوبيا ومورغانا بدل الصعود إلى 9.', en: 'Improve Cassiopeia and Morgana’s stars instead of pushing 9.', ja: 'レベル9よりカッシオペアとモルガナの星を上げる。' } },
-    ],
-    tips: [
-      { ar: 'السموم تحتاج وقتًا؛ ضع مورغانا وكاسيوبيا في أقصى الخلف ولا تقربهما من القتلة.', en: 'Poison needs time — keep Morgana and Cassiopeia far back, away from assassins.', ja: '毒は時間を要する。モルガナとカッシオペアを最奥に置き Assassinを避ける。' },
-      { ar: 'خصم العلاج على مورغانا أو كاسيوبيا أولوية ضد جبهات العلاج.', en: 'Anti-heal on Morgana or Cassiopeia is a priority into healing frontlines.', ja: '回復前線に対してはモルガナかカッシオペアの回復阻害が優先。' },
-      { ar: 'كاميل تحتاج عناصر استمرارية، لا تعطها عناصر القدرة.', en: 'Camille wants sustain items, not ability items.', ja: 'カミールにはアビリティではなく継続系の装備を渡す。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Shen', replaces: 'DA_18_Rammus', note: { ar: 'الاثنان مدافعان؛ اختر حسب النجوم المتوفرة.', en: 'Both are defenders — pick based on available stars.', ja: '両方ディフェンダー。使える星で選ぶ。' } },
-      { champion: 'DA_18_Tristana', replaces: 'DA_18_Caitlyn', note: { ar: 'بديل أرخص للضرر المادي إذا لم تجد كايتلين.', en: 'Cheaper physical damage if you miss Caitlyn.', ja: 'ケイトリンが来ない時のより安い物理ダメージ。' } },
-    ],
-  },
-  {
-    slug: 'fae-tristana',
-    name: { ar: 'عفريت تريستانا', en: 'Fae Tristana', ja: 'フェイ トリスターナ' },
-    subtitle: { ar: 'رشقات سريعة وأشواك خفية', en: 'Rapid shots and hidden spikes', ja: '高速の弾と見えない棘' },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'رشقات', en: 'Rapidfire', ja: 'ラピッドファイア' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'تريستانا تطلق النار بسرعة مع تعزيز العفريت، وزايا تدعمها بضرر مستمر. راكان وليليا يوفّران جبهة ودرعًا، وأليستار وأورن يمنحان إلدروود عمقًا دفاعيًا في بداية اللعبة.',
-      en: 'Tristana rapid-fires with Fae buffs while Xayah backs her up with sustained damage. Rakan and Lillia provide frontline and shields, and Alistar with Ornn add early Elderwood depth.',
-      ja: 'トリスターナがフェイのバフで高速射击し、ザヤが持続ダメージで支える。ラカンとリリアが前線とシールドを提供し、アリスターとオーンが序盤のエルダーウッドの厚みを加える。',
-    },
-    units: [
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Xayah', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Lux_Fae', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 2, col: 1 },
-    ],
-    earlyUnits: [
-      'DA_18_Rakan',
-      'DA_18_Varus',
-      'DA_18_Xayah',
-      'DA_18_Hecarim',
-    ],
-    augments: [
-      { id: 'DA_18_FaeTraitAugment', tier: 'gold', why: { ar: 'عفريت إضافي يرفع سرعة الهجوم لكل الفريق.', en: 'Extra Fae raises team attack speed.', ja: 'フェイを追加しチームの攻撃速度を上昇。' } },
-      { id: 'DA_FocusedFire', tier: 'silver', why: { ar: 'ضرر إضافي على الأهداف المصابة، يناسب انتشار الرشقات.', en: 'Bonus damage on already-hit targets — fits rapidfire spread.', ja: '既に命中した対象に追加ダメージ。ラピッドファイアの拡散に適合。' } },
-      { id: 'DA_ComponentBuffet', tier: 'silver', why: { ar: 'مكونات إضافية لتجهيز تريستانا وزايا.', en: 'Extra components to itemize Tristana and Xayah.', ja: 'トリスターナとザヤに装備する追加コンポーネント。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بزاي وأليستار وأورن لتفعيل إلدروود مبكرًا.', en: 'Open with Xayah, Alistar and Ornn for early Elderwood.', ja: 'ザヤ、アリスター、オーンで序盤のエルダーウッドを発動。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف راكان وتريستانا وأكمل جبهتك الأمامية.', en: 'Add Rakan and Tristana and round out your frontline.', ja: 'ラカンとトリスターナを追加し前線を整える。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف ليليا وثبّت تريستانا بعناصرها.', en: 'Level 7: add Lillia and lock Tristana’s items.', ja: 'レベル7：リリアを追加しトリスターナの装備を確定。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'مستوى 8 مع لكس العفريت، وحسّن نجوم راكان وليليا.', en: 'Level 8 with Fae Lux, and upgrade Rakan and Lillia’s stars.', ja: 'レベル8でフェイのラックスを追加、ラカンとリリアを強化。' } },
-    ],
-    tips: [
-      { ar: 'تريستانا تفضل الرشقات الطويلة، ضعها أمام جبهة رقيقة لا مباشرة في وجه القتلة.', en: 'Tristana prefers long fights — put her behind a thin frontline, not face-to-face with assassins.', ja: 'トリスターナは長期戦向き。薄い前線の後ろに置き Assassinと正面冲突させない。' },
-      { ar: 'أليستار يقلل الضرر على الفريق، عناصر الصحة عليه أفضل من الدروع.', en: 'Alistar reduces team damage taken — health items beat resist items on him.', ja: 'アリスターは被ダメージを軽減。防御装備より体力装備が有効。' },
-      { ar: 'عنصر قلنسوة لهب الشمس على تريستانا يساعد ضد جبهات العلاج.', en: 'Sunfire Cape on Tristana helps into healing frontlines.', ja: 'トリスターナにサンファイヤーケープを持たせると回復前線に有効。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_GnarSmall', replaces: 'DA_18_Ornn', note: { ar: 'بديل إلدروود في الخط الأمامي مع ضرر أعلى.', en: 'Elderwood frontline alternative with more damage.', ja: 'ダメージの高いエルダーウッドの前線代替。' } },
-      { champion: 'DA_18_Sett', replaces: 'DA_18_Alistar', note: { ar: 'مشاجر إضافي إذا لم تجد أليستار بنجوم جيدة.', en: 'Extra Brawler if you miss a high-star Alistar.', ja: 'アリスターの星が低い時の追加バウラー。' } },
-    ],
-  },
-  {
-    slug: 'solar-kayle',
-    name: { ar: 'شمسي كايل', en: 'Solar Kayle', ja: 'ソーラー ケイル' },
-    subtitle: { ar: 'كايل ترتقي مع كل معركة', en: 'Kayle ascends with every fight', ja: 'ケイルは戦闘ごとに昇天する' },
-    tier: 'B',
-    difficulty: 3,
-    playstyle: { ar: 'تدرّج', en: 'Scaling', ja: 'スケーリング' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كايل تبدأ ضعيفة وتزداد قوة مع كل مستوى شمسي. ليونا وسيجواني وليكس يوفّرون عتبة الشمسي، بينما يحمي راموس وشين وتاريك كايل حتى تصل إلى مرحلة القوة القصوى.',
-      en: 'Kayle starts weak and grows with every Solar tick. Leona, Sejuani and Lux hit the Solar breakpoint while Rammus, Shen and Taric protect Kayle until she reaches full power.',
-      ja: 'ケイルは初期は弱いがソーラーの効果で成長する。レオナ、セジュアニ、ラックスがソーラーのブレイクポイントを達成し、ラムス、シェン、タリックが最大出力に届くまで守る。',
-    },
-    units: [
-      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_RapidFireCannon'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Sejuani', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_18_Lux_Sunbeam', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 1 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 2, col: 3 },
-    ],
-    earlyUnits: [
-      'DA_18_Leona',
-      'DA_18_Varus',
-      'DA_18_Shen',
-      'DA_18_Kayle',
-    ],
-    augments: [
-      { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'شمسي إضافي يرفع قوة كايل وفريقك بشكل مباشر.', en: 'Extra Solar directly boosts Kayle and your team.', ja: 'ソーラーを追加しケイルとチームを直接強化。' } },
-      { id: 'DA_ElectrochargeI', tier: 'silver', why: { ar: 'ضرر إضافي عند تفعيل الدروع، وجبهتك مليئة بالمدافعين.', en: 'Bonus damage when shields pop — your frontline is full of defenders.', ja: 'シールド発動時に追加ダメージ。前線にディフェンダーが揃う。' } },
-      { id: 'DA_MakeshiftArmorI', tier: 'silver', why: { ar: 'دروع ومقاومة سحرية مجانية تقوي الجبهة الطويلة.', en: 'Free armor and MR bolsters your long frontline.', ja: '無料のアーマーとMRで長い前線を強化。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بليونا وكايل، وثبّت مستوى 4 في الدور الثاني.', en: 'Open with Leona and Kayle, hold level 4 on round two.', ja: 'レオナとケイルで開始、2巡目でレベル4を維持。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف سيجواني وتاريك وراموس، وحافظ على 40 ذهبًا.', en: 'Add Sejuani, Taric and Rammus, keep 40 gold.', ja: 'セジュアニ、タリック、ラムスを追加、ゴールド40を維持。' } },
-      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'مستوى 7: أضف سوراكا وثبّت عناصر كايل.', en: 'Level 7: add Soraka and lock Kayle’s items.', ja: 'レベル7：ソラカを追加しケイルの装備を確定。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع لكس الشمسية، ثم ابحث عن ترقية كايل.', en: 'Level 8 with Sunbeam Lux, then look to upgrade Kayle.', ja: 'レベル8でサンビームのラックスを追加、ケイルを強化。' } },
-    ],
-    tips: [
-      { ar: 'كايل تحتاج وقتًا؛ كل نقطة صحة إضافية في الجبهة تعني معركة أطول وقوة أكبر.', en: 'Kayle needs time — every extra frontline HP means a longer fight and more power.', ja: 'ケイルは時間が必要。前線のHPが増えるほど戦闘が長引き出力が上がる。' },
-      { ar: 'لا ترفع كايل في الخط الأمامي؛ ضعها خلف ليونا مباشرة.', en: 'Never put Kayle in the frontline — place her right behind Leona.', ja: 'ケイルを前線に置かない。レオナの直後へ。' },
-      { ar: 'سوراكا علاج جماعي ممتاز، أعطها عناصر القدرة قبل العناصر الدفاعية.', en: 'Soraka is great teamwide healing — give her ability items before defensive ones.', ja: 'ソラカは優れた全体回復。防御より先にアビリティ装備を渡す。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Amumu18', replaces: 'DA_18_Sejuani', note: { ar: 'طاغوت بديل إذا لم تجد سيجواني؛ تفقد عتبة الشمسي.', en: 'Alternate Juggernaut if you miss Sejuani — you lose the Solar breakpoint.', ja: 'セジュアニが来ない代替ジャガーノート。ソーラーのブレイクポイントは失う。' } },
-      { champion: 'DA_18_Shen', replaces: 'DA_18_Rammus', note: { ar: 'الاثنان مدافعان، اختر الأقوى نجومًا.', en: 'Both defenders — pick the higher-starred one.', ja: '両方ディフェンダー。星の高い方を選ぶ。' } },
-    ],
-  },
-  {
-    slug: 'primal-sivir',
-    name: { ar: 'بدائي سيفير', en: 'Primal Sivir', ja: 'プリマル シヴィア' },
-    subtitle: { ar: 'صيادات يغطّين سماء اللوح', en: 'Hunters covering the board', ja: '盤面の空を覆うハンター' },
-    tier: 'A',
-    difficulty: 2,
-    playstyle: { ar: 'صيادون', en: 'Hunters', ja: 'ハンター' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو صيادين متعدد حاملي الضرر: سيفير وآش وكايتلين وتريستانا. نيدالي وكوغ ماو يضيفان ضررًا سحريًا من خلف الجبهة، وفاي تحمي الخط الأمامي مع تعزيز البدائي.',
-      en: 'A multi-carry Hunter comp: Sivir, Ashe, Caitlyn and Tristana. Nidalee and Kog’Maw add magic damage from behind the frontline, while Vi protects the front with Primal support.',
-      ja: '複数キャリーのハンター構成：シヴィア、アッシュ、ケイトリン、トリスターナ。ニダリーとコグモーが前線後ろから魔法ダメージを加え、ヴァイがプリマルの支援で前線を守る。',
-    },
-    units: [
-      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SpearOfShojin'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Lux_Primal', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane', 'TFT_Item_HextechGunblade'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_18_Ashe', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 2, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Akali_AD',
-      'DA_18_Camille',
-      'DA_18_Shen',
-      'DA_18_Leona',
-    ],
-    augments: [
-      { id: 'DA_18_PrimalAugment_Sivir', tier: 'gold', why: { ar: 'تعزيز بدائي مخصص لسيفير ويرفع ضررها بشكل ملحوظ.', en: 'A Sivir-specific Primal buff that noticeably raises her damage.', ja: 'シヴィア専用のプリマルバフで彼女のダメージを大きく向上。' } },
-      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'بعد كل قتل تزداد سرعة الهجوم، وهو مثالي مع أربعة صيادين.', en: 'Attack speed per kill — ideal with four hunters.', ja: 'キルごとに攻撃速度上昇。4ハンターで最適。' } },
-      { id: 'DA_ShoppingSpree', tier: 'silver', why: { ar: 'تسريع الحصول على نجوم أعلى لحاملي الضرر.', en: 'Accelerates higher stars for your carries.', ja: 'キャリーの星を上げるのを加速。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بسيفير وتريستانا وأضف فاي في الخط الأمامي.', en: 'Open with Sivir and Tristana and add Vi to the frontline.', ja: 'シヴィアとトリスターナで開始、前線にヴァイを配置。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7: أضف آش وكايتلين لتفعيل الصياد.', en: 'Level 7: add Ashe and Caitlyn to activate Hunter.', ja: 'レベル7：アッシュとケイトリンを足してハンターを発動。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع نيدالي وكوغ ماو وليكس البدائية.', en: 'Level 8 with Nidalee, Kog’Maw and Primal Lux.', ja: 'レベル8でニダリー、コグモー、プリマルのラックスを追加。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'وزّع العناصر بين سيفير وآش حسب النجوم المتاحة.', en: 'Split items between Sivir and Ashe based on available stars.', ja: '使える星に応じてシヴィアとアッシュに装備を分配。' } },
-    ],
-    tips: [
-      { ar: 'لا تجهّز أربعة حاملي ضرر؛ ركّز على سيفير وآش ثم أعط الباقي عناصر مساعدة.', en: 'Don’t itemize four carries — focus Sivir and Ashe, give the rest support items.', ja: '4人キャリーに装備しない。シヴィアとアッシュに集中し他は支援装備。' },
-      { ar: 'ضع الصيادين موزعين على الزوايا لتجنب ضرر المنطقة.', en: 'Spread hunters across corners to avoid area damage.', ja: 'ハンターを各隅に分散し範囲ダメージを避ける。' },
-      { ar: 'كوغ ماو يحتاج خطًا أماميًا طويلًا، لا تضعه في الصف الأمامي.', en: 'Kog’Maw needs a long frontline — never put him in the front row.', ja: 'コグモーには長い前線が必要。前線には置かない。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Yunara', replaces: 'DA_18_Tristana', note: { ar: 'ضرر جلاد بديل إذا لم تجد تريستانا.', en: 'Alternate executioner damage if you miss Tristana.', ja: 'トリスターナが来ない時の代替エクセキューショナー。' } },
-      { champion: 'DA_18_Rammus', replaces: 'DA_Vi18', note: { ar: 'مدافع إضافي لزيادة عمر الجبهة.', en: 'Extra defender to extend frontline longevity.', ja: '前線の耐久を上げる追加ディフェンダー。' } },
-    ],
-  },
-  {
-    slug: 'sprykin-veigar',
-    name: { ar: 'مشاغب فيغار', en: 'Sprykin Veigar', ja: 'スプリンキン ヴェイガー' },
-    subtitle: { ar: 'قوة سحرية من أصغر وحدة', en: 'Magic power from the smallest unit', ja: '最も小さいユニットからの魔力' },
-    tier: 'B',
-    difficulty: 3,
-    playstyle: { ar: 'انفجار سحري', en: 'Burst mage', ja: 'バーストメイジ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'فيغار يحمل الضرر السحري الأساسي مع تعزيز المشاغبين، وتيمو يضيف خصم علاج وضررًا موزعًا. كوبوكو وراموس وغنار يشكلون جبهة مرنة، وتريستانا توفّر ضررًا ماديًا مستمرًا.',
-      en: 'Veigar carries the magic damage with Sprykin buffs while Teemo adds anti-heal and spread damage. Kobuko, Rammus and Gnar build a flexible frontline and Tristana supplies steady physical damage.',
-      ja: 'ヴェイガーがスプリンキンのバフで魔法ダメージを担い、ティーモが回復阻害と範囲ダメージを加える。コブコ、ラムス、ガナーが柔軟な前線を築き、トリスターナが安定した物理ダメージを供給。',
-    },
-    units: [
-      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Kobuko', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Teemo', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Kobuko',
-      'DA_18_RekSai',
-      'DA_18_Veigar',
-      'DA_18_Teemo',
-    ],
-    augments: [
-      { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'تعزيز مشاغب مخصص يزيد قوة المجموعة بشكل كبير.', en: 'A Sprykin-specific buff that greatly boosts the team.', ja: 'スプリンキン専用バフでチームを大きく強化。' } },
-      { id: 'DA_Kingslayer', tier: 'silver', why: { ar: 'ضرر إضافي ضد الأبطال ذوي الصحة العالية، يفتح جبهات اللوبي.', en: 'Bonus damage vs high-health champions shreds lobby frontlines.', ja: '高体力チャンピオンに追加ダメージ。ロビーの前線を削る。' } },
-      { id: 'DA_Ascension', tier: 'prism', why: { ar: 'زيادة ضرر بعد 15 ثانية، يناسب المعارك الطويلة حول فيغار.', en: 'Damage amp after 15s suits long fights around Veigar.', ja: '15秒後のダメージ増幅。ヴェイガー中心の長期戦に適合。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بفيغار وكوبوكو، وابحث عن نجوم فيغار مبكرًا.', en: 'Open with Veigar and Kobuko, hunt Veigar stars early.', ja: 'ヴェイガーとコブコで開始、序盤にヴェイガーの星を狙う。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف تيمو وراموس لتفعيل المشاغب.', en: 'Add Teemo and Rammus to activate Sprykin.', ja: 'ティーモとラムスを足してスプリンキンを発動。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف غنار وتريستانا، وابدأ بتجهيز فيغار.', en: 'Level 7: add Gnar and Tristana, start itemizing Veigar.', ja: 'レベル7：ガナーとトリスターナを追加、ヴェイガーの装備を開始。' } },
-      { stage: { ar: '5-2', en: '5-2', ja: '5-2' }, text: { ar: 'مستوى 8 مع ليليا ومورغانا لتعزيز الضرر السحري.', en: 'Level 8 with Lillia and Morgana to amplify magic damage.', ja: 'レベル8でリリアとモルガナを追加し魔法ダメージを増幅。' } },
-    ],
-    tips: [
-      { ar: 'فيغار يحتاج عناصر قدرة كاملة؛ لا توزع مكوناتك على وحدات مساعدة.', en: 'Veigar needs full ability items — don’t spread components onto supports.', ja: 'ヴェイガーはアビリティ装備が必須。支援に部品を分散しない。' },
-      { ar: 'تيمو ممتاز ضد جبهات العلاج بفضل خصم العلاج المستمر.', en: 'Teemo is excellent into healing frontlines thanks to his anti-heal.', ja: 'ティーモは回復阻害により回復前線に非常に有効。' },
-      { ar: 'غنار في الخط الأمامي الأول لجذب الضرر بعيدًا عن فيغار.', en: 'Gnar in the first front row to draw damage away from Veigar.', ja: 'ガナーを最初の前線に置きヴェイガーから火力をそらす。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Lillia', replaces: 'DA_18_Rammus', note: { ar: 'الاثنان مدافعان؛ اختر الأفضل نجومًا.', en: 'Both defenders — pick the better-starred one.', ja: '両方ディフェンダー。星の良い方を選ぶ。' } },
-      { champion: 'DA_18_Soraka', replaces: 'DA_18_Morgana', note: { ar: 'علاج إضافي إذا كنت تعاني من ضرر موزع.', en: 'Extra healing if you’re struggling into spread damage.', ja: '範囲ダメージで苦しい時の追加回復。' } },
-    ],
-  },
-  {
-    slug: 'riftbeast-swarm',
-    name: { ar: 'وحش الريفت', en: 'Riftbeast Swarm', ja: 'リフトビーストの群れ' },
-    subtitle: { ar: 'جيش من وحوش الغابة يجتاح اللوح', en: 'A pack of beasts sweeps the board', ja: '獣の群れが盤面を蹂躙する' },
+    slug: 'tempo-riftbeast',
+    name: { ar: 'تمبو وحش الريفت', en: 'Tempo Riftbeast', ja: 'Tempo Riftbeast' },
+    subtitle: { ar: 'وحش الريفت برامبلباك', en: 'Riftbeast Brambleback', ja: 'Riftbeast Brambleback' },
     tier: 'S',
-    difficulty: 1,
-    playstyle: { ar: 'مرح وتجريب', en: 'Fun / experimental', ja: 'お楽しみ / 実験' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو مرح يعتمد على عتبة وحش الريفت العالية. الوحدات رخيصة وتصل إلى نجوم عالية بسهولة، لكن سقف القوة أقل من الكومبوهات التنافسية. مناسب للتجربة مع الأصدقاء أو عند فتح وحوش مبكرًا.',
-      en: 'A fun comp leaning on the high Riftbeast breakpoint. Units are cheap and hit high stars easily, but the power ceiling is lower than meta comps. Great for experimenting with friends or when you unlock beasts early.',
-      ja: '高いリフトビーストのブレイクポイントを楽しむカジュアル構成。ユニットが安く星も上げやすいが、天井はメタ構成より低い。友達との実験や序盤で獣を解除した時に最適。',
-    },
+    difficulty: 2,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items. Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instea', en: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items. Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instea', ja: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items. Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instea' },
     units: [
-      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 5 },
-      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_UnstableConcoction'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_TitansResolve'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_Gromp18_AP', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_Cinderling18', items: ['TFT_Item_InfinityEdge', 'TFT_Item_BlueBuff', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_Scuttlecrab18', items: ['TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 1 },
+      { champion: 'DA_18_Sentry', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_Murkwolf18', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 2, col: 0 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_UnstableConcoction'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_ElderDragon', items: ['TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 3 }
     ],
     earlyUnits: [
       'DA_18_Sentry',
@@ -540,958 +33,41 @@ export const comps: Comp[] = [
       'DA_Murkwolf18',
     ],
     augments: [
-      { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'وحش ريفت إضافي يرفع العتبة بسرعة ويزيد قوة الوحوش.', en: 'Extra Riftbeast raises the breakpoint fast and buffs your beasts.', ja: 'リフトビーストを追加しブレイクポイントを素早く向上、獣を強化。' } },
-      { id: 'DA_GroupHugI', tier: 'silver', why: { ar: 'دروع إضافية عند التجمع، والوحوش تقاتل متقاربة.', en: 'Extra shields when clustered — your beasts fight close together.', ja: '密集時に追加シールド。獣は接近して戦う。' } },
-      { id: 'DA_HoldTheLine', tier: 'gold', why: { ar: 'جبهة إضافية تمنح وحوشك وقتًا لتفعيل قدراتها.', en: 'An extra frontline gives your beasts time to cast.', ja: '追加の前線で獣がスキルを発動する猶予を得る。' } },
+      { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
     ],
     leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بالوحوش الرخيصة ولا ترفع المستوى قبل مستوى 6.', en: 'Open with cheap beasts and don’t level before level 6.', ja: '安い獣で開始し、レベル6までレベルを上げない。' } },
-      { stage: { ar: '3-5', en: '3-5', ja: '3-5' }, text: { ar: 'ابحث عن كروغ وسكاتل كراب بثلاث نجوم.', en: 'Look for three-star Krug and Scuttlecrab.', ja: '3星のクルグとスキャットルクラブを探す。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف برامبليك وسنتينل.', en: 'Level 7: add Brambleback and Sentinel.', ja: 'レベル7：ブランブルバックとセンチネルを追加。' } },
-      { stage: { ar: '5-2', en: '5-2', ja: '5-2' }, text: { ar: 'مستوى 8 مع التنين الأعظم أو الرابتور، ووزّع العناصر الدفاعية.', en: 'Level 8 with the Elder Dragon or Raptor and spread defensive items.', ja: 'レベル8でエルダードラゴンかラプターを追加し防御装備を分配。' } },
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.', en: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.', ja: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.', en: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.', ja: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.', en: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.', ja: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.' } }
     ],
     tips: [
-      { ar: 'الوحوش تحتاج نجومًا عالية؛ إعادة اللف في مستوى 6 أولوية على الصعود السريع.', en: 'Beasts need high stars — rerolling at level 6 beats rushing levels.', ja: '獣は高い星が必要。レベル6でのリロールがレベル急ぎより優先。' },
-      { ar: 'ضع كروغ كحامل ضرر مادي وحيد، وبقية الوحدات دفاعية.', en: 'Krug as your lone physical carry, everyone else defensive.', ja: 'クルグを唯一の物理キャリーに、他は防御特化。' },
-      { ar: 'لا تتوقع نتائج تنافسية عالية؛ هذا الكومبو للاستمتاع والتجربة.', en: 'Don’t expect competitive results — this comp is for fun and experimentation.', ja: '競技結果は狙わない。この構成は楽しさと実験のため。' },
+      { ar: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.', en: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.', ja: 'Slam items aggressively and play for full win streak with Brambleback items. Murkwolf can hold items.' },
+      { ar: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.', en: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.', ja: 'Aim to get 7 Riftbeast online latest by Stage 3-5. Use free Riftbeast shops to upgrade only instead of rerolling. Finish Bramble / tank items.' },
+      { ar: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.', en: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.', ja: 'Level to 8 and look for Bramble + Brawler or Rakan. Always play Elder Dragon when you hit. Once stable, go 9 for another 5 cost.' }
     ],
-    alternatives: [
-      { champion: 'DA_18_ElderDragon', replaces: 'DA_Sentinel18', note: { ar: 'وحش أسطوري يحل مكان الحارس عند توفر الذهب.', en: 'A legendary beast replaces Sentinel once you have the gold.', ja: 'ゴールドが貯まったらレジェンドの獣がセンチネルを代替。' } },
-      { champion: 'DA_Murkwolf18', replaces: 'DA_Scuttlecrab18', note: { ar: 'بديل أرخص وأسرع في الوصول لثلاث نجوم.', en: 'A cheaper alternative that hits three stars faster.', ja: 'より安く素早く3星に届く代替。' } },
-    ],
+    alternatives: [],
   },
   {
-    slug: 'defender-wall',
-    name: { ar: 'جدار المدافعين', en: 'Defender Wall', ja: 'ディフェンダーの壁' },
-    subtitle: { ar: 'جبهة حديدية تحمي حامل الضرر', en: 'An iron frontline protecting the carry', ja: '鉄壁の前線がキャリーを守る' },
-    tier: 'A',
-    difficulty: 2,
-    playstyle: { ar: 'دفاع وأناقة', en: 'Tank / utility', ja: 'タンク / ユーティリティ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يجمع عتبة المدافعين العالية مع حامل ضرر واحد موثوق. ليونا وشين وراموس وليليا يبنون جبهة صلبة تمنح الفدلب ريش تراكم دروع، بينما يوزع فيدليستكس الضرر والسحر في الصف الأمامي.',
-      en: 'A comp stacking the high Defender breakpoint behind one reliable carry. Leona, Shen, Rammus and Lillia build a sturdy wall that ramps your team’s armor, while Fiddlesticks spreads damage and disruption up front.',
-      ja: '高いディフェンダーのブレイクポイントを確実なキャリーの前に積む構成。レオナ、シェン、ラムス、リリアが堅牢な壁を築きチームのアーマーを増加、フィドルスティックスが前線でダメージと妨害を広げる。',
-    },
-    units: [
-      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Ashe', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Leona',
-      'DA_18_Ornn',
-      'DA_18_LeBlanc',
-    ],
-    augments: [
-      { id: 'DA_HoldTheLine', tier: 'gold', why: { ar: 'جبهة إضافية تُطيل عمر الجبهة الحديدية.', en: 'An extra frontline extends your iron wall’s longevity.', ja: '追加の前線で鉄壁の耐久を延ばす。' } },
-      { id: 'DA_MakeshiftArmorI', tier: 'silver', why: { ar: 'دروع مجانية تُقوّي عتبة المدافعين مباشرة.', en: 'Free armor directly boosts your Defender breakpoint.', ja: '無料のアーマーでディフェンダーのブレイクポイントを強化。' } },
-      { id: 'DA_GlassCannon_Gold', tier: 'gold', why: { ar: 'آش تأخذ الضرر الإضافي بينما الجبهة تحميها.', en: 'Ashe takes the extra damage while the wall protects her.', ja: '壁が守る中アッシュが追加ダメージを担う。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بليونا وشين لتفعيل المدافعين مبكرًا.', en: 'Open with Leona and Shen to activate Defenders early.', ja: 'レオナとシェンで序盤にディフェンダーを発動。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف راموس وليليا وحافظ على اقتصادك.', en: 'Add Rammus and Lillia and keep your economy up.', ja: 'ラムスとリリアを追加し経済を維持。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف آش وفيدليستكس لبداية الضرر.', en: 'Level 7: add Ashe and Fiddlesticks to start dealing damage.', ja: 'レベル7：アッシュとフィドルスティックスを追加しダメージ開始。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع سوراكا ومورغانا، وثبّت ليونا بثلاث نجوم.', en: 'Level 8 with Soraka and Morgana, and three-star your Leona.', ja: 'レベル8でソラカとモルガナを追加、レオナを3星へ。' } },
-    ],
-    tips: [
-      { ar: 'ركّز على ليونا بثلاث نجوم؛ هي حجر الأساس في الجدار.', en: 'Prioritize three-star Leona — she’s the cornerstone of the wall.', ja: 'レオナの3星を最優先。壁の要。' },
-      { ar: 'أعطِ آش عنصر خصم دروع لتمزيق الجبهات المعادية.', en: 'Give Ashe an armor-shred item to cut through enemy frontlines.', ja: 'アッシュにアーマー貫通を持たせ敵前線を削る。' },
-      { ar: 'فيدليستكس في الأمام يعطّل القتلة ويبطئ انقضاضهم.', en: 'Fiddlesticks up front disrupts and slows assassins diving in.', ja: '前線のフィドルスティックスが飛び込むアサシンを妨害・減速。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Ornn', replaces: 'DA_18_Rammus', note: { ar: 'مدافع إلدروود بدل راموس مع تكديس الصحة.', en: 'Elderwood defender instead of Rammus for stacking health.', ja: 'ラムスの代わりに体力を積むエルダーウッドのディフェンダー。' } },
-      { champion: 'DA_18_Aphelios', replaces: 'DA_18_Ashe', note: { ar: 'قناص بديل إذا كانت آش مزدحمة في اللوبي.', en: 'Alternative sniper if Ashe is contested in your lobby.', ja: 'アッシュが取られるなら代替スナイパー。' } },
-    ],
-  },
-  {
-    slug: 'vanguard-front',
-    name: { ar: 'طليعي متقدّم', en: 'Vanguard Push', ja: 'ヴァンガードの一歩' },
-    subtitle: { ar: 'مقدمة قتالية تشقّ صفوف العدو', en: 'A warfront that cleaves enemy lines', ja: '敵陣を分断する戦線' },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'مقدمة ضاربة', en: 'Aggressive frontline', ja: '攻撃的な前線' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يعتمد على الطليعي كجبهة هجومية تشقّ صفوف العدو. راكان وإليز وديانا وhec يبنون مقدمة قوية، وتاريك يضيف دروعًا وعلاجًا للبقاء، بينما يستفيد أفي من التعزيز الأمامي.',
-      en: 'A comp using Vanguard as an aggressive frontline that cleaves through enemies. Rakan, Elise, Diana and Hecarim build a strong warfront, Taric adds shields and healing, and Aphelios benefits from the front pressure.',
-      ja: 'ヴァンガードを敵陣を分断する攻撃的な前線として使う構成。ラカン、エリゼ、ディアナ、ヘカリンムが強い戦線を築き、タリックがシールドと回復を加え、アフェリオスが前線の圧力から利益を得る。',
-    },
-    units: [
-      { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Ornn',
-      'DA_18_Varus',
-      'DA_18_Xayah',
-      'DA_18_Shen',
-    ],
-    augments: [
-      { id: 'DA_HoldTheLine', tier: 'gold', why: { ar: 'جبهة إضافية تسمح للمقدمة بالضغط لوقت أطول.', en: 'An extra frontline lets your warfront press longer.', ja: '追加の前線で戦線の圧力を長く維持。' } },
-      { id: 'DA_ElectrochargeI', tier: 'silver', why: { ar: 'ضرر عند تفعيل الدروع، والمقدمة مليئة بالدروع.', en: 'Damage on shield procs — your front is full of shields.', ja: 'シールド発動時にダメージ。前線にシールドが豊富。' } },
-      { id: 'DA_BoxingLessons', tier: 'gold', why: { ar: 'يزيد صحة الوحدات الأمامية وقوتها القتالية.', en: 'Boosts frontline health and brawling power.', ja: '前線の体力と戦闘力を向上。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح براكان وإليز لبناء المقدمة مبكرًا.', en: 'Open with Rakan and Elise to build the warfront early.', ja: 'ラカンとエリゼで序盤に戦線を構築。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف ديانا وhec وثبّت الجبهة.', en: 'Add Diana and Hecarim and stabilize the frontline.', ja: 'ディアナとヘカリンムを追加し前線を安定。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف أفي وتاريك لبداية الضرر.', en: 'Level 7: add Aphelios and Taric to start the damage.', ja: 'レベル7：アフェリオスとタリックを追加しダメージ開始。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع سوراكا ومورغانا لتعزيز البقاء.', en: 'Level 8 with Soraka and Morgana for more sustain.', ja: 'レベル8でソラカとモルガナを追加し継続力を強化。' } },
-    ],
-    tips: [
-      { ar: 'راكان أولوية في النجوم؛ هو حجر الزاوية في المقدمة الطليعية.', en: 'Rakan is your star priority — the cornerstone of the vanguard.', ja: 'ラカンの星が最優先。ヴァンガードの要。' },
-      { ar: 'ضع ديانا في الصف الثالث لتدخل بعد بدء القتال.', en: 'Put Diana in the third row so she enters after the fight starts.', ja: 'ディアナを3列目に置き戦闘開始後に潜入させる。' },
-      { ar: 'أفي يحتاج خصم دروع؛ أعطه عنصرًا يسحق الجبهات.', en: 'Aphelios needs armor shred — give him an item that melts frontlines.', ja: 'アフェリオスにはアーマー貫通が必須。前線を溶かす装備を渡す。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Sentinel18', replaces: 'DA_18_Hecarim', note: { ar: 'طليعي ومستدعي إضافي يعزز استدعاء الوحدات.', en: 'Extra Vanguard and Summoner that adds unit summons.', ja: '追加のヴァンガードとサモナーでユニット召喚を強化。' } },
-      { champion: 'DA_18_Sejuani', replaces: 'DA_18_Elise', note: { ar: 'جبهة بديلة تبطئ هجوم العدو عند الحاجة.', en: 'Alternate frontline that slows enemy attack speed when needed.', ja: '必要に応じて敵の攻撃速度を下げる代替前線。' } },
-    ],
-  },
-  {
-    slug: 'spellweaver-coven',
-    name: { ar: 'نسّاجو السحر', en: 'Spellweave Circle', ja: 'スルウェイバーの輪' },
-    subtitle: { ar: 'حلقة سحرة تنسج الضرر في كل مكان', en: 'A circle of casters weaving damage everywhere', ja: 'どこでもダメージを織りなす魔法使いの輪' },
-    tier: 'A',
-    difficulty: 3,
-    playstyle: { ar: 'قوة قدرة جماعية', en: 'Team ability power', ja: 'チームAP' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يُكدّس عتبة نسّاج السحر لرفع قوة القدرة لكل الفريق. كارما وفيغار وليبلانك وكاسيوبيا وآري يُلقيون القدرات باستمرار، مع إليز تحمي الحلقة من القتلة.',
-      en: 'A comp stacking the Spellweaver breakpoint to raise team ability power. Karma, Veigar, LeBlanc, Cassiopeia and Ahri cast constantly, with Elise protecting the circle from assassins.',
-      ja: 'スルウェイバーのブレイクポイントを積んでチームAPを上げる構成。カルマ、ヴェイガー、レイブランク、カッシオペア、アリが連続で詠唱し、エリゼが輪をアサシンから守る。',
-    },
-    units: [
-      { champion: 'DA_Karma18', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_HextechGunblade', 'TFT_Item_ArchangelsStaff'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Elise', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_Karma18',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر سحري بعد كل إلقاء، مثالي مع حلقة القدرات المستمرة.', en: 'Magic damage after every cast — perfect with a constant casting circle.', ja: '詠唱ごとに魔法ダメージ。連続詠唱の輪に最適。' } },
-      { id: 'DA_18_CovenTraitAugment', tier: 'gold', why: { ar: 'وحدة ساحرة إضافية وقوة قدرة أعلى لكل الفريق.', en: 'Extra coven member and higher team ability power.', ja: 'コヴェン追加とチームAP上昇。' } },
-      { id: 'DA_JeweledLotus_I', tier: 'silver', why: { ar: 'تجعل كل القدرات قادرة على الضربة الحرجة.', en: 'Lets every ability crit.', ja: '全てのアビリティがクリティカル可能に。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بكارما وفيغار واحتفظ بمكونات القدرة.', en: 'Open with Karma and Veigar and hold ability components.', ja: 'カルマとヴェイガーで開始、アビリティ系の部品を温存。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف ليبلانك وكاسيوبيا لبناء الحلقة.', en: 'Add LeBlanc and Cassiopeia to form the circle.', ja: 'レイブランクとカッシオペアを足して輪を形成。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف آري وإليز لحماية الحلقة.', en: 'Level 7: add Ahri and Elise to protect the circle.', ja: 'レベル7：アリとエリゼを追加し輪を守る。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع شين وفيدليستكس، وحسّن نجوم الحاملات.', en: 'Level 8 with Shen and Fiddlesticks, and upgrade your carries’ stars.', ja: 'レベル8でシェンとフィドルスティックスを追加、キャリーを強化。' } },
-    ],
-    tips: [
-      { ar: 'وزّع عناصر القدرة على أكثر من حامل بدل تركيزها في واحدة.', en: 'Spread ability items across several carries instead of one.', ja: 'アビリティ装備を1人に集中せず複数のキャリーに分散。' },
-      { ar: 'الحلقة تحتاج حماية؛ إليز وشين يمنعان القتلة من الانقضاض.', en: 'The circle needs protection — Elise and Shen stop assassins diving.', ja: '輪には守りが必要。エリゼとシェンがアサシンの侵入を阻止。' },
-      { ar: 'خصم العلاج مهم لأن القدرات المتراكمة تُحوّل الضرر إلى علاج خصم.', en: 'Anti-heal matters since stacked casts turn damage into reduced healing.', ja: '連続詠唱を回復阻害で打ち消すため回復阻害が重要。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Alune', replaces: 'DA_18_Ahri', note: { ar: 'حامل قدرة أسطوري بدل آري عند توفر الذهب.', en: 'A legendary ability carry instead of Ahri once you have gold.', ja: 'ゴールドがあればアリの代わりのレジェンドアビリティキャリー。' } },
-      { champion: 'DA_18_Morgana', replaces: 'DA_18_Cassiopeia', note: { ar: 'ضرر سحري وخصم علاج بديل إذا لم تجد كاسيوبيا.', en: 'Magic damage and anti-heal if you miss Cassiopeia.', ja: 'カッシオペアが来ない時の魔法ダメージと回復阻害。' } },
-    ],
-  },
-  {
-    slug: 'slayer-dive',
-    name: { ar: 'غواصو المخرب', en: 'Ravager Dive', ja: 'レイヴェージャーの強襲' },
-    subtitle: { ar: 'مجرمو حرب يقتلون الصف الخلفي', en: 'War criminals cleaning up the backline', ja: '戦争犯罪者が敵陣を狩る' },
-    tier: 'B',
-    difficulty: 3,
-    playstyle: { ar: 'قتل متسلسل', en: 'Reset kills', ja: 'リセットキル' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يعتمد على المخربين لإعادة ضبط القدرات بعد كل قتل. أكالي ووارويك وديانا يقتلون بسرعة ثم يعيدون ضبط قدراتهم، مع كاميل ومرك وولف يدعمان الغوص في العدو.',
-      en: 'A comp leaning on Ravagers to reset abilities after each kill. Akali, Warwick and Diana kill quickly then reset, with Camille and Murkwolf supporting the dive into enemy lines.',
-      ja: 'レイヴェージャーがキル後にスキルをリセットする構成。アカリ、ワーウィック、ディアナが素早く倒してリセット、カミールとマークウルフが敵陣への dives を支援。',
-    },
-    units: [
-      { champion: 'DA_18_Akali_AD', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_GuardianAngel'], star: 3, row: 2, col: 3 },
-      { champion: 'DA_18_Warwick', items: ['TFT_Item_SteraksGage', 'TFT_Item_TitansResolve', 'TFT_Item_SpearOfShojin'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 2 },
-      { champion: 'DA_18_Camille', items: ['TFT_Item_SteraksGage', 'TFT_Item_Quicksilver', 'TFT_Item_InfinityEdge'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_Murkwolf18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_UnstableConcoction'], star: 2, row: 2, col: 4 },
-      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_UnstableConcoction'], star: 2, row: 3, col: 4 },
-      { champion: 'DA_18_Lux_Inferno', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Akali_AD',
-      'DA_18_Camille',
-      'DA_18_Leona',
-      'DA_18_Ornn',
-    ],
-    augments: [
-      { id: 'DA_Retribution', tier: 'gold', why: { ar: 'ضرر إضافي بعد كل قتل، يتفاعل مع إعادة الضبط.', en: 'Bonus damage per kill, synergizing with resets.', ja: 'キルごとの追加ダメージでリセットと連携。' } },
-      { id: 'DA_Kingslayer', tier: 'silver', why: { ar: 'ضرر ضد الصحة العالية يفتح جبهات اللوبي.', en: 'Damage vs high-health targets cracks lobby frontlines.', ja: '高体力対象へのダメージでロビーの前線を破壊。' } },
-      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'سرعة هجوم بعد القتل تسرّع سلسلة الإعادات.', en: 'Attack speed per kill speeds the reset chain.', ja: 'キルごとの攻撃速度でリセット連鎖を加速。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بأكالي ووارويك وكاميل، ولا ترفع مستوى.', en: 'Open with Akali, Warwick and Camille, don’t level.', ja: 'アカリ、ワーウィック、カミールで開始、レベルを上げない。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف ديانا ومرك وولف لتعزيز الغوص.', en: 'Add Diana and Murkwolf to boost the dive.', ja: 'ディアナとマークウルフを足してdivesを強化。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف برامبليك وشين للبقاء.', en: 'Level 7: add Brambleback and Shen for sustain.', ja: 'レベル7：ブランブルバックとシェンを追加し継続力确保。' } },
-      { stage: { ar: '5-2', en: '5-2', ja: '5-2' }, text: { ar: 'مستوى 8 مع لكس، وركّز على أكالي بثلاث نجوم.', en: 'Level 8 with Lux, and prioritize three-star Akali.', ja: 'レベル8でラックスを追加、アカリの3星を優先。' } },
-    ],
-    tips: [
-      { ar: 'أكالي ووارويك يحتاجان استمرارية؛ عناصر الدم أفضل من عناصر القدرة.', en: 'Akali and Warwick want sustain — lifesteal beats ability items.', ja: 'アカリとワーウィックには継続力が重要。アビリティより吸血。' },
-      { ar: 'ركز عناصر الدفاع على الجبهة الأمامية لتوفير وقت الغوص.', en: 'Stack defensive items on the frontline to buy dive time.', ja: '防御装備を前線に集中しdivesの時間を稼ぐ。' },
-      { ar: 'غيّر زاوية الغوص حسب موقع حامل ضرر العدو كل جولة.', en: 'Shift your dive angle each round based on the enemy carry’s position.', ja: 'ラウンドごとに敵キャリーの位置に合わせdivesの角度を変える。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Brambleback18', replaces: 'DA_Murkwolf18', note: { ar: 'وحش ريفت بديل يزيد متانة الجبهة.', en: 'Alternate Riftbeast that adds frontline durability.', ja: '前線の耐久を上げる代替リフトビースト。' } },
-      { champion: 'DA_18_Varus', replaces: 'DA_18_Lux_Inferno', note: { ar: 'ضرر مادي من الخلف إذا احتجت توازنًا.', en: 'Backline physical damage if you need balance.', ja: 'バランスが必要な時の後方物理ダメージ。' } },
-    ],
-  },
-  {
-    slug: 'hunter-line',
-    name: { ar: 'خط الصيادين', en: 'Hunter Line', ja: 'ハンターの陣' },
-    subtitle: { ar: 'قوس ممتد يغطّي كل المسافة', en: 'A drawn bow covering every inch', ja: '全てを覆う弓の構え' },
-    tier: 'C',
-    difficulty: 2,
-    playstyle: { ar: 'قنص بعيد المدى', en: 'Long-range picks', ja: '長距離狙击' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو صيادين يعتمد على آش وكايتلين وتريستانا وسيفير لأضرار بعيدة المدى. سيندريكلين وفورغ وماو يضيفان ضررًا مساعدًا، بينما تحمي فاي وجناح خط الأمامي الحاملات.',
-      en: 'A Hunter comp built on Ashe, Caitlyn, Tristana and Sivir for long-range picks. Cinderling and Kog’Maw add backup damage while Vi and the frontline protect your carries.',
-      ja: 'アッシュ、ケイトリン、トリスターナ、シヴィアによる長距離狙撃のハンター構成。シンダーリングとコグモーが補助ダメージを加え、ヴァイと前線がキャリーを守る。',
-    },
-    units: [
-      { champion: 'DA_18_Ashe', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SpearOfShojin'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_Cinderling18', items: ['TFT_Item_InfinityEdge', 'TFT_Item_BlueBuff', 'TFT_Item_LastWhisper'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Lux_Primal', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_ArchangelsStaff'], star: 2, row: 2, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_18_Caitlyn',
-      'DA_18_Tristana',
-    ],
-    augments: [
-      { id: 'DA_18_PrimalAugment_Sivir', tier: 'gold', why: { ar: 'تعزيز سيفير يرفع ضرر الصياد بشكل ملحوظ.', en: 'A Sivir buff that noticeably raises hunter damage.', ja: 'シヴィアのバフでハンターのダメージを大きく向上。' } },
-      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'سرعة هجوم بعد القتل تُطيل سلسلة القنص.', en: 'Attack speed per kill extends your picking chain.', ja: 'キルごとの攻撃速度で狙撃の連鎖を延ばす。' } },
-      { id: 'DA_FocusedFire', tier: 'silver', why: { ar: 'ضرر على الأهداف المصابة يناسب رشقات الصيادين.', en: 'Damage on hit targets fits hunter focused fire.', ja: '命中済み対象へのダメージがハンターの集中射撃に適合。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بكايتلين وسيندريكلين وفاي.', en: 'Open with Caitlyn, Cinderling and Vi.', ja: 'ケイトリン、シンダーリング、ヴァイで開始。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7: أضف آش وتريستانا لتفعيل الصياد.', en: 'Level 7: add Ashe and Tristana to activate Hunter.', ja: 'レベル7：アッシュとトリスターナでハンターを発動。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع سيفير وكوغ ماو وليكس.', en: 'Level 8 with Sivir, Kog’Maw and Lux.', ja: 'レベル8でシヴィア、コグモー、ラックスを追加。' } },
-      { stage: { ar: '6-1', en: '6-1', ja: '6-1' }, text: { ar: 'وزّع العناصر حسب النجوم بين آش وسيفير.', en: 'Split items between Ashe and Sivir based on stars.', ja: '星に応じてアッシュとシヴィアに装備を分配。' } },
-    ],
-    tips: [
-      { ar: 'الصيادون يعتمدون على المسافة؛ وزّعهم على الزوايا لتفادي الضرر المركزي.', en: 'Hunters rely on range — spread them to corners to dodge area damage.', ja: 'ハンターは射程が命。隅に分散し範囲ダメージを回避。' },
-      { ar: 'فاي تحمي الخلف؛ لا تفرّط فيها مبكرًا.', en: 'Vi protects the back — don’t ditch her early.', ja: 'ヴァイが後方を守る。早々に手放さない。' },
-      { ar: 'كوغ ماو وكايتلين يحتاجان خطًا أماميًا طويلًا.', en: 'Kog’Maw and Caitlyn need a long frontline.', ja: 'コグモーとケイトリンには長い前線が必要。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Yunara', replaces: 'DA_Cinderling18', note: { ar: 'ضرر جلاد بديل يعزز السلسلة.', en: 'Alternate executioner damage to boost the chain.', ja: '連鎖を強化する代替エクセキューショナー。' } },
-      { champion: 'DA_18_Aphelios', replaces: 'DA_18_Sivir', note: { ar: 'قناص بديل عند تزاحم الصيادين.', en: 'Alternative sniper if hunters are contested.', ja: 'ハンターが取られる時の代替スナイパー。' } },
-    ],
-  },
-  {
-    slug: 'invoker-backline',
-    name: { ar: 'عرّافو الخلف', en: 'Invoker Backline', ja: 'インヴォーカーの後陣' },
-    subtitle: { ar: 'منادون يستدعيون القوة من العمق', en: 'Callers summoning power from the depths', ja: '奥深き力呼び寄せる者たち' },
-    tier: 'A',
-    difficulty: 3,
-    playstyle: { ar: 'استدعاء ودعم', en: 'Summon / support', ja: 'サモナー / サポート' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يكدّس عتبة المستدعي لدعم الاستدعاء المستمر. تيمو و koغ ماو ومرغانا وسنتينل يُلقيون باستمرار، مع ببالز وسنتينل يبنيان خطًا أماميًا رخيصًا لحماية المنادين.',
-      en: 'A comp stacking the Invoker breakpoint to fuel constant summoning. Teemo, Kog’Maw, Morgana and Sentinel cast repeatedly while Pebbles and the frontline build a cheap wall to protect the callers.',
-      ja: 'インヴォーカーのブレイクポイントを積み連続召喚を支える構成。ティーモ、コグモー、モルガナ、センチネルが連続詠唱し、ペブルズと前線が安価な壁を築いて呼び手を守る。',
-    },
-    units: [
-      { champion: 'DA_18_Teemo', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Shen', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_Karma18',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر بعد كل استدعاء يتفاعل بقوة مع المستدعيين.', en: 'Damage after every cast synergizes hard with invokers.', ja: '詠唱ごとのダメージがインヴォーカーと強く連携。' } },
-      { id: 'DA_GroupHugI', tier: 'silver', why: { ar: 'دروع عند التجمع تحمي المنادين الضعفاء.', en: 'Shields when clustered protect your fragile callers.', ja: '密集時のシールドで脆い呼び手を守る。' } },
-      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'خبرة إضافية للوصول إلى مستوى 9 ووحدة أسطورية.', en: 'Extra XP to reach level 9 and a legendary.', ja: '追加XPでレベル9とレジェンドへ。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'افتح بتيمو وببالز، واحتفظ بمكونات القدرة.', en: 'Open with Teemo and Pebbles, hold ability components.', ja: 'ティーモとペブルズで開始、アビリティ系の部品を温存。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أضف koغ ماو وسنتينل لتعزيز الاستدعاء.', en: 'Add Kog’Maw and Sentinel to boost summoning.', ja: 'コグモーとセンチネルを足して召喚を強化。' } },
-      { stage: { ar: '4-5', en: '4-5', ja: '4-5' }, text: { ar: 'مستوى 7: أضف مورغانا وشين لحماية الخلف.', en: 'Level 7: add Morgana and Shen to guard the back.', ja: 'レベル7：モルガナとシェンを追加し後方を守る。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع سوراكا وراموس، وثبّت المنادين.', en: 'Level 8 with Soraka and Rammus, and lock in your callers.', ja: 'レベル8でソラカとラムスを追加、呼び手を確定。' } },
-    ],
-    tips: [
-      { ar: 'المنادين يحتاجون حماية؛ ركّز عناصر الدفاع على الجبهة الأمامية.', en: 'Callers need protection — stack defensive items on the frontline.', ja: '呼び手には守りが必須。防御装備を前線に集中。' },
-      { ar: 'مرغانا تعطي خصم علاج مهم ضد كومبوهات البقاء.', en: 'Morgana’s anti-heal is key into sustain comps.', ja: 'モルガナの回復阻害は継続構成に有効。' },
-      { ar: 'لا ترفع مستوى مبكرًا؛ العتبة تحتاج وحدات مستدعي كثيرة.', en: 'Don’t level early — the breakpoint needs many invoker units.', ja: '早めにレベルを上げない。ブレイクポイントに多くのインヴォーカーが必要。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Ahri', replaces: 'DA_18_Morgana', note: { ar: 'قدرة أسطورية بديلة عند توفر الذهب.', en: 'Alternate legendary caster once you have gold.', ja: 'ゴールドがあれば代替のレジェンドキャスター。' } },
-      { champion: 'DA_18_Lillia', replaces: 'DA_18_Rammus', note: { ar: 'جبهة دفاعية بديلة تمنح درعًا للمنادين.', en: 'Alternate defensive frontline that shields callers.', ja: '呼び手にシールドを与える代替の防御前線。' } },
-    ],
-  },
-  {
-    slug: 'elderwood-veigar',
-    name: { ar: 'إلدروود فيغار', en: 'Elderwood Veigar', ja: 'エルダーウッド ベイガー' },
-    subtitle: {
-      ar: 'إعادة لفّ خلف جدار إلدروود والشوكة السوداء',
-      en: 'A reroll behind the Elderwood–Blackthorn wall',
-      ja: 'エルダーウッドとブラックソーンの壁の後ろでのリロール',
-    },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'إعادة لفّ سحرية', en: 'Magic reroll', ja: '魔法リロール' },
-    level: { ar: 'مستوى 7', en: 'Level 7', ja: 'レベル7' },
-    summary: {
-      ar: 'كومبو إعادة لفّ حول فيغار بثلاث نجوم يقف خلف جدار مزدوج من إلدروود والشوكة السوداء — وهو من أقوى كومبوهات الباتش الحالي. أورن وأليستار وريكساي يصنعون جبهة متينة، بينما تدعم لوبلانك وكاسيوبيا الضرر السحري وتجلب سوراكا ضغط الجلاد من الخلف.',
-      en: 'A reroll built around three-star Veigar standing behind a double wall of Elderwood and Blackthorn — one of the strongest boards of the current patch. Ornn, Alistar and Rek’Sai build a sturdy frontline while LeBlanc and Cassiopeia add magic damage and Soraka piles on execution pressure from the back.',
-      ja: '3星ベイガーを軸に、エルダーウッドとブラックソーンの二重壁の後ろで戦うリロール。現行パッチ最強クラスの盤面。オーン、アリスター、レクサイが堅牢な前線を築き、ルブランとカシオペアが魔法ダメージを、ソラカが後方から処刑圧力を支える。',
-    },
-    units: [
-      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 3, row: 0, col: 3 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv'], star: 2, row: 1, col: 2 },
-      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_HextechGunblade', 'TFT_Item_ArchangelsStaff'], star: 2, row: 1, col: 4 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_RekSai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Kobuko',
-      'DA_18_RekSai',
-      'DA_18_Veigar',
-      'DA_18_Teemo',
-    ],
-    augments: [
-      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'طبيعة الملاجئ تمنحك إلدروود إضافيًا وتحمي نباتاتك مبكرًا — بداية مثالية للجدار.', en: 'Nature’s Shelter grants an extra Elderwood and protects your plants early — the perfect start for the wall.', ja: 'ネイチャーズ・シェルターでエルダーウッドを追加し序盤から植物を守る。壁づくりの理想の开局。' } },
-      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'استخراج العناصر يكافئك بمكوّنات عند التضحية على ساحة الشوكة السوداء — يسرّع إعادة اللف.', en: 'Item Extraction pays out components when you sacrifice on the Blackthorn hex, speeding up your reroll.', ja: 'ブラックソーンのヘックスで犠牲にするとコンポーネントを得る。リロールを高速化。' } },
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر سحري إضافي بعد كل قدرة يجعل قذائف فيغار تقتل بضربة واحدة.', en: 'Bonus magic damage after every cast turns Veigar’s nukes into one-shot deletes.', ja: 'キャスト後の追加魔法ダメージでベイガーの必殺撃を即死級に。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا تشتري خبرة. اجمع فيغار وأورن وريكساي واحتفظ بذهبك فوق 50.', en: 'Don’t buy XP. Collect Veigar, Ornn and Rek’Sai and keep your gold above 50.', ja: 'XPを買わない。ベイガー、オーン、レクサイを集めゴールドを50以上保つ。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أعد اللف ببطء على مستوى 5 حتى يصل فيغار إلى ثلاث نجوم.', en: 'Slow-roll at level 5 until Veigar hits three stars.', ja: 'レベル5でスローロールし、ベイガーが3星になるまで。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'استمر على مستوى 6 وأضف كاسيوبيا وفيلد ستيكس لو وجدتهما.', en: 'Stay at 6 and add Cassiopeia and Fiddlesticks if you find them.', ja: 'レベル6に留まり、カシオペアとフィドルスティックスが来たら追加。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 7: أضف سوراكا وثبّت ثلاث النجوم لفيغار وأورن قبل أي صعود آخر.', en: 'Level 7: add Soraka and lock in three stars on Veigar and Ornn before any further push.', ja: 'レベル7：ソラカを追加し、ベイガーとオーンの3星を確定させるまで先へ進まない。' } },
-    ],
-    tips: [
-      { ar: 'فيغار يحتاج وقتًا؛ اجعل جدار إلدروود يبتلع أول موجة ضرر لصالحك.', en: 'Veigar needs time — let the Elderwood wall swallow the first damage spike for you.', ja: 'ベイガーには時間が必要。エルダーウッドの壁に最初のダメージを受け止めてもらう。' },
-      { ar: 'كاسيوبيا تحمل خصم العلاج؛ لا تتركها بلا عناصر أمام جبهات الشفاء الكبيرة.', en: 'Cassiopeia holds your anti-heal — never leave her itemless into big sustain fronts.', ja: 'カシオペアは回復阻害の要。回復前線相手では装備を外さない。' },
-      { ar: 'سوراكا جلّادة: ضعها في الزاوية البعيدة لتضرب دائمًا أهدافًا منخفضة الصحة.', en: 'Soraka is an executioner — park her in the far corner so she always targets low-health enemies.', ja: 'ソラカは処刑者。最遠の隅に置いて常に低体力の敵を狙わせる。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Lux18_Blackthorn', replaces: 'DA_18_Cassiopeia', note: { ar: 'إذا فشلت كاسيوبيا، لكس الشوكة السوداء تكمل العتبة وتؤدي الضرر السحري.', en: 'If you miss Cassiopeia, Blackthorn Lux completes the breakpoint and deals the magic damage.', ja: 'カシオペアが来なければブラックソーンのラックスがブレイクポイントを完成させ魔法ダメージを担う。' } },
-      { champion: 'DA_Amumu18', replaces: 'DA_18_RekSai', note: { ar: 'بديل جبهة عند غياب ريكساي، مع طاغوت إضافي لتأمين الأمام.', en: 'Frontline stand-in if you miss Rek’Sai, plus extra Juggernaut coverage.', ja: 'レクサイが来ない時の前線代替。ジャガーノートも追加。' } },
-      { champion: 'DA_18_Teemo', replaces: 'DA_18_LeBlanc', note: { ar: 'عرّاف بديل يسرّع قدرات الفريق إذا احتجت دعمًا من الخلف.', en: 'An alternate invoker who speeds up team casts if you need backline support.', ja: '後方支援が必要ならインヴォーカーの代替でキャストを高速化。' } },
-    ],
-  },
-  {
-    slug: 'spellweaver-karma',
-    name: { ar: 'عرّافو ونسّاجو السحر', en: 'Invoker Spellweavers', ja: 'インヴォーカーとスペルウィーバー' },
-    subtitle: {
-      ar: 'كارما وآري يضخان السحر خلف حائط طليعي',
-      en: 'Karma and Ahri pump spell damage behind a Vanguard wall',
-      ja: 'ヴァンガードの壁の後ろからカルマとアーリが魔法を供給',
-    },
-    tier: 'A',
-    difficulty: 2,
-    playstyle: { ar: 'ضرر سحري جماعي', en: 'Team spell damage', ja: 'チーム魔法ダメージ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو سريع إلى المستوى 8 يجمع العرّافين ونسّاجي السحر في لوح واحد: كارما وآري يحملان الضرر، والحارس وسيت وتاريك وكروغ يصنعون جبهة تكفي دورتَي قدرة على الأقل. مورغانا تضيف خصم العلاج من الخلف وتكسر تعزيزات العدو.',
-      en: 'A fast-8 comp packing Invokers and Spellweavers onto one board: Karma and Ahri carry the damage while Sentinel, Sett, Taric and Krug build a frontline that buys at least two rotations of casts. Morgana adds anti-heal from the back and shreds enemy buffs.',
-      ja: 'レベル8へ急ぐインヴォーカー＋スペルウィーバーの一体型。カルマとアーリがダメージを担い、センチネル、セト、タリック、クルーグが2周分のキャストを支える前線を築く。モルガナが後方から回復阻害とバフ破壊を加える。',
-    },
-    units: [
-      { champion: 'DA_Karma18', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 2 },
-      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 0, col: 4 },
-      { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Yorick',
-      'DA_18_LeBlanc',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'نداء الازدهار يمنحك يونارا وكارما ويوريك مجانًا — أساس قوي لكارما.', en: 'Blossom’s Call hands you Yunara, Karma and Yorick for free — a strong base for Karma.', ja: 'ブロッサムの呼びびでユナラ・カルマ・ヨリックを無償獲得。カルマの強力な土台。' } },
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'كل قدرة تلقيها كارما وآري تضرب بضرر سحري إضافي — التوافق الطبيعي للنسّاج.', en: 'Every cast from Karma and Ahri lands bonus magic damage — the natural Spellweaver payoff.', ja: 'カルマとアーリのキャストごとに追加魔法ダメージ。スルウェイバーとの自然な相性。' } },
-      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'خبرة إضافية توصل إلى مستوى 8 قبل اللوبي وتثبّت تشكيلتك مبكرًا.', en: 'Extra XP gets you to level 8 before the lobby and locks your board early.', ja: '追加XPでロビーより先にレベル8へ到達し盤面を早期に確定。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ارفع إلى 4 وابدأ بكارما وسيت مع جبهة مؤقتة.', en: 'Push to 4 and open with Karma and Sett plus a placeholder frontline.', ja: 'レベル4へ上がりカルマとセト＋一時前線で開始。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6 مع كروغ والحارس لتأمين الخط الأمامي.', en: 'Level 6 with Krug and Sentinel to secure the front line.', ja: 'レベル6でクルーグとセンチネルを追加し前線を確保。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع آري ومورغانا، وابدأ في تجهيز كارما بعناصرها الثلاثة.', en: 'Level 7 with Ahri and Morgana, and start itemizing Karma.', ja: 'レベル7でアーリとモルガナを追加しカルマの装備を開始。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8: أضف تاريك وابحث عن ترقية كارما وآري إلى النجمتين.', en: 'Level 8: add Taric and look for two-star upgrades on Karma and Ahri.', ja: 'レベル8：タリックを追加しカルマとアーリの2星を狙う。' } },
-    ],
-    tips: [
-      { ar: 'كارما في المنتصف وآري بجانبهما يجعل صيّاد الأجنحة يصعب الوصول إليهما.', en: 'Keep Karma central with Ahri beside her so flankers struggle to reach either.', ja: 'カルマを中央、アーリを隣に置き側面からの侵入を難しくする。' },
-      { ar: 'مورغانا هي مصدر خصم العلاج الوحيد — ضعها في الزاوية المقابلة لجهاز الشفاء الرئيسي للعدو.', en: 'Morgana is your only anti-heal — place her opposite the enemy’s main healing source.', ja: 'モルガナは唯一の回復阻害。敵の回復源の対角に配置する。' },
-      { ar: 'لا تهمل جبهة تاريك: بدونه ينهار اللوح بعد قدرة واحدة.', en: 'Don’t neglect Taric’s frontline — without him the board collapses after a single cast.', ja: 'タリックの前線を軽視しない。無しでは1回のキャストで崩れる。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Veigar', replaces: 'DA_Krug18', note: { ar: 'فيغار يربط نسّاجك مع كارما مبكرًا ويبقى تكلفته منخفضة.', en: 'Veigar links your weaver side with Karma early while staying cheap.', ja: 'ベイガーが序盤でカルマとスルウェイバーを繋ぎ、コストも低い。' } },
-      { champion: 'DA_Lux18_Blossom', replaces: 'DA_18_Ahri', note: { ar: 'إذا لم تجد آري، لكس الازدهار ترث عناصرها وتبقِ عداد النسّاج.', en: 'If you miss Ahri, Blossom Lux inherits her items and keeps the weaver count.', ja: 'アーリが来なければブロッサムのラックスが装備を受け継ぎスルウェイバー数を維持。' } },
-      { champion: 'DA_18_Shen', replaces: 'DA_Taric18', note: { ar: 'مدافع أرخص لتاريك إذا لم تصل الوحدة الأسطورية.', en: 'A cheaper defender if the legendary never shows up.', ja: 'レジェンドが来ない場合の安いディフェンダー。' } },
-    ],
-  },
-  {
-    slug: 'lunar-invokers',
-    name: { ar: 'عرّافو القمر', en: 'Lunar Invokers', ja: 'ルナー インヴォーカー' },
-    subtitle: {
-      ar: 'ديانا تشق بينما ألون تضيء الخلف',
-      en: 'Diana carves while Alune lights up the back',
-      ja: 'ダイアナが切り裂きアルーンが後方を照らす',
-    },
-    tier: 'A',
-    difficulty: 3,
-    playstyle: { ar: 'اقتحام وسحر', en: 'Dive and spellcast', ja: '突撃と魔法' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو قمري سريع يعتمد على ديانا كمحاربة أمامية تشق الجبهة، وألون كمصدر قدرة خلفي. الحارس العرّاف ومورغانا يعيدان رمي القدرات باستمرار، بينما يحافظ تاريك وهيكاريم وليليا على الخط حتى تكتمل دورتَا القدرات ويبدأ القمر بالحصاد.',
-      en: 'A fast Lunar comp with Diana as a frontline skirmisher carving through the enemy and Alune as the backline caster. Invoker Sentinel and Morgana keep the recasts flowing while Taric, Hecarim and Lillia hold the line until two ability rotations are through.',
-      ja: '前線で切り裂くダイアナと後方のキャスターアルーンを軸にした速いルナー構成。インヴォーカーのセンチネルとモルガナが連続キャストを支え、タリック、ヘカリム、リリアが2周分のキャストが完了するまで線を維持する。',
-    },
-    units: [
-      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'حقيبة الأبطاء تكفي لتجهيز ديانا وألون معًا دون انتظار مكوّنات.', en: 'Heroic Grab Bag gives you enough components to itemize both Diana and Alune at once.', ja: 'ヒロック・グラッグバッグでダイアナとアルーンの両方を一気に装備。' } },
-      { id: 'DA_ComponentBuffet', tier: 'silver', why: { ar: 'مأدبة المكوّنات تسرّع وصول الحاملين إلى عناصرهم الثلاثة.', en: 'Component Buffet speeds your carries toward their three-item builds.', ja: 'コンポーネント・ビュッフェでキャリーの3装備を早期に達成。' } },
-      { id: 'DA_GoingLong', tier: 'gold', why: { ar: 'المواصلة تعطيك خبرة إضافية للوصول إلى مستوى 8 وألون قبل اللوبي.', en: 'Going Long grants extra XP to reach level 8 and Alune before the lobby.', ja: 'ゴーイン・ロングで追加XPを得て、ロビーより先にレベル8とアルーンへ。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ارفع إلى 4 بأقوى جبهة متاحة ولا تُضِف وحدات قمرية مبكرًا.', en: 'Push to 4 with the strongest frontline available — don’t force Lunar units early.', ja: '最強の前線でレベル4へ。ルナーは序盤で無理に揃えない。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6: أضف ديانا لتفعيل القمر مع فيدل ستيكس وثبّت عناصرها.', en: 'Level 6: add Diana to activate Lunar alongside Fiddlesticks and lock her items.', ja: 'レベル6：ダイアナを追加してルナーを発動し装備を確定。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع مورغانا وليليا لحماية الخلف وتأمين خصم العلاج.', en: 'Level 7 with Morgana and Lillia to guard the back and secure anti-heal.', ja: 'レベル7でモルガナとリリアを追加し後方と回復阻害を確保。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع تاريك والحارس: ابحث عن ألون أولًا ثم حسّن النجوم.', en: 'Level 8 with Taric and Sentinel — find Alune first, then upgrade stars.', ja: 'レベル8でタリックとセンチネルを追加。まずアルーンを探し次に星を上げる。' } },
-    ],
-    tips: [
-      { ar: 'ديانا في الصف الثاني تنتظر بدء القتال ثم تشق من الجناح إلى الخلف.', en: 'Diana in the second row waits for combat to start, then flanks toward the backline.', ja: 'ダイアナは2列目で戦闘開始を待ち、側面から敵陣へ切り込む。' },
-      { ar: 'ألون خلف مركز اللوح: قدرتها تغطي المساحة كلها عندما تكون محمية.', en: 'Alune behind center — her ability covers the whole board once she is protected.', ja: 'アルーンは中央後方に。守られれば全体をカバーする。' },
-      { ar: 'مورغانا مصدر خصم العلاج الوحيد هنا؛ لا تبدلها أبدًا بوحدة أخرى.', en: 'Morgana is your only anti-heal here — never swap her out.', ja: 'モルガナはここ唯一の回復阻害。外交しない。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Aphelios', replaces: 'DA_18_Lillia', note: { ar: 'أفيليوس يضيف قناصًا قمريًا ثانيًا إذا سمح اقتصادك.', en: 'Aphelios adds a second Lunar sniper if your economy allows it.', ja: '経済が許せばアフェリオスが2人目のルナースナイパーに。' } },
-      { champion: 'DA_18_Teemo', replaces: 'DA_18_Morgana', note: { ar: 'تيمو يحافظ على العرّاف إذا لم تجد مورغانا.', en: 'Teemo keeps Invoker alive if you miss Morgana.', ja: 'モルガナが来ない場合ティーモがインヴォーカーを維持。' } },
-      { champion: 'DA_18_Shen', replaces: 'DA_18_Hecarim', note: { ar: 'شين بديل طليعي متين عند غياب هيكاريم.', en: 'A sturdy Vanguard stand-in if you miss Hecarim.', ja: 'ヘカリムが来ない時の頑丈なヴァンガード代替。' } },
-    ],
-  },
-  {
-    slug: 'rival-khazix',
-    name: { ar: 'غريم كازيكس', en: 'Rival Kha’Zix', ja: 'ライバル カ＝ジックス' },
-    subtitle: {
-      ar: 'مفترس وحيد يقفز خلف جبهة قديمة',
-      en: 'A lone predator vaulting behind an ancient frontline',
-      ja: '古老の前線の後ろから跳ぶ一匹の捕食者',
-    },
-    tier: 'S',
-    difficulty: 2,
-    playstyle: { ar: 'اغتيال', en: 'Assassination', ja: '暗殺' },
-    level: { ar: 'مستوى 7', en: 'Level 7', ja: 'レベル7' },
-    summary: {
-      ar: 'كومبو إعادة لفّ حول كازيكس بثلاث نجوم وهو الغريم الوحيد في اللوحة. هيكاريم وديانا يفتحان الطريق، وأورن وفيلد ستيكس يمّدون الجبهة، بينما يضيف إزريال وسوراكا ضررًا من الخلف ويستفيد أفيليوس من التناغم القمري.',
-      en: 'A reroll around three-star Kha’Zix as the lone Rival on the board. Hecarim and Diana open the path, Ornn and Fiddlesticks hold the frontline, while Ezreal and Soraka add backline damage and Aphelios exploits the Lunar setup.',
-      ja: '盤面で唯一のライバルである3星カ＝ジックス中心のリロール。ヘカリムとダイアナが道を開き、オーンとフィドルスティックスが前線を支え、エズリアルとソラカが後方から、アフェリオスがルナーから追撃する。',
-    },
-    units: [
-      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 2, row: 0, col: 2 },
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 4 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_18_KhaZix', items: ['TFT_Item_UnstableConcoction', 'TFT_Item_RabadonsDeathcap'], star: 3, row: 2, col: 4 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Ornn',
-      'DA_18_Alistar',
-      'DA_18_LeBlanc',
-      'DA_18_KhaZix',
-    ],
-    augments: [
-      { id: 'DA_Corrosion', tier: 'silver', why: { ar: 'التأكل يفك دروعًا ومقاومة سحرية في كل ضربة — كازيكس يخترق أي جبهة.', en: 'Corrosion shreds armor and MR on hit — Kha’Zix tears through any frontline.', ja: 'コロージョンがアーマーとMRを削り、カ＝ジックスがどの前線も貫く。' } },
-      { id: 'DA_PandorasItemsII', tier: 'prism', why: { ar: 'باندورا تحوّل مكوناتك باستمرار إلى عناصر كازيكس المثالية بلا مخاطرة.', en: 'Pandora’s Items continuously converts your components into Kha’Zix’s ideal items, risk-free.', ja: 'パンドラのアイテムがコンポーネントを無リスクでカ＝ジックスの理想装備へ変換。' } },
-      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'حقيبة الأبطاء تسرّع اكتمال عناصر كازيكس الثلاثة أثناء اللف.', en: 'Heroic Grab Bag accelerates Kha’Zix’s three-item build while you roll.', ja: 'ヒロック・グラッグバッグでロール中にカ＝ジックスの3装備を早期完成。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا تشتري خبرة؛ اجمع كازيكس وهيكاريم وورّ اقتصادك.', en: 'Don’t buy XP — collect Kha’Zix and Hecarim and build your economy.', ja: 'XPを買わない。カ＝ジックスとヘカリムを集め経済を築く。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'ستكون في مستوى 6 طبيعيًا: ضع ديانا وأورن في الأمام واحتفظ بـ50 ذهبًا.', en: 'You’ll naturally be level 6: put Diana and Ornn up front and keep 50 gold.', ja: '自然とレベル6。ダイアナとオーンを前に置きゴールド50を維持。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'ابدأ إعادة اللف الجادة على مستوى 7 حتى تصل كازيكس إلى ثلاث نجوم.', en: 'Start serious rolling at level 7 until Kha’Zix hits three stars.', ja: 'レベル7から本格ロールしカ＝ジックスの3星を狙う。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'بعد ثلاث النجوم: مستوى 8 مع أفيليوس وسوراكا لإكمال القمر والجلاد.', en: 'After three stars: level 8 with Aphelios and Soraka to complete Lunar and Executioner.', ja: '3星達成後：レベル8でアフェリオスとソラカを追加しルナーと処刑者を完成。' } },
-    ],
-    tips: [
-      { ar: 'كازيكس هو الغريم الوحيد — لا تُضِف غريمًا ثانيًا أبدًا لأنه يُعطّل ميزته.', en: 'Kha’Zix is the lone Rival — never add a second Rival or you cancel his bonus.', ja: 'カ＝ジックスは単独ライバル。2体目を出すとボーナスが消える。' },
-      { ar: 'بدّل مكانه كل جولة حتى يقفز مباشرة على حامل ضرر العدو.', en: 'Rotate his position every round so he lands directly on an enemy carry.', ja: '毎ラウンド位置を変え、敵キャリーの真上に飛ばす。' },
-      { ar: 'أورن وحده يبتلع ضربة البداية — اشترِ لكازيكس وقت القفزة الأولى.', en: 'Ornn eats the opening burst alone — buy Kha’Zix time for his first jump.', ja: 'オーンが開幕を独り占め。カ＝ジックスの初動を確保する。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Rengar', replaces: 'DA_18_KhaZix', note: { ar: 'رينجار البديل إذا كنت تدور عليه — لكن لا تجمعهما أبدًا.', en: 'Rengar as the alternate if you roll him instead — but never field both together.', ja: '代わりにレンガーを狙う場合の代替。ただし両方は絶対に出さない。' } },
-      { champion: 'DA_18_Ashe', replaces: 'DA_18_Soraka', note: { ar: 'آش تجلب ازدهارًا وصيادًا بدل الجلاد إذا احتجت ضررًا آمنًا من الخلف.', en: 'Ashe brings Blossom and Hunter instead of Executioner if you need safe backline damage.', ja: '処刑の代わりにブロッサムとハンターを持ち、安全な後方ダメージが欲しい場合に。' } },
-      { champion: 'DA_Amumu18', replaces: 'DA_Fiddlesticks18', note: { ar: 'أمومو بديل جبهة متين مع جحيم وطاغوت.', en: 'A sturdy frontline alternative with Inferno and Juggernaut.', ja: 'インフェルノとジャガーノートを持つ頑丈な前線代替。' } },
-    ],
-  },
-  {
-    slug: 'caustic-adaptors',
-    name: { ar: 'متكيفو الكاوي', en: 'Caustic Adaptors', ja: '腐敗のアダプター' },
-    subtitle: {
-      ar: 'ماستر يي ونيدالي يتكيفان مع كل اشتباك',
-      en: 'Master Yi and Nidalee adapt with every engagement',
-      ja: 'マスター・イーとニダリーが交戦ごとに適応する',
-    },
-    tier: 'A',
-    difficulty: 2,
-    playstyle: { ar: 'إعادة لفّ متكيّف', en: 'Adaptive reroll', ja: 'アダプティブリロール' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ يعتمد على المتكيفين: كوغ ماو يحرق الجبهات الأمامية بضرر كاوي متراكم، بينما يزداد ماستر يي ونيدالي قوة مع كل تكيّف. جبهة يوريك وسيت وكروغ تكفي لتأمين المشهد، ورينغار يضغط على الجناح حتى تسقط الخطوط.',
-      en: 'A reroll built around Adaptors: Kog’Maw burns through frontlines with stacking caustic damage while Master Yi and Nidalee grow stronger with every adaptation. Yorick, Sett and Krug buy enough time, and Rengar pressures the flank until the lines collapse.',
-      ja: 'アダプターを軸にしたリロール。コグ＝マウが腐敗ダメージで前線を焼き、マスター・イーとニダリーは交戦ごとに強化される。ヨリック、セト、クルーグが時間を稼ぎ、レンガーが側面から線を崩す。',
-    },
-    units: [
-      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 2 },
-      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_MadredsBloodrazor'], star: 2, row: 0, col: 4 },
-      { champion: 'DA_18_Rengar', items: ['TFT_Item_TitansResolve', 'TFT_Item_GuardianAngel', 'TFT_Item_GuinsoosRageblade'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_18_MasterYi_AD', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve'], star: 3, row: 2, col: 3 },
-      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Yorick',
-      'DA_Gromp18_AP',
-      'DA_18_MasterYi_AD',
-    ],
-    augments: [
-      { id: 'DA_18_PrimalAugment_Nidalee', tier: 'gold', why: { ar: 'داخل الوحش يمنح بركة بدائية إضافية لنيدالي وڤي — نصف الفريق يصبح أقوى فورًا.', en: 'Beast Within grants an extra Primal blessing to Nidalee and Vi — half your board instantly gets stronger.', ja: 'ビースト・ウィズインがニダリーとファイに追加のプライマル祝福。盤面の半分が即強化。' } },
-      { id: 'DA_Corrosion', tier: 'silver', why: { ar: 'التأكل يفك الدروع فيحرق كوغ ماو وماستر يي أهدافهم أسرع.', en: 'Corrosion shreds armor so Kog’Maw and Master Yi melt their targets faster.', ja: 'コロージョンがアーマーを削り、コグ＝マウとマスター・イーの処理を高速化。' } },
-      { id: 'DA_TonsOfStatsI', tier: 'silver', why: { ar: 'إحصاءات جماعية مجانية تنفع كل وحداتك المتكيّفة — قيمة عالية مبكرًا.', en: 'Free teamwide stats benefit every Adapted unit — great early value.', ja: 'チーム全体に無料ステータス。アダプター全員に効く序盤の高効率。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا ترفع. استخدم يوريك وكروغ كجبهة مؤقتة واحمِ صحتك.', en: 'Don’t level. Use Yorick and Krug as a placeholder frontline and protect your health.', ja: 'レベルを上げない。ヨリックとクルーグで一時前線を作り体力を守る。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6: أضف كوغ ماو ورينغار وابدأ في جمع المتكيفين.', en: 'Level 6: add Kog’Maw and Rengar and start collecting Adaptors.', ja: 'レベル6：コグ＝マウとレンガーを追加しアダプターを集め始める。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع ماستر يي ثم أعد اللف ببطء على 7 لثلاث نجوم.', en: 'Level 7 with Master Yi, then slow-roll at 7 for three stars.', ja: 'レベル7でマスター・イーを追加し、7でスローロールして3星を狙う。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'بعد ثلاث نجوم لنيدالي وياي: مستوى 8 مع سيت لإتمام المشاجرين.', en: 'After three-starring Nidalee and Yi: level 8 with Sett to finish Brawlers.', ja: 'ニダリーとイーの3星後：レベル8でセトを追加しブローラーを完成。' } },
-    ],
-    tips: [
-      { ar: 'كوغ ماو يحتاج حماية كاملة في الزاوية؛ كل ثانية يعيشها = حرق أكثر.', en: 'Kog’Maw wants full corner protection — every second he lives means more burn.', ja: 'コグ＝マウは隅で完全保護を。生き延びるほど燃焼が増える。' },
-      { ar: 'أرسل ماستر يي متأخرًا من الجناح بعد أن تنشغل الجبهة بالعدو.', en: 'Send Master Yi in late from the flank once the frontline is busy with the enemy.', ja: '前線が敵と絡んでから側面からマスター・イーを投入する。' },
-      { ar: 'ستاتيك شيف على كوغ ماو يفك دروع الجبهات الكبيرة — لا تعطيه عناصر قدرة صرفة.', en: 'Statikk on Kog’Maw shreds big frontlines — don’t give him pure ability items.', ja: 'コグ＝マウのスタティックが重い前線を崩す。純粋アビリティ装備は不可。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Akali_AD', replaces: 'DA_18_Rengar', note: { ar: 'أكالي بديلة متكيفة (جحيم + متكيف) تملأ نفس دور الاقتحام.', en: 'Akali is an Adaptor stand-in (Inferno + Adaptor) filling the same diver role.', ja: 'アカリはアダプター代替（インフェルノ＋アダプター）で同じ突撃役をこなす。' } },
-      { champion: 'DA_Gromp18_AP', replaces: 'DA_Krug18', note: { ar: 'غرومب بديل لكروغ يرفع عداد المتكيفين ويحتفظ بوحش الريفت.', en: 'Gromp stands in for Krug, raising the Adaptor count while keeping Riftbeast.', ja: 'グロンプがクルーグの代役。アダプター数を増やしリフトビーストも維持。' } },
-      { champion: 'DA_18_Tristana', replaces: 'DA_Nidalee18_AP', note: { ar: 'تريستانا راميحة بديلة إذا لم تصل نيدالي إلى ثلاث نجوم.', en: 'Tristana is the fallback carry if Nidalee never hits three stars.', ja: 'ニダリーの3星が無理ならトリスターナが切り替え先。' } },
-    ],
-  },
-  {
-    slug: 'apex-predator',
-    name: { ar: 'المفترس الأعلى', en: 'Apex Predator', ja: '捕食者の頂点' },
-    subtitle: {
-      ar: 'التنين الأعظم يبتلع اللوح كله',
-      en: 'The Elder Dragon swallows the whole board',
-      ja: 'エルダードラゴンが盤面全体を呑み込む',
-    },
-    tier: 'B',
-    difficulty: 3,
-    playstyle: { ar: 'وحش أسطوري', en: 'Legendary beast', ja: '伝説の獣' },
-    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
-    summary: {
-      ar: 'كومبو صعود سريع إلى المستوى9 يبني كل شيء حول التنين الأعظم الذي يشغل وحدتين ويُحتسب لوحش الريفت مرتين. الحارس وكروغ وذئب مورك ووحش الأشواك يكدّسون جبهة متزايدة، وغنار وتاريك يضيفان تغطية، بينما يحصد التنين ما تبقّى بعد اشتعال المعركة.',
-      en: 'A fast-9 comp built entirely around the Elder Dragon, who takes two team slots and double-counts for Riftbeast. Sentinel, Krug, Murkwolf and Brambleback stack an ever-growing frontline, Gnar and Taric add coverage, and the Dragon harvests whatever survives the opening.',
-      ja: '2スロットを消費しリフトビーストを2体分カウントするエルダードラゴンを軸にした速9構成。センチネル、クルーグ、マークウルフ、ブランブルバックが前線を積み上げ、ナーとタリックが補い、ドラゴンが開戦後の残りを狩る。',
-    },
-    units: [
-      { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 2, row: 1, col: 1 },
-      { champion: 'DA_Murkwolf18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_UnstableConcoction'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 2 },
-      { champion: 'DA_18_ElderDragon', items: ['TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 4 },
-      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_UnstableConcoction'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Sentry',
-      'DA_18_Yorick',
-      'DA_Cinderling18',
-      'DA_Scuttlecrab18',
-    ],
-    augments: [
-      { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'أوميجا ريفتبيست يسمح برِفتبيست ألفا ثاني ويرفع قوة الوحوش — أساسي مع التنين.', en: 'Omega Riftbeast allows a second Alpha Riftbeast and boosts the beasts — core with the Dragon.', ja: 'オメガ・リフトビーストがアルファを2体目許し獣を強化。ドラゴンとの中核。' } },
-      { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'الحدادة الحيّة تدفع مكوّنات مستمرة لتجهيز التنين مبكرًا وهو باهظ الثمن.', en: 'Living Forge keeps pushing components so you can itemize the expensive Dragon early.', ja: 'リビング・フォージがコンポーネントを継続供給し、高コストなドラゴンを早期に装備。' } },
-      { id: 'DA_BuriedTreasuresIII', tier: 'prism', why: { ar: 'كنوز مدفونة III تملأ مقاعدك بمكوّنات إضافية — تجهيز كامل قبل منافسيك.', en: 'Buried Treasures III fills your bench with extra components — full items before the lobby.', ja: 'ベリッド・トレジャーズIIIがベンチを追加コンポーネントで埋め、ロビーより先に装備完成。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابدأ بأي وحوش ريفت متاحة وارفع 4 مع أقوى جبهة مؤقتة.', en: 'Open with whatever Riftbeasts you find and push 4 with the strongest temporary frontline.', ja: '見つけたリフトビーストで開始し、最強の一時前線でレベル4へ。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6 مع الحارس وكروغ، وحافظ على اقتصاد قوي للصعود الطويل.', en: 'Level 6 with Sentinel and Krug and keep a strong economy for the long climb.', ja: 'レベル6でセンチネルとクルーグを追加し長い上りのため経済維持。' } },
-      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'تحرك من7 إلى8 تدريجيًا وابحث عن التنين الأعظم مبكرًا إن أمكن.', en: 'Move through 7 into 8 gradually and look for the Elder Dragon early if you can.', ja: '7から8へ段階的に進み、可能なら序盤からエルダードラゴンを探す。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 9: أضف التنين وتاريك ثم دوّر حتى تُحسّن وحداتك الأساسية.', en: 'Level 9: add the Dragon and Taric, then roll to upgrade your core units.', ja: 'レベル9：ドラゴンとタリックを追加しロールして中核を強化。' } },
-    ],
-    tips: [
-      { ar: 'التنين يشغل وحدتين — احسب مساحة اللوحة قبل شرائه حتى لا تخسر وحدة.', en: 'The Dragon takes two slots — count your board space before buying so nothing gets pushed out.', ja: 'ドラゴンは2スロット。買う前に空きを確認し押し出しを防ぐ。' },
-      { ar: 'إن فاتك التنين، اعتمد على الوحوش الرخيصة واهدف9 لاحقًا دون إنفاق مبكر.', en: 'If you miss the Dragon, lean into cheap Riftbeasts and aim for 9 later without spending early.', ja: 'ドラゴンが来なければ安価なリフトビーストで我慢し、後から9を狙う。' },
-      { ar: 'تاريك على طرف الجبهة الأمامية يمدّ الخط ويمنع اختراق الأجنحة.', en: 'Taric on the outer frontline extends the wall and stops flank dives.', ja: '前線の外側のタリックが壁を広げ、側面の突入を防ぐ。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Scuttlecrab18', replaces: 'DA_Brambleback18', note: { ar: 'سكاتل كراب أرخص يحافظ على عداد وحش الريفت.', en: 'A cheaper Scuttlecrab that keeps the Riftbeast count intact.', ja: '安いスカトルクラブでリフトビースト数を維持。' } },
-      { champion: 'DA_18_Alistar', replaces: 'DA_Krug18', note: { ar: 'أليستار بديل جبهة (إلدروود + مشاجر) إذا احتجت دهسًا إضافيًا.', en: 'Alistar frontline option (Elderwood + Brawler) if you need extra crowd control.', ja: '追加CCが必要ならアリスター（エルダーウッド＋ブローラー）。' } },
-      { champion: 'DA_18_Azir', replaces: 'DA_18_GnarSmall', note: { ar: 'أزير إن فاتك غنار: ضرر سحري مستقل تمامًا عن الريفتبيست.', en: 'Azir if you miss Gnar: independent magic damage outside of Riftbeast.', ja: 'ナーが来ない時のアジール。リフトビースト外の独立した魔法ダメージ。' } },
-    ],
-  },
-  {
-    slug: 'blossom-executioners',
-    name: { ar: 'جلّادو الازدهار', en: 'Blossom Executioners', ja: 'ブロッサム エクセキューショナー' },
-    subtitle: {
-      ar: 'يونارا تحصد من الخلف بينما يزدهر الأمام',
-      en: 'Yunara harvests from the back while the front blossoms',
-      ja: '前線が咲きユナラが後方から収穫する',
-    },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'جلاد متدرّج', en: 'Execution ramp', ja: '処刑の積み上げ' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ يبني حول يونارا بثلاث نجوم، مع آري وإزريال يحملان الضرر في الأوقات الصعبة. جبهة أليستار وسيت مدمجة لكنها كافية، ولوبلانك تدعم الازدهار ونسّاج السحر، بينما تضيف سوراكا وكينين ضغط الجلاد من الخلف.',
-      en: 'A reroll built around three-star Yunara, with Ahri and Ezreal carrying through the rough patches. Alistar and Sett keep a compact but sufficient frontline, LeBlanc backs up Blossom and Spellweaver, while Soraka and Kennen add execution pressure from the back.',
-      ja: '3星ユナラを軸にしたリロール。苦しい場面ではアーリとエズリアルがダメージを担う。アリスターとセトの前線で十分で、ルブランがブロッサムとスペルウィーバーを支え、ソラカとケネンが後方から処刑圧力を増す。',
-    },
-    units: [
-      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Yunara', items: ['TFT_Item_Deathblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper'], star: 3, row: 0, col: 3 },
-      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv'], star: 2, row: 1, col: 2 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 4 },
-      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_18_BlossomTraitAugment', tier: 'gold', why: { ar: 'نداء الازدهار يمنحك يونارا ويوريك وكارما مجانًا — الثلاثي الذي يبني الكومبو.', en: 'Blossom’s Call grants Yunara, Yorick and Karma free — the trio that builds this comp.', ja: 'ブロッサムの呼びびでユナラ・ヨリック・カルマを無償獲得。この構成の土台。' } },
-      { id: 'DA_JeweledLotus_I', tier: 'silver', why: { ar: 'زهرة اللوتس تجعل قدرات آري وكينين قادرة على الحرجة — انفجار في كل موجة.', en: 'Jeweled Lotus lets Ahri and Kennen’s abilities crit — an explosion every wave.', ja: 'ジュエル・ロータスでアーリとケネンのアビリティがクリティカル化。毎波が爆発する。' } },
-      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'حدّاد السيف يعطي عنصر سيفًا إضافيًا يُغلق عناصر يونارا وإزريال أولًا.', en: 'Swordsmith hands you an extra sword item to finish Yunara and Ezreal first.', ja: 'ソースミスが追加の剣アイテムを提供し、まずユナラとエズリアルを完成させる。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'اجمع يونارا وأليستار وسيت ولا تصرف أكثر من 50 ذهبًا.', en: 'Collect Yunara, Alistar and Sett and never spend below 50 gold.', ja: 'ユナラ、アリスター、セトを集め、ゴールドを50未満にしない。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6 مع لوبلانك ثم ابدأ إعادة اللف الجادة.', en: 'Level 6 with LeBlanc, then start the serious rolling.', ja: 'レベル6でルブランを追加し本格ロールを開始。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع آري؛ استمر في اللف حتى ثلاث نجوم ليونارا.', en: 'Level 7 with Ahri — keep rolling until Yunara hits three stars.', ja: 'レベル7でアーリを追加。ユナラの3星までロール継続。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع إزريال وكينين لصقل التشكيلة النهائية.', en: 'Level 8 with Ezreal and Kennen to polish the final board.', ja: 'レベル8でエズリアルとケネンを追加し最終盤面を仕上げる。' } },
-    ],
-    tips: [
-      { ar: 'يونارا تتفوق حين تهبط صحة الأهداف — لا تُدخلها بنصف عناصر.', en: 'Yunara pops once targets drop low — never field her half-built.', ja: 'ユナラは敵が低体力で強まる。途中半端な装備で出さない。' },
-      { ar: 'اجعل كينين يقف خلف الجبهة ليقع صاعقه وسط تجمّع العدو.', en: 'Keep Kennen behind the frontline so his storm lands inside the enemy clump.', ja: 'ケネンを前線の後ろに置き敵の密集地に嵐を落とす。' },
-      { ar: 'أليستار هو درعك الوحيد: عناصره الدفاعية أولوية قبل أي عنصر سادس.', en: 'Alistar is your only real shield — his defensive items come before any sixth item.', ja: 'アリスターが唯一の盾。防御装備が6個目より優先。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Lux18_Blossom', replaces: 'DA_18_Ahri', note: { ar: 'لوكس الازدهار بديلة لآري تحمل نفس عناصر السحر وتكمل العتبة.', en: 'Blossom Lux replaces Ahri with the same spell items while completing the breakpoint.', ja: 'ブロッサムのラックスがアーリの代役。同じ魔法装備でブレイクポイントも完成。' } },
-      { champion: 'DA_18_Tristana', replaces: 'DA_18_Ezreal', note: { ar: 'تريستانا بديلة أرخص للضرر المادي إن ضاق اقتصادك.', en: 'A cheaper physical damage alternative if your economy is tight.', ja: '経済が苦しい時の安い物理ダメージ代替。' } },
-      { champion: 'DA_18_Yorick', replaces: 'DA_18_Alistar', note: { ar: 'يوريك يربط الازدهار ويعطيك مستدعيًا إضافيًا بدل الدهس.', en: 'Yorick links Blossom and gives you an extra Summoner instead of the knock-up.', ja: 'ヨリックがブロッサムを繋ぎ、ノックアップの代わりにサモナーを追加。' } },
-    ],
-  },
-  {
-    slug: 'blackthorn-sprykin',
-    name: { ar: 'مشاغبو الشوكة السوداء', en: 'Blackthorn Sprykin', ja: 'ブラックソーン スプライキン' },
-    subtitle: {
-      ar: 'أزير وفيغار يتبادلان الضربات من أماكن آمنة',
-      en: 'Azir and Veigar trade blows from safety',
-      ja: 'アジールとベイガーが安全地帯から撃ち合う',
-    },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'إعادة لفّ مزدوج', en: 'Dual carry reroll', ja: 'デュオキャリーリロール' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ مزدوج يجمع أزير المستدعي وفيغار النسّاج فوق جبهة من الشوكة السوداء والمشاغبين. مالفايت يوزّع الدرع على الجميع، وريكساي وكوبوكو وراموس يثبتون الخط، بينما تضيف سوراكا وفيلد ستيكس الجلاد والبقاء.',
-      en: 'A dual reroll pairing summoner Azir with spellweaver Veigar over a Blackthorn–Sprykin frontline. Malphite hands shields to the whole team, Rek’Sai, Kobuko and Rammus anchor the line, while Soraka and Fiddlesticks add execution and sustain.',
-      ja: 'サモナーのアジールとスペルウィーバーのベイガーを、ブラックソーンとスプライキンの前線上で組むデュオリロール。マルファイトが全体にシールドを配り、レクサイ・コブコ・ラムスが線を固定し、ソラカとフィドルスティックスが処刑と継続力を加える。',
-    },
-    units: [
-      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 3, row: 0, col: 1 },
-      { champion: 'DA_18_Azir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 1, col: 5 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Kobuko', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_RekSai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 3, col: 3 },
-      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff'], star: 2, row: 3, col: 5 },
-    ],
-    earlyUnits: [
-      'DA_Karma18',
-      'DA_18_Yorick',
-      'DA_18_Yunara',
-      'DA_18_Azir',
-    ],
-    augments: [
-      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'استخراج العناصر يموّل إعادة اللف بمكوّنات عند التضحية في ساحة الشوكة السوداء.', en: 'Item Extraction funds your reroll with components whenever you sacrifice on the Blackthorn hex.', ja: 'ブラックソーンのヘックスでの犠牲がコンポーネントを生みリロールを資金支援。' } },
-      { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'صديق فروي صغير يضيف صديقًا كبيرًا ثانيًا: كوبوكو وراموس يصبحان جدارًا مزدوجًا.', en: 'Small Furry Friend adds a second Big Furry Friend — Kobuko and Rammus become a double wall.', ja: 'スモール・ファーリー・フレンドが2体目のビッグ・ファーリー・フレンドを追加。コブコとラムスで二重壁に。' } },
-      { id: 'DA_WovenMagic', tier: 'prism', why: { ar: 'ضرر سحري بعد كل قدرة يضاعف مخرجَي أزير وفيغار معًا.', en: 'Magic damage after every cast doubles down on both Azir and Veigar’s output.', ja: 'キャスト後の魔法ダメージがアジールとベイガーの出力を二重にする。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا تشتري خبرة. اجمع فيغار وريكساي وكوبوكو واحتفظ بـ50 ذهبًا.', en: 'Don’t buy XP. Collect Veigar, Rek’Sai and Kobuko and keep 50 gold.', ja: 'XPを買わない。ベイガー、レクサイ、コブコを集めゴールド50維持。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'أعد اللف على مستوى 5 لفيغار ثلاثي النجوم مع الحفاظ على الاقتصاد.', en: 'Slow-roll at level 5 for three-star Veigar while keeping your economy.', ja: 'レベル5でスローロールしベイガーの3星を狙い経済は維持。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع أزير وفيلد ستيكس، واستمر في اللف لرفع النجوم.', en: 'Level 7 with Azir and Fiddlesticks and keep rolling for upgrades.', ja: 'レベル7でアジールとフィドルスティックスを追加しロール継続。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع سوراكا لإكمال الجلاد — ثم حصّن نجومك بدل الصعود.', en: 'Level 8 with Soraka to complete Executioner — then upgrade stars instead of pushing.', ja: 'レベル8でソラカを追加し処刑者を完成。その後はレベルより星を上げる。' } },
-    ],
-    tips: [
-      { ar: 'مالفايت في عمق اللوح يمنح الجميع درعًا — عناصره دفاعية بالكامل.', en: 'Malphite deep in the board shields everyone — keep his items fully defensive.', ja: 'マルファイトを盤面の奥に置き全員にシールド。装備は完全防御で。' },
-      { ar: 'أزير يحتاج وقتًا لبناء جيشه؛ قذائف فيغار تشتري له الثواني الأولى.', en: 'Azir needs time to build his army — Veigar’s bolts buy the opening seconds.', ja: 'アジールは軍の構築に時間が要る。ベイガーの弾が最初の数秒を稼ぐ。' },
-      { ar: 'ضع سوراكا في الزاوية المقابلة لأكبر جبهة شفاء عند العدو.', en: 'Place Soraka opposite the enemy’s biggest healing frontline.', ja: 'ソラカを敵最大の回復前線の対角に配置する。' },
-    ],
-    alternatives: [
-      { champion: 'DA_Lux18_Blackthorn', replaces: 'DA_18_Azir', note: { ar: 'لوكس الشوكة السوداء ترث عناصر أزير وتكمل العتبة إن فاتك.', en: 'Blackthorn Lux inherits Azir’s items and completes the breakpoint if you miss him.', ja: 'ブラックソーンのラックスがアジールの装備を受け継ぎブレイクポイントを完成。' } },
-      { champion: 'DA_18_Teemo', replaces: 'DA_Fiddlesticks18', note: { ar: 'تيمو يضيف عرّافًا ويبقى عداد المشاغبين مفعّلًا.', en: 'Teemo adds an Invoker while keeping the Sprykin count active.', ja: 'ティーモがインヴォーカーを追加しスプライキン数も維持。' } },
-      { champion: 'DA_18_Sejuani', replaces: 'DA_18_Rammus', note: { ar: 'سيجواني بديلة إذا كان راموس ضعيف النجوم — طاغوت مع تبريد.', en: 'Sejuani if your Rammus is low-starred — a Juggernaut with a slow.', ja: 'ラムスの星が低ければセジュアニ。スロー付きジャガーノート。' } },
-    ],
-  },
-  {
-    slug: 'flora-executioners',
-    name: { ar: 'جلّادو النبات الفتاك', en: 'Flora Executioners', ja: 'フローラ エクセキューショナー' },
-    subtitle: {
-      ar: 'أزير يأمر والنباتات تنفّذ الأحكام',
-      en: 'Azir commands and the plants carry out the sentences',
-      ja: 'アジールが命じ植物が判を執行する',
-    },
-    tier: 'B',
-    difficulty: 2,
-    playstyle: { ar: 'استدعاء وجلاد', en: 'Summoner execution', ja: 'サモナー処刑' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يجمع النبات الفتاك (فيلد ستيكس وسوراكا) مع نواة المستدعيين أزير وزايرا. أمومو ومالفايت يصنعان جبهة قصيرة تسمح للاستدعاءات بالسيطرة، بينما يحصد كينين وأزير الأهداف منخفضة الصحة عبر عتبة الجلاد، وتضمن زايرا خصم العلاج.',
-      en: 'A comp pairing Flora Fatalis (Fiddlesticks and Soraka) with the Azir–Zyra summoner core. Amumu and Malphite build a short frontline that lets the summons take over, while Kennen and Azir harvest low-health targets through the Executioner breakpoint and Zyra guarantees anti-heal.',
-      ja: 'フィドルスティックスとソラカのフローラ・ファターリスを、アジールとザイラのサモナーコアと組み合わせる。アムムとマルファイトが短い前線を作り召喚を支配し、ケネンとアジールが処刑のブレイクポイントで低体力の敵を刈り取り、ザイラが回復阻害を担保する。',
-    },
-    units: [
-      { champion: 'DA_18_Zyra', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Azir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_HextechGunblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Yorick', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Rakan',
-      'DA_18_Yorick',
-      'DA_Karma18',
-      'DA_18_Yunara',
-    ],
-    augments: [
-      { id: 'DA_Ascension', tier: 'gold', why: { ar: 'الصعود يكافئ بقاءك بعد بداية القتال — الاستدعاءات تعيش طويلًا فيصبح التعزيز ضخمًا.', en: 'Ascension rewards you for surviving the opener — summons live long enough to make it huge.', ja: 'アセンションが序盤の生存を報酬に変える。召喚が長生きするほど効果が巨大に。' } },
-      { id: 'DA_ComponentBuffet', tier: 'silver', why: { ar: 'مأدبة المكوّنات تجهّز أزير وزايرا وكينين معًا في الوقت نفسه.', en: 'Component Buffet lets you itemize Azir, Zyra and Kennen at the same time.', ja: 'コンポーネント・ビュッフェでアジール・ザイラ・ケネンを同時に装備。' } },
-      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'حقيبة الأبطاء تسرّع عناصر الجيل الثاني لحاملي الضرر.', en: 'Heroic Grab Bag accelerates the second item on each of your carries.', ja: 'ヒロック・グラッグバッグで各キャリーの2個目目の装備を高速化。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابدأ بيوريك وأمومو واجمع مكوّنات القدرة أولًا.', en: 'Open with Yorick and Amumu and prioritize ability components first.', ja: 'ヨリックとアムムで開始し、まずアビリティ系コンポーネントを集める。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6 مع زايرا وواصل بناء اقتصادك.', en: 'Level 6 with Zyra and keep building your economy.', ja: 'レベル6でザイラを追加し経済づくりを継続。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع أزير؛ ثبّت عناصره الثلاثة فورًا.', en: 'Level 7 with Azir — lock in his three items immediately.', ja: 'レベル7でアジールを追加。3つの装備をすぐ確定。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع كينين وسوراكا لإتمام الجلاد والنبات الفتاك.', en: 'Level 8 with Kennen and Soraka to complete Executioner and Flora Fatalis.', ja: 'レベル8でケネンとソラカを追加し処刑者とフローラ・ファターリスを完成。' } },
-    ],
-    tips: [
-      { ar: 'زايرا تحمل خصم العلاج — لا تتركها بلا عناصر أمام كومبوهات الشفاء.', en: 'Zyra holds your anti-heal — never leave her itemless into healing comps.', ja: 'ザイラは回復阻害の要。回復構成相手では装備を外さない。' },
-      { ar: 'كينين خلف الجبهة القصيرة يصيب الجميع بجحيمه في قلب العدو.', en: 'Kennen behind the short frontline drops his storm right into the enemy clump.', ja: '短い前線の後のケネンが敵の中心に嵐を落とす。' },
-      { ar: 'مالفايت مونوليث: درعه للجميع، لذا عناصره دفاعية بالكامل.', en: 'Malphite is your Monolith: his shield is for everyone, so keep items fully defensive.', ja: 'マルファイトはモノリス。シールドは全員向けなので装備は完全防御で。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_Yunara', replaces: 'DA_18_Soraka', note: { ar: 'يونارا تكمل الجلاد بضرر مادي خالص إذا أردت حاملة ثانية.', en: 'Yunara rounds out Executioner with pure physical damage as a second carry.', ja: 'ユナラが2人目のキャリーとして純粋な物理ダメージで処刑を補完。' } },
-      { champion: 'DA_18_Morgana', replaces: 'DA_Fiddlesticks18', note: { ar: 'مورغانا تحافظ على خصم العلاج والعرّاف إذا فشل فيدل ستيكس.', en: 'Morgana keeps anti-heal and Invoker alive if you miss Fiddlesticks.', ja: 'フィドルスティックスが来ない場合もモルガナが回復阻害とインヴォーカーを維持。' } },
-      { champion: 'DA_18_RekSai', replaces: 'DA_18_Malphite', note: { ar: 'ريكساي بديل جبهة مع الشوكة السوداء إن احتجت ضربة بداية.', en: 'Rek’Sai frontline alternative with Blackthorn if you need an opening punch.', ja: '開幕の一撃が必要ならブラックソーンのレクサイが前線代替に。' } },
-    ],
-  },
-  {
-    slug: 'rival-rengar',
-    name: { ar: 'غريم رينغار', en: 'Rival Rengar', ja: 'ライバル レンガー' },
-    subtitle: {
-      ar: 'الصيّاد يطارد حامل الضربات مباشرة',
-      en: 'The hunter tracks the enemy carry directly',
-      ja: '狩人が敵キャリーを直接追跡する',
-    },
-    tier: 'C',
-    difficulty: 2,
-    playstyle: { ar: 'اغتيال جانبي', en: 'Flank assassination', ja: '側面からの暗殺' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو إعادة لفّ يدير رينغار كغريم وحيد مع ديانا وهيكاريم يفتحان له الطريق. ماما منقار ووحش الأشواك يقدّمان الاستدعاء والرشّ من الخلف، وأفيليوس وتاريك يكمّلان تناغم القمر والطليعي في نهاية اللعبة.',
-      en: 'A reroll running Rengar as the lone Rival with Diana and Hecarim opening his path. Mama Beak and Brambleback bring summon and rapidfire from the back, and Aphelios with Taric round out Lunar and Vanguard for the late game.',
-      ja: '単独ライバルのレンガーを、ダイアナとヘカリムが道を開けて支えるリロール。ママ鳥とブランブルバックが後方からサモナーとラピッドファイアを、アフェリオスとタリックが終盤のルナーとヴァンガードを完成させる。',
-    },
-    units: [
-      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_TitansResolve'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_18_Rengar', items: ['TFT_Item_TitansResolve', 'TFT_Item_GuardianAngel', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 2, col: 3 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_Redemption', 'TFT_Item_FrozenHeart'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_UnstableConcoction'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Kobuko',
-      'DA_18_RekSai',
-      'DA_18_KhaZix',
-      'DA_18_Rengar',
-    ],
-    augments: [
-      { id: 'DA_HealingOrbsI', tier: 'silver', why: { ar: 'كرات العلاج تُرجع صحة لرينغار مع كل قتل — يتوقف عن السقوط وسط العدو.', en: 'Healing Orbs give Rengar health back on every kill — he stops dying mid-pack.', ja: 'ヒーリング・オーブでキルごとに体力回復。敵陣の中心でも落ちにくくなる。' } },
-      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'حدّاد السيف يعطيك عنصر سيفًا لتجهيز رينغار وأفيليوس معًا.', en: 'Swordsmith gives you a sword component to itemize Rengar and Aphelios together.', ja: 'ソースミスの剣コンポーネントでレンガーとアフェリオスを同時に装備。' } },
-      { id: 'DA_PandorasItemsII', tier: 'prism', why: { ar: 'باندورا تحوّل كل ما تسقطه إلى العناصر المثالية لرينغار أثناء اللف.', en: 'Pandora’s converts everything you drop into Rengar’s perfect items as you roll.', ja: 'パンドラが掉落物をロール中にレンガーの理想装備へ変換。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'لا ترفع. اجمع رينغار وهيكاريم وماما منقار.', en: 'Don’t level. Collect Rengar, Hecarim and Mama Beak.', ja: 'レベルを上げない。レンガー、ヘカリム、ママ鳥を集める。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6: أضف ديانا لتأمين الاقتحام واحمِ صحتك.', en: 'Level 6: add Diana to secure the dive and protect your health.', ja: 'レベル6：ダイアナを追加して突撃を安定させ体力を守る。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 وأعد اللف الجاد على رينغار حتى ثلاث نجوم.', en: 'Level 7 and roll seriously for Rengar until three stars.', ja: 'レベル7へ上がりレンガーの3星まで本格ロール。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع أفيليوس وتاريك لإكمال القمر والطليعي.', en: 'Level 8 with Aphelios and Taric to complete Lunar and Vanguard.', ja: 'レベル8でアフェリオスとタリックを追加しルナーとヴァンガードを完成。' } },
-    ],
-    tips: [
-      { ar: 'رينغار هو الغريم الوحيد هنا — إضافة كازيكس تُعطّل ميزته بالكامل.', en: 'Rengar is the lone Rival — adding Kha’Zix would disable his bonus entirely.', ja: 'レンガーはここでの単独ライバル。カ＝ジックスを出すとボーナスが完全に無効。' },
-      { ar: 'ضعه في نفس عمود حامل الضربات العدو؛ قفزةه الأولى تقرّر المعركة.', en: 'Put him in the same column as the enemy carry — his opening jump decides the fight.', ja: '敵キャリーと同じ列に配置。初動の跳躍が戦いを決める。' },
-      { ar: 'حماية أفيليوس ضرورية: هو مصدر الضرر الوحيد إن سقط رينغار.', en: 'Protect Aphelios — he is your only damage source if Rengar falls.', ja: 'アフェリオスを守る。レンガーが落ちれば唯一のダメージ源。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_KhaZix', replaces: 'DA_18_Rengar', note: { ar: 'كازيكس البديل إن كان اللعب عليه — لكن لا تجمعهما أبدًا.', en: 'Kha’Zix as the alternate if you roll him — but never field both.', ja: 'こちらを回すならカ＝ジックスが代替。ただし両方は出さない。' } },
-      { champion: 'DA_18_Tristana', replaces: 'DA_18_Aphelios', note: { ar: 'تريستانا بديلة أرخص تربط عفريت ومشاغب وصياد.', en: 'A cheaper Tristana who links Fae, Sprykin and Hunter.', ja: '安いトリスターナがフェイ・スプライキン・ハンターを繋ぐ。' } },
-      { champion: 'DA_18_Lillia', replaces: 'DA_Sentinel18', note: { ar: 'ليليا دفاعية بديلة تحمل عفريتًا إضافيًا إذا ضاقت المساحات.', en: 'A defensive Lillia alternative adding extra Fae if space is tight.', ja: '手窄れば追加フェイを持つ防御的なリリアが代替。' } },
-    ],
-  },
-  {
-    slug: 'eclipse-rapidfire',
-    name: { ar: 'كسوف النيران السريعة', en: 'Eclipse Rapidfire', ja: 'エクリプス ラピッドファイア' },
-    subtitle: {
-      ar: 'ثلاثة شموس وثلاثة أقمار تفتح الكسوف المخفي',
-      en: 'Three suns and three moons open the hidden Eclipse',
-      ja: '太陽3と月3が隠しエクリプスを開放',
-    },
-    tier: 'C',
-    difficulty: 3,
-    playstyle: { ar: 'نيران مخفية', en: 'Hidden firepower', ja: '隠し火力' },
-    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
-    summary: {
-      ar: 'كومبو يستغل الكسوف المخفي (3 شمسي + 3 قمري) الذي يُعلّم أضعف الأعداء ويقتلهم بعد تأخير قصير. ليونا وسيجواني وراكان يصنعون الخط الأمامي، وكايل وأفيليوس يطلقان النيران السريعة، وديانا وألون وليليا يكملون الجانب القمري.',
-      en: 'A comp exploiting the hidden Eclipse synergy (3 Solar + 3 Lunar) that marks the lowest-health enemy and executes them after a short delay. Leona, Sejuani and Rakan build the wall, Kayle and Aphelios pour on Rapidfire, and Diana, Alune and Lillia complete the Lunar side.',
-      ja: '隠しシナジーのエクリプス（ソーラー3＋ルナー3）を使い、最も体力の低い敵をマークして遅延後に処刑する構成。レオナ、セジュアニ、ラカンが壁を作り、ケイルとアフェリオスがラピッドファイアを放ち、ダイアナ・アルーン・リリアがルナー側を完成させる。',
-    },
-    units: [
-      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_RapidFireCannon'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_JeweledGauntlet'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 2, row: 2, col: 3 },
-      { champion: 'DA_18_Leona', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Sejuani', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_Rakan', items: ['TFT_Item_FrozenHeart', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 2, row: 3, col: 4 },
-    ],
-    earlyUnits: [
-      'DA_18_Camille',
-      'DA_18_Leona',
-      'DA_18_Akali_AD',
-      'DA_18_Shen',
-    ],
-    augments: [
-      { id: 'DA_18_LunarTraitAugment', tier: 'gold', why: { ar: 'شمس وقمر: كل قمري يحصل على فائدة مقابل كل شمسي فريد — ثلاثي الشمس يرفع الفريق كله.', en: 'Sun and Moon: each Lunar gains power per unique Solar — the trio of suns buffs your whole team.', ja: 'サン＆ムーン：ソーラー1体ごとにルナーが強化。太陽3体でチーム全体を強化。' } },
-      { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'مختار الشمس يمنح وحدات شمسية وصحة دائمة لليونا — خط أمامي لا ينهار.', en: 'Chosen of the Sun grants Solar units and permanent health to Leona — a frontline that won’t fold.', ja: '太陽の選ばれし者がソーラーを付与しレオナに永久体力。崩れない前線に。' } },
-      { id: 'DA_TonsOfStatsI', tier: 'silver', why: { ar: 'إحصاءات جماعية مجانية تنفع اللوحة المختلطة شمسي/قمري بالكامل.', en: 'Free teamwide stats benefit the mixed Solar/Lunar board as a whole.', ja: 'チーム全体の無料ステータスが太陽と月の混成盤面全体に効く。' } },
-    ],
-    leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابدأ بشمسي متاح (ليونا/كايل) وارفع 4 بجدار مؤقت.', en: 'Open with available Solar units (Leona/Kayle) and push 4 behind a temporary wall.', ja: '使えるソーラー（レオナ/ケイル）で開始し一時壁の後ろでレベル4へ。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6: أضف سيجواني وديانا لتجميع نصف الشمس ونصف القمر.', en: 'Level 6: add Sejuani and Diana to assemble half Sun and half Moon.', ja: 'レベル6：セジュアニとダイアナを追加し太陽と月を半分ずつ集める。' } },
-      { stage: { ar: '4-1', en: '4-1', ja: '4-1' }, text: { ar: 'مستوى 7 مع أفيليوس لتثبيت نصف الكسوف قبل قمة اللوبي.', en: 'Level 7 with Aphelios to lock half the Eclipse before the lobby peaks.', ja: 'レベル7でアフェリオスを追加しロビーのピーク前に半分のエクリプスを固定。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 8 مع ألون وليليا: الكسوف يتفعّل والتعزيزات تكتمل.', en: 'Level 8 with Alune and Lillia: Eclipse activates and the bonuses come online.', ja: 'レベル8でアルーンとリリアを追加しエクリプス発動・ボーナス完成。' } },
-    ],
-    tips: [
-      { ar: 'الكسوف يستهدف أضعف الأعداء بعد تأخير — جبهتك الصلبة تمنحه وقت التنفيذ.', en: 'Eclipse targets the weakest enemy after a delay — your sturdy frontline buys it time.', ja: 'エクリプスは遅延後に最も弱い敵を狙う。頑丈な前線が時間を稼ぐ。' },
-      { ar: 'وزّع كايل وأفيليوس في زاويتين متباعدتين لتفادي قذائف المنطقة.', en: 'Spread Kayle and Aphelios into two corners to dodge AoE nukes.', ja: 'ケイルとアフェリオスを離れた2隅に配置し範囲攻撃を避ける。' },
-      { ar: 'ليونا تحمل صحة دائمة من تعزيز الشمس — أطول جبهة في الكومبو.', en: 'Leona gains permanent health from the Sun buff — she is your longest-lasting wall.', ja: 'レオナはサンバフで永久体力を獲得。最も長持ちする壁。' },
-    ],
-    alternatives: [
-      { champion: 'DA_18_GnarSmall', replaces: 'DA_18_Lillia', note: { ar: 'غنار يربط إلدروود والمشاغبين ويبقى الأمام صلبًا — الكسوف سليم.', en: 'Gnar links Elderwood and Sprykin and keeps the front solid — Eclipse stays intact.', ja: 'ナーがエルダーウッドとスプライキンを繋ぎ前線も堅牢。エクリプスは維持。' } },
-      { champion: 'DA_Taric18', replaces: 'DA_18_Rakan', note: { ar: 'تاريك طليعي أسطوري يحافظ على شرطي الكسوف مع تغطية أوسع.', en: 'Legendary Vanguard Taric keeps the Eclipse condition while covering more ground.', ja: 'レジェンドヴァンガードのタリックがエクリプス条件を保ったまま範囲を拡大。' } },
-      { champion: 'DA_18_Lux_Sunbeam', replaces: 'DA_18_Leona', note: { ar: 'إذا سقطت ليونا: لكس الشمس تحافظ على عداد الشمسي (3) — انقل عناصرها إلى سيجواني.', en: 'If Leona falls: Sunbeam Lux keeps the Solar count at 3 — move her items to Sejuani.', ja: 'レオナが落ちた場合：サンビームのラックスがソーラー数3を維持。装備はセジュアニへ。' } },
-    ],
-  },
-  {
-    slug: 'elderwood-executioners',
-    name: { ar: 'جلّادو إلدروود', en: 'Elderwood Executioners', ja: 'エルダーウッド エクセキューショナー' },
-    subtitle: {
-      ar: 'درايفن يحصد خلف جدار من الجذور',
-      en: 'Draven harvests behind a wall of roots',
-      ja: 'ドレイヴンが根の壁の後ろで獲を刈る',
-    },
+    slug: 'elderwood-executioners-copy',
+    name: { ar: 'دريفن إزريال', en: 'Draven Ezreal 9', ja: 'Draven Ezreal 9' },
+    subtitle: { ar: 'إلدروود دريفن', en: 'Elderwood Draven', ja: 'Elderwood Draven' },
     tier: 'S',
     difficulty: 3,
-    playstyle: { ar: 'جلاد أسطوري', en: 'Legendary execution', ja: 'レジェンド処刑' },
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
     level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
-    summary: {
-      ar: 'كومبو صعود إلى المستوى9 يحمله درايفن (مطارد الجوائز) وإزريال خلف جدار إلدروود كامل: ماوكاي وأمومو وغنار وتاريك يصنعون خطًا يصعب اختراقه، وآيفرن يدعم بالتعزيزات، وكينين يضمن خصم العلاج مع ضغط الجلاد من الخلف.',
-      en: 'A fast-9 carried by Draven (Bounty Seeker) and Ezreal behind a full Elderwood wall: Maokai, Amumu, Gnar and Taric make a line that is hard to break, Ivern backs it with buffs, and Kennen guarantees anti-heal alongside the execution pressure.',
-      ja: 'バウンティーシーカーのドレイヴンとエズリアルを、満員のエルダーウッド壁の後ろで支える速9構成。マオカイ、アムム、ナー、タリックが破りにくい線を築き、アイバーンがバフで支え、ケネンが回復阻害と処刑圧力を担保する。',
-    },
+    summary: { ar: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom. Continue prioritize win streaking. If you have an econ', en: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom. Continue prioritize win streaking. If you have an econ', ja: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom. Continue prioritize win streaking. If you have an econ' },
     units: [
-      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 2, row: 0, col: 1 },
-      { champion: 'DA_Draven18', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade'], star: 2, row: 0, col: 3 },
-      { champion: 'DA_18_Ivern', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_AdaptiveHelm'], star: 2, row: 0, col: 5 },
-      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 1, col: 3 },
-      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 2, row: 2, col: 1 },
-      { champion: 'DA_Taric18', items: ['TFT_Item_FrozenHeart', 'TFT_Item_Crownguard'], star: 2, row: 2, col: 5 },
-      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 2 },
-      { champion: 'DA_18_Maokai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 2, row: 3, col: 3 },
-      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 2, row: 3, col: 4 },
+      { champion: 'DA_18_Alistar', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Ivern', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Draven18', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Maokai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 1, row: 0, col: 5 }
     ],
     earlyUnits: [
       'DA_18_RekSai',
@@ -1500,30 +76,2047 @@ export const comps: Comp[] = [
       'DA_18_Rengar',
     ],
     augments: [
-      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'طبيعة الملاجئ تحمي نباتات إلدروود وتزيد بقاء الجدار الذي يحمي درايفن.', en: 'Nature’s Shelter protects the Elderwood plants and strengthens the wall guarding Draven.', ja: 'ネイチャーズ・シェルターがエルダーウッドの植物を守り、ドレイヴンを守る壁を強化。' } },
-      { id: 'DA_GoingLong', tier: 'gold', why: { ar: 'المواصلة تعطي خبرة كافية للوصول إلى9 قبل الجميع دون إنفاق ذهبي مبكر.', en: 'Going Long grants the XP to reach 9 before everyone without spending gold early.', ja: 'ゴーイン・ロングで誰より先に9へ。序盤のゴールド消費も不要。' } },
-      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'حدّاد السيف يمنح درايفن عنصره الثالث قبل أي منافس.', en: 'Swordsmith hands Draven his third item before anyone else.', ja: 'ソースミスが誰よりも先にドレイヴンの3個目の装備を提供。' } },
+      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_LateGameScaling', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
     ],
     leveling: [
-      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'ابدأ بأي إلدروود متاح (أليستار/ليبلانك) وارفع 4 بجدار مؤقت.', en: 'Open with whatever Elderwood you find (Alistar/LeBlanc) and push 4 behind a temporary wall.', ja: '見つけたエルダーウッド（アリスター/ルブラン）で開始し一時壁でレベル4へ。' } },
-      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'مستوى 6 مع أمومو لجلاد مبكر، وحافظ على 50 ذهبًا.', en: 'Level 6 with Amumu for early execution and keep 50 gold.', ja: 'レベル6でアムムを追加し序盤の処刑を確保。ゴールド50維持。' } },
-      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'مستوى 7/8 مع إزريال كحامل مؤقت وثبّت اقتصادك للصعود.', en: 'Level 7/8 with Ezreal as a temporary carry and keep your economy for the climb.', ja: 'レベル7/8で一時キャリーのエズリアルを立て、上りのため経済を維持。' } },
-      { stage: { ar: '5-1', en: '5-1', ja: '5-1' }, text: { ar: 'مستوى 9: أضف درايفن وماوكاي وآيفرن ثم دوّر للترقيات.', en: 'Level 9: add Draven, Maokai and Ivern, then roll for upgrades.', ja: 'レベル9：ドレイヴン、マオカイ、アイバーンを追加しロールして強化。' } },
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.', en: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.', ja: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ', en: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ', ja: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ' } }
     ],
     tips: [
-      { ar: 'عناصر درايفن أولوية قصوى: لا تشتري أي عنصر سادس قبل اكتمالها.', en: 'Draven’s items are the top priority — no sixth item until he has all three.', ja: 'ドレイヴンの装備が最優先。3個揃うまで6個目の装備は買わない。' },
-      { ar: 'آيفرن خلف الجبهة يمنح التعزيزات ويحافظ على أرضية المعركة.', en: 'Ivern behind the frontline hands out buffs and keeps the fight floor steady.', ja: '前線の後のアイバーンがバフを配り戦線を安定させる。' },
-      { ar: 'لا تصعد9 وأنت فقير: ثمانية بخمسين ذهبًا أقوى من تسع بلا اقتصاد.', en: 'Don’t hit 9 broke — eight units with 50 gold beats nine with no economy.', ja: '経済なしの9より、ゴールド50持ちの8の方が強い。' },
+      { ar: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.', en: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.', ja: 'Slam items aggressively and play for full win streak with Draven items. Ideal opener will be some kind of resource engine like Rengar or Blossom.' },
+      { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' },
+      { ar: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ', en: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ', ja: 'You can start losing rounds while focusing on econ. Fast 9 end of Stage 4 and look for the scaling 5 costs like Draven, Maokai, and Ivern. ' }
     ],
-    alternatives: [
-      { champion: 'DA_18_Ashe', replaces: 'DA_Draven18', note: { ar: 'آش ترث العناصر وتعطي صيادًا وازدهارًا — البديل إن فاتك درايفن.', en: 'Ashe inherits the items and brings Hunter and Blossom — the fallback if you miss Draven.', ja: '装備を受け継ぎハンターとブロッサムを追加。ドレイヴンが来ない場合の切り替え先。' } },
-      { champion: 'DA_18_Soraka', replaces: 'DA_18_Kennen', note: { ar: 'سوراكا تكمل الجلاد بدل كينين إذا احتجت دعمًا أكثر.', en: 'Soraka completes the Executioner side instead of Kennen if you need more support.', ja: 'より支援が欲しい場合はケネンの代わりにソラカが処刑を補完。' } },
-      { champion: 'DA_18_Lillia', replaces: 'DA_18_Alistar', note: { ar: 'ليليا مدافعة عفريت تضيف درعًا وحماية خلفية إذا سقط أليستار.', en: 'Defender Lillia adds a shield and backline protection if Alistar falls.', ja: 'アリスターが落ちた場合、ディフェンダーのリリアがシールドと後方保護を追加。' } },
-    ],
+    alternatives: [],
   },
-
+  {
+    slug: 'lunarwood-khazix',
+    name: { ar: 'Lunarwood كازيكس', en: 'Lunarwood Kha\'zix', ja: 'Lunarwood Kha\'zix' },
+    subtitle: { ar: 'قمري كازيكس إعادة لفّ', en: 'Lunar Kha\'Zix Reroll', ja: 'Lunar Kha\'Zix Reroll' },
+    tier: 'S',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns. If you have a few crucial pairs on level 6, you can consider rolling slightl', en: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns. If you have a few crucial pairs on level 6, you can consider rolling slightl', ja: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns. If you have a few crucial pairs on level 6, you can consider rolling slightl' },
+    units: [
+      { champion: 'DA_18_Ornn', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Diana', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_IonicSpark'], star: 3, row: 1, col: 1 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 3, row: 0, col: 2 },
+      { champion: 'DA_18_KhaZix', items: ['TFT_Item_UnstableConcoction', 'TFT_Item_RabadonsDeathcap'], star: 3, row: 0, col: 1 },
+      { champion: 'DA_18_Soraka', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_SpearOfShojin', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Alune', items: [], star: 1, row: 3, col: 1 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Alistar',
+      'DA_18_LeBlanc',
+      'DA_18_KhaZix',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'اختيار مرن', en: 'Flexible pick', ja: '柔軟な選択' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.', en: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.', ja: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.', en: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.', ja: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.', en: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.', ja: 'Slam items aggressively on Kha\'zix and move them later. It\'s okay to have Spark, Shojin, etc on Khazix early for takedowns.' },
+      { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' },
+      { ar: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.', en: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.', ja: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, give leftover AP items to Diana.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'elderwood-executioners',
+    name: { ar: 'إلدروود جلّادون', en: 'Elderwood Executioners', ja: 'Elderwood Executioners' },
+    subtitle: { ar: 'إلدروود إزريال Soraka', en: 'Elderwood Ezreal Soraka', ja: 'Elderwood Ezreal Soraka' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ' },
+    units: [
+      { champion: 'DA_18_Ornn', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_RedBuff'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Soraka', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Kennen', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 1, col: 3 },
+      { champion: 'DA_Lux18_Base', items: ['TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+      'DA_18_LeBlanc',
+    ],
+    augments: [
+      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', en: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', ja: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.', en: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.', ja: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.' } }
+    ],
+    tips: [
+      { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' },
+      { ar: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', en: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', ja: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.' },
+      { ar: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.', en: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.', ja: 'Level to 8 and look for Ezreal and Soraka with 7 Elderwood. Try not to roll to 0g because we need gold to get to level 9.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'adaptor-reroll',
+    name: { ar: 'متكيف إعادة لفّ', en: 'Adaptor Reroll', ja: 'Adaptor Reroll' },
+    subtitle: { ar: 'متكيف Kog\'Maw', en: 'Adaptor Kog\'Maw', ja: 'Adaptor Kog\'Maw' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You ca', en: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You ca', ja: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You ca' },
+    units: [
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_Krug18', items: [], star: 1, row: 1, col: 6 },
+      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_MadredsBloodrazor'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_MasterYi_AD', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve'], star: 3, row: 1, col: 0 },
+      { champion: 'DA_18_Sett', items: [], star: 1, row: 0, col: 6 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap'], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 1 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_Gromp18_AP',
+      'DA_18_MasterYi_AD',
+    ],
+    augments: [
+      { id: 'DA_PortableForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.', en: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.', ja: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', en: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', ja: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.', en: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.', ja: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.' } }
+    ],
+    tips: [
+      { ar: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.', en: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.', ja: 'Ideally play around a Master Yi opener that can win streak. Blossom is very powerful to get early econ or item wisps.' },
+      { ar: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', en: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', ja: 'Add more Adaptors and frontline as you go. Finish Yi items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.' },
+      { ar: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.', en: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.', ja: 'Level to 7 and roll for Master Yi 2, Kogmaw 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Gromp or a flex unit in at 8.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'solara-yunara',
+    name: { ar: 'شمسي ازدهار', en: 'Solar Blossom', ja: 'Solar Blossom' },
+    subtitle: { ar: 'شمسي كارما إعادة لفّ', en: 'Solar Karma Reroll', ja: 'Solar Karma Reroll' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2. Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani', en: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2. Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani', ja: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2. Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani' },
+    units: [
+      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv'], star: 1, row: 3, col: 5 },
+      { champion: 'DA_Karma18', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Yunara', items: ['TFT_Item_Deathblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper'], star: 3, row: 2, col: 6 },
+      { champion: 'DA_18_Sejuani', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Leona', items: [], star: 3, row: 2, col: 1 },
+      { champion: 'DA_18_Azir', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Kayle', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Yorick', items: [], star: 3, row: 2, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_18_LeBlanc',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.', en: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.', ja: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.', en: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.', ja: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.', en: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.', ja: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.' } }
+    ],
+    tips: [
+      { ar: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.', en: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.', ja: 'Slam items for Karma and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Sejuani 2.' },
+      { ar: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.', en: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.', ja: 'Try to look for an econ/exp wisp every round when rolling. Prioritize Karma 3 > Sejuani 3 > Yorick 3 > Leblanc / Yunara 3. Leona / Kayle not necessary.' },
+      { ar: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.', en: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.', ja: 'Finish your 3* then level for 3 Solar over time. Leftover AP items on LeBlanc. Karma 3 can also hold items too.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'defender-cassio',
+    name: { ar: 'مدافع كاسيوبيا', en: 'Defender Cassio', ja: 'Defender Cassio' },
+    subtitle: { ar: 'مدافع كاسيوبيا إعادة لفّ', en: 'Defender Cassiopeia Reroll', ja: 'Defender Cassiopeia Reroll' },
+    tier: 'A',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak. If lose streaking with Coven, try to kill some units each fight', en: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak. If lose streaking with Coven, try to kill some units each fight', ja: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak. If lose streaking with Coven, try to kill some units each fight' },
+    units: [
+      { champion: 'DA_18_Leona', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Ornn', items: [], star: 3, row: 0, col: 1 },
+      { champion: 'DA_18_Shen', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_HextechGunblade', 'TFT_Item_ArchangelsStaff'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_TitansResolve', 'TFT_Item_AdaptiveHelm', 'TFT_Item_Crownguard'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Rammus', items: ['TFT_Item_IonicSpark', 'TFT_Item_RedBuff', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 5 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 0, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Leona',
+      'DA_18_Ornn',
+      'DA_18_LeBlanc',
+    ],
+    augments: [
+      { id: 'DA_Ascension', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_WovenMagic', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.', en: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.', ja: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', en: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', ja: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.', en: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.', ja: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.', en: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.', ja: 'Open with a strong AP opener, preferably around Invokers. Karma is an example shown but you can also play Invokers or Coven lose streak.' },
+      { ar: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', en: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', ja: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.' },
+      { ar: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.', en: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.', ja: 'Cash out / roll on level 7 for Cassio 2 / Fiddle 2. Then econ up and slow roll above 50g for 3* units. Then level to 8 for a duo carry.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'primal-jungle-copy',
+    name: { ar: 'بدائي مرن', en: 'Primal Flex', ja: 'Primal Flex' },
+    subtitle: { ar: 'سيفير مرن', en: 'Sivir Flex', ja: 'Sivir Flex' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively. Comp is very Sword hungry so keep taking them off augments / car', en: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively. Comp is very Sword hungry so keep taking them off augments / car', ja: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively. Comp is very Sword hungry so keep taking them off augments / car' },
+    units: [
+      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Shen', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Ashe', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Ivern', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Tristana', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_18_Akali_AD',
+      'DA_18_Camille',
+      'DA_18_Shen',
+      'DA_18_Leona',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.', en: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.', ja: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.', en: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.', ja: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.', en: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.', ja: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.' } }
+    ],
+    tips: [
+      { ar: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.', en: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.', ja: 'Play around a strong AD opener prioritizing Sivir items. This comp doesn\'t keep 1 costs in the final comp so you can slam aggressively.' },
+      { ar: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.', en: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.', ja: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. Prioritize finishing your 3 carry / 3 tank items.' },
+      { ar: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.', en: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.', ja: 'Level to 8 and roll for Sivir and upgraded frontline. To be stable, you may need to temporarily tank Vi 2 over 1* 4 costs. Once stable, go 9 for 5 costs.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'ahri-morgana',
+    name: { ar: 'أهري مورغانا', en: 'Ahri Morgana', ja: 'Ahri Morgana' },
+    subtitle: { ar: 'عرّاف أهري', en: 'Invoker Ahri', ja: 'Invoker Ahri' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr' },
+    units: [
+      { champion: 'DA_Karma18', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Sentry', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_Krug18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Sett', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 2 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_DragonsClaw', 'TFT_Item_BrambleVest', 'TFT_Item_WarmogsArmor'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 1, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_Karma18',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_JeweledLotus_I', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_GlassCannon_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', en: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', ja: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.' } }
+    ],
+    tips: [
+      { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' },
+      { ar: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' },
+      { ar: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', en: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', ja: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'ap-95',
+    name: { ar: 'AP سريع', en: 'AP Fast 9', ja: 'AP Fast 9' },
+    subtitle: { ar: 'Alune AP سريع', en: 'Alune AP Fast 9', ja: 'Alune AP Fast 9' },
+    tier: 'A',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers.  Continue prioritize win streaking. If you have an econ augment, you ca', en: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers.  Continue prioritize win streaking. If you have an econ augment, you ca', ja: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers.  Continue prioritize win streaking. If you have an econ augment, you ca' },
+    units: [
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 1, row: 1, col: 4 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 0 },
+      { champion: 'DA_18_Lillia', items: [], star: 1, row: 0, col: 6 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard', 'TFT_Item_FrozenHeart'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Alune', items: ['TFT_Item_BlueBuff', 'TFT_Item_ArchangelsStaff', 'TFT_Item_JeweledGauntlet'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Ivern', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_AdaptiveHelm'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ', en: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ', ja: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ', en: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ', ja: 'Slam items aggressively and play for full win streak with AP items. Ideal opener will be Blossom featuring Karma / Spellweavers. ' },
+      { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' },
+      { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'dragon-princess',
+    name: { ar: 'دريفن تنين', en: 'Draven Dragon 9', ja: 'Draven Dragon 9' },
+    subtitle: { ar: 'تنين دريفن', en: 'Dragon Draven', ja: 'Dragon Draven' },
+    tier: 'A',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav' },
+    units: [
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_18_Kennen', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_Draven18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_LastWhisper', 'TFT_Item_RunaansHurricane'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_ElderDragon', items: ['TFT_Item_InfinityEdge', 'TFT_Item_Deathblade'], star: 1, row: 2, col: 6 },
+      { champion: 'DA_18_Ivern', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_AdaptiveHelm'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Maokai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard', 'TFT_Item_SpectralGauntlet'], star: 1, row: 0, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_Cinderling18',
+      'DA_18_Sentry',
+      'DA_18_Yorick',
+      'DA_Scuttlecrab18',
+    ],
+    augments: [
+      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.' },
+      { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' },
+      { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'invoker-nidalee-copy',
+    name: { ar: 'بدائي Jungle', en: 'Primal Jungle', ja: 'Primal Jungle' },
+    subtitle: { ar: 'بدائي نيدالي سيفير', en: 'Primal Nidalee Sivir', ja: 'Primal Nidalee Sivir' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak. Comp is very Sword hungry so keep taking them off augments / carousels ', en: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak. Comp is very Sword hungry so keep taking them off augments / carousels ', ja: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak. Comp is very Sword hungry so keep taking them off augments / carousels ' },
+    units: [
+      { champion: 'DA_Cinderling18', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_RekSai', items: [], star: 1, row: 2, col: 6 },
+      { champion: 'DA_KogMaw18_AD', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Krug18', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 2, col: 5 },
+      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SteraksGage', 'TFT_Item_SpearOfShojin'], star: 1, row: 2, col: 0 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Yorick',
+      'DA_Cinderling18',
+      'DA_Gromp18_AP',
+      'DA_Scuttlecrab18',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.', en: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.', ja: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.', en: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.', ja: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.', en: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.', ja: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.' } }
+    ],
+    tips: [
+      { ar: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.', en: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.', ja: 'Play around a strong AD opener around Cinderling 2 with Riftbeasts. Slam all your AD and tank items aggressively for win streak.' },
+      { ar: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.', en: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.', ja: 'Comp is very Sword hungry so keep taking them off augments / carousels when possible. You can flex in 5 Riftbeast for better shops or more generic frontline.' },
+      { ar: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.', en: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.', ja: 'Level to 8 and roll for Nidalee, Sivir, and Malphite / tank. If Malphite is too contested, consider Sentinel or Krug tank instead.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'adaptor-reroll-copy',
+    name: { ar: 'ماستر يي رينغار', en: 'Yi Rengar', ja: 'Yi Rengar' },
+    subtitle: { ar: 'ماستر ماستر يي رينغار إعادة لفّ', en: 'Master Yi Rengar Reroll', ja: 'Master Yi Rengar Reroll' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. Yo', en: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. Yo', ja: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps. Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. Yo' },
+    units: [
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 2, col: 0 },
+      { champion: 'DA_Krug18', items: [], star: 3, row: 0, col: 1 },
+      { champion: 'DA_18_MasterYi_AD', items: ['TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 2, col: 6 },
+      { champion: 'DA_18_Rengar', items: ['TFT_Item_TitansResolve', 'TFT_Item_GuardianAngel', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 2, col: 5 },
+      { champion: 'DA_Vi18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_SpectralGauntlet'], star: 3, row: 0, col: 5 },
+      { champion: 'DA_18_Sett', items: [], star: 1, row: 0, col: 0 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 1, row: 3, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_Gromp18_AP',
+      'DA_18_MasterYi_AD',
+    ],
+    augments: [
+      { id: 'DA_PortableForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.', en: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.', ja: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', en: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', ja: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.', en: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.', ja: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.' } }
+    ],
+    tips: [
+      { ar: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.', en: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.', ja: 'Ideally play around a Rengar opener that can win streak. Blossom is very powerful to get early econ or item wisps.' },
+      { ar: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', en: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.', ja: 'Add more Adaptors and frontline as you go. Finish Yi/Rengar items by end of stage. You can even play 5 Blossom for maximum Wisp greed if you highroll the 4 costs.' },
+      { ar: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.', en: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.', ja: 'Level to 7 and roll for Master Yi 2, Rengar 2, and a Juggernaut Tank. Econ up and slow roll for 3*. Add Kog or a flex unit in at 8.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'ahri-morgana-copy',
+    name: { ar: 'نسّاج السحر أهري', en: 'Spellweaver Ahri', ja: 'Spellweaver Ahri' },
+    subtitle: { ar: 'نسّاج السحر أهري', en: 'Spellweaver Ahri', ja: 'Spellweaver Ahri' },
+    tier: 'A',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of fr' },
+    units: [
+      { champion: 'DA_Karma18', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 6 },
+      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Alune', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 3, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_Karma18',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_JeweledLotus_I', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_GlassCannon_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', en: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', ja: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.' } }
+    ],
+    tips: [
+      { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' },
+      { ar: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Blossom or Spellweavers as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' },
+      { ar: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', en: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.', ja: 'Level and roll for Ahri, Morgana, and the frontline. Once stable, go level 9 for Lux.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'riftbeast-reroll',
+    name: { ar: 'وحش الريفت إعادة لفّ', en: 'Riftbeast Reroll', ja: 'Riftbeast Reroll' },
+    subtitle: { ar: 'وحش الريفت بيبلز إعادة لفّ', en: 'Riftbeast Pebbles Reroll', ja: 'Riftbeast Pebbles Reroll' },
+    tier: 'B',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp. Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1. Once you h', en: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp. Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1. Once you h', ja: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp. Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1. Once you h' },
+    units: [
+      { champion: 'DA_Cinderling18', items: ['TFT_Item_InfinityEdge', 'TFT_Item_BlueBuff', 'TFT_Item_LastWhisper'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Sentry', items: ['TFT_Item_BlueBuff', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 3, row: 3, col: 5 },
+      { champion: 'DA_Murkwolf18', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_Scuttlecrab18', items: [], star: 3, row: 2, col: 4 },
+      { champion: 'DA_Krug18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 2, col: 6 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 2, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_Cinderling18',
+      'DA_18_Sentry',
+      'DA_18_Yorick',
+      'DA_Scuttlecrab18',
+    ],
+    augments: [
+      { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_JeweledLotus_I', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.', en: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.', ja: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.', en: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.', ja: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.', en: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.', ja: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.', en: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.', ja: 'Slam items aggressively and play for full win streak with Pebbles items. Alpha Mark Crab or Gromp.' },
+      { ar: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.', en: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.', ja: 'Save up econ and try to go level 7  for 7 riftbeast on 3-5, if you\'re poor wait until 4-1.' },
+      { ar: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.', en: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.', ja: 'Once you have your 3*, level to 8 and field 7 Riftbeast. If you can get to 9, you can ditch 1* Ravagers for Elder Dragon.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'azir-rammus',
+    name: { ar: 'أزير Rammus', en: 'Azir Rammus', ja: 'Azir Rammus' },
+    subtitle: { ar: 'أزير Rammus إعادة لفّ', en: 'Azir Rammus Reroll', ja: 'Azir Rammus Reroll' },
+    tier: 'B',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible. If you have a few crucial pairs on level 6, you can consider rolling sli', en: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible. If you have a few crucial pairs on level 6, you can consider rolling sli', ja: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible. If you have a few crucial pairs on level 6, you can consider rolling sli' },
+    units: [
+      { champion: 'DA_18_Veigar', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Teemo', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Azir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_HextechGunblade'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Rammus', items: ['TFT_Item_Crownguard', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Soraka', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Zyra', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 1, row: 3, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+      'DA_18_Azir',
+    ],
+    augments: [
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.', en: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.', ja: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.', en: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.', ja: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.' } }
+    ],
+    tips: [
+      { ar: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.', en: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.', ja: 'Try to angle this comp with early Azir ideally with Blossom opener for better charms. Take rods off carousel whenever possible.' },
+      { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' },
+      { ar: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.', en: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.', ja: 'Make sure you have 2* Azir, Rammus 4-1, then slowroll above 50 for 3 stars. Once you finish, level for more Summoner / Executioner.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'soraka-flex',
+    name: { ar: 'مالفأيت AP مرن', en: 'Malphite AP Flex', ja: 'Malphite AP Flex' },
+    subtitle: { ar: 'مستدعي مالفأيت مرن', en: 'Summoner Malphite Flex', ja: 'Summoner Malphite Flex' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.' },
+    units: [
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 2, col: 6 },
+      { champion: 'DA_18_Azir', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Soraka', items: ['TFT_Item_RabadonsDeathcap', 'TFT_Item_AdaptiveHelm', 'TFT_Item_JeweledGauntlet'], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_Zyra', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_StatikkShiv', 'TFT_Item_ArchangelsStaff'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Kennen', items: [], star: 1, row: 3, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_Karma18',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', en: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', ja: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.', en: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.', ja: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.' },
+      { ar: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', en: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', ja: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.' },
+      { ar: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.', en: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.', ja: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so don\'t overly tunnel on your roll down.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: '6-juggernaut-ap',
+    name: { ar: 'زايرا المقاوم', en: 'Zyra Juggernaut', ja: 'Zyra Juggernaut' },
+    subtitle: { ar: 'المقاوم زايرا', en: 'Juggernaut Zyra', ja: 'Juggernaut Zyra' },
+    tier: 'B',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak. Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider ', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak. Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider ', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak. Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider ' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 0, col: 0 },
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Scuttlecrab18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 1, row: 0, col: 5 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_ArchangelsStaff', 'TFT_Item_StatikkShiv'], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Zyra', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_ArchangelsStaff', 'TFT_Item_HextechGunblade'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Maokai', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Ivern', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_GuinsoosRageblade'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_Karma18',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.', en: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.', ja: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.', en: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.', ja: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Tank items for a win streak.' },
+      { ar: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.', en: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.', ja: 'Ideally start holding more juggernauts to pair with the Yorick blossom opener, consider moving karma items to LB or Cassio 2.' },
+      { ar: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.', en: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.', ja: 'Level and roll for 6 Juggernauts + Zyra and a duo-carry. You can push 9 when you hit Zyra 2. Tank Vi 2 over Amumu 1. End game move items to Maokai.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'aphelios-nidalee',
+    name: { ar: 'أفيليوس نيدالي', en: 'Aphelios Nidalee', ja: 'Aphelios Nidalee' },
+    subtitle: { ar: 'نيدالي أفيليوس', en: 'Nidalee Aphelios', ja: 'Nidalee Aphelios' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be' },
+    units: [
+      { champion: 'DA_18_Varus', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_KogMaw18_AD', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_SteraksGage', 'TFT_Item_InfinityEdge'], star: 1, row: 2, col: 0 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart', 'TFT_Item_WarmogsArmor'], star: 1, row: 0, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Akali_AD',
+      'DA_18_Camille',
+      'DA_18_Leona',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_BuriedTreasuresIII', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' },
+      { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' },
+      { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'solar-melee',
+    name: { ar: 'شمسي قريب', en: 'Solar Melee', ja: 'Solar Melee' },
+    subtitle: { ar: 'كاميل أكالي إعادة لفّ', en: 'Camille Akali Reroll', ja: 'Camille Akali Reroll' },
+    tier: 'B',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Look to play with lots of early copies of 1 cost + good reroll augment. Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus. Make sure you k', en: 'Look to play with lots of early copies of 1 cost + good reroll augment. Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus. Make sure you k', ja: 'Look to play with lots of early copies of 1 cost + good reroll augment. Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus. Make sure you k' },
+    units: [
+      { champion: 'DA_18_Leona', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_Akali_AD', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_UnstableConcoction', 'TFT_Item_GuardianAngel'], star: 3, row: 2, col: 0 },
+      { champion: 'DA_18_Camille', items: ['TFT_Item_SteraksGage', 'TFT_Item_Quicksilver', 'TFT_Item_InfinityEdge'], star: 3, row: 2, col: 1 },
+      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Varus', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_InfinityEdge'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Kayle', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Sejuani', items: [], star: 1, row: 2, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_18_Akali_AD',
+      'DA_18_Camille',
+      'DA_18_Leona',
+      'DA_18_Ornn',
+    ],
+    augments: [
+      { id: 'DA_EarlyLearnings', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Look to play with lots of early copies of 1 cost + good reroll augment.', en: 'Look to play with lots of early copies of 1 cost + good reroll augment.', ja: 'Look to play with lots of early copies of 1 cost + good reroll augment.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.', en: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.', ja: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.', en: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.', ja: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.' } }
+    ],
+    tips: [
+      { ar: 'Look to play with lots of early copies of 1 cost + good reroll augment.', en: 'Look to play with lots of early copies of 1 cost + good reroll augment.', ja: 'Look to play with lots of early copies of 1 cost + good reroll augment.' },
+      { ar: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.', en: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.', ja: 'Roll to 30 on 3-1 level 4 for extra 1 cost copies. Then slow roll on 5 until you have 5 3 stars for solar bonus.' },
+      { ar: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.', en: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.', ja: 'Make sure you keep your econ high because you need to be level 7 to fit solar on this board. Try to be Level to 7 somewhere on stage 4.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'veigar-consuming-flora-copy',
+    name: { ar: 'إلدروود فيغار', en: 'Elderwood Veigar', ja: 'Elderwood Veigar' },
+    subtitle: { ar: 'إلدروود فيغار إعادة لفّ', en: 'Elderwood Veigar Reroll', ja: 'Elderwood Veigar Reroll' },
+    tier: 'B',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. ', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. ', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. ' },
+    units: [
+      { champion: 'DA_18_RekSai', items: [], star: 3, row: 2, col: 2 },
+      { champion: 'DA_18_Ornn', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Alistar', items: [], star: 3, row: 2, col: 5 },
+      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon'], star: 3, row: 3, col: 2 },
+      { champion: 'DA_18_Cassiopeia', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_18_Veigar',
+      'DA_18_Teemo',
+    ],
+    augments: [
+      { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_PortableForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', en: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', ja: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ', en: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ', ja: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ' } }
+    ],
+    tips: [
+      { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.' },
+      { ar: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', en: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', ja: 'If you are close to Veigar and Ornn 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.' },
+      { ar: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ', en: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ', ja: 'Once you finish Ornn 3 and Veigar 3, you can slowroll on 6 for Leblanc + Alistar 3, if you are too far push levels.. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'mamawood',
+    name: { ar: 'ماماوود', en: 'Mamawood', ja: 'Mamawood' },
+    subtitle: { ar: 'إلدروود ماما بيك إعادة لفّ', en: 'Elderwood Mama Beak Reroll', ja: 'Elderwood Mama Beak Reroll' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots. Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgra', en: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots. Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgra', ja: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots. Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgra' },
+    units: [
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_Alistar', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_Krug18', items: ['TFT_Item_RedBuff', 'TFT_Item_SpectralGauntlet'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_FrozenHeart'], star: 3, row: 0, col: 2 },
+      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_TitansResolve'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Zyra', items: [], star: 1, row: 3, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Varus',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.', en: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.', ja: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ', en: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ', ja: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.', en: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.', ja: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.' } }
+    ],
+    tips: [
+      { ar: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.', en: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.', ja: 'Play strongest board around upgraded Rapidfire and Elderwood. Can also play Inferno to get upgraded shop slots.' },
+      { ar: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ', en: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ', ja: 'Focus on econ and finishing your items. If rich, you can level at 3-5 and roll for upgrades for the rest of the stage. Otherwise, go to 7 at 4-1. ' },
+      { ar: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.', en: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.', ja: 'Roll until you upgrade Mama Beak 2 and your main tank. Then econ up and slow roll for 3*. Add 3 summoner or 5 cost on 8.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'sprykin-trist',
+    name: { ar: 'عفريت تريستانا', en: 'Fae Tristana', ja: 'Fae Tristana' },
+    subtitle: { ar: 'عفريت تريستانا إعادة لفّ', en: 'Fae Tristana Reroll', ja: 'Fae Tristana Reroll' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success. Itemize and play Tristana as soon as you find her. Sprykin is more important than', en: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success. Itemize and play Tristana as soon as you find her. Sprykin is more important than', ja: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success. Itemize and play Tristana as soon as you find her. Sprykin is more important than' },
+    units: [
+      { champion: 'DA_18_Kobuko', items: [], star: 1, row: 2, col: 1 },
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_Vi18', items: [], star: 3, row: 1, col: 3 },
+      { champion: 'DA_18_Rammus', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_HextechGunblade', 'TFT_Item_MadredsBloodrazor'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Lillia', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_LastWhisper', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Varus',
+      'DA_18_Xayah',
+      'DA_18_Hecarim',
+    ],
+    augments: [
+      { id: 'DA_SpreadingRootsPlus', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.', en: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.', ja: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.', en: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.', ja: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.', en: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.', ja: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.' } }
+    ],
+    tips: [
+      { ar: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.', en: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.', ja: 'Play for win streak with upgraded Rageblade holder. Start stacking Fae since getting to 7 ASAP is crucial for success.' },
+      { ar: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.', en: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.', ja: 'Itemize and play Tristana as soon as you find her. Sprykin is more important than Hunter. If you spike very early Primal from ahead, you can consider items.' },
+      { ar: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.', en: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.', ja: 'Level to 7 and roll above 50g for 3* Tristana and Rammus. Use your 4 Fae cash outs to push levels. Give Sivir leftover AD items.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'eclipse-kayle',
+    name: { ar: 'كسوف كايل', en: 'Eclipse Kayle', ja: 'Eclipse Kayle' },
+    subtitle: { ar: 'كسوف كايل إعادة لفّ', en: 'Eclipse Kayle Reroll', ja: 'Eclipse Kayle Reroll' },
+    tier: 'B',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling. Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen ', en: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling. Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen ', ja: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling. Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen ' },
+    units: [
+      { champion: 'DA_18_Leona', items: [], star: 3, row: 2, col: 4 },
+      { champion: 'DA_18_Varus', items: [], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Shen', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_RapidFireCannon'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Sejuani', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_LastWhisper'], star: 1, row: 3, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_18_Leona',
+      'DA_18_Varus',
+      'DA_18_Shen',
+      'DA_18_Kayle',
+    ],
+    augments: [
+      { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.', en: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.', ja: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.', en: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.', ja: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.', en: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.', ja: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.' } }
+    ],
+    tips: [
+      { ar: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.', en: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.', ja: 'Ideally open with Kayle and upgraded frontline. After Rageblade, prioritize tank items. Econ up as much as possible. Don\'t spend gold on leveling.' },
+      { ar: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.', en: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.', ja: 'Bench priority: Kayle 3 > Sejuani 3 > Leona 3 > Shen 3 / Varus 3. Once you finish Kayle 3, begin pushing levels for Lunar units.' },
+      { ar: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.', en: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.', ja: 'Finish your 3* and level for Lunar units to get Eclipse in. Lunar Lux or Solar Lux are both good.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: '10-riftbeast',
+    name: { ar: 'وحش الريفت', en: '10 Riftbeast', ja: '10 Riftbeast' },
+    subtitle: { ar: 'وحش الريفت Elder تنين', en: 'Riftbeast Elder Dragon', ja: 'Riftbeast Elder Dragon' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry. Continue prioritize win streaking. If you hav' },
+    units: [
+      { champion: 'DA_18_Sentry', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_Gromp18_AP', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Murkwolf18', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_Scuttlecrab18', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Krug18', items: [], star: 1, row: 0, col: 0 },
+      { champion: 'DA_CrimsonRaptor18', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_MadredsBloodrazor'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_FrozenHeart', 'TFT_Item_Crownguard'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_ElderDragon', items: ['TFT_Item_InfinityEdge', 'TFT_Item_Deathblade'], star: 1, row: 2, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Sentry',
+      'DA_18_Yorick',
+      'DA_Cinderling18',
+      'DA_Scuttlecrab18',
+    ],
+    augments: [
+      { id: 'DA_18_RiftbeastTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', en: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.', ja: 'Slam items aggressively and play for full win streak with Riftbeast items. Ideal opener will be Riftbeasts featuring Cinderling / Gromp / Mama Beak carry.' },
+      { ar: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', en: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.', ja: 'Continue prioritize win streaking. If you have an econ augment, you can go Fast 7 (before 3-3) to maintain win streak if needed.' },
+      { ar: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', en: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.', ja: 'You can start losing rounds while focusing on econ. Fast 9 by the beginning of Stage 5 and look for your 5 costs. You want around 70g+ minimum for the rolldown.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'aphelios-rapidfire',
+    name: { ar: 'أفيليوس نيران سريعة', en: 'Aphelios Rapidfire', ja: 'Aphelios Rapidfire' },
+    subtitle: { ar: 'نيران سريعة أفيليوس', en: 'Rapidfire Aphelios', ja: 'Rapidfire Aphelios' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade. Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a stro', en: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade. Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a stro', ja: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade. Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a stro' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Varus', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_LastWhisper'], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart'], star: 1, row: 1, col: 2 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_BrambleVest'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_InfinityEdge', 'TFT_Item_RunaansHurricane'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver'], star: 1, row: 2, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Xayah',
+      'DA_18_Varus',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.', en: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.', ja: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.', en: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.', ja: 'Open with a strong win streak AD tempo around Rapidfires. All ad items are good slams besides rageblade.' },
+      { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' },
+      { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'azir-reroll',
+    name: { ar: 'أزير إعادة لفّ', en: 'Azir Reroll', ja: 'Azir Reroll' },
+    subtitle: { ar: 'أزير إعادة لفّ', en: 'Azir Reroll', ja: 'Azir Reroll' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Try to angle this comp with early Azir ideally with blossom opener for better charms. If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. ', en: 'Try to angle this comp with early Azir ideally with blossom opener for better charms. If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. ', ja: 'Try to angle this comp with early Azir ideally with blossom opener for better charms. If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. ' },
+    units: [
+      { champion: 'DA_18_RekSai', items: [], star: 1, row: 2, col: 5 },
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Yunara', items: ['TFT_Item_StatikkShiv'], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_KhaZix', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_Azir', items: ['TFT_Item_HextechGunblade', 'TFT_Item_JeweledGauntlet', 'TFT_Item_RabadonsDeathcap'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_Vi18', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Sett', items: [], star: 1, row: 2, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+      'DA_18_Azir',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'اختيار مرن', en: 'Flexible pick', ja: '柔軟な選択' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.', en: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.', ja: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.', en: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.', ja: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.' } }
+    ],
+    tips: [
+      { ar: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.', en: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.', ja: 'Try to angle this comp with early Azir ideally with blossom opener for better charms.' },
+      { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' },
+      { ar: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.', en: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.', ja: 'Make sure you have 2* Azir, Kha and Vi on 4-1, then slowroll above 50 for 3 stars. Make sure Kha has 8 takedowns before feeding to blackthorn, 3 executioner is very important.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'blackthorn-malphite',
+    name: { ar: 'الشوكة السوداء مالفأيت', en: 'Blackthorn Malphite', ja: 'Blackthorn Malphite' },
+    subtitle: { ar: 'الشوكة السوداء مالفأيت', en: 'Blackthorn Malphite', ja: 'Blackthorn Malphite' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak. Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits.' },
+    units: [
+      { champion: 'DA_Lux18_Base', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Soraka', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Malphite', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Crownguard'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Azir', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_ArchangelsStaff', 'TFT_Item_HextechGunblade'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Veigar', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Zyra', items: ['TFT_Item_StatikkShiv', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 2, col: 5 },
+      { champion: 'DA_18_Kennen', items: [], star: 1, row: 2, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_Karma18',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', en: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', ja: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.', en: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.', ja: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', en: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.', ja: 'Open with a strong AP opener, preferably around Blossom. Slam generic AP items and Malphite items for a win streak.' },
+      { ar: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', en: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.', ja: 'Add in useful 3 costs like Fiddlesticks, Cassio, Azir then flex around their traits. General rule: put items on upgraded units.' },
+      { ar: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.', en: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.', ja: 'Level and roll for Malphite. You will often have to itemize and work with whoever you hit so be flexible. Once stable on Azir 2, Zyra, and Malphite, push to 9.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'fae-ezreal',
+    name: { ar: 'عفريت إزريال', en: 'Fae Ezreal', ja: 'Fae Ezreal' },
+    subtitle: { ar: 'عفريت إزريال', en: 'Fae Ezreal', ja: 'Fae Ezreal' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Don\'t play 4 fae in the midgame until you have at leas', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Don\'t play 4 fae in the midgame until you have at leas', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Don\'t play 4 fae in the midgame until you have at leas' },
+    units: [
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Soraka', items: [], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_SpectralGauntlet'], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart', 'TFT_Item_Crownguard'], star: 1, row: 0, col: 6 },
+      { champion: 'DA_18_Kennen', items: [], star: 1, row: 1, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Xayah',
+      'DA_18_LeBlanc',
+      'DA_18_Hecarim',
+      'DA_18_Rakan',
+    ],
+    augments: [
+      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.', en: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.', ja: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..', en: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..', ja: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..' } }
+    ],
+    tips: [
+      { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' },
+      { ar: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.', en: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.', ja: 'Don\'t play 4 fae in the midgame until you have at least 4 pixie stats. Level for more elderwoods/frontline and save gold.' },
+      { ar: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..', en: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..', ja: 'Level to 8 and look for Ezreal and Lillia for 4 Fae. Roll aggressively for 2 stars on level 8 because Fae can give us gold later..' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'moon-fire',
+    name: { ar: 'أفيليوس طليعيون', en: 'Aphelios Vanguards', ja: 'Aphelios Vanguards' },
+    subtitle: { ar: 'طليعي أفيليوس', en: 'Vanguard Aphelios', ja: 'Vanguard Aphelios' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be' },
+    units: [
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_LastWhisper'], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_Zyra', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_RapidFireCannon', 'TFT_Item_Deathblade', 'TFT_Item_MadredsBloodrazor'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_SteraksGage'], star: 1, row: 1, col: 1 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart', 'TFT_Item_WarmogsArmor'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Varus',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' },
+      { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' },
+      { ar: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', en: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ', ja: 'Level to 8 and roll heavily for Aphelios and the 4 costs. Only push for 9 once you have almost all your 4 costs upgraded. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'woodblossom',
+    name: { ar: 'خشب الازدهار', en: 'Woodblossom', ja: 'Woodblossom' },
+    subtitle: { ar: 'إلدروود ازدهار', en: 'Elderwood Blossom', ja: 'Elderwood Blossom' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units. Add more Elderwood as you level with Spellweavers. If ' },
+    units: [
+      { champion: 'DA_18_Ornn', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_18_Alistar', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Yunara', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Soraka', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Ahri', items: ['TFT_Item_Morellonomicon', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 1, row: 0, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+      'DA_18_LeBlanc',
+    ],
+    augments: [
+      { id: 'DA_18_ElderwoodTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', en: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', ja: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.', en: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.', ja: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.' } }
+    ],
+    tips: [
+      { ar: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', en: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.', ja: 'Open with upgraded Elderwood and slam items on LeBlanc or Xayah. LeBlanc can farm copies of units on your board so avoid fielding unwanted units.' },
+      { ar: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', en: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.', ja: 'Add more Elderwood as you level with Spellweavers. If you start getting AD items, play them on Xayah / Rapidfires.' },
+      { ar: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.', en: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.', ja: 'Level to 8 and roll heavily for Ezreal and the 4 costs, only go 9 once you have upgraded most things.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'afaelios',
+    name: { ar: 'Afaelios', en: 'Afaelios', ja: 'Afaelios' },
+    subtitle: { ar: 'عفريت أفيليوس', en: 'Fae Aphelios', ja: 'Fae Aphelios' },
+    tier: 'B',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Can als', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Can als', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Can als' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Varus', items: [], star: 1, row: 3, col: 3 },
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Shen', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 1, col: 4 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_Redemption', 'TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_InfinityEdge'], star: 1, row: 3, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_18_Varus',
+      'DA_18_Ornn',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Replication', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ', en: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ', ja: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' },
+      { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Can also play Elderwood with Ornn + Xayah + Hecarim.' },
+      { ar: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ', en: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ', ja: 'Level to 8 and roll for Aphelios and Lillia. Prioritize upgrades before pushing levels to 9. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'caitlyn-hunters',
+    name: { ar: 'كايتلين صيادون', en: 'Caitlyn Hunters', ja: 'Caitlyn Hunters' },
+    subtitle: { ar: 'المقاوم كايتلين إعادة لفّ', en: 'Juggernaut Caitlyn Reroll', ja: 'Juggernaut Caitlyn Reroll' },
+    tier: 'C',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer. Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ide', en: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer. Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ide', ja: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer. Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ide' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Sejuani', items: [], star: 3, row: 2, col: 1 },
+      { champion: 'DA_18_Caitlyn', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane', 'TFT_Item_HextechGunblade'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_Scuttlecrab18', items: ['TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Tristana', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_LastWhisper', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Caitlyn',
+      'DA_18_Tristana',
+    ],
+    augments: [
+      { id: 'DA_TradeSector', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_HeroicGrabBag', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.', en: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.', ja: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.', en: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.', ja: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.', en: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.', ja: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.' } }
+    ],
+    tips: [
+      { ar: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.', en: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.', ja: 'Slam Rageblade and bow items on Caitlyn for a winstreak. BIS Caitlyn is often hard to get so you can also slam items like Gunblade or Giant Slayer.' },
+      { ar: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.', en: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.', ja: 'Level to 6 and roll for 4 Juggernaut + 2 Hunter. Ideally upgrade Caitlyn 2 and 2 cost Juggernaut then econ up -> slow roll above 50g for 3* units.' },
+      { ar: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.', en: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.', ja: 'Finish your 3* ideally by mid Stage 4. Level for more Hunters. Take Turtle Primal unless you are super high rolling and can take items.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'ashe-juggernauts',
+    name: { ar: 'آش مقاومون', en: 'Ashe Juggernauts', ja: 'Ashe Juggernauts' },
+    subtitle: { ar: 'المقاوم آش', en: 'Juggernaut Ashe', ja: 'Juggernaut Ashe' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. Level up for more juggernauts and executioners to pair with our blossom opener. Level and', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. Level up for more juggernauts and executioners to pair with our blossom opener. Level and', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. Level up for more juggernauts and executioners to pair with our blossom opener. Level and' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 1, row: 0, col: 5 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Ivern', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Maokai', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_18_Ashe', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level up for more juggernauts and executioners to pair with our blossom opener.', en: 'Level up for more juggernauts and executioners to pair with our blossom opener.', ja: 'Level up for more juggernauts and executioners to pair with our blossom opener.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.', en: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.', ja: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak.' },
+      { ar: 'Level up for more juggernauts and executioners to pair with our blossom opener.', en: 'Level up for more juggernauts and executioners to pair with our blossom opener.', ja: 'Level up for more juggernauts and executioners to pair with our blossom opener.' },
+      { ar: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.', en: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.', ja: 'Level and roll for 6 juggernauts +Sivir. Once stable, go 9 and look for Ashe and transition your board to 5 costs.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'sprykin-teemo-copy',
+    name: { ar: 'Teemowood', en: 'Teemowood', ja: 'Teemowood' },
+    subtitle: { ar: 'إلدروود تيمو إعادة لفّ', en: 'Elderwood Teemo Reroll', ja: 'Elderwood Teemo Reroll' },
+    tier: 'C',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st' },
+    units: [
+      { champion: 'DA_18_Kobuko', items: [], star: 1, row: 2, col: 1 },
+      { champion: 'DA_18_Veigar', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Alistar', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 3, row: 3, col: 5 },
+      { champion: 'DA_18_Teemo', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 1, col: 4 },
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_StatikkShiv'], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 1, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_18_Veigar',
+      'DA_18_Teemo',
+    ],
+    augments: [
+      { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_TradeSector', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', en: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', ja: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.', en: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.', ja: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.' } }
+    ],
+    tips: [
+      { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.' },
+      { ar: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', en: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', ja: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.' },
+      { ar: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.', en: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.', ja: 'Finish Teemo 3* and your tank then push levels for more Invokers. If you get more damage items late game Morgana can hold the utility.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'warwick-rr',
+    name: { ar: 'وارويك مخرّب', en: 'Warwick Ravager', ja: 'Warwick Ravager' },
+    subtitle: { ar: 'الشوكة السوداء مخرّب وارويك إعادة لفّ', en: 'Blackthorn Ravager Warwick Reroll', ja: 'Blackthorn Ravager Warwick Reroll' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead. Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ra', en: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead. Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ra', ja: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead. Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ra' },
+    units: [
+      { champion: 'DA_18_Akali_AD', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_RekSai', items: [], star: 1, row: 0, col: 6 },
+      { champion: 'DA_Murkwolf18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_UnstableConcoction'], star: 3, row: 0, col: 0 },
+      { champion: 'DA_18_Warwick', items: ['TFT_Item_SteraksGage', 'TFT_Item_TitansResolve', 'TFT_Item_SpearOfShojin'], star: 3, row: 1, col: 0 },
+      { champion: 'DA_18_Azir', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Krug18', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 2, col: 0 },
+      { champion: 'DA_18_Malphite', items: ['TFT_Item_Crownguard', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 1, row: 0, col: 1 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_Murkwolf18',
+      'DA_18_Warwick',
+    ],
+    augments: [
+      { id: 'DA_GroupHugI', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.', en: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.', ja: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.', en: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.', ja: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ', en: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ', ja: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ' } }
+    ],
+    tips: [
+      { ar: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.', en: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.', ja: 'If you don\'t have Shojin, consider lose streak to guarantee it on carousel. If you have Shojin + good component, play for win streak instead.' },
+      { ar: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.', en: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.', ja: 'Level to 6 and roll for Warwick 2 with 4 Blackthorn + 2 Ravager. Econ up and slow roll for 3*. You can also play 4 Ravager temporarily if needed.' },
+      { ar: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ', en: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ', ja: 'Finish Warwick 3 and push levels. If you don\'t have Murkwolf 3, look for Brambleback as your duo carry. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'cashout-morgana',
+    name: { ar: 'عرّاف مورغانا', en: 'Invoker Morgana', ja: 'Invoker Morgana' },
+    subtitle: { ar: 'عرّاف مورغانا', en: 'Invoker Morgana', ja: 'Invoker Morgana' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'Lose Streak', en: 'Lose Streak', ja: 'Lose Streak' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven. If lose streaking with Coven, try to kill some units each fig', en: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven. If lose streaking with Coven, try to kill some units each fig', ja: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven. If lose streaking with Coven, try to kill some units each fig' },
+    units: [
+      { champion: 'DA_18_Sentry', items: [], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_KogMaw18_AD', items: [], star: 1, row: 3, col: 5 },
+      { champion: 'DA_Brambleback18', items: ['TFT_Item_GuardianAngel', 'TFT_Item_MadredsBloodrazor', 'TFT_Item_Quicksilver'], star: 1, row: 2, col: 5 },
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_StatikkShiv'], star: 1, row: 2, col: 4 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart', 'TFT_Item_WarmogsArmor', 'TFT_Item_AdaptiveHelm'], star: 1, row: 0, col: 4 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Alune', items: [], star: 1, row: 3, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_Sentry',
+      'DA_18_Teemo',
+      'DA_18_Rammus',
+    ],
+    augments: [
+      { id: 'DA_18_CovenTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.', en: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.', ja: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', en: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', ja: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.', en: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.', ja: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.', en: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.', ja: 'Open with a strong AP opener, preferably around Invokers. Teemo is an example shown but you can also play Pebbles, Spellweavers, or Coven.' },
+      { ar: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', en: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.', ja: 'If lose streaking with Coven, try to kill some units each fight to preserve HP. If win streaking, push standard winstreak tempo (6 @ 3-2, 7 @ 3-5) and save econ.' },
+      { ar: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.', en: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.', ja: 'Cash out / roll down on level 8 for Morgana 2, Sentinel, and 4 Invoker. If you don\'t have Bramble items, flex in another AP carry like Ahri / Nidalee.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'adaptor-nidalee',
+    name: { ar: 'عرّاف نيدالي', en: 'Invoker Nidalee', ja: 'Invoker Nidalee' },
+    subtitle: { ar: 'عرّاف نيدالي', en: 'Invoker Nidalee', ja: 'Invoker Nidalee' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible. Comp is very Rod hungry so keep taking them off augments / carousels when possible.', en: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible. Comp is very Rod hungry so keep taking them off augments / carousels when possible.', ja: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible. Comp is very Rod hungry so keep taking them off augments / carousels when possible.' },
+    units: [
+      { champion: 'DA_18_Sentry', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_Scuttlecrab18', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_KogMaw18_AD', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_Morellonomicon', 'TFT_Item_ArchangelsStaff', 'TFT_Item_AdaptiveHelm'], star: 1, row: 1, col: 2 },
+      { champion: 'DA_Nidalee18_AP', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_GuinsoosRageblade'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Sentinel18', items: ['TFT_Item_FrozenHeart', 'TFT_Item_WarmogsArmor', 'TFT_Item_AdaptiveHelm'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Xayah',
+      'DA_Scuttlecrab18',
+      'DA_18_Kayle',
+    ],
+    augments: [
+      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.', en: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.', ja: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.', en: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.', ja: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.', en: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.', ja: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.' } }
+    ],
+    tips: [
+      { ar: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.', en: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.', ja: 'Play any strong Rageblade opener on an AP carry such as Kayle, Master Yi, or a Spellweaver. Opener is very flexible.' },
+      { ar: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.', en: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.', ja: 'Comp is very Rod hungry so keep taking them off augments / carousels when possible. If you are not playing Invokers, hold onto cheap units like Pebbles for later.' },
+      { ar: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.', en: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.', ja: 'Level to 8 and roll for 4 Invoker. Avoid tunneling only on 4 Vanguard frontline. You can also flex Brawlers or Juggernauts as needed.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'rengar-rr',
+    name: { ar: 'رينغار إعادة لفّ', en: 'Rengar Reroll', ja: 'Rengar Reroll' },
+    subtitle: { ar: 'طليعي رينغار إعادة لفّ', en: 'Vanguard Rengar Reroll', ja: 'Vanguard Rengar Reroll' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix. If you have a few crucial pairs on level 6, you can consider rolli', en: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix. If you have a few crucial pairs on level 6, you can consider rolli', ja: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix. If you have a few crucial pairs on level 6, you can consider rolli' },
+    units: [
+      { champion: 'DA_18_Diana', items: ['TFT_Item_ThiefsGloves'], star: 3, row: 1, col: 0 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_FrozenHeart', 'TFT_Item_RedBuff', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 1 },
+      { champion: 'DA_CrimsonRaptor18', items: ['TFT_Item_LastWhisper', 'TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Rengar', items: ['TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 0, col: 0 },
+      { champion: 'DA_18_Aphelios', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_Brambleback18', items: [], star: 1, row: 1, col: 1 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 0, col: 6 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 1, col: 6 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Elise',
+      'DA_18_Rengar',
+    ],
+    augments: [
+      { id: 'DA_SpeedyDoubleKill', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_TradeSector', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.', en: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.', ja: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.', en: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.', ja: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.' } }
+    ],
+    tips: [
+      { ar: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.', en: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.', ja: 'Only play this comp with an early Rengar with items so you can snowball Rival. Play any upgraded frontline tank to stall for Kha\'zix.' },
+      { ar: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', en: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.', ja: 'If you have a few crucial pairs on level 6, you can consider rolling slightly on 6 to get charms / upgrade units. Econ up to 7 otherwise.' },
+      { ar: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.', en: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.', ja: 'Slow roll on 7 for 3* upgrades on whatever 3 costs you\'re chasing. In this example, if you can\'t hit Mama Beak 3, look for Aphelios duo instead.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'solar-kayle',
+    name: { ar: 'شمسي كايل', en: 'Solar Kayle', ja: 'Solar Kayle' },
+    subtitle: { ar: 'شمسي كايل إعادة لفّ', en: 'Solar Kayle Reroll', ja: 'Solar Kayle Reroll' },
+    tier: 'C',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling. Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani', en: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling. Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani', ja: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling. Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani' },
+    units: [
+      { champion: 'DA_18_Leona', items: [], star: 3, row: 1, col: 4 },
+      { champion: 'DA_18_Rakan', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_Ornn', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor', 'TFT_Item_Redemption'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Xayah', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RapidFireCannon', 'TFT_Item_Deathblade'], star: 3, row: 3, col: 5 },
+      { champion: 'DA_18_Sejuani', items: [], star: 3, row: 1, col: 3 },
+      { champion: 'DA_18_Kayle', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RabadonsDeathcap'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 2, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Leona',
+      'DA_18_Ornn',
+      'DA_18_Sejuani',
+      'DA_18_Kayle',
+    ],
+    augments: [
+      { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.', en: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.', ja: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.', en: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.', ja: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.', en: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.', ja: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.' } }
+    ],
+    tips: [
+      { ar: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.', en: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.', ja: 'Ideally open with Kayle and upgraded Ornn. After Rageblade, prioritize tank items on Ornn so he can begin reliably stacking Artifact scaling.' },
+      { ar: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.', en: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.', ja: 'Bench priority: Kayle 3 > Ornn 3 > Xayah / Leona > Sejuani > Rakan. Once you finish 1 costs, move up to level 6 for 2 costs.' },
+      { ar: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.', en: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.', ja: 'Finish your 3* and level for Elderwood. Cap with any 5 costs like Lux, Ivern, Taric, etc.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'dark-mages',
+    name: { ar: 'مشاغب فيغار', en: 'Sprykin Veigar', ja: 'Sprykin Veigar' },
+    subtitle: { ar: 'مشاغب فيغار إعادة لفّ', en: 'Sprykin Veigar Reroll', ja: 'Sprykin Veigar Reroll' },
+    tier: 'C',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items. If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3' },
+    units: [
+      { champion: 'DA_18_Kobuko', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_RekSai', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Veigar', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_BlueBuff', 'TFT_Item_HextechGunblade'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Teemo', items: [], star: 1, row: 3, col: 3 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Rammus', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Sett', items: [], star: 1, row: 2, col: 5 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 2, col: 1 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_18_Veigar',
+      'DA_18_Teemo',
+    ],
+    augments: [
+      { id: 'DA_LivingForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_PortableForge', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', en: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', ja: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ', en: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ', ja: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ' } }
+    ],
+    tips: [
+      { ar: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', en: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.', ja: 'Only play around this opener with early upgrades so Veigar can snowball and gain stacks. Prioritize Veigar items.' },
+      { ar: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', en: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.', ja: 'If you are close to Veigar 3 (7+ copies), consider rolling until you hit 3*. If far (3-4 copies), slow roll above 50g for 3*.' },
+      { ar: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ', en: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ', ja: 'Once you finish your 3*, push levels for more Spyrkin, Blackthorn, or Brawlers. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'blossom-fast-9',
+    name: { ar: 'آش سريع', en: 'Ashe Fast 9 ', ja: 'Ashe Fast 9 ' },
+    subtitle: { ar: 'آش تنين سريع', en: 'Ashe Dragon Fast 9', ja: 'Ashe Dragon Fast 9' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources. Continue your win streak. Pick an econ augment if you', en: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources. Continue your win streak. Pick an econ augment if you', ja: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources. Continue your win streak. Pick an econ augment if you' },
+    units: [
+      { champion: 'DA_Cinderling18', items: [], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 2, col: 0 },
+      { champion: 'DA_Amumu18', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_Redemption', 'TFT_Item_GargoyleStoneplate'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Kennen', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Ashe', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_ElderDragon', items: ['TFT_Item_InfinityEdge', 'TFT_Item_SteraksGage'], star: 1, row: 2, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_LevelUp', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_LateGameScaling', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.', en: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.', ja: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.', en: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.', ja: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.', en: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.', ja: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.' } }
+    ],
+    tips: [
+      { ar: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.', en: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.', ja: 'Slam items aggressively and play around 3 Blossom for a win streak. This is a comp you can only play from far ahead with lots of HP and resources.' },
+      { ar: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.', en: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.', ja: 'Continue your win streak. Pick an econ augment if you have not already. Otherwise, take item augments and push levels.' },
+      { ar: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.', en: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.', ja: 'If you have 80+ HP, you can consider losing Stage 4 and focus purely on economy. Aim to Fast 9 by end of Stage 4 / 5-1 and transition your board.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'sprykin-teemo',
+    name: { ar: 'مشاغب تيمو', en: 'Sprykin Teemo', ja: 'Sprykin Teemo' },
+    subtitle: { ar: 'مشاغب تيمو إعادة لفّ', en: 'Sprykin Teemo Reroll', ja: 'Sprykin Teemo Reroll' },
+    tier: 'C',
+    difficulty: 1,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms. Level to 6 and roll for your 2* upgrades to stabilize and win st' },
+    units: [
+      { champion: 'DA_18_Rammus', items: [], star: 1, row: 2, col: 4 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Veigar', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_Teemo', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_KogMaw18_AD', items: ['TFT_Item_Morellonomicon'], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Kobuko', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_RekSai', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_Veigar',
+      'DA_18_Teemo',
+      'DA_18_RekSai',
+    ],
+    augments: [
+      { id: 'DA_18_SprykinAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_TradeSector', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', en: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', ja: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.', en: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.', ja: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.' } }
+    ],
+    tips: [
+      { ar: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', en: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.', ja: 'Open with a win streak Teemo start and itemize him ASAP. The more Teemo casts, the more likely you can collect value off his mushrooms.' },
+      { ar: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', en: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.', ja: 'Level to 6 and roll for your 2* upgrades to stabilize and win streak Stage 3. Econ up and slow roll above 50g for 3*.' },
+      { ar: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.', en: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.', ja: 'Finish Teemo 3* and your tank then push levels for more Sprykins. Cap the board with Gnar or another 5 cost.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'spellweavers',
+    name: { ar: 'برونز For حياة أهري', en: 'Bronze For Life Ahri', ja: 'Bronze For Life Ahri' },
+    subtitle: { ar: 'برونز For حياة أهري', en: 'Bronze For Life Ahri', ja: 'Bronze For Life Ahri' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Spellweavers + frontline as you get them. You can tank all kinds of f', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Spellweavers + frontline as you get them. You can tank all kinds of f', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank. Flex in more Spellweavers + frontline as you get them. You can tank all kinds of f' },
+    units: [
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Yorick', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_Fiddlesticks18', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 0 },
+      { champion: 'DA_18_Ahri', items: ['TFT_Item_JeweledGauntlet', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Sett', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_Redemption'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Zyra', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon', 'TFT_Item_SpearOfShojin'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_Taric18', items: [], star: 1, row: 0, col: 6 },
+      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 2, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_JeweledLotus_I', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.', en: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.', ja: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.' } }
+    ],
+    tips: [
+      { ar: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', en: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.', ja: 'Look for 3 Blossom early and play for win streak. Karma can hold items for Ahri. Itemize Yorick or any other 2* tank.' },
+      { ar: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', en: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.', ja: 'Flex in more Spellweavers + frontline as you get them. You can tank all kinds of frontline: Juggernauts, Defenders, or Vanguards.' },
+      { ar: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.', en: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.', ja: 'Level and roll for Ahri, Zyra, and the 4 Spellweavers. Play Cassio or LeBlanc until you find Alune.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'aphelios-vanguards-copy',
+    name: { ar: 'أفيليوس إلدروود', en: 'Aphelios Elderwood', ja: 'Aphelios Elderwood' },
+    subtitle: { ar: 'إلدروود أفيليوس', en: 'Elderwood Aphelios', ja: 'Elderwood Aphelios' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win. Comp can use many items so take item augment if you don\'t have one yet. Mama Be' },
+    units: [
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Alistar', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_Crownguard', 'TFT_Item_WarmogsArmor', 'TFT_Item_SpectralGauntlet'], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 0 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane'], star: 1, row: 3, col: 0 },
+      { champion: 'DA_18_GnarSmall', items: ['TFT_Item_ThiefsGloves'], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Ornn', items: [], star: 1, row: 1, col: 6 },
+      { champion: 'DA_18_Ezreal', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 1 }
+    ],
+    earlyUnits: [
+      'DA_18_Varus',
+      'DA_18_Ornn',
+      'DA_18_Xayah',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_Replication', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_BlackthornTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.', en: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.', ja: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', en: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.', ja: 'Open with a strong win streak AD tempo around Rapidfires. BIS is somewhat fake in this comp so slam aggressively to win.' },
+      { ar: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', en: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.', ja: 'Comp can use many items so take item augment if you don\'t have one yet. Mama Beak can be a strong carry here if you have Riftbeasts online.' },
+      { ar: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.', en: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.', ja: 'Level to 8 and roll for Aphelios and Ezreal, you should be stable with 7 elderwood and one of these 2 starred. Go 9 when stable for Gnar+Lux.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'trait-ladder',
+    name: { ar: 'خواص سلّم', en: 'Trait Ladder', ja: 'Trait Ladder' },
+    subtitle: { ar: 'خواص سلّم', en: 'Trait Ladder', ja: 'Trait Ladder' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 9', en: 'Fast 9', ja: 'Fast 9' },
+    level: { ar: 'مستوى 9', en: 'Level 9', ja: 'レベル9' },
+    summary: { ar: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit. Continue adding and flexing in more traits. +1 t', en: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit. Continue adding and flexing in more traits. +1 t', ja: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit. Continue adding and flexing in more traits. +1 t' },
+    units: [
+      { champion: 'DA_18_Ornn', items: [], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 0, col: 5 },
+      { champion: 'DA_18_Xayah', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_LeBlanc', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap'], star: 1, row: 3, col: 2 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_KhaZix', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Fiddlesticks18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_RedBuff', 'TFT_Item_Redemption'], star: 1, row: 0, col: 1 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_RunaansHurricane', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Ornn',
+      'DA_18_Varus',
+      'DA_18_Shen',
+      'DA_18_KhaZix',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'اختيار مرن', en: 'Flexible pick', ja: '柔軟な選択' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.', en: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.', ja: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.', en: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.', ja: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.', en: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.', ja: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.' } }
+    ],
+    tips: [
+      { ar: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.', en: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.', ja: 'Ideally start with Khazix to get 10 takedowns ASAP. Add in the cheap 1-2 cost units to activate traits. Otherwise, flex around your best upgraded unit.' },
+      { ar: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.', en: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.', ja: 'Continue adding and flexing in more traits. +1 team size augments like Coronation or Cursed Crown are very OP here.' },
+      { ar: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.', en: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.', ja: 'After you hit 11 traits, add Amumu with the Tactician\'s Crown you get and then level for Kennen. Then pivot to 5 costs at level 9.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'solar-eclipse',
+    name: { ar: 'شمسي كسوف', en: 'Solar Eclipse', ja: 'Solar Eclipse' },
+    subtitle: { ar: 'شمسي أفيليوس', en: 'Solar Aphelios', ja: 'Solar Aphelios' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible. Hold copies of Solar on your bench. If you upgrade them', en: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible. Hold copies of Solar on your bench. If you upgrade them', ja: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible. Hold copies of Solar on your bench. If you upgrade them' },
+    units: [
+      { champion: 'DA_18_Leona', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Rakan', items: [], star: 1, row: 1, col: 2 },
+      { champion: 'DA_18_Kayle', items: [], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Sejuani', items: [], star: 1, row: 1, col: 4 },
+      { champion: 'DA_18_Shen', items: [], star: 1, row: 0, col: 3 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_RunaansHurricane', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_LastWhisper'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart', 'TFT_Item_AdaptiveHelm', 'TFT_Item_WarmogsArmor'], star: 1, row: 0, col: 4 }
+    ],
+    earlyUnits: [
+      'DA_18_Camille',
+      'DA_18_Leona',
+      'DA_18_Akali_AD',
+      'DA_18_Shen',
+    ],
+    augments: [
+      { id: 'DA_18_SolarTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.', en: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.', ja: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.', en: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.', ja: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ', en: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ', ja: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ' } }
+    ],
+    tips: [
+      { ar: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.', en: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.', ja: 'Play any tempo opener that can lead to Aphelios. Standard board is AD + upgraded frontline. Take the spatula off carousel for Lunar if possible.' },
+      { ar: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.', en: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.', ja: 'Hold copies of Solar on your bench. If you upgrade them, play the Solar units as frontline. Kayle is quite weak so don\'t carry unless necessary.' },
+      { ar: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ', en: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ', ja: 'Level to 8 and look for any frontline that can stall for Eclipse. Lillia 2 is the easiest to hit, but you can also tank Amumu, Sentinel, etc. ' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'fae-tristana-copy',
+    name: { ar: 'شعار رينغار', en: 'Emblem Rengar', ja: 'Emblem Rengar' },
+    subtitle: { ar: 'مشاغب عفريت رينغار', en: 'Sprykin Fae Rengar', ja: 'Sprykin Fae Rengar' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes. Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items', en: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes. Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items', ja: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes. Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items' },
+    units: [
+      { champion: 'DA_18_Kobuko', items: [], star: 1, row: 2, col: 2 },
+      { champion: 'DA_18_Rammus', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Rengar', items: ['TFT_Item_GuardianAngel', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 2, col: 6 },
+      { champion: 'DA_18_Tristana', items: ['TFT_Item_GuinsoosRageblade', 'TFT_Item_LastWhisper', 'TFT_Item_Deathblade'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_18_Lillia', items: [], star: 1, row: 2, col: 1 },
+      { champion: 'DA_18_Sivir', items: [], star: 1, row: 3, col: 4 },
+      { champion: 'DA_18_GnarSmall', items: [], star: 1, row: 2, col: 3 }
+    ],
+    earlyUnits: [
+      'DA_18_Rakan',
+      'DA_18_Xayah',
+      'DA_18_Yorick',
+      'DA_18_Rengar',
+    ],
+    augments: [
+      { id: 'DA_SpreadingRootsPlus', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.', en: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.', ja: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.', en: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.', ja: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.', en: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.', ja: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.' } }
+    ],
+    tips: [
+      { ar: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.', en: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.', ja: 'Play for win streak with Rengar and the emblem. Position him same side as enemy carries to get backline snipes.' },
+      { ar: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.', en: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.', ja: 'Keep snowballing with Rengar. Take an item augment if you aren\'t on track to get 3 items by end of Stage. Rengar only performs as well as your best tank so prioritize frontline too.' },
+      { ar: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.', en: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.', ja: 'Level to 7 and roll above 50g for 3* Rengar and 3* Rammus. Use your 4 Fae cash outs to push levels. Tristana takes leftover items.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'inferno-fast-9',
+    name: { ar: 'جحيم سريع', en: 'Inferno Fast 9', ja: 'Inferno Fast 9' },
+    subtitle: { ar: 'جحيم لكس آش', en: 'Inferno Lux Ashe', ja: 'Inferno Lux Ashe' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'فاست 8', en: 'Fast 8', ja: 'Fast 8' },
+    level: { ar: 'مستوى 8', en: 'Level 8', ja: 'レベル8' },
+    summary: { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items. Level and add more Juggernauts and ', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items. Level and add more Juggernauts and ', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items. Level and add more Juggernauts and ' },
+    units: [
+      { champion: 'DA_18_Akali_AD', items: [], star: 1, row: 1, col: 0 },
+      { champion: 'DA_18_Shen', items: [], star: 1, row: 0, col: 1 },
+      { champion: 'DA_Vi18', items: [], star: 1, row: 0, col: 2 },
+      { champion: 'DA_18_Lillia', items: ['TFT_Item_FrozenHeart'], star: 1, row: 0, col: 6 },
+      { champion: 'DA_18_Sivir', items: ['TFT_Item_LastWhisper', 'TFT_Item_InfinityEdge'], star: 1, row: 3, col: 4 },
+      { champion: 'DA_Amumu18', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_BrambleVest', 'TFT_Item_DragonsClaw'], star: 1, row: 0, col: 4 },
+      { champion: 'DA_18_Ashe', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Kennen', items: ['TFT_Item_GuardianAngel', 'TFT_Item_Quicksilver', 'TFT_Item_Bloodthirster'], star: 1, row: 0, col: 3 },
+      { champion: 'DA_Lux18_Base', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_JeweledGauntlet'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Rakan',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+    ],
+    augments: [
+      { id: 'DA_CyberneticUplink_Gold', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } },
+      { id: 'DA_BoxingLessons', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.', en: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.', ja: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.', en: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.', ja: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.' } }
+    ],
+    tips: [
+      { ar: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.', en: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.', ja: 'Open with a strong AD opener, preferably around Yunara. Slam generic AD items and Tank items for a win streak. You can also play around Varus/Akali 2 with AD items.' },
+      { ar: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.', en: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.', ja: 'Level and add more Juggernauts and Executioners. Make sure to hold Inferno units along the way. Can also play 3 Inferno for shop high rolls.' },
+      { ar: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.', en: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.', ja: 'Roll on 8 for 5 inferno Sivir + Vi + Lillia + Hunter (can play Tristana before Ashe). When you find Ashe make sure to give her inferno emblem + shojin.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'moo-nara',
+    name: { ar: 'Moo nara', en: 'Moo-nara', ja: 'Moo-nara' },
+    subtitle: { ar: 'أليستار يونارا إعادة لفّ', en: 'Alistar Yunara Reroll', ja: 'Alistar Yunara Reroll' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar. Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensi', en: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar. Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensi', ja: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar. Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensi' },
+    units: [
+      { champion: 'DA_18_RekSai', items: [], star: 1, row: 2, col: 5 },
+      { champion: 'DA_Murkwolf18', items: [], star: 3, row: 2, col: 3 },
+      { champion: 'DA_18_Alistar', items: ['TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption', 'TFT_Item_WarmogsArmor'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_Warwick', items: ['TFT_Item_SteraksGage', 'TFT_Item_TitansResolve', 'TFT_Item_SpearOfShojin'], star: 3, row: 2, col: 0 },
+      { champion: 'DA_18_Yunara', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_LastWhisper'], star: 3, row: 3, col: 0 },
+      { champion: 'DA_18_Azir', items: [], star: 1, row: 3, col: 3 },
+      { champion: 'DA_18_Ezreal', items: [], star: 1, row: 3, col: 2 }
+    ],
+    earlyUnits: [
+      'DA_Karma18',
+      'DA_18_Yorick',
+      'DA_18_Yunara',
+      'DA_18_Azir',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.', en: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.', ja: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.', en: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.', ja: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.', en: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.', ja: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.' } }
+    ],
+    tips: [
+      { ar: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.', en: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.', ja: 'Slam items for Yunara and play for win streak with Blossom in. Tank Yorick / Juggernaut until you find Alistar.' },
+      { ar: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.', en: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.', ja: 'Level at 3-2 and roll for 2* upgrades then econ up. Skip Azir 2 because he\'s too expensive. Buy a charm every round if possible and win streak.' },
+      { ar: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.', en: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.', ja: 'Finish your 3* units then push levels. Look for 3 Executioner for Yunara. Kennen caps your board. Blackthorn Lux is a high roll top end finisher.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'coven-elise',
+    name: { ar: 'اجتماع السحرة إليز', en: 'Coven Elise', ja: 'Coven Elise' },
+    subtitle: { ar: 'مظلم طقوس إليز إعادة لفّ', en: 'Dark Ritual Elise Reroll', ja: 'Dark Ritual Elise Reroll' },
+    tier: 'C',
+    difficulty: 2,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak. Level to 6 and roll for a Elise 2, Covens, and Vanguards', en: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak. Level to 6 and roll for a Elise 2, Covens, and Vanguards', ja: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak. Level to 6 and roll for a Elise 2, Covens, and Vanguards' },
+    units: [
+      { champion: 'DA_18_Elise', items: ['TFT_Item_TitansResolve', 'TFT_Item_GuinsoosRageblade', 'TFT_Item_GargoyleStoneplate'], star: 3, row: 0, col: 4 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 1, col: 3 },
+      { champion: 'DA_18_Hecarim', items: [], star: 1, row: 2, col: 3 },
+      { champion: 'DA_18_Cassiopeia', items: ['TFT_Item_SpearOfShojin', 'TFT_Item_HextechGunblade', 'TFT_Item_ArchangelsStaff'], star: 3, row: 3, col: 6 },
+      { champion: 'DA_Sentinel18', items: [], star: 1, row: 1, col: 4 },
+      { champion: 'DA_18_Morgana', items: ['TFT_Item_StatikkShiv', 'TFT_Item_Morellonomicon', 'TFT_Item_JeweledGauntlet'], star: 1, row: 2, col: 4 },
+      { champion: 'DA_18_Alune', items: [], star: 1, row: 3, col: 5 }
+    ],
+    earlyUnits: [
+      'DA_18_Camille',
+      'DA_18_Caitlyn',
+      'DA_18_Elise',
+      'DA_18_Diana',
+    ],
+    augments: [
+      { id: 'DA_18_CovenTraitAugment', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.', en: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.', ja: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ', en: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ', ja: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.', en: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.', ja: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.' } }
+    ],
+    tips: [
+      { ar: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.', en: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.', ja: 'Ideally open with Coven and start gathering Essence. It is actually better to win early than lose for stacks so don\'t overly force lose streak.' },
+      { ar: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ', en: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ', ja: 'Level to 6 and roll for a Elise 2, Covens, and Vanguards. Give Cassio or Diana leftover AP. Cash out Coven and convert to AP with at least 2-3 lives (25-30 hp). ' },
+      { ar: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.', en: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.', ja: 'Finish Elise 3 / Cassio 3 then level for more Vanguards or Lunar. Play 2 Morganas with items if you have extra.' }
+    ],
+    alternatives: [],
+  },
+  {
+    slug: 'unrivaled-reroll',
+    name: { ar: 'بلا منافس إعادة لفّ', en: 'Unrivaled Reroll', ja: 'Unrivaled Reroll' },
+    subtitle: { ar: 'بلا منافس كازيكس إعادة لفّ', en: 'Unrivaled Kha\'Zix Reroll', ja: 'Unrivaled Kha\'Zix Reroll' },
+    tier: 'C',
+    difficulty: 3,
+    playstyle: { ar: 'إعادة لفّ', en: 'Reroll', ja: 'リロール' },
+    level: { ar: 'مستوى 7 إعادة لفّ', en: 'Level 7 reroll', ja: 'レベル7リロール' },
+    summary: { ar: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar. Keep adding more frontline. Rengar and Khazix will only be effect', en: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar. Keep adding more frontline. Rengar and Khazix will only be effect', ja: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar. Keep adding more frontline. Rengar and Khazix will only be effect' },
+    units: [
+      { champion: 'DA_18_LeBlanc', items: [], star: 1, row: 3, col: 6 },
+      { champion: 'DA_18_Diana', items: [], star: 1, row: 3, col: 5 },
+      { champion: 'DA_18_Hecarim', items: ['TFT_Item_WarmogsArmor', 'TFT_Item_GargoyleStoneplate', 'TFT_Item_Redemption'], star: 3, row: 0, col: 3 },
+      { champion: 'DA_18_KhaZix', items: ['TFT_Item_UnstableConcoction', 'TFT_Item_RabadonsDeathcap', 'TFT_Item_GuardianAngel'], star: 3, row: 2, col: 1 },
+      { champion: 'DA_18_Rengar', items: ['TFT_Item_GuardianAngel', 'TFT_Item_TitansResolve', 'TFT_Item_GuinsoosRageblade'], star: 3, row: 2, col: 0 },
+      { champion: 'DA_18_Ezreal', items: [], star: 1, row: 3, col: 1 },
+      { champion: 'DA_18_Aphelios', items: ['TFT_Item_LastWhisper', 'TFT_Item_RapidFireCannon'], star: 1, row: 3, col: 0 }
+    ],
+    earlyUnits: [
+      'DA_18_Kobuko',
+      'DA_18_RekSai',
+      'DA_18_KhaZix',
+      'DA_18_Rengar',
+    ],
+    augments: [
+      { id: 'DA_Swordsmith', tier: 'gold', why: { ar: 'قوي مع هذا الخط', en: 'Strong for this line', ja: 'この構成向き' } }
+    ],
+    leveling: [
+      { stage: { ar: '2-1', en: '2-1', ja: '2-1' }, text: { ar: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.', en: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.', ja: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.' } },
+      { stage: { ar: '3-2', en: '3-2', ja: '3-2' }, text: { ar: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.', en: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.', ja: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.' } },
+      { stage: { ar: '4-2', en: '4-2', ja: '4-2' }, text: { ar: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.', en: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.', ja: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.' } }
+    ],
+    tips: [
+      { ar: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.', en: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.', ja: 'Items are crucial for this composition so focus on Edge of Night first. Play any upgraded frontline tank to stall for Khazix + Rengar.' },
+      { ar: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.', en: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.', ja: 'Keep adding more frontline. Rengar and Khazix will only be effective as your best tank. Item augments are huge to keep your momentum.' },
+      { ar: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.', en: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.', ja: 'Level to 7 and roll for the 2* upgrades. Then econ up and slow roll above 50g for 3* units. Once you finish 3* tank + Khazix 3 / Rengar 3, add 5 costs.' }
+    ],
+    alternatives: [],
+  }
 ];
-
-export const tierOrder = ['S', 'A', 'B', 'C'] as const;
-
-export const augmentTierOrder: Record<string, number> = { prism: 3, gold: 2, silver: 1 };
