@@ -7,9 +7,9 @@
   },
   "patch": "18.5",
   "updated": {
-    "ar": "محدث من TFT Academy — باتش 18.5b",
-    "en": "Synced from TFT Academy — patch 18.5b",
-    "ja": "TFT Academy同期 — パッチ18.5b"
+    "ar": "استعادة النسخة السابقة (29 كومب)",
+    "en": "Restored previous version (29 comps)",
+    "ja": "前バージョンに復元（29構成）"
   },
   "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"
 }
