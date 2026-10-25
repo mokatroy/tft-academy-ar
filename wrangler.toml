@@ -1,7 +1,6 @@
 name = "tftsite-v3"
 compatibility_date = "2024-11-01"
 
-# Static SPA: serve Vite dist without Cloudflare Pages API
 [assets]
 directory = "./dist"
 not_found_handling = "single-page-application"

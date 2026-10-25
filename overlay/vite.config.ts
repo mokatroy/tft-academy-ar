@@ -1,10 +1,6 @@
 import process from 'node:process';
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-
-const rootDir = path.dirname(fileURLToPath(import.meta.url));
 
 const allowedHost = process.env.VITE_ALLOWED_HOST;
 
@@ -16,11 +12,6 @@ const allowedHost = process.env.VITE_ALLOWED_HOST;
 export default defineConfig({
   base: './',
   plugins: [react()],
-  resolve: {
-    alias: {
-      'lucide-react': path.resolve(rootDir, 'node_modules/lucide-react'),
-    },
-  },
   // Reuse the site's local champion/item icons and Tajawal webfonts as-is.
   publicDir: '../public',
   server: {

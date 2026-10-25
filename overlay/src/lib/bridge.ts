@@ -29,16 +29,6 @@ export type Command =
   | { type: 'hidden' }
   | { type: 'game'; running: boolean };
 
-export interface UpdateInfo {
-  status: 'up-to-date' | 'available' | 'error';
-  current: string;
-  latest: string | null;
-  url: string | null;
-  notes: string | null;
-  name?: string;
-  error?: string;
-}
-
 export interface OverlayApi {
   bootstrap(): Promise<Bootstrap>;
   update(patch: Partial<OverlaySettings>): void;
@@ -47,7 +37,6 @@ export interface OverlayApi {
   resetPosition(): void;
   quit(): void;
   openUrl(url: string): void;
-  checkUpdate(): Promise<UpdateInfo>;
   onCommand(handler: (command: Command) => void): () => void;
 }
 

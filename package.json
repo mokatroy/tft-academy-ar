@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "smoke": "esbuild scripts/smoke.tsx --bundle --platform=node --format=cjs --outfile=.smoke.cjs --loader:.json=json --log-level=error && node .smoke.cjs",
-    "fetch-data": "python3 scripts/fetch_data.py"
+    "fetch-data": "python3 scripts/fetch_data.py",
+    "fetch-comps": "node scripts/fetch_comps.mjs",
+    "fetch-patch-notes": "python3 scripts/fetch_patch_notes.py",
+    "archive": "python3 scripts/make_archive.py"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

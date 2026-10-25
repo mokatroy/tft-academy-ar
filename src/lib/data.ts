@@ -1,10 +1,14 @@
 import championsJson from '../data/champions.json';
+import championsExtraJson from '../data/championsExtra.json';
 import traitsJson from '../data/traits.json';
 import itemsJson from '../data/items.json';
+import itemsExtraJson from '../data/itemsExtra.json';
 import augmentsJson from '../data/augments.json';
+import augmentsExtraJson from '../data/augmentsExtra.json';
 import metaJson from '../data/meta.json';
 import patchNotesJson from '../data/patchnotes.json';
-import { comps } from '../data/comps';
+import { comps as curatedComps, tierOrder } from '../data/comps';
+import { academyComps } from '../data/compsAcademy';
 import type {
   Augment,
   Champion,
@@ -18,11 +22,20 @@ import type {
 } from './types';
 import { breakpoints } from './format';
 
-export const champions = championsJson as Champion[];
+/** Dedupe by id, keeping the base dataset entry when a guide adds the same object again. */
+function mergeById<T extends { id: string }>(base: T[], extra: T[]): T[] {
+  const merged = new Map<string, T>();
+  for (const entry of [...base, ...extra]) if (!merged.has(entry.id)) merged.set(entry.id, entry);
+  return [...merged.values()];
+}
+
+export const champions = mergeById(championsJson as Champion[], championsExtraJson as Champion[]);
 export const traits = traitsJson as Trait[];
-export const items = itemsJson as unknown as Item[];
-export { comps };
-export const augments = augmentsJson as Augment[];
+export const items = mergeById(itemsJson as unknown as Item[], itemsExtraJson as unknown as Item[]);
+/** Curated comps plus the 36 imported from TFT Academy's tier list (S/A/B/C/X). */
+export const comps: Comp[] = [...curatedComps, ...academyComps];
+export { tierOrder };
+export const augments = mergeById(augmentsJson as Augment[], augmentsExtraJson as Augment[]);
 export const meta = metaJson as {
   set: number;
   setName: Localized;
@@ -63,6 +76,11 @@ export const tierStyles: Record<Tier, { color: string; glow: string; label: Loca
     color: '#94a3b8',
     glow: 'rgba(148,163,184,.22)',
     label: { ar: 'ظرفي', en: 'Situational', ja: '状況次第' },
+  },
+  X: {
+    color: '#f43f5e',
+    glow: 'rgba(244,63,94,.3)',
+    label: { ar: 'تجنّب', en: 'Avoid', ja: '非推奨' },
   },
 };
 
@@ -140,7 +158,7 @@ export function unitAt(comp: Comp, row: number, col: number): CompUnit | undefin
 }
 
 export function compPower(comp: Comp): number {
-  const weights: Record<Tier, number> = { S: 4, A: 3, B: 2, C: 1 };
+  const weights: Record<Tier, number> = { S: 4, A: 3, B: 2, C: 1, X: 0 };
   return weights[comp.tier];
 }
 

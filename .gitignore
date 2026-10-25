@@ -8,3 +8,12 @@ preview.log
 .dev.pid
 *.zip
 .screenshots
+
+# local run logs (dev servers / vite / preview)
+.dev.log
+.dev-server.log
+.vite-dev.log
+
+# generated screenshots and one-off delivery bundles
+artifacts/
+deploy/

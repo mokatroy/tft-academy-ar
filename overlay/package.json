@@ -1,17 +1,17 @@
 {
-  "name": "mokatroytft-overlay",
-  "productName": "MokaTroy Overlay",
+  "name": "tft-academy-overlay",
+  "productName": "TFT Academy Overlay",
   "private": true,
-  "version": "0.1.2",
-  "description": "Always-on-top Teamfight Tactics comp overlay powered by the MokaTroy dataset.",
-  "author": "MokaTroy",
+  "version": "0.1.0",
+  "description": "Always-on-top Teamfight Tactics comp overlay powered by the TFT Academy dataset.",
+  "author": "TFT Academy",
   "license": "MIT",
   "type": "module",
   "main": "electron/main.cjs",
   "scripts": {
     "dev": "vite",
     "typecheck": "tsc --noEmit",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
     "start": "npm run build && electron .",
     "start:dev": "electron . --dev",
     "test": "esbuild tests/all.test.ts --bundle --platform=node --format=esm --outfile=.test.mjs --loader:.json=json --log-level=error && node --test .test.mjs",
@@ -35,8 +35,8 @@
     "vite": "^6.3.5"
   },
   "build": {
-    "appId": "com.mokatroy.overlay",
-    "productName": "MokaTroy Overlay",
+    "appId": "com.tftacademy.overlay",
+    "productName": "TFT Academy Overlay",
     "directories": {
       "output": "release",
       "buildResources": "build"
@@ -57,7 +57,7 @@
       "oneClick": false,
       "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "shortcutName": "MokaTroy Overlay"
+      "shortcutName": "TFT Academy Overlay"
     }
   }
 }

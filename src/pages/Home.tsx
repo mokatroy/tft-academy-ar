@@ -35,7 +35,8 @@ export function Home() {
           <div className="hero-copy">
             <span className="hero-badge">
               <Sparkles size={13} />
-              {t(meta.setName)} · {t({ ar: 'باتش', en: 'Patch', ja: 'パッチ' })} {meta.patch}
+              {t(meta.setName)} · {t({ ar: 'باتش', en: 'Patch', ja: 'パッチ' })} {meta.patch} ·{' '}
+              {t(meta.updated)}
             </span>
             <h1 className="hero-title">
               {t({ ar: 'أتقن الميتا.', en: 'Master the meta.', ja: 'メタを制する。' })}

@@ -354,68 +354,13 @@ def _append_entry(group: dict, entry: dict) -> None:
 def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
     """Merge the aligned per-locale event streams into one patch object."""
     base_sig = signature(per_locale["en"])
-    base_kinds = tuple(ev[0] for ev in per_locale["en"])
-
-    def h2_index_map(events: list[tuple]) -> dict[str, int]:
-        return {ev[1]: i for i, ev in enumerate(events) if ev[0] == "h2" and len(ev) > 1}
-
-    def align_locale(lang: str) -> None:
-        """Keep locale text when shapes differ only by missing prefix sections (e.g. mid-patch)."""
-        if lang == "en":
-            return
-        other = per_locale[lang]
-        other_sig = signature(other)
-        if other_sig == base_sig:
-            return
-        other_kinds = tuple(ev[0] for ev in other)
-        if other_kinds == base_kinds:
-            print(
-                f"  ! {slug}: {lang} list shape differs slightly — keeping locale with positional alignment",
-                file=sys.stderr,
-            )
-            return
-
-        en_h2 = h2_index_map(per_locale["en"])
-        ot_h2 = h2_index_map(other)
-        shared = [hid for hid, _i in sorted(((h, en_h2[h]) for h in en_h2 if h in ot_h2), key=lambda x: x[1])]
-        if not shared:
-            print(
-                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
-                file=sys.stderr,
-            )
-            per_locale[lang] = per_locale["en"]
-            return
-
-        # Align from the first shared section header; pad the missing EN-only prefix with English.
-        hid = shared[0]
-        en_i = en_h2[hid]
-        ot_i = ot_h2[hid]
-        en_tail = per_locale["en"][en_i:]
-        ot_tail = other[ot_i:]
-        if tuple(ev[0] for ev in en_tail) != tuple(ev[0] for ev in ot_tail):
-            print(
-                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
-                file=sys.stderr,
-            )
-            per_locale[lang] = per_locale["en"]
-            return
-
-        prefix = per_locale["en"][:en_i]  # missing in this locale (usually mid-patch)
-        per_locale[lang] = list(prefix) + list(ot_tail)
-        if prefix:
-            print(
-                f"  ! {slug}: {lang} missing {en_i} leading events (likely untranslated mid-patch) — "
-                f"using English for the prefix, locale text for the rest",
-                file=sys.stderr,
-            )
-        else:
-            print(
-                f"  ! {slug}: {lang} realigned from shared section {hid}",
-                file=sys.stderr,
-            )
-
     for lang in LOCALES:
-        align_locale(lang)
+        if lang != "en" and signature(per_locale[lang]) != base_sig:
+            print(
+                f"  ! {slug}: {lang} structure differs from en — falling back to English text",
+                file=sys.stderr,
+            )
+            per_locale[lang] = per_locale["en"]
 
     n = len(per_locale["en"])
     intro: dict | None = None
@@ -445,7 +390,7 @@ def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
                 continue
             sec = {
                 "id": hid,
-                "title": {lang: (evs[lang][2] if len(evs[lang]) > 2 else evs["en"][2]) for lang in LOCALES},
+                "title": {lang: evs[lang][2] for lang in LOCALES},
                 "commentary": None,
                 "groups": [],
             }
@@ -489,7 +434,7 @@ def assemble(per_locale: dict[str, list[tuple]], slug: str) -> dict | None:
             sections.append(sec)
 
         if kind == "h4":
-            title = loc_text(i, lambda ev: ev[2] if len(ev) > 2 else (ev[1] if len(ev) > 1 else ""))
+            title = loc_text(i, lambda ev: ev[2])
             grp = {
                 "title": title,
                 "kind": kind_of_group(evs["en"][2]),
@@ -676,9 +621,7 @@ def report(patches: list[dict]) -> None:
 
 def build_patch(slug: str) -> dict | None:
     pages: dict[str, dict] = {}
-    # English first so other locales can fall back if their article is not up yet.
-    ordered = ["en"] + [lang for lang in LOCALES if lang != "en"]
-    for lang in ordered:
+    for lang in LOCALES:
         page = article_page(RIOT_LOCALE[lang], slug)
         if page is None:
             if lang == "en":
@@ -692,7 +635,6 @@ def build_patch(slug: str) -> dict | None:
             if lang == "en":
                 print(f"  ! {slug}: no rich-text body — skipping patch", file=sys.stderr)
                 return None
-            print(f"  ! {slug}: {lang} body missing — falling back to English", file=sys.stderr)
             pages[lang] = pages["en"]
             continue
         pages[lang] = {"page": page, "events": events_of(body)}

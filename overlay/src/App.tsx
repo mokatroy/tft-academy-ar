@@ -127,7 +127,7 @@ export function App() {
           <div className="ov-brand">
             <span className="ov-logo">TFT</span>
             <div className="ov-brand-text">
-              <strong>{t({ ar: 'MokaTroy', en: 'MokaTroy', ja: 'TFTアカデミー' })}</strong>
+              <strong>{t({ ar: 'أكاديمية TFT', en: 'TFT Academy', ja: 'TFTアカデミー' })}</strong>
               <span>
                 {meta.setName ? t(meta.setName) : ''} · {meta.patch}
               </span>
@@ -286,9 +286,9 @@ export function App() {
                     <span className="ov-plan-title">{t({ ar: 'بدائل', en: 'Swaps', ja: '代替' })}</span>
                     {current.comp.alternatives.slice(0, 2).map((alt) => {
                       const inUnit = championMap.get(alt.champion);
-                      const outUnit = championMap.get(alt.replaces);
+                      const outUnit = alt.replaces ? championMap.get(alt.replaces) : undefined;
                       return (
-                        <span key={`${alt.champion}-${alt.replaces}`} className="ov-alt" title={t(alt.note)}>
+                        <span key={`${alt.champion}-${alt.replaces ?? t(alt.note)}`} className="ov-alt" title={t(alt.note)}>
                           {inUnit?.icon ? <img className="in" src={inUnit.icon} alt={t(inUnit.name)} /> : null}
                           <em>{t({ ar: 'بدل', en: 'for', ja: '→' })}</em>
                           {outUnit?.icon ? <img className="out" src={outUnit.icon} alt={t(outUnit.name)} /> : null}

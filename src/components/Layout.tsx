@@ -15,6 +15,7 @@ export function Layout() {
 
   const navItems = [
     { to: '/', label: t({ ar: 'الكومبوهات', en: 'Comps', ja: '構成' }) },
+    { to: '/play', label: t({ ar: 'وضع اللعب', en: 'Play mode', ja: 'プレイモード' }) },
     { to: '/builder', label: t({ ar: 'المنشئ', en: 'Builder', ja: 'ビルダー' }) },
     { to: '/champions', label: t({ ar: 'الأبطال', en: 'Champions', ja: 'チャンピオン' }) },
     { to: '/items', label: t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' }) },
@@ -61,7 +62,7 @@ export function Layout() {
     <>
       <header className="site-header">
         <div className="container header-inner">
-          <Link to={localizePath('/')} className="brand" aria-label="MokaTroy">
+          <Link to={localizePath('/')} className="brand" aria-label="TFT Academy">
             <span className="brand-mark">
               <Swords size={20} strokeWidth={2.4} />
             </span>
@@ -171,7 +172,7 @@ export function Layout() {
           <div className="footer-bottom">
             <span>© 2026 MokaTroy</span>
             <span dir="ltr">
-              MokaTroy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
+              TFT Academy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
             </span>
           </div>
         </div>

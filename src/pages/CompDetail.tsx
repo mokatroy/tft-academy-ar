@@ -6,12 +6,17 @@ import {
   BookOpen,
   ChevronLeft,
   Compass,
+  ExternalLink,
+  Gamepad2,
   Gauge,
   Lightbulb,
   RefreshCw,
+  Repeat,
   Shield,
+  ShoppingCart,
   Sparkles,
   Swords,
+  Users,
   Wrench,
 } from 'lucide-react';
 import {
@@ -129,18 +134,24 @@ export function CompDetail() {
               {activeTraits.length} {t({ ar: 'خواص مفعّلة', en: 'active traits', ja: '発動中の特性' })}
             </span>
           </div>
-          <Link
-            className="btn btn-ghost"
-            to={localizePath(`/builder?load=${comp.slug}`)}
-            style={{ marginTop: 12, width: 'fit-content' }}
-          >
-            <Wrench size={14} />
-            {t({
-              ar: 'جرّب هذا الكومبو في المنشئ',
-              en: 'Try this comp in the builder',
-              ja: 'この構成をビルダーで試す',
-            })}
-          </Link>
+          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', marginTop: 12 }}>
+            <Link className="btn btn-primary" to={localizePath('/play') + `?comp=${comp.slug}`}>
+              <Gamepad2 size={14} />
+              {t({
+                ar: 'افتح وضع اللعب بهذا الكومبو',
+                en: 'Open play mode with this comp',
+                ja: 'この構成でプレイモードを開く',
+              })}
+            </Link>
+            <Link className="btn btn-ghost" to={localizePath(`/builder?load=${comp.slug}`)}>
+              <Wrench size={14} />
+              {t({
+                ar: 'جرّب هذا الكومبو في المنشئ',
+                en: 'Try this comp in the builder',
+                ja: 'この構成をビルダーで試す',
+              })}
+            </Link>
+          </div>
         </div>
       </header>
 
@@ -151,35 +162,6 @@ export function CompDetail() {
       <div className="comp-layout">
         <div>
           <Board comp={comp} />
-          {comp.earlyUnits?.length ? (
-            <section className="panel" style={{ marginTop: 16 }}>
-              <h2 className="panel-title">
-                <Swords size={15} />
-                {t({ ar: 'وحدات البداية', en: 'Early units', ja: '序盤ユニット' })}
-                <span className="hint">
-                  {t({ ar: 'اللي تمسكهم من الستيچ 2–3', en: 'Hold these in stage 2–3', ja: 'ステージ2〜3で確保' })}
-                </span>
-              </h2>
-              <div className="early-row">
-                {comp.earlyUnits.map((id) => {
-                  const champion = championMap.get(id);
-                  if (!champion) return null;
-                  return (
-                    <div className="early-chip" key={id} data-tip-kind="champion" data-tip-id={id}>
-                      <Portrait championId={id} />
-                      <span className="early-chip-name">{t(champion.name)}</span>
-                      <span
-                        className="unit-cost"
-                        style={{ '--cost-color': costColor(champion.cost) } as CSSProperties}
-                      >
-                        {champion.cost}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            </section>
-          ) : null}
         </div>
 
         <aside style={{ display: 'grid', gap: 16 }}>
@@ -207,6 +189,18 @@ export function CompDetail() {
               <Sparkles size={15} />
               {t({ ar: 'التعزيزات المفضلة', en: 'Preferred augments', ja: 'おすすめ强化符文' })}
             </h2>
+            {comp.augmentTypes && comp.augmentTypes.length > 0 && (
+              <div className="tag-row" style={{ marginTop: 10 }}>
+                <span className="tag">
+                  {t({ ar: 'أنواع التعزيزات', en: 'Augment categories', ja: '強化符文のタイプ' })}:
+                </span>
+                {comp.augmentTypes.map((type) => (
+                  <span className="tag gold" key={type.en}>
+                    {t(type)}
+                  </span>
+                ))}
+              </div>
+            )}
             <div className="augment-list">
               {comp.augments.map((entry) => {
                 const augment = augmentMap.get(entry.id);
@@ -219,17 +213,19 @@ export function CompDetail() {
                     <div>
                       <div className="augment-name">
                         {t(augment.name)}
-                        <span className={`augment-tier ${augmentTierClass[entry.tier]}`}>
-                          {t(
-                            entry.tier === 'silver'
-                              ? { ar: 'فضي', en: 'Silver', ja: 'シルバー' }
-                              : entry.tier === 'gold'
-                                ? { ar: 'ذهبي', en: 'Gold', ja: 'ゴールド' }
-                                : { ar: 'منشوري', en: 'Prismatic', ja: 'プリズム' },
-                          )}
-                        </span>
+                        {entry.tier && (
+                          <span className={`augment-tier ${augmentTierClass[entry.tier]}`}>
+                            {t(
+                              entry.tier === 'silver'
+                                ? { ar: 'فضي', en: 'Silver', ja: 'シルバー' }
+                                : entry.tier === 'gold'
+                                  ? { ar: 'ذهبي', en: 'Gold', ja: 'ゴールド' }
+                                  : { ar: 'منشوري', en: 'Prismatic', ja: 'プリズム' },
+                            )}
+                          </span>
+                        )}
                       </div>
-                      <p className="augment-why">{t(entry.why)}</p>
+                      {entry.why && <p className="augment-why">{t(entry.why)}</p>}
                     </div>
                   </div>
                 );
@@ -270,6 +266,145 @@ export function CompDetail() {
           </div>
         </section>
       </div>
+
+      {(comp.early?.length || comp.carousel?.length || comp.altBuilds?.length) && (
+        <div className="detail-sections">
+          {comp.early && comp.early.length > 0 && (
+            <section className="panel">
+              <h2 className="panel-title">
+                <Users size={15} />
+                {t({ ar: 'البداية المبكرة', en: 'Early game board', ja: '序盤の盤面' })}
+                <span className="hint">
+                  {t({
+                    ar: 'الوحدات اللي تجمعها لحد ما يكتمل الكومبو',
+                    en: 'Units to hold until the comp comes online', ja: '構成完成までの保留ユニット',
+                  })}
+                </span>
+              </h2>
+              <div className="unit-grid">
+                {comp.early.map((unit) => {
+                  const champion = championMap.get(unit.champion);
+                  if (!champion) return null;
+                  return (
+                    <div className="unit-card" key={`early-${unit.champion}`}>
+                      <Portrait championId={unit.champion} />
+                      <div style={{ minWidth: 0 }}>
+                        <div className="unit-card-name">
+                          {t(champion.name)}
+                          <span className="unit-cost" style={{ '--cost-color': costColor(champion.cost) } as CSSProperties}>
+                            {champion.cost}
+                          </span>
+                          <span style={{ color: '#f5c451', fontSize: 10 }}>{'★'.repeat(unit.star)}</span>
+                        </div>
+                        <div className="unit-card-items">
+                          {unit.items.length === 0 ? (
+                            <span className="empty">
+                              {t({ ar: 'احفظ العناصر دي لأبطال الكومبو', en: 'Hold items for the carries', ja: 'キャリー用に装備を温存' })}
+                            </span>
+                          ) : (
+                            unit.items.map((itemId) => {
+                              const item = itemMap.get(itemId);
+                              return item?.icon ? (
+                                <img
+                                  key={itemId}
+                                  src={item.icon}
+                                  alt={t(item.name)}
+                                  data-tip-kind="item"
+                                  data-tip-id={itemId}
+                                  loading="lazy"
+                                />
+                              ) : null;
+                            })
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          )}
+
+          <section className="panel">
+            <h2 className="panel-title">
+              <ShoppingCart size={15} />
+              {t({ ar: 'أولويات الكاروسيل', en: 'Carousel priorities', ja: 'カルーセル優先' })}
+            </h2>
+            {comp.carousel && comp.carousel.length > 0 ? (
+              <div className="unit-card-items" style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                {comp.carousel.map((itemId) => {
+                  const item = itemMap.get(itemId);
+                  return item?.icon ? (
+                    <img
+                      key={itemId}
+                      src={item.icon}
+                      alt={t(item.name)}
+                      title={t(item.name)}
+                      data-tip-kind="item"
+                      data-tip-id={itemId}
+                      loading="lazy"
+                      style={{ width: 30, height: 30, borderRadius: 6 }}
+                    />
+                  ) : null;
+                })}
+              </div>
+            ) : (
+              <p className="muted" style={{ fontSize: 12.5 }}>
+                {t({
+                  ar: 'خد أي مكوّن يكمّل عناصر أبطالك الأساسيين.',
+                  en: 'Grab any component that completes your main carries’ items.',
+                  ja: 'メインキャリーの装備が完成するコンポーネントを優先しよう。',
+                })}
+              </p>
+            )}
+            <p className="muted" style={{ fontSize: 11.5, marginTop: 10, lineHeight: 1.8 }}>
+              {t({
+                ar: 'الترتيب من الأعلى للأدنى: عناصر الكاري الأول، بعدها عناصر الجدار الأمامي، ثم أي مكوّن يقربك من عنصر مكتمل.',
+                en: 'Order: first carry items, then frontline items, then any component that finishes an item.',
+                ja: '優先順：まずメインキャリーの装備、次に前線の装備、次に完成まで1つ足りないアイテム。',
+              })}
+            </p>
+          </section>
+
+          {comp.altBuilds && comp.altBuilds.length > 0 && (
+            <section className="panel">
+              <h2 className="panel-title">
+                <Repeat size={15} />
+                {t({ ar: 'مسارات عناصر بديلة', en: 'Alternative item lines', ja: '代替アイテム' })}
+              </h2>
+              <div className="unit-grid">
+                {comp.altBuilds.map((build, index) => {
+                  const champion = championMap.get(build.champion);
+                  if (!champion) return null;
+                  return (
+                    <div className="unit-card" key={`altbuild-${build.champion}-${index}`}>
+                      <Portrait championId={build.champion} />
+                      <div style={{ minWidth: 0 }}>
+                        <div className="unit-card-name">{t(champion.name)}</div>
+                        <div className="unit-card-items">
+                          {build.items.map((itemId) => {
+                            const item = itemMap.get(itemId);
+                            return item?.icon ? (
+                              <img
+                                key={itemId}
+                                src={item.icon}
+                                alt={t(item.name)}
+                                data-tip-kind="item"
+                                data-tip-id={itemId}
+                                loading="lazy"
+                              />
+                            ) : null;
+                          })}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+          )}
+        </div>
+      )}
 
       <div className="detail-sections">
         <section className="panel">
@@ -332,17 +467,21 @@ export function CompDetail() {
           <div className="alt-list">
             {comp.alternatives.map((alternative) => {
               const replacement = championMap.get(alternative.champion);
-              const original = championMap.get(alternative.replaces);
+              const original = alternative.replaces ? championMap.get(alternative.replaces) : undefined;
               return (
-                <div className="alt-row" key={`${alternative.champion}-${alternative.replaces}`}>
+                <div className="alt-row" key={`${alternative.champion}-${alternative.replaces ?? t(alternative.note)}`}>
                   <div className="alt-icons">
                     {replacement && <Portrait championId={replacement.id} />}
-                    <ArrowLeft size={12} className="alt-arrow" />
-                    {original && <Portrait championId={original.id} />}
+                    {original && (
+                      <>
+                        <ArrowLeft size={12} className="alt-arrow" />
+                        <Portrait championId={original.id} />
+                      </>
+                    )}
                   </div>
                   <p className="alt-text">
-                    <strong>{replacement ? t(replacement.name) : ''}</strong>{' '}
-                    {t({ ar: 'بدل', en: 'replaces', ja: 'は' })} {original ? t(original.name) : ''} —{' '}
+                    <strong>{replacement ? t(replacement.name) : ''}</strong>
+                    {original ? ` ${t({ ar: 'بدل', en: 'replaces', ja: 'は' })} ${t(original.name)} — ` : ' — '}
                     {t(alternative.note)}
                   </p>
                 </div>
@@ -358,6 +497,16 @@ export function CompDetail() {
           </p>
         </section>
       </div>
+
+      {comp.source && (
+        <p className="muted" style={{ fontSize: 11.5, marginTop: 16, display: 'flex', alignItems: 'center', gap: 6 }}>
+          <ExternalLink size={12} />
+          {t({ ar: 'مصدر الكومبو', en: 'Comp source', ja: '構成の出典' })}:{' '}
+          <a href={comp.source} target="_blank" rel="noreferrer noopener" style={{ color: 'var(--tier-color, #38bdf8)' }}>
+            TFT Academy
+          </a>
+        </p>
+      )}
     </div>
   );
 }

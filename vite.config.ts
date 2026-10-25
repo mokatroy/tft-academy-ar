@@ -5,7 +5,7 @@ import { defineConfig, type Plugin } from 'vite';
 import react from '@vitejs/plugin-react';
 
 const allowedHost = process.env.VITE_ALLOWED_HOST;
-const ARCHIVE = 'tft-academy-ar-source.zip';
+const ARCHIVE = 'mokatroystft-source.zip';
 
 const archiveDownloadPlugin = (): Plugin | undefined => {
   const file = resolve(process.cwd(), ARCHIVE);
