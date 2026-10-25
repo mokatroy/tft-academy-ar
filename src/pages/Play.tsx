@@ -6,7 +6,6 @@ import {
   BookOpen,
   ChevronLeft,
   ChevronRight,
-  ExternalLink,
   Lightbulb,
   RefreshCw,
   Search,
@@ -529,16 +528,6 @@ export function Play() {
           </div>
         </section>
       </div>
-
-      {comp.source && (
-        <p className="muted" style={{ fontSize: 11.5, marginTop: 14, display: 'flex', alignItems: 'center', gap: 6 }}>
-          <ExternalLink size={12} />
-          {t({ ar: 'مصدر الكومبو', en: 'Comp source', ja: '構成の出典' })}:{' '}
-          <a href={comp.source} target="_blank" rel="noreferrer noopener">
-            TFT Academy
-          </a>
-        </p>
-      )}
     </div>
   );
 }
