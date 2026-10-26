@@ -45,28 +45,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_Brambleback18",
@@ -77,21 +81,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_Murkwolf18",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sentry",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_ElderDragon",
@@ -101,7 +108,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -284,37 +292,40 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alistar",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Amumu18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kennen",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Maokai",
@@ -325,30 +336,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_GnarSmall",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ivern",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ezreal",
@@ -359,7 +372,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_Draven18",
@@ -370,7 +384,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -581,7 +596,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Hecarim",
@@ -592,32 +608,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Diana",
-        "items": [
-          "TFT_Item_JeweledGauntlet",
-          "TFT_Item_UnstableConcoction",
-          "TFT_Item_IonicSpark"
-        ],
+        "items": [],
         "star": 3,
         "row": 2,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ornn",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ezreal",
@@ -628,35 +644,40 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Alune",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Soraka",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -860,21 +881,24 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ornn",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Hecarim",
@@ -885,53 +909,56 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Kennen",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Lux18_Base",
-        "items": [
-          "TFT_Item_SpearOfShojin"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Soraka",
@@ -942,7 +969,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ezreal",
@@ -953,7 +981,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -1149,32 +1178,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sett",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_MasterYi_AD",
-        "items": [
-          "TFT_Item_GuinsoosRageblade",
-          "TFT_Item_GuardianAngel",
-          "TFT_Item_TitansResolve"
-        ],
+        "items": [],
         "star": 3,
         "row": 2,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Krug18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_KogMaw18_AD",
@@ -1185,7 +1214,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_Nidalee18_AP",
@@ -1195,14 +1225,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Yorick",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -1398,21 +1430,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Leona",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yorick",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yunara",
@@ -1423,30 +1458,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Azir",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kayle",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_LeBlanc",
-        "items": [
-          "TFT_Item_StatikkShiv"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Karma18",
@@ -1457,7 +1494,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -1652,33 +1690,35 @@ export const academyComps: Comp[] = [
     "units": [
       {
         "champion": "DA_18_Lillia",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ornn",
         "items": [],
         "star": 3,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Leona",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Shen",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
@@ -1689,7 +1729,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Rammus",
@@ -1700,7 +1741,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Cassiopeia",
@@ -1711,7 +1753,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -1908,30 +1951,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Shen",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Lillia",
-        "items": [
-          "TFT_Item_FrozenHeart"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sivir",
@@ -1942,21 +1987,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Tristana",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ivern",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ashe",
@@ -1966,7 +2014,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -2157,28 +2206,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sett",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Krug18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Morgana",
@@ -2188,14 +2241,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Karma18",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ahri",
@@ -2206,14 +2261,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sentry",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -2421,7 +2478,8 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
@@ -2432,45 +2490,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Lillia",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Morgana",
-        "items": [
-          "TFT_Item_StatikkShiv",
-          "TFT_Item_Morellonomicon"
-        ],
+        "items": [],
         "star": 1,
         "row": 2,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ivern",
@@ -2480,7 +2541,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Alune",
@@ -2491,7 +2553,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -2680,44 +2743,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Murkwolf18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Scuttlecrab18",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Brambleback18",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sentry",
@@ -2728,7 +2795,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_Cinderling18",
@@ -2739,7 +2807,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -2932,21 +3001,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Teemo",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Azir",
@@ -2957,7 +3029,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Zyra",
@@ -2967,21 +3040,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Soraka",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Veigar",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -3179,28 +3255,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Amumu18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yorick",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Zyra",
@@ -3211,7 +3291,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Soraka",
@@ -3222,21 +3303,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Kennen",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Azir",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -3436,35 +3520,40 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yorick",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Scuttlecrab18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Maokai",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_Amumu18",
@@ -3475,17 +3564,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ivern",
-        "items": [
-          "TFT_Item_SpearOfShojin",
-          "TFT_Item_GuinsoosRageblade"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Nidalee18_AP",
@@ -3496,7 +3584,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Zyra",
@@ -3507,7 +3596,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -3715,7 +3805,8 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
@@ -3726,21 +3817,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Nidalee18_AP",
@@ -3751,7 +3845,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Aphelios",
@@ -3762,21 +3857,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_KogMaw18_AD",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Varus",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -3979,7 +4077,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Akali_AD",
@@ -3990,32 +4089,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Camille",
-        "items": [
-          "TFT_Item_SteraksGage",
-          "TFT_Item_Quicksilver",
-          "TFT_Item_InfinityEdge"
-        ],
+        "items": [],
         "star": 3,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Leona",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sejuani",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Varus",
@@ -4026,14 +4125,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Kayle",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -4232,42 +4333,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_RekSai",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alistar",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Veigar",
@@ -4278,7 +4385,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_LeBlanc",
@@ -4288,14 +4396,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Cassiopeia",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -4509,7 +4619,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_Krug18",
@@ -4519,28 +4630,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alistar",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_CrimsonRaptor18",
@@ -4551,28 +4666,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Xayah",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Zyra",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -4766,35 +4885,40 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 3,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kobuko",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Lillia",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sivir",
@@ -4805,7 +4929,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Tristana",
@@ -4816,7 +4941,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -4994,44 +5120,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_Amumu18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Shen",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Leona",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Varus",
-        "items": [
-          "DA_18_EmblemLunar"
-        ],
+        "items": [],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Aphelios",
@@ -5040,7 +5170,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Kayle",
@@ -5051,7 +5182,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -5249,35 +5381,40 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sejuani",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Tristana",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sivir",
@@ -5288,7 +5425,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Caitlyn",
@@ -5299,7 +5437,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -5493,28 +5632,32 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Maokai",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_Amumu18",
@@ -5525,14 +5668,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ivern",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sivir",
@@ -5543,7 +5688,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ashe",
@@ -5554,7 +5700,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -5735,7 +5882,8 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alistar",
@@ -5746,28 +5894,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Hecarim",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kobuko",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Morgana",
@@ -5777,21 +5929,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Veigar",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_LeBlanc",
@@ -5801,18 +5956,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Teemo",
-        "items": [
-          "TFT_Item_JeweledGauntlet",
-          "TFT_Item_PowerGauntlet",
-          "TFT_Item_SpearOfShojin"
-        ],
+        "items": [],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -6003,7 +6156,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Malphite",
@@ -6014,14 +6168,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_RekSai",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Warwick",
@@ -6032,37 +6188,40 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 2,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_Brambleback18",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Krug18",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Azir",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Akali_AD",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -6253,21 +6412,24 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
@@ -6278,7 +6440,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Morgana",
@@ -6289,7 +6452,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_Brambleback18",
@@ -6300,30 +6464,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 5
+        "col": 5,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sentry",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alune",
-        "items": [
-          "DA_18_EmblemInvoker"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_KogMaw18_AD",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -6503,7 +6669,8 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
@@ -6514,21 +6681,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Scuttlecrab18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Morgana",
@@ -6539,7 +6709,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_Nidalee18_AP",
@@ -6550,21 +6721,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_KogMaw18_AD",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sentry",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -6763,7 +6937,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Hecarim",
@@ -6774,37 +6949,40 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 3,
         "row": 2,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Brambleback18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_CrimsonRaptor18",
@@ -6815,14 +6993,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Aphelios",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -6997,12 +7177,11 @@ export const academyComps: Comp[] = [
     "units": [
       {
         "champion": "DA_18_Lillia",
-        "items": [
-          "TFT_Item_FrozenHeart"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sett",
@@ -7013,44 +7192,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_Fiddlesticks18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yorick",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Taric18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Zyra",
@@ -7061,7 +7244,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ahri",
@@ -7072,7 +7256,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -7241,19 +7426,19 @@ export const academyComps: Comp[] = [
     "units": [
       {
         "champion": "DA_18_Lillia",
-        "items": [
-          "TFT_Item_FrozenHeart"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Hecarim",
@@ -7264,58 +7449,64 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_Elderwood18_Protector",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Alistar",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
-        "items": [
-          "TFT_Item_ThiefsGloves"
-        ],
+        "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ornn",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Aphelios",
@@ -7326,7 +7517,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ezreal",
@@ -7337,14 +7529,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Xayah",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -7545,44 +7739,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_KhaZix",
-        "items": [
-          "DA_18_EmblemSlayer"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ornn",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Aphelios",
@@ -7593,14 +7791,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Xayah",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_LeBlanc",
@@ -7610,14 +7810,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": true
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -7808,7 +8010,8 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Lillia",
@@ -7819,42 +8022,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Rakan",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Sejuani",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Leona",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kayle",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Aphelios",
@@ -7865,7 +8074,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -8067,28 +8277,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Lillia",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kobuko",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_GnarSmall",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rengar",
@@ -8099,14 +8313,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sivir",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Tristana",
@@ -8117,7 +8333,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -8284,25 +8501,24 @@ export const academyComps: Comp[] = [
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Vi18",
         "items": [],
         "star": 1,
         "row": 3,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Kennen",
-        "items": [
-          "TFT_Item_GuardianAngel",
-          "TFT_Item_Quicksilver",
-          "TFT_Item_Bloodthirster"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Amumu18",
@@ -8313,23 +8529,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Lillia",
-        "items": [
-          "TFT_Item_FrozenHeart"
-        ],
+        "items": [],
         "star": 1,
         "row": 3,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Akali_AD",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_Lux18_Base",
@@ -8340,7 +8557,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Sivir",
@@ -8350,18 +8568,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ashe",
-        "items": [
-          "TFT_Item_SpearOfShojin",
-          "TFT_Item_RedBuff",
-          "DA_18_EmblemInferno"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -8546,7 +8762,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Warwick",
@@ -8557,21 +8774,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_Murkwolf18",
         "items": [],
         "star": 3,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_RekSai",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Yunara",
@@ -8582,21 +8802,24 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Ezreal",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 2
+        "col": 2,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Azir",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       }
     ],
     "augments": [
@@ -8782,28 +9005,32 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_Sentinel18",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Hecarim",
         "items": [],
         "star": 1,
         "row": 1,
-        "col": 3
+        "col": 3,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Morgana",
@@ -8814,14 +9041,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 1,
         "row": 1,
-        "col": 4
+        "col": 4,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Alune",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Cassiopeia",
@@ -8832,7 +9061,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": true
       }
     ],
     "augments": [
@@ -9027,14 +9257,16 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 3,
-        "col": 3
+        "col": 3,
+        "itemPriority": true
       },
       {
         "champion": "DA_Elderwood18_StonebarkTree",
         "items": [],
         "star": 1,
         "row": 2,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Rengar",
@@ -9045,7 +9277,8 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 0
+        "col": 0,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_KhaZix",
@@ -9056,45 +9289,48 @@ export const academyComps: Comp[] = [
         ],
         "star": 3,
         "row": 1,
-        "col": 1
+        "col": 1,
+        "itemPriority": true
       },
       {
         "champion": "DA_18_Aphelios",
-        "items": [
-          "TFT_Item_LastWhisper",
-          "TFT_Item_RedBuff"
-        ],
+        "items": [],
         "star": 1,
         "row": 0,
-        "col": 0
+        "col": 0,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Ezreal",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 1
+        "col": 1,
+        "itemPriority": false
       },
       {
         "champion": "DA_Elderwood18_Lifeblossom",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 4
+        "col": 4,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_Diana",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 5
+        "col": 5,
+        "itemPriority": false
       },
       {
         "champion": "DA_18_LeBlanc",
         "items": [],
         "star": 1,
         "row": 0,
-        "col": 6
+        "col": 6,
+        "itemPriority": false
       }
     ],
     "augments": [

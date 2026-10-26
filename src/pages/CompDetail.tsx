@@ -158,6 +158,63 @@ export function CompDetail() {
         {t(comp.summary)}
       </p>
 
+      {(() => {
+        const priorityUnits = comp.units.filter(
+          (u) => (u.itemPriority ?? u.items.length > 0) && u.items.length > 0,
+        );
+        if (priorityUnits.length === 0) return null;
+        return (
+          <section className="panel" style={{ marginBottom: 16 }}>
+            <h2 className="panel-title">
+              <ShoppingCart size={15} />
+              {t({ ar: 'أولوية الأيتمز — حط العناصر هنا', en: 'Item priority — put items here', ja: 'アイテム優先 — ここに装備' })}
+              <span className="hint">{priorityUnits.length}</span>
+            </h2>
+            <p className="muted" style={{ fontSize: 12.5, marginBottom: 10, lineHeight: 1.7 }}>
+              {t({
+                ar: 'دول أهم وحدات في الكومبو للأيتمز. باقي الفريق يفضل من غير عناصر أو ببقايا.',
+                en: 'These are the only units you should itemize first. Everyone else can stay empty or take leftovers.',
+                ja: 'まずここにアイテムを付ける。他のユニットは空か余りで十分。',
+              })}
+            </p>
+            <div className="item-priority-grid">
+              {priorityUnits.map((unit) => {
+                const champion = championMap.get(unit.champion);
+                if (!champion) return null;
+                return (
+                  <div className="item-priority-card" key={unit.champion}>
+                    <div className="unit-card-head">
+                      <div className="unit-card-portrait" style={{ '--cost-color': costColor(champion.cost) } as CSSProperties}>
+                        {champion.icon ? <img src={champion.icon} alt="" loading="lazy" /> : null}
+                      </div>
+                      <div>
+                        <div style={{ fontWeight: 700, fontSize: 13 }}>{t(champion.name)}</div>
+                        <div style={{ color: '#f5c451', fontSize: 10 }}>{'★'.repeat(unit.star)}</div>
+                      </div>
+                    </div>
+                    <div className="unit-card-items">
+                      {unit.items.map((itemId) => {
+                        const item = itemMap.get(itemId);
+                        return item?.icon ? (
+                          <img
+                            key={itemId}
+                            src={item.icon}
+                            alt={t(item.name)}
+                            data-tip-kind="item"
+                            data-tip-id={itemId}
+                            loading="lazy"
+                          />
+                        ) : null;
+                      })}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+        );
+      })()}
+
       <div className="comp-layout">
         <div>
           <Board comp={comp} />
@@ -434,7 +491,7 @@ export function CompDetail() {
                     </div>
                     <div className="unit-card-items">
                       {unit.items.length === 0 ? (
-                        <span className="empty">{t({ ar: 'بدون عناصر', en: 'No items', ja: '装備なし' })}</span>
+                        <span className="empty">{t({ ar: 'مش أولوية', en: 'Not priority', ja: '優先外' })}</span>
                       ) : (
                         unit.items.map((itemId) => {
                           const item = itemMap.get(itemId);

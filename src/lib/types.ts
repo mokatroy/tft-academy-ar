@@ -83,6 +83,8 @@ export interface CompUnit {
   row: number;
   /** 0..6 */
   col: number;
+  /** True when this unit should receive items first (main carries / main tank). */
+  itemPriority?: boolean;
 }
 
 export interface CompAugment {

@@ -14,6 +14,11 @@ export function position(row: number, col: number): CSSProperties {
   };
 }
 
+function isPriority(unit: Comp['units'][number]): boolean {
+  if (unit.itemPriority != null) return unit.itemPriority;
+  return unit.items.length > 0;
+}
+
 export function Board({ comp }: { comp: Comp }) {
   const { t } = useI18n();
   return (
@@ -34,10 +39,11 @@ export function Board({ comp }: { comp: Comp }) {
         {comp.units.map((unit) => {
           const champion = championMap.get(unit.champion);
           if (!champion) return null;
+          const priority = isPriority(unit);
           return (
             <div
               key={`${unit.champion}-${unit.row}-${unit.col}`}
-              className="hex-unit"
+              className={`hex-unit${priority ? ' hex-unit-priority' : ''}`}
               style={position(unit.row, unit.col)}
               data-tip-kind="champion"
               data-tip-id={unit.champion}
@@ -45,6 +51,11 @@ export function Board({ comp }: { comp: Comp }) {
               <div className="hex-portrait" style={{ '--cost-color': costVar(champion.cost) } as CSSProperties}>
                 {champion.icon ? <img src={champion.icon} alt={t(champion.name)} loading="lazy" /> : null}
                 <span className="hex-stars">{'★'.repeat(unit.star)}</span>
+                {priority && (
+                  <span className="hex-priority-badge" title={t({ ar: 'أولوية أيتمز', en: 'Item priority', ja: 'アイテム優先' })}>
+                    {t({ ar: 'أيتمز', en: 'ITEMS', ja: '装備' })}
+                  </span>
+                )}
               </div>
               {unit.items.length > 0 && (
                 <div className="hex-items">
@@ -70,9 +81,9 @@ export function Board({ comp }: { comp: Comp }) {
       <div className="board-note">
         <span />
         {t({
-          ar: 'الصف الأمامي في الأعلى · مرّر على الوحدات لرؤية العناصر',
-          en: 'Front row at the top · hover units to see items',
-          ja: '最前列は上 · ユニットにホバーでアイテム表示',
+          ar: 'الوحدات المعلّمة «أيتمز» هي اللي تحط عليها العناصر أولًا',
+          en: 'Units marked ITEMS should get items first',
+          ja: '「装備」マークのユニットに優先してアイテムを付ける',
         })}
         <span />
       </div>

@@ -3586,3 +3586,45 @@ button.filter-chip {
     display: none;
   }
 }
+
+
+/* Item-priority units on the board */
+.hex-unit-priority .hex-portrait {
+  box-shadow: 0 0 0 2px #f5c451, 0 0 12px rgba(245, 196, 81, 0.45);
+}
+.hex-priority-badge {
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #f5c451, #e8a317);
+  color: #1a1205;
+  white-space: nowrap;
+  z-index: 3;
+  pointer-events: none;
+}
+.item-priority-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 10px;
+}
+.item-priority-card {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(245, 196, 81, 0.06);
+  border: 1px solid rgba(245, 196, 81, 0.28);
+}
+.item-priority-card .unit-card-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
