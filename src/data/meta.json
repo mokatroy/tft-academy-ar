@@ -5,11 +5,11 @@
     "en": "Set 18",
     "ja": "セット18"
   },
-  "patch": "18.5",
+  "patch": "18.5c",
   "updated": {
-    "ar": "باتش 18.5",
-    "en": "Patch 18.5",
-    "ja": "パッチ18.5"
+    "ar": "ميتا 18.5c — نيرف Kha'Zix و Brambleback",
+    "en": "Meta 18.5c — Kha'Zix & Brambleback nerfs",
+    "ja": "メタ18.5c — カズィクスとブランブルバック弱体化"
   },
   "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"
 }

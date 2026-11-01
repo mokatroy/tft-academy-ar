@@ -18,7 +18,7 @@ export const academyComps: Comp[] = [
       "en": "Riftbeast Brambleback",
       "ja": "リフトビーストのブランブルバック"
     },
-    "tier": "S",
+    "tier": "A",
     "difficulty": 2,
     "playstyle": {
       "ar": "صعود سريع للمستوى 9",
@@ -569,7 +569,7 @@ export const academyComps: Comp[] = [
       "en": "Lunar Kha'Zix Reroll",
       "ja": "ルナー カ＝ジックス リロール"
     },
-    "tier": "S",
+    "tier": "C",
     "difficulty": 2,
     "playstyle": {
       "ar": "إعادة رول بثلاث ذهب",
@@ -1670,7 +1670,7 @@ export const academyComps: Comp[] = [
       "en": "Defender Cassiopeia Reroll",
       "ja": "ディフェンダー カシオペア リロール"
     },
-    "tier": "A",
+    "tier": "B",
     "difficulty": 1,
     "playstyle": {
       "ar": "إعادة رول بثلاث ذهب",
@@ -1924,7 +1924,7 @@ export const academyComps: Comp[] = [
       "en": "Sivir Flex",
       "ja": "シヴィア フレックス"
     },
-    "tier": "A",
+    "tier": "B",
     "difficulty": 2,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -2455,7 +2455,7 @@ export const academyComps: Comp[] = [
       "en": "Alune AP Fast 9",
       "ja": "アルーン AP速9"
     },
-    "tier": "A",
+    "tier": "S",
     "difficulty": 3,
     "playstyle": {
       "ar": "صعود سريع للمستوى 9",
@@ -3228,7 +3228,7 @@ export const academyComps: Comp[] = [
       "en": "Summoner Malphite Flex",
       "ja": "サモナー マルファイト フレックス"
     },
-    "tier": "B",
+    "tier": "C",
     "difficulty": 2,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -4306,7 +4306,7 @@ export const academyComps: Comp[] = [
       "en": "Elderwood Veigar Reroll",
       "ja": "エルダーウッド ベイガー リロール"
     },
-    "tier": "B",
+    "tier": "X",
     "difficulty": 1,
     "playstyle": {
       "ar": "إعادة رول بذهبة واحدة",
@@ -4592,7 +4592,7 @@ export const academyComps: Comp[] = [
       "en": "Elderwood Mama Beak Reroll",
       "ja": "エルダーウッド ママ鳥リロール"
     },
-    "tier": "B",
+    "tier": "C",
     "difficulty": 2,
     "playstyle": {
       "ar": "إعادة رول بثلاث ذهب",
@@ -4858,7 +4858,7 @@ export const academyComps: Comp[] = [
       "en": "Fae Tristana Reroll",
       "ja": "フェイ トリスターナ リロール"
     },
-    "tier": "B",
+    "tier": "C",
     "difficulty": 2,
     "playstyle": {
       "ar": "إعادة رول بثلاث ذهب",
@@ -5093,7 +5093,7 @@ export const academyComps: Comp[] = [
       "en": "Eclipse Kayle Reroll",
       "ja": "エクリプス ケイル リロール"
     },
-    "tier": "B",
+    "tier": "C",
     "difficulty": 1,
     "playstyle": {
       "ar": "إعادة رول بذهبتين",
@@ -5354,7 +5354,7 @@ export const academyComps: Comp[] = [
       "en": "Juggernaut Caitlyn Reroll",
       "ja": "ジャガーノート ケイトリン リロール"
     },
-    "tier": "C",
+    "tier": "B",
     "difficulty": 1,
     "playstyle": {
       "ar": "إعادة رول بذهبتين",
@@ -5609,7 +5609,7 @@ export const academyComps: Comp[] = [
       "en": "Juggernaut Ashe",
       "ja": "ジャガーノート アシェ"
     },
-    "tier": "C",
+    "tier": "B",
     "difficulty": 3,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -5859,7 +5859,7 @@ export const academyComps: Comp[] = [
       "en": "Elderwood Teemo Reroll",
       "ja": "エルダーウッド ティーモ リロール"
     },
-    "tier": "C",
+    "tier": "B",
     "difficulty": 1,
     "playstyle": {
       "ar": "إعادة رول بذهبتين",
@@ -7157,7 +7157,7 @@ export const academyComps: Comp[] = [
       "en": "Bronze For Life Ahri",
       "ja": "ブロンズ・フォー・ライフ アーリ"
     },
-    "tier": "X",
+    "tier": "A",
     "difficulty": 2,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
