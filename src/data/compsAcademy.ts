@@ -3497,7 +3497,7 @@ export const academyComps: Comp[] = [
       "en": "Juggernaut Zyra",
       "ja": "ジャガーノート ザイラ"
     },
-    "tier": "B",
+    "tier": "A",
     "difficulty": 3,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -3782,7 +3782,7 @@ export const academyComps: Comp[] = [
       "en": "Nidalee Aphelios",
       "ja": "ニダリーとアフェリオス"
     },
-    "tier": "B",
+    "tier": "A",
     "difficulty": 2,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -4858,7 +4858,7 @@ export const academyComps: Comp[] = [
       "en": "Fae Tristana Reroll",
       "ja": "フェイ トリスターナ リロール"
     },
-    "tier": "C",
+    "tier": "B",
     "difficulty": 2,
     "playstyle": {
       "ar": "إعادة رول بثلاث ذهب",
@@ -5609,7 +5609,7 @@ export const academyComps: Comp[] = [
       "en": "Juggernaut Ashe",
       "ja": "ジャガーノート アシェ"
     },
-    "tier": "B",
+    "tier": "A",
     "difficulty": 3,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",
@@ -6646,7 +6646,7 @@ export const academyComps: Comp[] = [
       "en": "Invoker Nidalee",
       "ja": "インヴォーカー ニダリー"
     },
-    "tier": "C",
+    "tier": "B",
     "difficulty": 2,
     "playstyle": {
       "ar": "مستوى 8 سريع بأربعة ذهب",

@@ -5,11 +5,11 @@
     "en": "Set 18",
     "ja": "セット18"
   },
-  "patch": "18.5c",
+  "patch": "18.6",
   "updated": {
-    "ar": "ميتا 18.5c — نيرف Kha'Zix و Brambleback",
-    "en": "Meta 18.5c — Kha'Zix & Brambleback nerfs",
-    "ja": "メタ18.5c — カズィクスとブランブルバック弱体化"
+    "ar": "باتش 18.6 — عميل مستقل + باف Blossom/Nidalee",
+    "en": "Patch 18.6 — standalone client + Blossom/Nidalee buffs",
+    "ja": "パッチ18.6 — 専用クライアント＋ブロッサム/ナイダリー強化"
   },
   "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"
 }
