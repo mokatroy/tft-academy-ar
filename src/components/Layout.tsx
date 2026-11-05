@@ -144,15 +144,21 @@ export function Layout() {
               </div>
               <p className="footer-note">
                 {t({
-                  ar: 'موقع غير رسمي لمساعدة لاعبي Teamfight Tactics على متابعة الميتا: كومبوهات، تشكيلات، عناصر وخواص. تعتمد الأسماء والصور على بيانات CommunityDragon للمجموعة 18.',
-                  en: 'An unofficial site helping Teamfight Tactics players follow the meta: comps, boards, items and traits. Names and images use CommunityDragon data for Set 18.',
-                  ja: 'Teamfight Tacticsのメタ追跡を支援する非公式サイト：構成、盤面、アイテム、特性。名前と画像はセット18のCommunityDragonデータを使用。',
+                  ar: 'MokaTroy مشروع جماهيري غير رسمي ومجاني لمساعدة لاعبي Teamfight Tactics. ليس تابعًا لـ Riot Games ولا يعكس آراءها.',
+                  en: 'MokaTroy is an unofficial, free fan project to help Teamfight Tactics players. It is not affiliated with Riot Games and does not reflect their views.',
+                  ja: 'MokaTroyはTeamfight Tacticsプレイヤー向けの非公式・無料のファンプロジェクトです。Riot Gamesとは無関係で、同社の見解を反映しません。',
                 })}
                 <br />
                 {t({
-                  ar: 'الأدلة والترتيبات في هذا العرض تحريرية ولا تعتمد على إحصاءات رسمية.',
-                  en: 'Guides and tiers here are editorial and not based on official stats.',
-                  ja: 'ここでのガイドとティアは編集的であり、公式統計に基づくものではありません。',
+                  ar: 'Teamfight Tactics وLeague of Legends وجميع الأسماء والصور والعلامات التجارية المرتبطة بها ملك لـ Riot Games, Inc. نستخدم بيانات وأصولًا من CommunityDragon لأغراض العرض فقط.',
+                  en: 'Teamfight Tactics, League of Legends, and all related names, images, and trademarks are property of Riot Games, Inc. We use CommunityDragon data and assets for display purposes only.',
+                  ja: 'Teamfight Tactics、League of Legends、および関連する名称・画像・商標はRiot Games, Inc.の所有物です。表示目的のみでCommunityDragonのデータとアセットを使用しています。',
+                })}
+                <br />
+                {t({
+                  ar: 'الأدلة والتشكيلات والتير ليست تحريرية من MokaTroy وليست إحصاءات رسمية من Riot.',
+                  en: 'Guides, comps, and tier lists are editorial content from MokaTroy and are not official Riot statistics.',
+                  ja: 'ガイド・構成・ティアリストはMokaTroyの編集コンテンツであり、Riotの公式統計ではありません。',
                 })}
               </p>
             </div>
@@ -171,8 +177,13 @@ export function Layout() {
           </div>
           <div className="footer-bottom">
             <span>© 2026 MokaTroy</span>
-            <span dir="ltr">
-              MokaTroy isn’t endorsed by Riot Games and doesn’t reflect the views of Riot Games.
+            <span dir="ltr" style={{ maxWidth: 720, textAlign: 'end', lineHeight: 1.5 }}>
+              MokaTroy was created under Riot Games&apos; &quot;Legal Jibber Jabber&quot; policy using
+              assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
+              MokaTroy isn&apos;t endorsed by Riot Games and doesn&apos;t reflect the views or
+              opinions of Riot Games or anyone officially involved in producing or managing Riot
+              Games properties. Riot Games and all associated properties are trademarks or
+              registered trademarks of Riot Games, Inc.
             </span>
           </div>
         </div>
