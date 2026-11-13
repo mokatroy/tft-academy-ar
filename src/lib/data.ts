@@ -9,6 +9,7 @@ import metaJson from '../data/meta.json';
 import patchNotesJson from '../data/patchnotes.json';
 import { comps as curatedComps, tierOrder } from '../data/comps';
 import { academyComps } from '../data/compsAcademy';
+import tierOverridesJson from '../data/tierOverrides.json';
 import type {
   Augment,
   Champion,
@@ -32,8 +33,12 @@ function mergeById<T extends { id: string }>(base: T[], extra: T[]): T[] {
 export const champions = mergeById(championsJson as Champion[], championsExtraJson as Champion[]);
 export const traits = traitsJson as Trait[];
 export const items = mergeById(itemsJson as unknown as Item[], itemsExtraJson as unknown as Item[]);
-/** Curated comps plus the 36 imported from TFT Academy's tier list (S/A/B/C/X). */
-export const comps: Comp[] = [...curatedComps, ...academyComps];
+/** Curated comps plus Academy comps; tierOverrides.json is the live meta source of truth. */
+const tierOverrides = tierOverridesJson as Record<string, Tier>;
+export const comps: Comp[] = [...curatedComps, ...academyComps].map((comp) => {
+  const tier = tierOverrides[comp.slug];
+  return tier && tier !== comp.tier ? { ...comp, tier } : comp;
+});
 export { tierOrder };
 export const augments = mergeById(augmentsJson as Augment[], augmentsExtraJson as Augment[]);
 export const meta = metaJson as {
@@ -52,123 +57,49 @@ export const itemMap = new Map(items.map((item) => [item.id, item]));
 export const augmentMap = new Map(augments.map((augment) => [augment.id, augment]));
 export const compMap = new Map(comps.map((comp) => [comp.slug, comp]));
 
-export function getComp(slug: string | undefined): Comp | undefined {
-  return slug ? compMap.get(slug) : undefined;
+export function getChampion(id: string): Champion | undefined {
+  return championMap.get(id);
 }
 
-export const tierStyles: Record<Tier, { color: string; glow: string; label: Localized }> = {
-  S: {
-    color: '#f5c451',
-    glow: 'rgba(245,196,81,.35)',
-    label: { ar: 'أسطوري', en: 'Legendary', ja: 'レジェンダリー' },
-  },
-  A: {
-    color: '#c084fc',
-    glow: 'rgba(192,132,252,.3)',
-    label: { ar: 'قوي', en: 'Strong', ja: '強力' },
-  },
-  B: {
-    color: '#38bdf8',
-    glow: 'rgba(56,189,248,.28)',
-    label: { ar: 'متوازن', en: 'Balanced', ja: 'バランス' },
-  },
-  C: {
-    color: '#94a3b8',
-    glow: 'rgba(148,163,184,.22)',
-    label: { ar: 'ظرفي', en: 'Situational', ja: '状況次第' },
-  },
-  X: {
-    color: '#f43f5e',
-    glow: 'rgba(244,63,94,.3)',
-    label: { ar: 'تجنّب', en: 'Avoid', ja: '非推奨' },
-  },
-};
-
-export const costColors: Record<number, string> = {
-  1: '#9aa4b2',
-  2: '#3fbf7f',
-  3: '#3b9ae1',
-  4: '#b45cf0',
-  5: '#f0b232',
-};
-
-export function costLabel(cost: number, locale: 'ar' | 'en' | 'ja' = 'en'): string {
-  if (locale === 'ar') return `${cost} ${cost === 1 ? 'ذهبة' : 'ذهب'}`;
-  if (locale === 'ja') return `${cost} コスト`;
-  return `${cost} ${cost === 1 ? 'gold' : 'gold'}`;
+export function getTrait(id: string): Trait | undefined {
+  return traitMap.get(id);
 }
 
-export interface CompTrait {
-  id: string;
-  name: Localized;
-  count: number;
-  breakpoints: number[];
-  active: boolean;
-  nextBreakpoint: number | null;
-  trait?: Trait;
+export function getItem(id: string): Item | undefined {
+  return itemMap.get(id);
 }
 
-export function compTraits(comp: Pick<Comp, 'units'>): CompTrait[] {
+export function getAugment(id: string): Augment | undefined {
+  return augmentMap.get(id);
+}
+
+export function getComp(slug: string): Comp | undefined {
+  return compMap.get(slug);
+}
+
+/** Active trait counts for a list of champion ids (final board). */
+export function traitCountsFor(championIds: string[]): Map<string, number> {
   const counts = new Map<string, number>();
-  for (const unit of comp.units) {
-    const champion = championMap.get(unit.champion);
+  for (const id of championIds) {
+    const champion = championMap.get(id);
     if (!champion) continue;
-    for (const traitId of new Set(champion.traits)) {
+    for (const traitId of champion.traits) {
       counts.set(traitId, (counts.get(traitId) ?? 0) + 1);
     }
   }
+  return counts;
+}
+
+export function activeTraitsFor(championIds: string[]) {
+  const counts = traitCountsFor(championIds);
   return [...counts.entries()]
     .map(([id, count]) => {
       const trait = traitMap.get(id);
-      const steps = trait ? breakpoints(trait) : [];
-      const next = steps.find((step) => step > count) ?? null;
-      return {
-        id,
-        name: trait?.name ?? { ar: id, en: id, ja: id },
-        count,
-        breakpoints: steps,
-        active: steps.length > 0 && count >= steps[0],
-        nextBreakpoint: next,
-        trait,
-      };
+      if (!trait) return null;
+      const steps = breakpoints(trait);
+      const active = steps.filter((s) => count >= s).pop() ?? null;
+      const next = steps.find((s) => s > count) ?? null;
+      return { trait, count, active, nextBreakpoint: next, breakpoints: steps };
     })
-    .sort((a, b) => {
-      if (a.active !== b.active) return a.active ? -1 : 1;
-      return b.count - a.count;
-    });
-}
-
-export function championBuild(championId: string): { items: string[]; comps: Comp[] } {
-  const itemCounts = new Map<string, number>();
-  const related: Comp[] = [];
-  for (const comp of comps) {
-    const unit = comp.units.find((entry) => entry.champion === championId);
-    if (!unit) continue;
-    related.push(comp);
-    for (const item of unit.items) itemCounts.set(item, (itemCounts.get(item) ?? 0) + 1);
-  }
-  return {
-    items: [...itemCounts.entries()].sort((a, b) => b[1] - a[1]).map(([id]) => id).slice(0, 3),
-    comps: related,
-  };
-}
-
-export function unitAt(comp: Comp, row: number, col: number): CompUnit | undefined {
-  return comp.units.find((unit) => unit.row === row && unit.col === col);
-}
-
-export function compPower(comp: Comp): number {
-  const weights: Record<Tier, number> = { S: 4, A: 3, B: 2, C: 1, X: 0 };
-  return weights[comp.tier];
-}
-
-export function formatTraitDescription(trait: Trait, locale: 'ar' | 'en' | 'ja' = 'en'): string {
-  return (trait.desc[locale] || trait.desc.en || '')
-    .replace(/\\n/g, ' ')
-    .replace(/<br\s*\/?>/gi, ' ')
-    .replace(/<\/?row>/gi, ' ')
-    .replace(/<[^>]+>/g, '')
-    .replace(/@[^@]+@/g, '')
-    .replace(/\s+/g, ' ')
-    .trim();
+    .filter(Boolean);
 }
