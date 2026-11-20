@@ -1,1 +1,227 @@
-{"error":"use_file"}
+{
+  "source": "https://teamfighttactics.leagueoflegends.com/en-us/news/tags/patch-notes/",
+  "set": 18,
+  "fetched": "2026-11-20",
+  "patches": [
+    {
+      "slug": "18-7",
+      "label": "18.7",
+      "date": "2026-11-17",
+      "title": {
+        "ar": "معلومات التحديث 18.7 Teamfight Tactics",
+        "en": "Teamfight Tactics patch 18.7",
+        "ja": "チームファイト タクティクス パッチノート 18.7"
+      },
+      "desc": {
+        "ar": "آخر باتش للمجموعة 18 (Enchanted Wilds) قبل Prismatic Tour. دعم macOS، بافات واسعة، وتعديل traits.",
+        "en": "Final Set 18 (Enchanted Wilds) patch before Prismatic Tour. macOS support, wide buffs, and trait retunes.",
+        "ja": "Prismatic Tour前のセット18最終パッチ。macOS対応、幅広い強化と特性調整。"
+      },
+      "intro": null,
+      "designers": [
+        "Rodger \"Riot Prism\" Caudill",
+        "Katie \"Riot Ukime\" Guo"
+      ],
+      "urls": {
+        "ar": "https://teamfighttactics.leagueoflegends.com/ar-ae/news/game-updates/teamfight-tactics-patch-18-7/",
+        "en": "https://teamfighttactics.leagueoflegends.com/en-us/news/game-updates/teamfight-tactics-patch-18-7/",
+        "ja": "https://teamfighttactics.leagueoflegends.com/ja-jp/news/game-updates/teamfight-tactics-patch-18-7/"
+      },
+      "sections": [
+        {
+          "id": "macos",
+          "title": {
+            "ar": "عودة دعم MacOS",
+            "en": "MACOS SUPPORT RETURNS",
+            "ja": "macOSサポート復帰"
+          },
+          "commentary": null,
+          "groups": [
+            {
+              "title": { "ar": "", "en": "", "ja": "" },
+              "kind": "system",
+              "commentary": null,
+              "entries": [],
+              "notes": [
+                {
+                  "ar": "دعم أصلي لأجهزة Apple M-series مع Retina.",
+                  "en": "Native support returns for Apple M-series with Retina.",
+                  "ja": "Apple Mシリーズでネイティブ対応が復帰。"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "large-changes",
+          "title": {
+            "ar": "تغييرات كبيرة",
+            "en": "LARGE CHANGES",
+            "ja": "大型変更"
+          },
+          "commentary": null,
+          "groups": [
+            {
+              "title": { "ar": "الأنظمة", "en": "Systems", "ja": "システム" },
+              "kind": "system",
+              "commentary": null,
+              "entries": [
+                {
+                  "name": { "ar": "Reforgers", "en": "Reforgers", "ja": "Reforgers" },
+                  "change": "buff",
+                  "lines": [
+                    {
+                      "ar": "نظام طابور داخلي يمنع رجوع نفس الأيتم بعد إعادة الصياغة مباشرة.",
+                      "en": "Internal queue prevents reforging back into the same item on consecutive uses.",
+                      "ja": "連続使用で同じアイテムに戻りにくく。"
+                    }
+                  ]
+                }
+              ],
+              "notes": []
+            },
+            {
+              "title": { "ar": "الخصائص", "en": "Traits", "ja": "特性" },
+              "kind": "trait",
+              "commentary": null,
+              "entries": [
+                {
+                  "name": { "ar": "Elderwood", "en": "Elderwood", "ja": "Elderwood" },
+                  "change": "nerf",
+                  "lines": [
+                    {
+                      "ar": "بونص HP للشجرة على 5 Elderwood انخفض.",
+                      "en": "5 Elderwood bonus tree HP reduced.",
+                      "ja": "5 Elderwoodの樹HPボーナス減少。"
+                    }
+                  ]
+                },
+                {
+                  "name": { "ar": "Riftbeast", "en": "Riftbeast", "ja": "Riftbeast" },
+                  "change": "nerf",
+                  "lines": [
+                    {
+                      "ar": "AD/AP على 7 Riftbeast انخفض قليلًا.",
+                      "en": "7 Riftbeast AD/AP slightly reduced.",
+                      "ja": "7 RiftbeastのAD/APが微減。"
+                    }
+                  ]
+                },
+                {
+                  "name": { "ar": "Sprykin", "en": "Sprykin", "ja": "Sprykin" },
+                  "change": "nerf",
+                  "lines": [
+                    {
+                      "ar": "بونصات الصحة وسرعة الهجوم والـ 7-piece انخفضت.",
+                      "en": "Bonus HP, AS, and 7-piece bonus trimmed.",
+                      "ja": "HP・AS・7ピースボーナス調整。"
+                    }
+                  ]
+                },
+                {
+                  "name": {
+                    "ar": "Coven / Eclipse / Fae / Inferno / Primal",
+                    "en": "Coven / Eclipse / Fae / Inferno / Primal",
+                    "ja": "Coven / Eclipse / Fae / Inferno / Primal"
+                  },
+                  "change": "buff",
+                  "lines": [
+                    {
+                      "ar": "تعديلات باف على عدة verticals.",
+                      "en": "Buff retunes across several verticals.",
+                      "ja": "複数の縦特性が強化。"
+                    }
+                  ]
+                }
+              ],
+              "notes": [
+                {
+                  "ar": "Ivern انضم لـ Elderwood، Kennen لـ Sprykin، وKrug أصبح Summoner.",
+                  "en": "Ivern joins Elderwood, Kennen joins Sprykin, Krug becomes a Summoner.",
+                  "ja": "IvernがElderwood、KennenがSprykin、KrugがSummonerに。"
+                }
+              ]
+            },
+            {
+              "title": { "ar": "الوحدات", "en": "Units", "ja": "ユニット" },
+              "kind": "unit",
+              "commentary": null,
+              "entries": [
+                {
+                  "name": {
+                    "ar": "Cinderling / Pebbles",
+                    "en": "Cinderling / Pebbles",
+                    "ja": "Cinderling / Pebbles"
+                  },
+                  "change": "buff",
+                  "lines": [
+                    {
+                      "ar": "باف reroll — رجوع خطوط 1-cost قوية.",
+                      "en": "Reroll buffs — strong 1-cost lines return.",
+                      "ja": "リロール強化。"
+                    }
+                  ]
+                },
+                {
+                  "name": {
+                    "ar": "Kobuko / Leona / Kayle / Teemo / Aphelios / Kha'Zix",
+                    "en": "Kobuko / Leona / Kayle / Teemo / Aphelios / Kha'Zix",
+                    "ja": "Kobuko / Leona / Kayle / Teemo / Aphelios / Kha'Zix"
+                  },
+                  "change": "buff",
+                  "lines": [
+                    {
+                      "ar": "بافات على أرقام القدرة.",
+                      "en": "Ability number buffs.",
+                      "ja": "スキル数値強化。"
+                    }
+                  ]
+                },
+                {
+                  "name": {
+                    "ar": "Deepwood Protector",
+                    "en": "Deepwood Protector",
+                    "ja": "Deepwood Protector"
+                  },
+                  "change": "nerf",
+                  "lines": [
+                    {
+                      "ar": "صحة وشفاء أقل.",
+                      "en": "Lower health and heal.",
+                      "ja": "体力と回復が減少。"
+                    }
+                  ]
+                }
+              ],
+              "notes": []
+            }
+          ]
+        },
+        {
+          "id": "performance",
+          "title": {
+            "ar": "تحسينات الأداء والإعدادات التلقائية",
+            "en": "PERFORMANCE IMPROVEMENTS AND AUTO SETTINGS",
+            "ja": "パフォーマンスと自動設定"
+          },
+          "commentary": null,
+          "groups": [
+            {
+              "title": { "ar": "", "en": "", "ja": "" },
+              "kind": "system",
+              "commentary": null,
+              "entries": [],
+              "notes": [
+                {
+                  "ar": "إعداد Auto جديد يختار الجودة والدقة وحدود الإطارات حسب الجهاز.",
+                  "en": "New Auto setting picks quality, resolution, and frame limits per device.",
+                  "ja": "端末に応じたAuto設定が追加。"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
