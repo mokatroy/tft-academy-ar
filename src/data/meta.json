@@ -5,11 +5,11 @@
     "en": "Set 18",
     "ja": "セット18"
   },
-  "patch": "18.6",
+  "patch": "18.7",
   "updated": {
-    "ar": "تيرز محدّثة — ميتا مسطّحة بعد 18.6 (مفيش S واضح)",
-    "en": "Tiers updated — flat meta after 18.6 (no clear S)",
-    "ja": "ティア更新 — 18.6後のフラットメタ（明確なSなし）"
+    "ar": "باتش 18.7 — آخر باتش للمجموعة 18 قبل Prismatic Tour",
+    "en": "Patch 18.7 — final Set 18 patch before Prismatic Tour",
+    "ja": "パッチ18.7 — セット18最終パッチ（Prismatic Tour前）"
   },
   "source": "https://raw.communitydragon.org/latest/cdragon/tft/ar_ae.json"
 }
