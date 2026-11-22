@@ -104,6 +104,7 @@ export const set19Meta = {
   source: data.source,
   fetched: data.fetched,
   augmentSummary: data.augmentSummary,
+  /** Locale-specific set title used in the hero and navigation. */
   title: {
     ar: 'جولة الألماس',
     en: 'Prismatic Tour',
@@ -168,6 +169,7 @@ export const set19Items: Set19Item[] = data.items
     };
   });
 
+// Fill trait → champion membership now that both lists exist.
 const byTrait = new Map<string, string[]>();
 for (const champion of set19Champions) {
   for (const traitId of champion.traits) {
