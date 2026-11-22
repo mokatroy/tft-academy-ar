@@ -136,9 +136,6 @@ export function Set19() {
             </div>
             <div className="showcase-foot">
               <span>{set19Meta.patch}</span>
-              <a href={set19Meta.source} target="_blank" rel="noreferrer">
-                TFT Academy ↗
-              </a>
             </div>
           </div>
         </div>
