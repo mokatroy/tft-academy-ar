@@ -1,4 +1,7 @@
-import raw from '../data/set19.json';
+import metaRaw from '../data/set19.meta.json';
+import traitsRaw from '../data/set19.traits.json';
+import championsRaw from '../data/set19.champions.json';
+import itemsRaw from '../data/set19.items.json';
 import championNames from '../data/set19Names.json';
 import { traitText } from '../data/set19.traits.i18n';
 import { itemText } from '../data/set19.items.i18n';
@@ -56,7 +59,12 @@ interface Set19Data {
   augmentSummary: { total: number; silver: number; gold: number; prismatic: number; hero: number };
 }
 
-const data = raw as Set19Data;
+const data = {
+  ...metaRaw,
+  traits: traitsRaw,
+  champions: championsRaw,
+  items: itemsRaw,
+} as Set19Data;
 const names = championNames as Record<string, { ar: string; ja: string }>;
 
 export interface Set19Champion {
@@ -96,7 +104,6 @@ export const set19Meta = {
   source: data.source,
   fetched: data.fetched,
   augmentSummary: data.augmentSummary,
-  /** Locale-specific set title used in the hero and navigation. */
   title: {
     ar: 'جولة الألماس',
     en: 'Prismatic Tour',
@@ -161,7 +168,6 @@ export const set19Items: Set19Item[] = data.items
     };
   });
 
-// Fill trait → champion membership now that both lists exist.
 const byTrait = new Map<string, string[]>();
 for (const champion of set19Champions) {
   for (const traitId of champion.traits) {
