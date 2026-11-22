@@ -48,7 +48,7 @@ export const meta = metaJson as {
   updated: Localized;
   source: string;
 };
-export const patchNotes = patchNotesJson as PatchNotesData;
+export const patchNotes = patchNotesJson as unknown as PatchNotesData;
 
 export const championMap = new Map(champions.map((champion) => [champion.id, champion]));
 /** Traits are keyed by stable id (DA_18_Elderwood). */

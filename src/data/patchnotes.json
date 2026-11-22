@@ -38,7 +38,11 @@
           "commentary": null,
           "groups": [
             {
-              "title": { "ar": "", "en": "", "ja": "" },
+              "title": {
+                "ar": "",
+                "en": "",
+                "ja": ""
+              },
               "kind": "system",
               "commentary": null,
               "entries": [],
@@ -62,12 +66,20 @@
           "commentary": null,
           "groups": [
             {
-              "title": { "ar": "الأنظمة", "en": "Systems", "ja": "システム" },
+              "title": {
+                "ar": "الأنظمة",
+                "en": "Systems",
+                "ja": "システム"
+              },
               "kind": "system",
               "commentary": null,
               "entries": [
                 {
-                  "name": { "ar": "Reforgers", "en": "Reforgers", "ja": "Reforgers" },
+                  "name": {
+                    "ar": "Reforgers",
+                    "en": "Reforgers",
+                    "ja": "Reforgers"
+                  },
                   "change": "buff",
                   "lines": [
                     {
@@ -75,18 +87,27 @@
                       "en": "Internal queue prevents reforging back into the same item on consecutive uses.",
                       "ja": "連続使用で同じアイテムに戻りにくく。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 }
               ],
               "notes": []
             },
             {
-              "title": { "ar": "الخصائص", "en": "Traits", "ja": "特性" },
+              "title": {
+                "ar": "الخصائص",
+                "en": "Traits",
+                "ja": "特性"
+              },
               "kind": "trait",
               "commentary": null,
               "entries": [
                 {
-                  "name": { "ar": "Elderwood", "en": "Elderwood", "ja": "Elderwood" },
+                  "name": {
+                    "ar": "Elderwood",
+                    "en": "Elderwood",
+                    "ja": "Elderwood"
+                  },
                   "change": "nerf",
                   "lines": [
                     {
@@ -94,10 +115,15 @@
                       "en": "5 Elderwood bonus tree HP reduced.",
                       "ja": "5 Elderwoodの樹HPボーナス減少。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 },
                 {
-                  "name": { "ar": "Riftbeast", "en": "Riftbeast", "ja": "Riftbeast" },
+                  "name": {
+                    "ar": "Riftbeast",
+                    "en": "Riftbeast",
+                    "ja": "Riftbeast"
+                  },
                   "change": "nerf",
                   "lines": [
                     {
@@ -105,10 +131,15 @@
                       "en": "7 Riftbeast AD/AP slightly reduced.",
                       "ja": "7 RiftbeastのAD/APが微減。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 },
                 {
-                  "name": { "ar": "Sprykin", "en": "Sprykin", "ja": "Sprykin" },
+                  "name": {
+                    "ar": "Sprykin",
+                    "en": "Sprykin",
+                    "ja": "Sprykin"
+                  },
                   "change": "nerf",
                   "lines": [
                     {
@@ -116,7 +147,8 @@
                       "en": "Bonus HP, AS, and 7-piece bonus trimmed.",
                       "ja": "HP・AS・7ピースボーナス調整。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 },
                 {
                   "name": {
@@ -131,7 +163,8 @@
                       "en": "Buff retunes across several verticals.",
                       "ja": "複数の縦特性が強化。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 }
               ],
               "notes": [
@@ -143,7 +176,11 @@
               ]
             },
             {
-              "title": { "ar": "الوحدات", "en": "Units", "ja": "ユニット" },
+              "title": {
+                "ar": "الوحدات",
+                "en": "Units",
+                "ja": "ユニット"
+              },
               "kind": "unit",
               "commentary": null,
               "entries": [
@@ -160,7 +197,8 @@
                       "en": "Reroll buffs — strong 1-cost lines return.",
                       "ja": "リロール強化。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 },
                 {
                   "name": {
@@ -175,7 +213,8 @@
                       "en": "Ability number buffs.",
                       "ja": "スキル数値強化。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 },
                 {
                   "name": {
@@ -190,7 +229,8 @@
                       "en": "Lower health and heal.",
                       "ja": "体力と回復が減少。"
                     }
-                  ]
+                  ],
+                  "ref": null
                 }
               ],
               "notes": []
@@ -207,7 +247,11 @@
           "commentary": null,
           "groups": [
             {
-              "title": { "ar": "", "en": "", "ja": "" },
+              "title": {
+                "ar": "",
+                "en": "",
+                "ja": ""
+              },
               "kind": "system",
               "commentary": null,
               "entries": [],
