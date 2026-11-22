@@ -10,6 +10,7 @@ import { Traits } from './pages/Traits';
 import { Builder } from './pages/Builder';
 import { Patch } from './pages/Patch';
 import { Play } from './pages/Play';
+import { Set19 } from './pages/Set19';
 import { I18nProvider, parseLocaleFromPath } from './lib/i18n';
 import { useI18n } from './lib/i18n';
 
@@ -55,6 +56,7 @@ export default function App() {
             <Route path="builder" element={<Builder />} />
             <Route path="patch" element={<Patch />} />
             <Route path="play" element={<Play />} />
+            <Route path="set-19" element={<Set19 />} />
           </Route>
 
           {/* English */}
@@ -67,7 +69,8 @@ export default function App() {
               <Route path="traits" element={<Traits />} />
               <Route path="builder" element={<Builder />} />
               <Route path="patch" element={<Patch />} />
-            <Route path="play" element={<Play />} />
+              <Route path="play" element={<Play />} />
+              <Route path="set-19" element={<Set19 />} />
             </Route>
           </Route>
 
@@ -81,7 +84,8 @@ export default function App() {
               <Route path="traits" element={<Traits />} />
               <Route path="builder" element={<Builder />} />
               <Route path="patch" element={<Patch />} />
-            <Route path="play" element={<Play />} />
+              <Route path="play" element={<Play />} />
+              <Route path="set-19" element={<Set19 />} />
             </Route>
           </Route>
 
