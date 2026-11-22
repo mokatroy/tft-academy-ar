@@ -21,6 +21,7 @@ export function Layout() {
     { to: '/items', label: t({ ar: 'العناصر', en: 'Items', ja: 'アイテム' }) },
     { to: '/traits', label: t({ ar: 'الخواص', en: 'Traits', ja: '特性' }) },
     { to: '/patch', label: t({ ar: 'الباتش', en: 'Patch', ja: 'パッチ' }) },
+    { to: '/set-19', label: t({ ar: 'السيزون 19', en: 'Set 19', ja: 'セット19' }) },
   ];
 
   // Dev-only convenience: show a download link for the source archive when the
@@ -178,9 +179,9 @@ export function Layout() {
           <div className="footer-bottom">
             <span>© 2026 MokaTroy</span>
             <span dir="ltr" style={{ maxWidth: 720, textAlign: 'end', lineHeight: 1.5 }}>
-              MokaTroy was created under Riot Games&apos; &quot;Legal Jibber Jabber&quot; policy using
+              MokaTroy was created under Riot Games' "Legal Jibber Jabber" policy using
               assets owned by Riot Games. Riot Games does not endorse or sponsor this project.
-              MokaTroy isn&apos;t endorsed by Riot Games and doesn&apos;t reflect the views or
+              MokaTroy isn't endorsed by Riot Games and doesn't reflect the views or
               opinions of Riot Games or anyone officially involved in producing or managing Riot
               Games properties. Riot Games and all associated properties are trademarks or
               registered trademarks of Riot Games, Inc.
